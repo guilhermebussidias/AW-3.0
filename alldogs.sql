@@ -28,12 +28,14 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `Evento` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `usuario` int(11) NOT NULL,
   `titulo` text COLLATE utf8_spanish_ci NOT NULL,
   `contenido` text COLLATE utf8_spanish_ci NOT NULL,
   `fecha` date NOT NULL,
   `ubicacion` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `foto` longblob NOT NULL,
   PRIMARY KEY (`id`)
+  KEY `usuario` (`usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -129,7 +131,7 @@ INSERT INTO `Usuario` (`id`, `usuario`, `pass`, `rol`) VALUES
 -- Filtros para la tabla `Evento`
 --
 ALTER TABLE `Evento`
-  ADD CONSTRAINT `Evento_ibfk_1` FOREIGN KEY (`id`) REFERENCES `Usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `Evento_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `Usuario` (`id`);
 
 --
 -- Filtros para la tabla `Noticia`
