@@ -1,0 +1,37 @@
+<?php
+	session_start();
+
+	$user = "alldogs";
+	$pass = "perritos";
+	$nombre = "perro1";
+	try {
+		$conn = new PDO("mysql:host=localhost;dbname=alldogs", $user, $pass);
+		#$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$sql = $conn->prepare("SELECT * FROM Usuario WHERE usuario = :nombre");
+		$sql->execute(array('nombre' => $nombre)); 
+		$resultado = $sql->fetchAll();
+	} catch(PDOException $e){
+		echo "ERROR: " . $e->getMessage();
+	}
+
+?>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Title of the document</title>
+	</head>
+
+	<body>
+	<li>
+	<?php
+		echo "TamaÃo del array: " . count($resultado);
+		foreach($resultado as $usuario) {
+			echo "<ul>" . $usuario["usuario"] . "</ul>";
+		}
+	?>
+	</li>
+	</body>
+
+</html>
