@@ -23,10 +23,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Eventos`
+-- Estructura de tabla para la tabla `Evento`
 --
 
-CREATE TABLE IF NOT EXISTS `Eventos` (
+CREATE TABLE IF NOT EXISTS `Evento` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` text COLLATE utf8_spanish_ci NOT NULL,
   `contenido` text COLLATE utf8_spanish_ci NOT NULL,
@@ -126,10 +126,10 @@ INSERT INTO `Usuario` (`id`, `usuario`, `pass`, `rol`) VALUES
 --
 
 --
--- Filtros para la tabla `Eventos`
+-- Filtros para la tabla `Evento`
 --
-ALTER TABLE `Eventos`
-  ADD CONSTRAINT `Eventos_ibfk_1` FOREIGN KEY (`id`) REFERENCES `Usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `Evento`
+  ADD CONSTRAINT `Evento_ibfk_1` FOREIGN KEY (`id`) REFERENCES `Usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `Noticia`
