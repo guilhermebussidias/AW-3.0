@@ -52,4 +52,12 @@ function getCSSPath() {
   return CSS_URL;
 }
 
+function getImgPath() {
+  return IMG_URL;
+}
+
+function getJSPath() {
+  return JS_URL;
+}
+
 ?>
