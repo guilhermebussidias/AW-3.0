@@ -17,7 +17,7 @@ class DAOServicio {
         $stmt->execute(["nombre" => $username]);
         $res = $stmt->fetchAll();
       } catch(PDOException $e) {
-    		echo "ERROR EN DAOUsuario: " . $e->getMessage();
+    		echo "ERROR EN DAOServicio: " . $e->getMessage();
     	}
   }
 
