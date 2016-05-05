@@ -26,6 +26,18 @@ class DAOUsuario {
     }
   }
 
+  function saveUsuario($username, $password) {
+    try {
+      $sql = "INSERT INTO Usuario (usuario, pass, rol) VALUES (:usuario, :pass, :rol)";
+      $stmt = $this->conn->prepare($sql);
+      $stmt->execute(["usuario" => $username, "pass" => $password, "rol" => "normal"]);
+      $res = $stmt->execute();
+      $id = $this->conn->lastInsertId();
+    } catch(PDOException $e) {
+  		echo "ERROR EN DAOUsuario: " . $e->getMessage();
+  	}
+  }
+
 }
 
 ?>

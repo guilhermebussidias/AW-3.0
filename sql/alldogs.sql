@@ -2,10 +2,10 @@
 -- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 03-05-2016 a las 17:11:28
--- Versión del servidor: 5.5.47-0ubuntu0.14.04.1
--- Versión de PHP: 5.5.9-1ubuntu4.14
+-- Host: localhost
+-- Generation Time: May 04, 2016 at 06:48 PM
+-- Server version: 5.5.47-0ubuntu0.14.04.1
+-- PHP Version: 5.5.9-1ubuntu4.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,31 +17,31 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de datos: `alldogs`
+-- Database: `alldogs`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Evento`
+-- Table structure for table `Evento`
 --
 
 CREATE TABLE IF NOT EXISTS `Evento` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `usuario` int(11) NOT NULL,
   `titulo` text COLLATE utf8_spanish_ci NOT NULL,
   `contenido` text COLLATE utf8_spanish_ci NOT NULL,
   `fecha` date NOT NULL,
   `ubicacion` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `foto` longblob NOT NULL,
-  PRIMARY KEY (`id`)
-  KEY `usuario` (`usuario`)
+  `usuario` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `Evento_ibfk_1` (`usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Noticia`
+-- Table structure for table `Noticia`
 --
 
 CREATE TABLE IF NOT EXISTS `Noticia` (
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `Noticia` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Publicidad`
+-- Table structure for table `Publicidad`
 --
 
 CREATE TABLE IF NOT EXISTS `Publicidad` (
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `Publicidad` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Puntua`
+-- Table structure for table `Puntua`
 --
 
 CREATE TABLE IF NOT EXISTS `Puntua` (
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `Puntua` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Servicio`
+-- Table structure for table `Servicio`
 --
 
 CREATE TABLE IF NOT EXISTS `Servicio` (
@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `Servicio` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Usuario`
+-- Table structure for table `Usuario`
 --
 
 CREATE TABLE IF NOT EXISTS `Usuario` (
@@ -117,43 +117,43 @@ CREATE TABLE IF NOT EXISTS `Usuario` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
 
 --
--- Volcado de datos para la tabla `Usuario`
+-- Dumping data for table `Usuario`
 --
 
 INSERT INTO `Usuario` (`id`, `usuario`, `pass`, `rol`) VALUES
 (1, 'perro1', 'perraco', 'normal');
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `Evento`
+-- Constraints for table `Evento`
 --
 ALTER TABLE `Evento`
   ADD CONSTRAINT `Evento_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `Usuario` (`id`);
 
 --
--- Filtros para la tabla `Noticia`
+-- Constraints for table `Noticia`
 --
 ALTER TABLE `Noticia`
   ADD CONSTRAINT `Noticia_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `Usuario` (`id`);
 
 --
--- Filtros para la tabla `Publicidad`
+-- Constraints for table `Publicidad`
 --
 ALTER TABLE `Publicidad`
   ADD CONSTRAINT `Publicidad_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `Usuario` (`id`);
 
 --
--- Filtros para la tabla `Puntua`
+-- Constraints for table `Puntua`
 --
 ALTER TABLE `Puntua`
   ADD CONSTRAINT `Puntua_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `Usuario` (`id`),
   ADD CONSTRAINT `Puntua_ibfk_2` FOREIGN KEY (`servicio`) REFERENCES `Servicio` (`id`);
 
 --
--- Filtros para la tabla `Servicio`
+-- Constraints for table `Servicio`
 --
 ALTER TABLE `Servicio`
   ADD CONSTRAINT `Servicio_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `Usuario` (`id`);

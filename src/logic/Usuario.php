@@ -1,8 +1,8 @@
 <?php
 
-namespace aw\ctrl;
+namespace aw\logic;
 
-class CtrlUsuario {
+class Usuario {
 
   private $daoUsuario;
 

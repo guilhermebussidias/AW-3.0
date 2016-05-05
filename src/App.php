@@ -42,4 +42,12 @@ function getRole() {
   }
 }
 
+function getName() {
+  if (isset($_SESSION["nombre"])) {
+    return $_SESSION["nombre"];
+  } else {
+    return null;
+  }
+}
+
 ?>
