@@ -6,7 +6,18 @@ use PDO;
 
 class Connection {
 
-  static function getConnection() {
+  private static $instance;
+
+  private $connection;
+
+  static function getInstance() {
+    if (!self::$instance instanceof self) {
+      self::$instance = new self;
+    }
+    return self::$instance;
+  }
+
+  static function createConnection() {
     try {
       $tmpl = "mysql:host=%s;dbname=%s";
       $uri = sprintf($tmpl, DB_HOST, DB_NAME);
@@ -16,6 +27,14 @@ class Connection {
   		echo "ERROR EN CONEXION A BD: " . $e->getMessage();
   	}
     return $conn;
+  }
+
+  private function __construct() {
+    $this->connection = $this->createConnection();
+  }
+
+  function getConnection() {
+    return $this->connection;
   }
 
 }

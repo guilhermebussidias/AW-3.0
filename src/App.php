@@ -34,4 +34,12 @@ spl_autoload_register(function ($class) {
     }
 });
 
+function getRole() {
+  if (isset($_SESSION["rol"])) {
+    return $_SESSION["rol"];
+  } else {
+    return null;
+  }
+}
+
 ?>

@@ -7,7 +7,7 @@ class DAOUsuario {
   private $conn;
 
   function __construct() {
-    $this->conn = \aw\dao\Connection::getConnection();
+    $this->conn = \aw\dao\Connection::getInstance()->getconnection();
   }
 
   function getUsuario($username) {
