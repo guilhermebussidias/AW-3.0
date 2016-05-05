@@ -35,6 +35,7 @@ class DAOUsuario {
       $id = $this->conn->lastInsertId();
     } catch(PDOException $e) {
   		echo "ERROR EN DAOUsuario: " . $e->getMessage();
+      return null;
   	}
     return $id;
   }
@@ -47,7 +48,9 @@ class DAOUsuario {
         $stmt->execute();
       } catch(PDOException $e) {
     		echo "ERROR EN DAOUsuario: " . $e->getMessage();
+        return null;
     	}
+      return true;
   }
 
 }
