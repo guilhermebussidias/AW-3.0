@@ -48,4 +48,8 @@ function getName() {
   }
 }
 
+function getCSSPath() {
+  return CSS_URL;
+}
+
 ?>
