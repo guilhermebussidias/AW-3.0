@@ -31,11 +31,23 @@ class DAOUsuario {
       $sql = "INSERT INTO Usuario (usuario, pass, rol) VALUES (:usuario, :pass, :rol)";
       $stmt = $this->conn->prepare($sql);
       $stmt->execute(["usuario" => $username, "pass" => $password, "rol" => "normal"]);
-      $res = $stmt->execute();
+      $stmt->execute();
       $id = $this->conn->lastInsertId();
     } catch(PDOException $e) {
   		echo "ERROR EN DAOUsuario: " . $e->getMessage();
   	}
+    return $id;
+  }
+
+  function updateUsuario($id, $username, $password, $role) {
+      try {
+        $sql = "INSERT INTO Usuario (id, usuario, pass, rol) VALUES (:id, :usuario, :pass, :rol)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(["id" => $id, "usuario" => $username, "pass" => $password, "rol" => $role]);
+        $stmt->execute();
+      } catch(PDOException $e) {
+    		echo "ERROR EN DAOUsuario: " . $e->getMessage();
+    	}
   }
 
 }
