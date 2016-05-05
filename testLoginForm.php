@@ -7,9 +7,10 @@ $usr = new \aw\logic\Usuario();
 $ok = $usr->login($_REQUEST["username"], $_REQUEST["password"]);
 
 if ($ok) {
-  echo "LOGIN OK";
+  echo "<b>LOGIN OK</b>";
+  echo "<b>Rol: " . getRole() . "</b>";
 } else {
-  echo "LOGIN FALLIDO";
+  echo "<b>LOGIN FALLIDO</b>";
 }
 
 ?>

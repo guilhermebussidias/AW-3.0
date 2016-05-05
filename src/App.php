@@ -1,7 +1,5 @@
 <?php
 
-namespace aw;
-
 require_once dirname(__DIR__) . "/config/config.php";
 
 session_start();
