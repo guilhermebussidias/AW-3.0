@@ -1,0 +1,434 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* No permite que nada flote a su derecha ni izquierda */
+.clear {
+  clear: both;
+}
+
+body {
+  font-family: 'Roboto', sans-serif; /* Roboto => De google fonts */
+}
+
+ul{
+  list-style: none;
+}
+
+#contenedor {
+  width: 1000px;
+  margin: auto;
+  background-color: #fff;
+  /* Sombras a izquierda y derecha */
+  -webkit-box-shadow: 4px 0 2px  #b0b0b0,  -4px 0 2px #b0b0b0;
+  -moz-box-shadow: 4px 0 2px #b0b0b0,  -4px 0 2px #b0b0b0;
+  box-shadow: 4px 0 2px #b0b0b0,  -4px 0 2px #b0b0b0;
+}
+
+#sesion {
+  /*text-align: right;*/
+  background-color: #F8F9F9;
+  height: 50px;
+  line-height: 50px;
+  border-style: solid;
+  border-width: 1px 0;
+  border-color: #b0b0b0;
+}
+#sesion ul {
+  float: right;
+}
+#social {
+  float: left;
+  height: 100%;
+}
+#social img {
+  margin: 5px;
+  width: 40px;
+  height: 40px;
+  opacity: 0.6;
+  filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+#social img:hover {
+  opacity: 0.4;
+  filter: alpha(opacity=40); /* For IE8 and earlier */
+}
+
+#sesion li{
+  display: inline-block;
+}
+#sesion ul li a{
+  text-decoration: none;
+  color: #8888A3;
+}
+#sesion ul li a:hover{
+  color: #b0b0b0;
+}
+#sesion li:first-child a {
+  padding-right: 8px;
+}
+#sesion li:last-child a{
+  padding-left: 10px;
+  padding-right: 12px;
+  border-left-width: 2px;
+  border-left-style: solid;
+  border-left-color: #b0b0b0;
+}
+
+#cabecera {
+  height: 80px;
+}
+
+#cabeceraCompleta {
+  height: 80px;
+}
+
+.tablaServicios{
+	float : left;
+	width: 70%;
+}
+
+#logo {
+  width: 30%;
+  height:100%;
+  float: left;
+}
+#logo img{
+  width:100%;
+  height:100%;
+  object-fit: contain; /* modifica width y height pero mantiene ratio. No funciona IE */
+}
+
+#navegacion {
+  float: right;
+  width: 70%;
+}
+
+.menu {
+  position: absolute; /* Para poder utilizar el z-index */
+  padding-top: 20px;
+  padding-left: 35px;
+}
+.menu li>a{
+  color: #7F7F7F;
+  padding: 10px;
+  display: block;
+  text-decoration: none;
+  min-width: 100px;
+}
+.menu li>a:hover{
+  background-color: #FFB400;
+}
+.menu>li{
+  float: left;
+  text-align:center
+}
+.menu>li>ul{
+  display: none;
+}
+.menu>li:hover>ul {
+  background-color: #F8F9F9;
+  display:block;
+  z-index: 1; /* Coloca el submenu sobre todo lo demás */
+}
+
+#slide {
+  overflow: hidden;
+  margin: auto;
+}
+#slide img {
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover; /* Rellena la foto con el div, respetando ratio y si hace falta recorta la img */
+}
+#slide ul {
+  display: flex; /* Caja flexible, con sus hijos tambien flexibles */
+  padding: 0;
+  width: 400%;
+  animation: cambio 20s infinite alternate; /* La animacion dura 20s, se repite indefinidamente, al llegar a la última empieza desde ésta  */
+}
+#slide li {
+  width: 100%;
+}
+@keyframes cambio {
+  0% {margin-left:0;} /* Primera foto del slide */
+  20% {margin-left:0;} /* 20% de 20s = 4s */
+                        /* 5% de 20s = 1s, transicion a la segunda imagen */
+  25% {margin-left:-100%;}
+  45% {margin-left:-100%;}
+
+  50% {margin-left:-200%;}
+  70% {margin-left:-200%;}
+
+  75% {margin-left:-300%;}
+  100% {margin-left:-300%;}
+}
+
+/* ======= POP UP ========== */
+.modal-container {
+  position: fixed;
+  background-color: #F8F9F9;
+  left: 50%;
+  -webkit-transform: translate(-50%,-200%);
+  -ms-transform: translate(-50%,-200%);
+  -o-transform: translate(-50%,-200%);
+  transform: translate(-50%,-200%);
+  padding: 60px;
+  border-radius: 5px;
+  max-width: 500px;
+  -webkit-transition: transform 200ms ease-out;
+  -o-transition: transform 200ms ease-out;
+  transition: transform 200ms ease-out;
+}
+/* Fondo negro del pop up */
+.modal:before {
+  content: "";
+  position: fixed;
+  display: none;
+  background-color: rgba(0,0,0,.8);
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.modal:target:before {
+  display: block;
+}
+.modal:target .modal-container {
+  top: 30%;
+  -webkit-transform: translate(-50%,0);
+  -ms-transform: translate(-50%,0);
+  -o-transform: translate(-50%,0);
+  transform: translate(-50%,0);
+}
+.modal-close {} /* Evita al cerrar que la pagina suba hasta arriba */
+.input-form {
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
+a.boton-form {
+  font-size: 1.2em;
+  text-decoration: none;
+  margin-left: 12px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #7F7F7F;
+  color: white;
+}
+a.boton-form:hover {
+  background-color: #FFB400;
+}
+.modal-container p{
+  color: #37485C;
+  font-size: 1.2em;
+}
+
+#contenedor-articulos {
+  float: left;
+  width: 70%;
+}
+#contenedor-articulos h3 {
+  color: #37485C;
+  padding-bottom: 10px;
+}
+
+#contenedor-conocenos h3 {
+   color: #d51;
+  padding-bottom: 10px;
+}
+
+#contenedor-articulos p{
+  color: #778089;
+}
+#contenedor-conocenos p{
+  color: #778089;
+}
+#contenedor-conocenos {
+  float: left;
+  width: 70%;
+}
+
+#contenedor-conocenos-R  {
+  color: #37485C;
+  padding-bottom: 16px;
+  float: right;
+}
+
+#contenedor-conocenos img {
+  max-height: 150px;
+  height: auto;
+  padding: 20px;
+}
+
+
+.img-r{
+float: right;
+}
+.img-l{
+float: left;
+}
+.noticia-R {
+  padding: 30px;
+  float: right;
+}
+
+.noticia {
+  padding: 30px;
+}
+
+#right-sidebar {
+  float: right;
+  width: 30%;
+}
+#right-sidebar img{
+  width: 100%;
+}
+.pienso {
+  padding: 20px;
+}
+
+ #contenedor-conocenos h1 {
+   color:#7F7F7F;
+}
+
+#pie {
+  text-align: center;
+  background-color: #F8F9F9;
+  height: 50px;
+  line-height: 50px;
+  border-style: solid;
+  border-width: 1px 0;
+  border-color: #b0b0b0;
+
+}
+.enlace-ampliar-noticia {
+  color: #d51;
+  text-decoration: none;
+}
+
+.enlace-ampliar-evento {
+   color: #d51;
+  text-decoration: none;
+}
+
+.evento {
+  padding: 30px;
+}
+
+
+.mapa {
+  padding: 20px;
+}
+#mapa{
+  height: 250px;
+  width: 350px;
+}
+#contenedor-eventos {
+  float: left;
+  width: 70%;
+}
+
+.datos {
+  float: left;
+  padding: 20px;
+  line-height: 40px;
+}
+
+/*SERVICIOS*/
+
+.titulos {
+  height: 140px;
+  width: 210px;
+}
+
+.tituloServicio{
+  padding-top: 20px;
+  color: #A68337;
+  font-size: 25px;
+  font-style: verdana;
+  padding-left: 15px;
+}
+.imagenServicio{
+  padding-left: 5px;
+}
+.empresaServicio{
+  padding-top: 5px;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-weight: bold;
+  color: #A68337;
+}
+.direccionServicio{
+  font-family: Helvetica;
+  font-size: 14px;
+  color: #A49E90;
+}
+.telefonoServicio{
+  font-family: Helvetica;
+  font-size: 14px;
+  font-weight: bold;
+  color: #F2AF1E;
+
+}
+.descripcionServicio{
+  font-size: 13px;
+  font-style: italic;
+  max-width:  400px;
+  color: #A49E90;
+  padding-bottom: 35px;
+
+}
+
+/*puntuacion*/
+.estrellas{
+  width: 140px;
+}
+.estrellas a {
+  background-image: url('img/patapuntuacionVacia.png');  
+  background-size: 25px;
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+}
+.estrellas:hover a {
+  background-image: url('img/patapuntuacionRellena.png');
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+}
+.estrellas > a:hover ~ a {
+background-image: url('img/patapuntuacionVacia.png');  
+}
+table{
+  padding-top: 20px;
+  padding-left: 20px;
+  max-width: 620px;
+  float: left;
+}
+td{
+  padding-left: 5px;
+  max-height: 150px;
+}
+
+.comentarios {
+   padding: 10px 30px;
+ }
+.comentarios p {
+  padding: 5px;
+}
+.comentarios textarea {
+  border: 1px solid grey;
+  border-radius: 5px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.9em;
+}
+.boton-enviar-comentario {
+  font-size: 1.1em;
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 5px;
+  background-color: #7F7F7F;
+  color: white;
+  margin: 10px 0;
+}
