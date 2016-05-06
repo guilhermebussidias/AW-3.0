@@ -25,7 +25,7 @@ class DAONoticia {
       return null;
     }
   }
-  //Buscar noticia por contenido o titulo
+  
   function getNoticiaContenido($contenido){
     try {
       $sql = "SELECT * FROM Noticia WHERE titulo LIKE '%:tituloNoticia%' OR contenido LIKE '%:contenidoNoticia'";
@@ -59,7 +59,7 @@ class DAONoticia {
     }
   }
 
-  function insertNoticia($usuario, $titulo, $contenido, $fecha){
+  function saveNoticia($usuario, $titulo, $contenido, $fecha){
     try{
       $sql = "INSERT INTO Noticia (usuario, titulo, contenido, fecha) VALUES (:usuario,:titulo, :contenido, :fecha )";
       $stmt->execute(["usuario" => $usuario, "titulo" => $titulo, "contenido" => $contenido, "fecha" => $fecha]);
@@ -74,7 +74,7 @@ class DAONoticia {
 
   function updateNoticia($id, $titulo, $contenido) {
       try {
-        $sql = "INSERT INTO Usuario (id, titulo, contenido) VALUES (:id, :titulo, :contenido)";
+        $sql = "INSERT INTO Noticia (id, titulo, contenido) VALUES (:id, :titulo, :contenido)";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(["id" => $id, "titulo" => $titulo, "contenido" => $contenido]);
         $stmt->execute();
@@ -83,6 +83,19 @@ class DAONoticia {
         return null;
     	}
       return true;
+  }
+
+  function deleteNoticia($id) {
+    try {
+      $sql = "DELETE FROM Noticia WHERE id = :id ";
+      $stmt = $this->conn->prepare($sql);
+      $stmt->execute(["id" => $id]);
+      $stmt->execute();
+    } catch (PDOException $e) {
+      echo "ERROR EN DAONoticia: " . $e->getMessage();
+      return null;
+    }
+    return true;
   }
 
 }
