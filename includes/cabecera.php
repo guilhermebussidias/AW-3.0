@@ -40,10 +40,11 @@
                   <li><a href="servicio.php?servicio=adopcion">Adopción</a></li>
                 </ul>
             </li>
-            <li><a href="noticias.php">Noticias</a></li>
-            <li><a href="eventos.php">Eventos</a></li>
+            <li><a href="noticia.php">Noticias</a></li>
+            <li><a href="evento.php">Eventos</a></li>
             <li><a href="deinteres.php">De Interés</a></li>
             <li><a href="conocenos.php">Conócenos</a></li>
           </ul>
         </nav>
 </div>
+<div class="clear"></div>

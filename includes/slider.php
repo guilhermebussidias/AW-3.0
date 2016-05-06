@@ -1,4 +1,3 @@
-<div class="clear"></div>
 <div id="slide">
      <ul>
         <li><img src="resources/img/slide1.jpg" alt="slide"></li>
