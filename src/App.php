@@ -60,4 +60,8 @@ function getJSPath() {
   return JS_URL;
 }
 
+function getIncludePath() {
+  return INCLUDE_PATH;
+}
+
 ?>

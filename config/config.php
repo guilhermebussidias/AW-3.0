@@ -16,6 +16,7 @@ define("JS_URL", RES_URL . "js/");
 
 define("BASE_PATH", dirname(__DIR__) . "/");
 define("SRC_PATH", BASE_PATH . "src/");
+define("INCLUDE_PATH", BASE_PATH . "includes/");
 
 define("BASE_NAMESPACE", "aw\\");
 
