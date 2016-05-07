@@ -10,7 +10,7 @@ class DAOUsuario {
     $this->conn = \aw\dao\Connection::getInstance()->getconnection();
   }
 
-  function getUsuario($username) {
+  function findByName($username) {
     try {
       $sql = "SELECT * FROM Usuario WHERE usuario = :nombre";
       $stmt = $this->conn->prepare($sql);
@@ -26,7 +26,7 @@ class DAOUsuario {
     }
   }
 
-  function saveUsuario($username, $password) {
+  function persist($username, $password) {
     try {
       $sql = "INSERT INTO Usuario (usuario, pass, rol) VALUES (:usuario, :pass, :rol)";
       $stmt = $this->conn->prepare($sql);
@@ -40,7 +40,7 @@ class DAOUsuario {
     return $id;
   }
 
-  function updateUsuario($id, $username, $password, $role) {
+  function update($id, $username, $password, $role) {
       try {
         $sql = "INSERT INTO Usuario (id, usuario, pass, rol) VALUES (:id, :usuario, :pass, :rol)";
         $stmt = $this->conn->prepare($sql);
@@ -52,18 +52,18 @@ class DAOUsuario {
     	}
       return true;
   }
-  function deleteUsuario($id) {
+  
+  function delete($id) {
     try {
       $sql = "DELETE FROM Usuario WHERE id = :id ";
       $stmt = $this->conn->prepare($sql);
       $stmt->execute(["id" => $id]);
       $stmt->execute();
     } catch (PDOException $e) {
-      echo "ERROR EN DAONoticia: " . $e->getMessage();
+      echo "ERROR EN DAOUsuario: " . $e->getMessage();
       return null;
     }
     return true;
-  }
   }
 
 }

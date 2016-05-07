@@ -38,17 +38,30 @@ spl_autoload_register(function ($class) {
 
 /******************************************************************************/
 
+function login($name, $role) {
+  $_SESSION["name"] = $name;
+  $_SESSION["role"] = $role;
+}
+
+function logout() {
+  unset($_SESSION["name"]);
+  unset($_SESSION["role"]);
+
+  session_destroy();
+  session_start();
+}
+
 function getRole() {
-  if (isset($_SESSION["rol"])) {
-    return $_SESSION["rol"];
+  if (isset($_SESSION["role"])) {
+    return $_SESSION["role"];
   } else {
     return null;
   }
 }
 
 function getName() {
-  if (isset($_SESSION["nombre"])) {
-    return $_SESSION["nombre"];
+  if (isset($_SESSION["name"])) {
+    return $_SESSION["name"];
   } else {
     return null;
   }

@@ -10,6 +10,7 @@ class Usuario {
     $this->daoUsuario = new \aw\dao\DAOUsuario();
   }
 
+  /*
   function login($username, $password) {
     $user = $this->daoUsuario->getUsuario($username);
     if (is_null($user)) {
@@ -18,10 +19,15 @@ class Usuario {
     $realPass = $user["pass"];
     $ok = strcmp($password, $realPass) === 0;
     if ($ok) {
-      $_SESSION["username"] = $username;
+      $_SESSION["nombre"] = $username;
       $_SESSION["rol"] = $user["rol"];
     }
     return $ok;
+  }
+  */
+
+  function findByName($name) {
+    return $this->daoUsuario->findByName($name);
   }
 }
 

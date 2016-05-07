@@ -17,7 +17,8 @@
 				echo '   <li><a href="#registrar">Registrarse</a></li>';
 			}
 			else {
-				echo " <li>Bienvenido, {$name}</li>";
+				echo " <li>Bienvenido, {$name} &nbsp;</li>";
+				echo '<li><a id="enlace-logout" href="' . getBasePath() . 'formLogin.php">Salir</a></li>';
 			}
 		?>
 
@@ -49,7 +50,7 @@
 </div>
 
 <div id="dialog-form" title="Login en AllDogs">
-  <p class="validateTips">Hay que rellenar todos los campos</p>
+  <!--<p class="validateTips">Hay que rellenar todos los campos</p>-->
 
   <form id="jquery-login-form" action="<?= getBasePath() ?>formLogin.php" method="post">
     <fieldset>
