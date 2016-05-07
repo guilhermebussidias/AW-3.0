@@ -26,11 +26,11 @@ class DAOUsuario {
     }
   }
 
-  function persist($username, $password) {
+  function persist($username, $password, $role) {
     try {
       $sql = "INSERT INTO Usuario (usuario, pass, rol) VALUES (:usuario, :pass, :rol)";
       $stmt = $this->conn->prepare($sql);
-      $stmt->execute(["usuario" => $username, "pass" => $password, "rol" => "normal"]);
+      $stmt->execute(["usuario" => $username, "pass" => $password, "rol" => $role]);
       $stmt->execute();
       $id = $this->conn->lastInsertId();
     } catch(PDOException $e) {
@@ -52,7 +52,7 @@ class DAOUsuario {
     	}
       return true;
   }
-  
+
   function delete($id) {
     try {
       $sql = "DELETE FROM Usuario WHERE id = :id ";

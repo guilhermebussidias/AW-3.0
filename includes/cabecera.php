@@ -59,7 +59,7 @@
       <label for="password">Contraseña</label>
       <input type="password" name="password" id="password" value="" class="text ui-widget-content ui-corner-all">
 
-      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+      <input type="submit" tabindex="-1" id="jquery-login-submit">
     </fieldset>
   </form>
 </div>

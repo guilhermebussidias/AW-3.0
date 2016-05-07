@@ -23,6 +23,10 @@ class Usuario {
     return $this->daoUsuario->findByName($name);
   }
   */
+
+  function newUser($name, $password, $role) {
+    return $this->daoUsuario->persist($name, $password, $role);
+  }
 }
 
 ?>

@@ -385,7 +385,7 @@ float: left;
   width: 140px;
 }
 .estrellas a {
-  background-image: url('img/patapuntuacionVacia.png');  
+  background-image: url('img/patapuntuacionVacia.png');
   background-size: 25px;
   display: inline-block;
   height: 24px;
@@ -398,7 +398,7 @@ float: left;
   width: 24px;
 }
 .estrellas > a:hover ~ a {
-background-image: url('img/patapuntuacionVacia.png');  
+background-image: url('img/patapuntuacionVacia.png');
 }
 table{
   padding-top: 20px;
@@ -424,6 +424,27 @@ td{
   font-size: 0.9em;
 }
 .boton-enviar-comentario {
+  font-size: 1.1em;
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 5px;
+  background-color: #7F7F7F;
+  color: white;
+  margin: 10px 0;
+}
+#nuevo-usuario {
+  float: left;
+  width: 50%;
+  border: 2px dotted orange;
+  margin: 15px;
+}
+#nuevo-usuario div {
+  padding: 15px;
+}
+#nuevo-usuario input {
+  border: 1px solid grey;
+}
+#nuevo-usuario button {
   font-size: 1.1em;
   text-decoration: none;
   padding: 8px;
