@@ -2,10 +2,10 @@
 -- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: May 04, 2016 at 06:48 PM
--- Server version: 5.5.47-0ubuntu0.14.04.1
--- PHP Version: 5.5.9-1ubuntu4.14
+-- Servidor: localhost
+-- Tiempo de generación: 10-05-2016 a las 17:48:40
+-- Versión del servidor: 5.5.49-0ubuntu0.14.04.1
+-- Versión de PHP: 5.5.9-1ubuntu4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `alldogs`
+-- Base de datos: `alldogs`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Evento`
+-- Estructura de tabla para la tabla `Evento`
 --
 
 CREATE TABLE IF NOT EXISTS `Evento` (
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `Evento` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Noticia`
+-- Estructura de tabla para la tabla `Noticia`
 --
 
 CREATE TABLE IF NOT EXISTS `Noticia` (
@@ -52,12 +52,22 @@ CREATE TABLE IF NOT EXISTS `Noticia` (
   `fecha` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `usuario` (`usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
+
+--
+-- Volcado de datos para la tabla `Noticia`
+--
+
+INSERT INTO `Noticia` (`id`, `usuario`, `titulo`, `contenido`, `fecha`) VALUES
+(1, 1, 'Noticia1', 'jojo', '2016-04-03'),
+(2, 2, 'noticia2', '526j4o56jo', '2016-04-13'),
+(3, 1, 'noticia3', 'jojo', '2016-04-12'),
+(4, 2, 'noticia4', '526j4o56jo', '2016-04-07');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Publicidad`
+-- Estructura de tabla para la tabla `Publicidad`
 --
 
 CREATE TABLE IF NOT EXISTS `Publicidad` (
@@ -72,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `Publicidad` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Puntua`
+-- Estructura de tabla para la tabla `Puntua`
 --
 
 CREATE TABLE IF NOT EXISTS `Puntua` (
@@ -86,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `Puntua` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Servicio`
+-- Estructura de tabla para la tabla `Servicio`
 --
 
 CREATE TABLE IF NOT EXISTS `Servicio` (
@@ -98,6 +108,8 @@ CREATE TABLE IF NOT EXISTS `Servicio` (
   `categoria` enum('peluqueria','veterinario','residencia','adiestrador','paseador','adopcion') COLLATE utf8_spanish_ci NOT NULL,
   `media_puntuacion` int(11) NOT NULL,
   `imagen` longblob NOT NULL,
+  `telefono` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `url` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `usuario` (`usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
@@ -105,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `Servicio` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Usuario`
+-- Estructura de tabla para la tabla `Usuario`
 --
 
 CREATE TABLE IF NOT EXISTS `Usuario` (
@@ -114,40 +126,48 @@ CREATE TABLE IF NOT EXISTS `Usuario` (
   `pass` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `rol` enum('admin','gestor','normal','proveedor') COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
-
-
---
--- Constraints for dumped tables
---
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=4 ;
 
 --
--- Constraints for table `Evento`
+-- Volcado de datos para la tabla `Usuario`
+--
+
+INSERT INTO `Usuario` (`id`, `usuario`, `pass`, `rol`) VALUES
+(1, 'perro1', 'perraco', 'normal'),
+(2, 'perro2', 'perraco', 'normal'),
+(3, 'perro2', 'perraco', 'normal');
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `Evento`
 --
 ALTER TABLE `Evento`
   ADD CONSTRAINT `Evento_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `Usuario` (`id`);
 
 --
--- Constraints for table `Noticia`
+-- Filtros para la tabla `Noticia`
 --
 ALTER TABLE `Noticia`
   ADD CONSTRAINT `Noticia_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `Usuario` (`id`);
 
 --
--- Constraints for table `Publicidad`
+-- Filtros para la tabla `Publicidad`
 --
 ALTER TABLE `Publicidad`
   ADD CONSTRAINT `Publicidad_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `Usuario` (`id`);
 
 --
--- Constraints for table `Puntua`
+-- Filtros para la tabla `Puntua`
 --
 ALTER TABLE `Puntua`
   ADD CONSTRAINT `Puntua_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `Usuario` (`id`),
   ADD CONSTRAINT `Puntua_ibfk_2` FOREIGN KEY (`servicio`) REFERENCES `Servicio` (`id`);
 
 --
--- Constraints for table `Servicio`
+-- Filtros para la tabla `Servicio`
 --
 ALTER TABLE `Servicio`
   ADD CONSTRAINT `Servicio_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `Usuario` (`id`);
