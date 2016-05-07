@@ -30,7 +30,9 @@
 					<div id="contenedor-articulos">
 					<?php
 						foreach($noticias as $noticias_){
-         					echo '<div class="noticia">
+         					echo '
+         					<div id="noticias" class="maxi-form">
+              
             					<h3><a href="ampliar-noticia.html" class="enlace-ampliar-noticia">' . $noticias_['titulo'] . '</a></h3>
            						<p>' . $noticias_['fecha'] . ' </p>
 								<p>' . $noticias_['contenido'] . ' </p>
