@@ -38,12 +38,12 @@ spl_autoload_register(function ($class) {
 
 /******************************************************************************/
 
-function login($name, $role) {
+function sessionLogin($name, $role) {
   $_SESSION["name"] = $name;
   $_SESSION["role"] = $role;
 }
 
-function logout() {
+function sessionLogout() {
   unset($_SESSION["name"]);
   unset($_SESSION["role"]);
 

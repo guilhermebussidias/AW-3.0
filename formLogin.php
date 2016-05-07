@@ -16,17 +16,22 @@ if ($ok) {
 
 if (is_null(getRole())) {
   // -> Login
+  $name = $_REQUEST["name"];
+  $pass = $_REQUEST["password"];
+
   $logic = new \aw\logic\Usuario();
-  $user = $logic->findByName($_REQUEST["name"]);
-  if (strcmp($_REQUEST["password"], $user["pass"]) === 0) {
-    login($user["usuario"], $user["rol"]);
+  $user = $logic->checkLogin($name, $pass);
+
+  if (!is_null($user)) {
+    sessionLogin($user["usuario"], $user["rol"]);
     redirect(getBasePath());
   } else {
     redirect(getBasePath() . "nuevoUsuario.php");
   }
 } else {
   // -> Logout
-  logout();
+  sessionLogout();
   redirect(getBasePath());
 }
+
 ?>
