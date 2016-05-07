@@ -1,4 +1,4 @@
-<?php 
+<?php
 	require_once __DIR__ . "/src/App.php";
  ?>
 <!DOCTYPE html>
@@ -6,7 +6,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>All Dogs</title>
-		<link rel="stylesheet"  href="<?php echo getCSSPath()?>style.css" type="text/css" />
+		<?php require(getIncludePath() . 'head.php'); ?>
 	</head>
 	<body>
 		<div id="contenedor">
