@@ -9,24 +9,24 @@
           <a href="#"><img src="resources/img/twitter-64.png" alt="twitter"></a>
         </div>
         <ul>
-		
-		<?php 
-	
+
+		<?php
+
 			if (is_null($rol) ) {
-				echo ' <li><a href="#inicio-sesion">Inicio sesión</a></li>';
+				echo ' <li><a href="#inicio-sesion" id="enlace-login">Inicio sesión</a></li>';
 				echo '   <li><a href="#registrar">Registrarse</a></li>';
 			}
-			else { 
+			else {
 				echo " <li>Bienvenido, {$name}</li>";
 			}
 		?>
-		
+
 	   </ul>
       </div>
       <div class="clear"></div>
       <header id="cabecera">
         <div id="logo">
-          <a href="index.html"><img src="resources/img/logo.png" alt="logo" /></a>
+          <a href="<?= getBasePath() ?>"><img src="resources/img/logo.png" alt="logo" /></a>
         </div>
         <nav id="navegacion">
           <ul class="menu">
@@ -47,4 +47,20 @@
           </ul>
         </nav>
 </div>
+
+<div id="dialog-form" title="Login en AllDogs">
+  <p class="validateTips">Hay que rellenar todos los campos</p>
+
+  <form id="jquery-login-form" action="<?= getBasePath() ?>formLogin.php" method="post">
+    <fieldset>
+      <label for="name">Nombre de usuario</label>
+      <input type="text" name="name" id="name" value="" class="text ui-widget-content ui-corner-all">
+      <label for="password">Contraseña</label>
+      <input type="password" name="password" id="password" value="" class="text ui-widget-content ui-corner-all">
+
+      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+    </fieldset>
+  </form>
+</div>
+
 <div class="clear"></div>

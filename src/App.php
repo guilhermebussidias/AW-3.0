@@ -2,7 +2,11 @@
 
 require_once dirname(__DIR__) . "/config/config.php";
 
+/******************************************************************************/
+
 session_start();
+
+/******************************************************************************/
 
 spl_autoload_register(function ($class) {
 
@@ -32,6 +36,8 @@ spl_autoload_register(function ($class) {
     }
 });
 
+/******************************************************************************/
+
 function getRole() {
   if (isset($_SESSION["rol"])) {
     return $_SESSION["rol"];
@@ -48,6 +54,8 @@ function getName() {
   }
 }
 
+/******************************************************************************/
+
 function getCSSPath() {
   return CSS_URL;
 }
@@ -62,6 +70,17 @@ function getJSPath() {
 
 function getIncludePath() {
   return INCLUDE_PATH;
+}
+
+function getBasePath() {
+  return BASE_URL;
+}
+
+/******************************************************************************/
+
+function redirect($url, $statusCode = 302) {
+   header('Location: ' . $url, true, $statusCode);
+   die();
 }
 
 ?>
