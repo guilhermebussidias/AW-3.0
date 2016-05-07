@@ -52,6 +52,19 @@ class DAOUsuario {
     	}
       return true;
   }
+  function deleteUsuario($id) {
+    try {
+      $sql = "DELETE FROM Usuario WHERE id = :id ";
+      $stmt = $this->conn->prepare($sql);
+      $stmt->execute(["id" => $id]);
+      $stmt->execute();
+    } catch (PDOException $e) {
+      echo "ERROR EN DAONoticia: " . $e->getMessage();
+      return null;
+    }
+    return true;
+  }
+  }
 
 }
 
