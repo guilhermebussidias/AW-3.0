@@ -81,12 +81,12 @@ function getJSPath() {
   return JS_URL;
 }
 
-function getIncludePath() {
-  return INCLUDE_PATH;
-}
-
 function getBasePath() {
   return BASE_URL;
+}
+
+function getIncludePath() {
+  return INCLUDE_PATH;
 }
 
 /******************************************************************************/

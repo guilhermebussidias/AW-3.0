@@ -27,7 +27,7 @@
         ?>
 
 
-        <form action="<?= getBasePath() ?>formNuevoUsuario.php" method="post" id="nuevo-usuario">
+        <form action="<?= getBasePath() ?>formNuevoUsuario.php" method="post" id="nuevo-usuario" class="maxi-form">
             <div>
                 <h1>Crear nuevo usuario</h1>
             </div>

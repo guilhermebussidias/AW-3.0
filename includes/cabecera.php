@@ -14,7 +14,7 @@
 
 			if (is_null($rol) ) {
 				echo ' <li><a href="#inicio-sesion" id="enlace-login">Inicio sesión</a></li>';
-				echo '   <li><a href="#registrar">Registrarse</a></li>';
+				echo '   <li><a href="nuevoUsuario.php">Registrarse</a></li>';
 			}
 			else {
 				echo " <li>Bienvenido, {$name} &nbsp;</li>";
@@ -27,24 +27,28 @@
       <div class="clear"></div>
       <header id="cabecera">
         <div id="logo">
-          <a href="<?= getBasePath() ?>"><img src="resources/img/logo.png" alt="logo" /></a>
+          <a href="<?= getBasePath() ?>"><img src="<?=getImgPath()?>logo.png" alt="logo" /></a>
         </div>
         <nav id="navegacion">
           <ul class="menu">
             <li><a href="servicio.php">Servicios</a>
                 <ul>
-                  <li><a href="servicio.php?servicio=veterinario">Veterinarios</a></li>
+                  <li><a href="servicio.php?servicio=veterinarios">Veterinarios</a></li>
                   <li><a href="servicio.php?servicio=residencias">Residencias</a></li>
                   <li><a href="servicio.php?servicio=adiestradores">Adiestradores</a></li>
                   <li><a href="servicio.php?servicio=peluquerias">Peluquerias</a></li>
                   <li><a href="servicio.php?servicio=paseadores">Paseadores</a></li>
-                  <li><a href="servicio.php?servicio=adopcion">Adopción</a></li>
+                  <li><a href="servicio.php?servicio=adopciones">Adopción</a></li>
                 </ul>
             </li>
             <li><a href="noticia.php">Noticias</a></li>
             <li><a href="evento.php">Eventos</a></li>
             <li><a href="deinteres.php">De Interés</a></li>
             <li><a href="conocenos.php">Conócenos</a></li>
+
+						<a href="buscar.php">
+							<img id="logo-buscar" src="<?=getImgPath()?>magnifying-glass-icon.png" alt="buscar">
+						</a>
           </ul>
         </nav>
 </div>

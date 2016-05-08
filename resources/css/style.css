@@ -432,24 +432,20 @@ td{
   color: white;
   margin: 10px 0;
 }
-#nuevo-usuario {
+.maxi-form {
   float: left;
-  width: 50%;
+  width: 65%;
   border: 2px dotted orange;
   margin: 15px;
 }
-#nuevo-usuario div {
+.maxi-form div {
   padding: 15px;
 }
-#nuevo-usuario input {
+.maxi-form input {
   border: 1px solid grey;
 }
-#nuevo-usuario button {
-  font-size: 1.1em;
-  text-decoration: none;
-  padding: 8px;
-  border-radius: 5px;
-  background-color: #7F7F7F;
-  color: white;
-  margin: 10px 0;
+#logo-buscar {
+  height: 30px;
+  width: 30px;
+  padding: 4px 10px;
 }
