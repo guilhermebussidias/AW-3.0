@@ -20,14 +20,15 @@
 			?>
 				<div id="contenido">
 					<div id="contenedor-articulos">
-         				 <div class="noticia">
-            				<h3><a href="ampliar-noticia.html" class="enlace-ampliar-noticia"><?php var_dump($noticias) ?></a></h3>
-           						 <p></p>
-          				</div>
-          				<div class="noticia">
-           					 <h3><a href="ampliar-noticia.html" class="enlace-ampliar-noticia"></a>otro</h3>
-           					 <p></p>
-         				</div>
+					<?php 
+						@foreach($noticias as $noticias_){
+         					echo '<div class="noticia">
+            					<h3><a href="ampliar-noticia.html" class="enlace-ampliar-noticia">' . $noticias_->titulo . '</a></h3>
+           						<p>' . $noticias_->contenido . ' </p>
+          						</div> '
+          				}
+         				@endforeach
+         			?>
         			</div>
 				</div>
 			<?php
