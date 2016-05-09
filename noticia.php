@@ -21,7 +21,7 @@
 				<div id="contenido">
 					<div id="contenedor-articulos">
          				 <div class="noticia">
-            				<h3><a href="ampliar-noticia.html" class="enlace-ampliar-noticia"><?phpvar_dump($noticias)?></a></h3>
+            				<h3><a href="ampliar-noticia.html" class="enlace-ampliar-noticia"><?php var_dump($noticias) ?></a></h3>
            						 <p></p>
           				</div>
           				<div class="noticia">
