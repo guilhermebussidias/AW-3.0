@@ -28,7 +28,7 @@ class DAOPublicidad {
 
   function getListaPublicidad(){
     try {
-      $sql = "SELECT anuncio, banner FROM Publicidad LIMIT 3";
+      $sql = "SELECT anuncio, banner FROM Publicidad ORDER BY RAND() LIMIT 0, 2";
       $stmt = $this->conn->prepare($sql);
       $res = $stmt->fetchAll();
     } catch(PDOException $e) {
