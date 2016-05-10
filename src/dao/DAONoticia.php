@@ -44,7 +44,7 @@ class DAONoticia {
 
   function getListaNoticias($sigElem, $elementos) {
     try{
-      $sql = "SELECT * FROM Noticia WHERE fecha < now() ORDER BY fecha LIMIT :sigElemento , :numElementos";
+      $sql = "SELECT * FROM Noticia ORDER BY fecha DESC LIMIT :sigElemento , :numElementos";
       $stmt = $this->conn->prepare($sql);
       $stmt->execute(["sigElemento" => $sigElem, "numElementos" => $elementos]);
       $stmt = $this->conn->prepare($sql);
