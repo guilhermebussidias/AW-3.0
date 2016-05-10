@@ -10,9 +10,11 @@ class DAOServicio {
     $this->conn = \aw\dao\Connection::getInstance()->getconnection();
   }
 
-  function getServicioByCategory($category) {
+  function getServicioByCategory($category, $saltar, $elementos) {
       try {
-        $sql = "SELECT * FROM Servicio WHERE categoria = :categoria ";
+        $sql = "SELECT * 
+        FROM Servicio WHERE categoria = :categoria 
+        ORDER BY nombre LIMIT " . $saltar . ", " . $elementos;
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(["categoria" => $category]);
         $res = $stmt->fetchAll();

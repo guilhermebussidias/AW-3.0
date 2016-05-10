@@ -1,8 +1,19 @@
 <?php
   require_once __DIR__ . "/src/App.php";
+
   $categoria = $_GET["tipo"];
+
   $logic = new \aw\logic\servicioEspecifico();
-  $servicios = $logic->mostrarServicios($categoria);
+
+  $serviciosPorPagina = 5;
+
+  if (isset($_REQUEST["ultimaPag"]))
+    $ultimaPag = $_REQUEST["ultimaPag"];
+  else
+    $ultimaPag = 0;
+  
+  $servicios = $logic->mostrarServicios($categoria, $ultimaPag * $serviciosPorPagina, $serviciosPorPagina);
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -51,6 +62,7 @@
                
              </tbody>
            </table>
+           <a href="servicio-especifico.php?tipo=<?=$categoria?>&ultimaPag=<?=$ultimaPag + 1?>">Siguiente página</a>
         </div>
       <?php
         require('includes/sidebar.php');

@@ -9,8 +9,8 @@ class servicioEspecifico{
     $this->daoServicio = new \aw\dao\DAOServicio();
   }
 
-  function mostrarServicios($categoria){
-    $servicios = $this->daoServicio->getServicioByCategory($categoria);
+  function mostrarServicios($categoria, $saltar, $elementos){
+    $servicios = $this->daoServicio->getServicioByCategory($categoria, $saltar, $elementos);
     return $servicios;
   }
 
