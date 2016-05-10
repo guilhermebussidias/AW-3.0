@@ -116,12 +116,6 @@ CREATE TABLE IF NOT EXISTS `Usuario` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
 
---
--- Dumping data for table `Usuario`
---
-
-INSERT INTO `Usuario` (`id`, `usuario`, `pass`, `rol`) VALUES
-(1, 'perro1', 'perraco', 'normal');
 
 --
 -- Constraints for dumped tables
