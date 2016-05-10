@@ -28,18 +28,14 @@ class DAOEvento {
 
   function getListaEventos($sigElem, $elementos) {
     try {
-      $sql = "SELECT * FROM Evento WHERE fecha > now() ORDER BY fecha LIMIT :siguienteElemento , :numElementos";
+      $sql = "SELECT * FROM Evento ORDER BY fecha DESC LIMIT :siguienteElemento , :numElementos";
       $stmt = $this->conn->prepare($sql);
       $stm->execute(["siguienteElemento" => $sigElem, "numElementos" => $elementos]);
       $res = $stmt->fetchAll();
     } catch(PDOException $e) {
       echo "ERROR EN DAOEvento: " . $e->getMessage();
     }
-    if (!empty($res)) {
-      return $res;
-    } else {
-      return null;
-    }
+    return $res;
   }
 
   function searchEvento($texto) {
@@ -87,7 +83,7 @@ class DAOEvento {
         }
       return true;
     }
-    
+
     function deleteEvento($id){
           try {
           $sql = "DELETE FROM Evento WHERE id = :identificador";
