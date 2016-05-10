@@ -44,18 +44,13 @@ class DAONoticia {
 
   function getListaNoticias($sigElem, $elementos) {
     try{
-      $sql = "SELECT * FROM Noticia ORDER BY fecha DESC LIMIT " . $sigElem . "," . $elementos;
+      $sql = "SELECT * FROM Noticia ORDER BY fecha DESC LIMIT " . $elementos . "," . $sigElem;
       $stmt = $this->conn->prepare($sql);
       $stmt->execute();
       $res = $stmt->fetchAll();
     }
     catch (PDOException $e){
       echo "ERROR EN DAONoticia: " . $e->getMessage();
-    }
-    if (!empty($res)) {
-      return $res;
-    } else {
-      return null;
     }
   }
 
