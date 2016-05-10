@@ -29,14 +29,13 @@
 				<div id="contenido">
 					<div id="contenedor-articulos">
 					<?php
-						@foreach($noticias as $noticias_){
+						foreach($noticias as $noticias_){
          					echo '<div class="noticia">
             					<h3><a href="ampliar-noticia.html" class="enlace-ampliar-noticia">' . $noticias_->titulo . '</a></h3>
            						<p>' . $noticias_->contenido . ' </p>
           						</div> '
-          				}
-         				@endforeach
-         			?>
+    				}
+     			?>
         			</div>
 				</div>
 				<a href="noticia.php?ultimaPag=<?=$ultimaPag + 1?>">Siguiente página</a>
