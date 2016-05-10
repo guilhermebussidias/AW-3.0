@@ -3,6 +3,7 @@
 namespace aw\dao;
 
 use PDO;
+use PDOException;
 
 class Connection {
 
@@ -25,6 +26,7 @@ class Connection {
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch(PDOException $e) {
   		echo "ERROR EN CONEXION A BD: " . $e->getMessage();
+      die;
   	}
     return $conn;
   }

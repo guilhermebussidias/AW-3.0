@@ -3,7 +3,7 @@
 define("DB_HOST", "localhost");
 define("DB_NAME", "alldogs");
 define("DB_USER", "alldogs");
-define("DB_PASS", "perritos");
+define("DB_PASS", "perritosX");
 
 define("BASE_URL", "/AW-3.0/");
 
