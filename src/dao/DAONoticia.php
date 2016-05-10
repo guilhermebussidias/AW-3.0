@@ -44,7 +44,12 @@ class DAONoticia {
 
   function getListaNoticias($saltar, $elementos) {
     try{
-      $sql = "SELECT * FROM Noticia ORDER BY fecha DESC LIMIT " . $saltar . "," . $elementos;
+      $sql = "SELECT n.fecha as fecha, n.titulo as titulo,
+        n.contenido as contenido, u.usuario as nombre_usuario
+        FROM Noticia n
+        JOIN Usuario u on n.usuario = u.id
+        ORDER BY fecha DESC
+        LIMIT " . $saltar . ", " . $elementos;
       $stmt = $this->conn->prepare($sql);
       $stmt->execute();
       $res = $stmt->fetchAll();
