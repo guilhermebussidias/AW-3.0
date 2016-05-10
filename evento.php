@@ -10,7 +10,7 @@
 	else
 		$ultimaPag = 0;
 
-	$eventos = $logic->buscarEventos($ultimaPag * $eventosPorPagina + 1, $eventosPorPagina);
+	$eventos = $logic->buscarEventos($ultimaPag * $eventosPorPagina, $eventosPorPagina);
 
  ?>
 <!DOCTYPE html>
@@ -36,6 +36,7 @@
     				}
      			?>
 				</div>
+				<a href="noticia.php?ultimaPag=<?=$ultimaPag + 1?>">Siguiente página</a>
 			<?php
 				require('includes/sidebar.php');
 				require('includes/pie.php');

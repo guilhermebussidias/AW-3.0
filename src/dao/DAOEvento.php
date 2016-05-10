@@ -29,9 +29,9 @@ class DAOEvento {
   function getListaEventos($sigElem, $elementos) {
     try {
       $sql = "SELECT * FROM Evento ORDER BY fecha DESC LIMIT " . $sigElem . "," . $elementos;
-      $stmt = $this->conn->prepare($sql);
+      $stm = $this->conn->prepare($sql);
       $stm->execute();
-      $res = $stmt->fetchAll();
+      $res = $stm->fetchAll();
     } catch(PDOException $e) {
       echo "ERROR EN DAOEvento: " . $e->getMessage();
     }
