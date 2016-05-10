@@ -11,20 +11,12 @@ class Evento {
     $this->daoEvento = new \aw\dao\DAOEvento();
   }
 
-  function mostrarEventos($sigElem, $elementos){
-    $eventos = $this->daoEvento->getListaEventos($sigElem, $elementos);
+  function buscarEventos($sigElem, $elementos){
+    $eventos = $this->daoElementos->getListaEventos($sigElem, $elementos);
 		if (is_null($eventos)) {
     		return null;
     	}
     return $eventos;
-  }
-
-  function buscarEventos($sigElem, $elementos){
-    $elementos = $this->daoElementos->getListaEventos($sigElem, $elementos);
-		if (is_null($noticias)) {
-    		return null;
-    	}
-    return $noticias;
   }
 
   function buscarEvento($texto){
