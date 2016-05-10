@@ -25,7 +25,7 @@ class DAONoticia {
       return null;
     }
   }
-  
+
   function getNoticiaContenido($contenido){
     try {
       $sql = "SELECT * FROM Noticia WHERE titulo LIKE '%:tituloNoticia%' OR contenido LIKE '%:contenidoNoticia'";
@@ -45,6 +45,7 @@ class DAONoticia {
   function getListaNoticias($sigElem, $elementos) {
     try{
       $sql = "SELECT * FROM Noticia WHERE fecha < now() ORDER BY fecha LIMIT :sigElemento , :numElementos";
+      $stmt = $this->conn->prepare($sql);
       $stmt->execute(["sigElemento" => $sigElem, "numElementos" => $elementos]);
       $stmt = $this->conn->prepare($sql);
       $res = $stmt->fetchAll();
@@ -62,8 +63,9 @@ class DAONoticia {
   function saveNoticia($usuario, $titulo, $contenido, $fecha){
     try{
       $sql = "INSERT INTO Noticia (usuario, titulo, contenido, fecha) VALUES (:usuario,:titulo, :contenido, :fecha )";
+      $stmt = $this->conn->prepare($sql);
       $stmt->execute(["usuario" => $usuario, "titulo" => $titulo, "contenido" => $contenido, "fecha" => $fecha]);
-      $stmt->execute();
+      //$stmt->execute();
       $id = $this->conn->lastInsertId();
     } catch(PDOException $e) {
   		echo "ERROR EN DAONoticia: " . $e->getMessage();
