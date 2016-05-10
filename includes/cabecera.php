@@ -33,12 +33,12 @@
           <ul class="menu">
             <li><a href="servicio.php">Servicios</a>
                 <ul>
-                  <li><a href="servicio.php?servicio=veterinarios">Veterinarios</a></li>
-                  <li><a href="servicio.php?servicio=residencias">Residencias</a></li>
-                  <li><a href="servicio.php?servicio=adiestradores">Adiestradores</a></li>
-                  <li><a href="servicio.php?servicio=peluquerias">Peluquerias</a></li>
-                  <li><a href="servicio.php?servicio=paseadores">Paseadores</a></li>
-                  <li><a href="servicio.php?servicio=adopciones">Adopción</a></li>
+                  <li><a href="servicio-especifico.php?tipo=veterinario">Veterinarios</a></li>
+                  <li><a href="servicio-especifico.php?tipo=residencia">Residencias</a></li>
+                  <li><a href="servicio-especifico.php?tipo=adiestrador">Adiestradores</a></li>
+                  <li><a href="servicio-especifico.php?tipo=peluqueria">Peluquerias</a></li>
+                  <li><a href="servicio-especifico.php?tipo=paseador">Paseadores</a></li>
+                  <li><a href="servicio.php?tipo=adopcion">Adopción</a></li>
                 </ul>
             </li>
             <li><a href="noticia.php">Noticias</a></li>

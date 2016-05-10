@@ -7,12 +7,12 @@ namespace aw\logic;
 class Evento {
   private $daoEvento;
 
-  function __construct(argument) {
+  function __construct() {
     $this->daoEvento = new \aw\dao\DAOEvento();
   }
 
   function buscarEventos($sigElem, $elementos){
-    $eventos = $this->daoElementos->getListaEventos($sigElem, $elementos);
+    $eventos = $this->daoEvento->getListaEventos($sigElem, $elementos);
 		if (is_null($eventos)) {
     		return null;
     	}
