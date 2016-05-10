@@ -15,7 +15,15 @@
 				require(getIncludePath() . 'slider.php');
 			?>
 			<div id="contenido">
-
+				<div id="contenedor-noticias">
+					<?php
+						$noticiasLogic = new \aw\logic\Noticia();
+						//$eventosLogic = new \aw\logic\Evento();
+						//$servicios = new \aw\logic\Servicio();
+						$noticias = $noticiasLogic->buscarNoticias(1, 1); //id, usuario, titulo, contenido, fecha
+						
+					?>
+				</div>
 			</div>
 			<?php
 				require(getIncludePath() . 'sidebar.php');
