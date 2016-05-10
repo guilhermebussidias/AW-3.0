@@ -10,11 +10,8 @@ class Noticia {
     	$this->daoNoticia = new \aw\dao\DAONoticia();
 	}
 
-	function buscarNoticias($sigElem, $elementos) {
-    $noticias = $this->daoNoticia->getListaNoticias($sigElem, $elementos);
-		if (is_null($noticias)) {
-    		return null;
-    	}
+	function buscarNoticias($saltar, $elementos) {
+    $noticias = $this->daoNoticia->getListaNoticias($saltar, $elementos);
     return $noticias;
 	}
 

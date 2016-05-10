@@ -10,7 +10,7 @@
 	else
 		$ultimaPag = 0;
 
-	$noticias = $logic->buscarNoticias($ultimaPag * $noticiasPorPagina + 1, $noticiasPorPagina);
+	$noticias = $logic->buscarNoticias($ultimaPag * $noticiasPorPagina, $noticiasPorPagina);
 
  ?>
 <!DOCTYPE html>
