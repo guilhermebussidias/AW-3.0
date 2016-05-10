@@ -51,6 +51,7 @@
 
         			</div>
 				</div>
+				<div class="clear"></div>
 				<a href="noticia.php?ultimaPag=<?=$ultimaPag + 1?>">Siguiente página</a>
 			<?php
 				require('includes/sidebar.php');
