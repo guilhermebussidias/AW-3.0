@@ -19,6 +19,7 @@
 		<meta charset="UTF-8">
 		<title>All Dogs</title>
 		<?php require(getIncludePath() . 'head.php'); ?>
+		<link rel="stylesheet"  href="<?=getCSSPath()?>contenido.css" type="text/css" />
 	</head>
 	<body>
 		<div id="contenedor">
@@ -26,20 +27,28 @@
 				require('includes/cabecera.php');
 				require('includes/slider.php');
 			?>
-				<div id="contenido">
-					<div id="contenedor-articulos">
-					<?php
+
+			<?php
 						foreach($noticias as $noticias_){
          					echo '
-         					<div id="noticias" class="maxi-form">
-              
-            					<h3><a href="ampliar-noticia.html" class="enlace-ampliar-noticia">' . $noticias_['titulo'] . '</a></h3>
-           						<p>' . $noticias_['fecha'] . ' </p>
-								<p>' . $noticias_['contenido'] . ' </p>
-          						<p> Autor: '. $noticias_['nombre_usuario'] . ' </p>
-          						</div> ';
+				<div id="algo" class="contenido-bloque">
+						<h3 class="contenido-titulo">
+						<a href="ampliar-noticia.php?noticia='. $noticias_['id'] .'" class="enlace-ampliar-noticia">' . $noticias_['titulo'] . '</a></h3>
+						<div class="contenido-info">Escrito por '. $noticias_['nombre_usuario'] . ' el ' . $noticias_['fecha'] . '</div>
+						<div class="contenido-texto">
+							<p>
+								' . $noticias_['contenido'] . '
+							</p>
+							<p>
+								ros.
+							</p>
+						</div>
+					</div>
+					';
     				}
      			?>
+
+
         			</div>
 				</div>
 				<a href="noticia.php?ultimaPag=<?=$ultimaPag + 1?>">Siguiente página</a>

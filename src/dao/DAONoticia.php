@@ -45,7 +45,7 @@ class DAONoticia {
   function getListaNoticias($saltar, $elementos) {
     try{
       $sql = "SELECT n.fecha as fecha, n.titulo as titulo,
-        n.contenido as contenido, u.usuario as nombre_usuario
+        n.contenido as contenido, u.usuario as nombre_usuario, n.id as id
         FROM Noticia n
         JOIN Usuario u on n.usuario = u.id
         ORDER BY fecha DESC
