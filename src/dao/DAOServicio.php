@@ -12,7 +12,7 @@ class DAOServicio {
 
   function getServicioByCategory($category) {
       try {
-        $sql = "SELECT nombre, contenido, ubicacion, media_puntuacion, imagen FROM Servicio WHERE categoria = :categoria ";
+        $sql = "SELECT * FROM Servicio WHERE categoria = :categoria ";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(["categoria" => $category]);
         $res = $stmt->fetchAll();
@@ -24,7 +24,7 @@ class DAOServicio {
 
   function searchServicios($text){
     try{
-      $sql = "SELECT nombre, contenido, ubicacion, media_puntuacion, imagen FROM Servicio  WHERE nombre LIKE '%:text%' OR contenido LIKE '%:text%' ORDER BY nombre";
+      $sql = "SELECT * FROM Servicio  WHERE nombre LIKE '%:text%' OR contenido LIKE '%:text%' ORDER BY nombre";
       $stmt = $this->conn->prepare($sql);
       $res = $stmt->fetchAll();
     } catch(PDOException $e){
