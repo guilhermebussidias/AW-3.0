@@ -11,7 +11,7 @@
     $ultimaPag = $_REQUEST["ultimaPag"];
   else
     $ultimaPag = 0;
-  
+
   $servicios = $logic->mostrarServicios($categoria, $ultimaPag * $serviciosPorPagina, $serviciosPorPagina);
 
 ?>
@@ -51,11 +51,11 @@
                           <td class="direccionServicio">' . $servicio['ubicacion'] . '</td>
                         </tr>
                         <tr>
-                          <td class="telefonoServicio">' . "falta el telefono"/* $servicio['telefono'] .*/. '</td>
+                          <td class="telefonoServicio">' .  $servicio['telefono'] . '</td>
                         </tr>
                         <tr>
                           <td class="descripcionServicio">' . $servicio['contenido'] . '</td>
-                          <td> <a href="'. /* $servicios->web .*/ '">'  . "falta la web"  /*. $servicios->web*/ . '</a></td>
+                          <td> <a href="'. $servicio['url'] . '" target= "_blank">'  . $servicio['url'] . '</a></td>
                         </tr>';
                  } 
                  ?>

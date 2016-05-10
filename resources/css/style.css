@@ -385,20 +385,20 @@ float: left;
   width: 140px;
 }
 .estrellas a {
-  background-image: url('img/patapuntuacionVacia.png');
+  background-image: url('../img/patapuntuacionVacia.png');
   background-size: 25px;
   display: inline-block;
   height: 24px;
   width: 24px;
 }
 .estrellas:hover a {
-  background-image: url('img/patapuntuacionRellena.png');
+  background-image: url('../img/patapuntuacionRellena.png');
   display: inline-block;
   height: 24px;
   width: 24px;
 }
 .estrellas > a:hover ~ a {
-background-image: url('img/patapuntuacionVacia.png');
+background-image: url('../img/patapuntuacionVacia.png');
 }
 table{
   padding-top: 20px;
