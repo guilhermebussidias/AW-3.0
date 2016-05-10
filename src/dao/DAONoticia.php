@@ -45,7 +45,6 @@ class DAONoticia {
   function getListaNoticias($saltar, $elementos) {
     try{
       $sql = "SELECT * FROM Noticia ORDER BY fecha DESC LIMIT " . $saltar . "," . $elementos;
-      echo $sql;
       $stmt = $this->conn->prepare($sql);
       $stmt->execute();
       $res = $stmt->fetchAll();
