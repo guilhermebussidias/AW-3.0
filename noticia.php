@@ -31,8 +31,8 @@
 					<?php
 						foreach($noticias as $noticias_){
          					echo '<div class="noticia">
-            					<h3><a href="ampliar-noticia.html" class="enlace-ampliar-noticia">' . $noticias_->titulo . '</a></h3>
-           						<p>' . $noticias_->contenido . ' </p>
+            					<h3><a href="ampliar-noticia.html" class="enlace-ampliar-noticia">' . $noticias_['titulo'] . '</a></h3>
+           						<p>' . $noticias_['contenido'] . ' </p>
           						</div> ';
     				}
      			?>
