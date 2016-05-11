@@ -19,6 +19,7 @@
 		<meta charset="UTF-8">
 		<title>All Dogs</title>
 		<?php require(getIncludePath() . 'head.php'); ?>
+		<link rel="stylesheet"  href="<?=getCSSPath()?>contenido.css" type="text/css" />
 	</head>
 	<body>
 		<div id="contenedor">
@@ -28,15 +29,20 @@
 			?>
 				<div id="contenido">
           <?php
-						foreach($eventos as $evento){
-         					echo '<div class="evento">
-            					<h3><a href="evento.php" class="enlace-ampliar-evento">' . $evento['titulo'] . '</a></h3>
-           						<p>' . $evento['contenido'] . ' </p>
-          						</div> ';
-    				}
+					foreach($eventos as $evento){
+							echo '
+								<div class="contenido-bloque">
+								<h3 class="contenido-titulo">'. $evento['titulo'] .'</h3>
+								<div class="contenido-texto">
+								<p> ' . $evento['contenido'] . ' </p>
+								<div class="contenido-info">Escrito por '. $evento['usuario'] .'</div>
+								</div>
+								</div>
+						';
+						}
      			?>
 				</div>
-				<a href="noticia.php?ultimaPag=<?=$ultimaPag + 1?>">Siguiente página</a>
+				<a href="evento.php?ultimaPag=<?=$ultimaPag + 1?>">Siguiente página</a>
 			<?php
 				require('includes/sidebar.php');
 				require('includes/pie.php');
