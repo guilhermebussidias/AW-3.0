@@ -38,9 +38,10 @@ spl_autoload_register(function ($class) {
 
 /******************************************************************************/
 
-function sessionLogin($name, $role) {
+function sessionLogin($name, $role, $id) {
   $_SESSION["name"] = $name;
   $_SESSION["role"] = $role;
+  $_SESSION["id"] = $id;
 }
 
 function sessionLogout() {
@@ -65,6 +66,18 @@ function getName() {
   } else {
     return null;
   }
+}
+
+function getID() {
+  if (isset($_SESSION["id"])) {
+    return $_SESSION["id"];
+  } else {
+    return null;
+  }
+}
+
+function isLogged() {
+  return !isnull(getRole());
 }
 
 /******************************************************************************/
