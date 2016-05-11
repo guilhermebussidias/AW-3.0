@@ -9,19 +9,19 @@
 		$tituloN = $_REQUEST["titulo-noticia"]; #meto los parametros en variables
 		$contenidoN = $_REQUEST["contenido-noticia"];
 		$fechaInicioN = $_REQUEST["fecha-ini-noticia"];
-		if($fechaInicioN=="") 
+		if($fechaInicioN=="")
 			$fechaInicioN = '2001-01-01';
-		
+
 		$fechaFinN = $_REQUEST["fecha-fin-noticia"];
-		if($fechaFinN=="") 
+		if($fechaFinN=="")
 			$fechaFinN = '2020-01-01';
-		
+
 		$noticia = true; #identificador para saber que hay que mostrar noticia
 		$logic = new \aw\logic\Noticia();
 		$noticias = $logic->buscarNoticiasbuscador($tituloN, $contenidoN, $fechaInicioN, $fechaFinN);
 	}
 	#################################
-	#PARSEAR ELEMENTOS DE EVENTO 
+	#PARSEAR ELEMENTOS DE EVENTO
 	if (isset($_REQUEST["titulo-evento"])){
 		$evento = true;
 		##################### Rellenar con tus parametros
@@ -33,13 +33,29 @@
 	}
 	#PARSEAR ELEMENTOS DE SERVICIO
 	if (isset($_REQUEST["contenido-servicio"])){
-		$servicio = true;
+
 		##################### Rellenar con tus parametros
-		$tituloN = $_REQUEST["titulo-noticia"];
-		$contenidoN = $_REQUEST["contenido-noticia"];
-		$fechaInicioN = $_REQUEST["fecha-ini-noticia"];
-		$fechaFinN = $_REQUEST["fecha-fin-noticia"];
+		$contenido = $_REQUEST["contenido-servicio"];
+		$categoria = $_REQUEST["categoria-servicio"];
+		$ubicacion = $_REQUEST["ubicacion-servicio"];
+		$puntuacion = $_REQUEST["puntuacion-servicio"];
 		#####################
+
+		//Adaptación para el LIKE de la consulta
+		if ($contenido == "") {
+			$contenido = '%';
+		}else {
+			$contenido = "%" . $contenido . "%";
+		}
+		if($ubicacion == ""){
+			$ubicacion = '%';
+		}else {
+			$ubicacion = "%" . $ubicacion . "%";
+		}
+
+		$servicio = true;
+		$logic = new \aw\logic\servicioEspecifico();
+		$servicios = $logic->ListaServiciosBuscador($contenido,$categoria,$ubicacion,$puntuacion);
 	}
 
  ?>
@@ -60,7 +76,7 @@
 				require(getIncludePath() . 'cabecera.php');
 				require(getIncludePath() . 'slider.php');
 			?>
-			<div id="contenido"> 
+			<div id="contenido">
 				<?php
 				######################## EJEMPLO PARA LAS NOTICIAS SE RELLENA CON FOREACH
 					if ($noticia){
@@ -86,7 +102,9 @@
     				###################
     				#############SERVICIO
     				if ($servicio){ #hacer un foreach para devolver los servicios
-
+							foreach ($servicios as $servicio_) {
+								echo $servicio_['id'] ;
+							}
     				}
     				##################################
      			?>

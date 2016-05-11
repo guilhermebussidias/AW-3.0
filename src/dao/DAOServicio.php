@@ -12,8 +12,8 @@ class DAOServicio {
 
   function getServicioByCategory($category, $saltar, $elementos) {
       try {
-        $sql = "SELECT * 
-        FROM Servicio WHERE categoria = :categoria 
+        $sql = "SELECT *
+        FROM Servicio WHERE categoria = :categoria
         ORDER BY nombre LIMIT " . $saltar . ", " . $elementos;
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(["categoria" => $category]);
@@ -38,6 +38,19 @@ class DAOServicio {
       return null;
     }
 
+  }
+
+  function getListaServiciosBuscador ($contenido,$categoria,$ubicacion,$puntuacion) {
+
+    $sql = "SELECT * FROM Servicio WHERE contenido LIKE :contenido
+            AND categoria = :categoria
+            AND ubicacion LIKE :ubicacion
+            AND media_puntuacion = :puntuacion";
+    $stm = $this->conn->prepare($sql);
+    $stm->execute(["contenido" => $contenido, "categoria" => $categoria, "ubicacion" => $ubicacion, "puntuacion" => $puntuacion]);
+    $res = $stm->fetchAll();
+
+    return $res;
   }
 
 }

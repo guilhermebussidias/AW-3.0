@@ -37,7 +37,7 @@
                 <li><a href="#busca-servicios">Servicios</a></li>
                 <li><a href="#busca-eventos">Eventos</a></li>
               </ul>
-              
+
                 <div id="busca-noticias" class="fragmento-busqueda">
                   <form action="<?= getBasePath() ?>formBuscar.php" method="get" id="form-busqueda-noticia">
                     <label for="input-titulo-noticia">Título:</label>
@@ -51,9 +51,9 @@
                  <button type="submit" class="boton-enviar-comentario">Buscar</button>
                  </form>
                 </div>
-                
+
              <div id="busca-servicios" class="fragmento-busqueda">
-              <form action="<?= getBasePath() ?>formBuscar.php" method="get"  id="form-busqueda-evento"> 
+              <form action="<?= getBasePath() ?>formBuscar.php" method="get"  id="form-busqueda-evento">
                    <p>NO IMPLEMENTADO</p>
                     <label for="input-contenido-servicio">Contenido:</label>
                     <input type="text" name="contenido-servicio" id="input-contenido-servicio" class="input-busqueda-evento">
@@ -67,7 +67,7 @@
                       <option value="adopcion">Adopciones</option>
                     </select>
                     <label for="input-titulo-servicio">Ubicación:</label>
-                    <input type="text" name="titulo-servicio" id="input-titulo-servicio" class="input-busqueda-evento">
+                    <input type="text" name="ubicacion-servicio" id="input-titulo-servicio" class="input-busqueda-evento">
                     <label for="input-puntuacion-servicio">Puntuación mínima:</label>
                     <input readonly type="text" name="puntuacion-servicio" id="input-puntuacion-servicio" class="input-busqueda-evento" value="5">
                     <div id="slider-puntuacion-servicio"></div>
@@ -75,7 +75,7 @@
               </form>
                </div>
                <div id="busca-eventos" class="fragmento-busqueda">
-              <form action="<?= getBasePath() ?>formBuscar.php" method="get" id="form-busqueda-servicio">    
+              <form action="<?= getBasePath() ?>formBuscar.php" method="get" id="form-busqueda-servicio">
                     <p>NO IMPLEMENTADO</p>
                     <label for="input-titulo-evento">Título:</label>
                     <input type="text" name="titulo-evento" id="input-titulo-evento" class="input-busqueda-servicio">
@@ -89,7 +89,7 @@
                     <input type="text" name="titulo-evento" id="input-titulo-evento" class="input-busqueda">
                 <button type="submit" class="boton-enviar-comentario">Buscar</button>
               </form>
-             </div> 
+             </div>
             </div>
 
 			</div>

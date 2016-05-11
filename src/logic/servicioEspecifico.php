@@ -2,7 +2,7 @@
 namespace aw\logic;
 
 class servicioEspecifico{
-  
+
   private $daoServicio;
 
   function __construct() {
@@ -41,10 +41,15 @@ class servicioEspecifico{
         break;
       case 'paseador':
         $nombreCategoria = "Paseadores";
-        break;   
+        break;
     }
-    
+
   return $nombreCategoria;
+  }
+
+  function ListaServiciosBuscador($contenido,$categoria,$ubicacion,$puntuacion) {
+    $servicios =  $this->daoServicio->getListaServiciosBuscador($contenido,$categoria,$ubicacion,$puntuacion);
+    return $servicios;
   }
 }
 
