@@ -63,15 +63,23 @@ class DAONoticia {
 
   function getListaNoticiaBuscador($tituloN, $contenidoN, $fechaInicioN, $fechaFinN) {
     try{
+      //MODIFICACIONES PARA EL LIKE
+      $tituloN= "%" . $tituloN ."%";
+      $contenidoN= "%" . $contenidoN . "%";
+
       $sql = "SELECT n.fecha as fecha, n.titulo as titulo,
         n.contenido as contenido, u.usuario as nombre_usuario, n.id as id
         FROM Noticia n
         JOIN Usuario u on n.usuario = u.id
-        WHERE  n.titulo = :titulo 
+     
+        WHERE n.titulo LIKE :tit AND n.contenido LIKE :cont 
+        
         ORDER BY fecha DESC";
+       
       $stmt = $this->conn->prepare($sql);
-      $stmt->execute(["titulo" => $tituloN]);
+      $stmt->execute(["tit" => $tituloN, "cont" => $contenidoN]); 
       $res = $stmt->fetchAll();
+
     }
     catch (PDOException $e){
       echo "ERROR EN DAONoticia: " . $e->getMessage();
