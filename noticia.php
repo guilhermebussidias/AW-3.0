@@ -1,5 +1,9 @@
 <?php
 	require_once __DIR__ . "/src/App.php";
+	$rol = getRole();
+	//$name = getName();
+	$id ='1'; //= getId();
+	require_once __DIR__ . "/src/App.php";
 
 	$logic = new \aw\logic\Noticia();
 
@@ -35,13 +39,22 @@ $noticias = $logic->buscarNoticias($ultimaPag * $noticiasPorPagina, $noticiasPor
          			echo ' 
          				<div id="algo" class="contenido-bloque">
 						<h3 class="contenido-titulo">
-						<a href="ampliar-noticia.php?noticia='. $noticias_['id'] .'" class="enlace-ampliar-noticia">' . $noticias_['titulo'] . '</a></h3>
-						<div class="contenido-info">Escrito por '. $noticias_['nombre_usuario'] . ' el ' . $noticias_['fecha'] . '</div>
-						<div class="contenido-texto">
+						' . $noticias_['titulo'] . '</a></h3>
+						<div class="contenido-info">Escrito por '. $noticias_['nombre_usuario'] . ' el ' . $noticias_['fecha'] .'';
+
+					if($rol=='admin' or $id==$noticias_['idUser']){
+						echo '<div class="contenido-admin">
+					<a href="editar-noticia.php?noticia='. $noticias_['id'] .'">Editar</a>
+						</div>';
+				 	}
+						echo '</div>
+						<div class="contenido-texto">			
 						<p> ' . $noticias_['contenido'] . ' </p>
 						</div>
 						</div>
 						';
+					
+					
     				}
      			?>
 				<br>
