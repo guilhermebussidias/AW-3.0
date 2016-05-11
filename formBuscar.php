@@ -44,7 +44,7 @@
 		<title>All Dogs</title>
 		<?php require(getIncludePath() . 'head.php'); ?>
 
-    <link rel="stylesheet"  href="<?= getCSSPath() ?>buscar.css" type="text/css" />
+    <link rel="stylesheet"  href="<?= getCSSPath() ?>contenido.css" type="text/css" />
     <script src="<?= getJSPath() ?>buscar.js"></script>
 
 	</head>
@@ -58,6 +58,7 @@
 				<?php
 				######################## EJEMPLO PARA LAS NOTICIAS SE RELLENA CON FOREACH
 					if ($noticia){
+						echo'<div id="contenedor-noticias">';
 						foreach($noticias as $noticias_){
          					echo '<div id="algo" class="contenido-bloque">
 									<h3 class="contenido-titulo">
@@ -65,11 +66,11 @@
 								<div class="contenido-info">Escrito por '. $noticias_['nombre_usuario'] . ' el ' . $noticias_['fecha'] . '</div>
 								<div class="contenido-texto">
 								<p>' . $noticias_['contenido'] . '</p>
-								<p> ros. </p>
 								</div>
 							</div>
 							';
     					}
+    					echo '</div>';
     				}
     			###############################
     				#########EVENTO
