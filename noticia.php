@@ -72,7 +72,6 @@ $noticias = $logic->buscarNoticias($ultimaPag * $noticiasPorPagina, $noticiasPor
 
 			?>
 			
->>>>>>> origin/master
 			<?php
 				require('includes/sidebar.php');
 				require('includes/pie.php');
