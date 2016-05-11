@@ -72,7 +72,8 @@ class DAONoticia {
         FROM Noticia n
         JOIN Usuario u on n.usuario = u.id
      
-        WHERE n.titulo LIKE :tit AND n.contenido LIKE :cont AND n.fecha <= :fechaF AND n.fecha >= :fechaI 
+        WHERE n.titulo LIKE :tit AND n.contenido LIKE :cont 
+        AND n.fecha <= :fechaF AND n.fecha >= :fechaI 
         
         ORDER BY fecha DESC";
        
