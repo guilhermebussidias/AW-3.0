@@ -18,7 +18,10 @@
 			}
 			else {
 				echo " <li>Bienvenido, {$name} &nbsp;</li>";
-				echo '<li><a id="enlace-logout" href="' . getBasePath() . 'formLogin.php">Salir</a></li>';
+        if ($rol == "admin"){
+          echo '<li><a href="administrar.php">Administrar &nbsp;</a></li>';
+        }
+        echo '<li><a id="enlace-logout" href="' . getBasePath() . 'formLogin.php">Salir</a></li>';
 			}
 		?>
 
