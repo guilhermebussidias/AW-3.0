@@ -1,7 +1,10 @@
 /*#contenedor-fragmentos {
   height: 500px;
 }*/
-
+#maxi-form-administrar{
+  height: 100%;
+  width: 95%
+}
 #form-busqueda input {
   display: inline;
 }

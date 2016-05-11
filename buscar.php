@@ -91,7 +91,6 @@
               </form>
              </div> 
             </div>
-        </form>
 
 			</div>
 			<?php

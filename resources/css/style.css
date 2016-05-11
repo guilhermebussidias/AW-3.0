@@ -448,6 +448,18 @@ width: 140px;
 .maxi-form input {
   border: 1px solid grey;
 }
+.maxi-form-administrar {
+  float: left;
+  width: 95%;
+  border: 2px dotted orange;
+  margin: 15px;
+}
+.maxi-form-administrar div {
+  padding: 15px;
+}
+.maxi-form-administrar input {
+  border: 1px solid grey;
+}
 #logo-buscar {
   height: 30px;
   width: 30px;
