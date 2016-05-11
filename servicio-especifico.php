@@ -21,6 +21,7 @@
     <meta charset="UTF-8">
     <title>All Dogs</title>
     <?php require(getIncludePath() . 'head.php'); ?>
+    <link rel="stylesheet"  href="<?=getCSSPath()?>contenido.css" type="text/css" />
   </head>
   <body>
     <div id="contenedor">
@@ -29,9 +30,8 @@
         require('includes/slider.php');
       ?>
         <div id="contenido">
-          <h3 class="tituloServicio"></h3>
+          <h3 class="tituloServicio"><?php echo $categoria?></h3>
             <table>
-              <tbody>
               <?php
                   foreach ($servicios as $servicio){
                   echo'<tr> 
@@ -58,9 +58,7 @@
                           <td> <a href="'. $servicio['url'] . '" target= "_blank">'  . $servicio['url'] . '</a></td>
                         </tr>';
                  } 
-                 ?>
-               
-             </tbody>
+                 ?>               
            </table>
            <a href="servicio-especifico.php?tipo=<?=$categoria?>&ultimaPag=<?=$ultimaPag + 1?>">Siguiente página</a>
         </div>
