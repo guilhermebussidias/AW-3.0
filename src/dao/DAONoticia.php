@@ -56,6 +56,7 @@ class DAONoticia {
     }
     catch (PDOException $e){
       echo "ERROR EN DAONoticia: " . $e->getMessage();
+      return null;
     }
     return $res;
   }
