@@ -44,11 +44,9 @@ $noticias = $logic->buscarNoticias($ultimaPag * $noticiasPorPagina, $noticiasPor
 						';
     				}
      			?>
-<<<<<<< HEAD
 				<a href="noticia.php?ultimaPag=<?=$ultimaPag + 1?>">Siguiente página</a>
 				</div>
 			</div>
-=======
 
 
         			</div>
