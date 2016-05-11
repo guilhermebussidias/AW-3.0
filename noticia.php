@@ -44,13 +44,6 @@ $noticias = $logic->buscarNoticias($ultimaPag * $noticiasPorPagina, $noticiasPor
 						';
     				}
      			?>
-				<a href="noticia.php?ultimaPag=<?=$ultimaPag + 1?>">Siguiente página</a>
-				</div>
-			</div>
-
-
-        			</div>
-				</div>
 				<br>
 			<?php
 
@@ -71,6 +64,8 @@ $noticias = $logic->buscarNoticias($ultimaPag * $noticiasPorPagina, $noticiasPor
 			}
 
 			?>
+			</div>
+			</div>
 			
 			<?php
 				require('includes/sidebar.php');
