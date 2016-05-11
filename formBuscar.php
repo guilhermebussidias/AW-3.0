@@ -4,7 +4,7 @@
 	$noticia = false;
 	$evento = false;
 	$servicio = false;
-
+	############################EJEMPLO
 	if (isset($_REQUEST["titulo-noticia"])){ # compruebo si lo que me han pasado es una noticia
 		$tituloN = $_REQUEST["titulo-noticia"]; #meto los parametros en variables
 		$contenidoN = $_REQUEST["contenido-noticia"];
@@ -14,19 +14,26 @@
 		$logic = new \aw\logic\Noticia();
 		$noticias = $logic->buscarNoticiasbuscador($tituloN, $contenidoN, $fechaInicioN, $fechaFinN);
 	}
+	#################################
 	#PARSEAR ELEMENTOS DE EVENTO 
 	if (isset($_REQUEST["titulo-evento"])){
+		$evento = true;
+		##################### Rellenar con tus parametros
 		$tituloN = $_REQUEST["titulo-noticia"];
 		$contenidoN = $_REQUEST["contenido-noticia"];
 		$fechaInicioN = $_REQUEST["fecha-ini-noticia"];
 		$fechaFinN = $_REQUEST["fecha-fin-noticia"];
+		#####################
 	}
 	#PARSEAR ELEMENTOS DE SERVICIO
 	if (isset($_REQUEST["contenido-servicio"])){
+		$servicio = true;
+		##################### Rellenar con tus parametros
 		$tituloN = $_REQUEST["titulo-noticia"];
 		$contenidoN = $_REQUEST["contenido-noticia"];
 		$fechaInicioN = $_REQUEST["fecha-ini-noticia"];
 		$fechaFinN = $_REQUEST["fecha-fin-noticia"];
+		#####################
 	}
 
  ?>
@@ -49,6 +56,7 @@
 			?>
 			<div id="contenido"> 
 				<?php
+				######################## EJEMPLO PARA LAS NOTICIAS SE RELLENA CON FOREACH
 					if ($noticia){
 						foreach($noticias as $noticias_){
          					echo '<div id="algo" class="contenido-bloque">
@@ -63,6 +71,17 @@
 							';
     					}
     				}
+    			###############################
+    				#########EVENTO
+    				if ($evento){ #hacer un foreach para devolver los eventos
+
+    				}
+    				###################
+    				#############SERVICIO
+    				if ($servicio){ #hacer un foreach para devolver los servicios
+
+    				}
+    				##################################
      			?>
 			</div>
 			<?php
