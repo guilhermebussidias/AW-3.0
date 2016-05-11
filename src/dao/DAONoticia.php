@@ -60,6 +60,24 @@ class DAONoticia {
     return $res;
   }
 
+  function getListaNoticiaBuscador($tituloN, $contenidoN, $fechaInicioN, $fechaFinN) {
+    try{
+      $sql = "SELECT n.fecha as fecha, n.titulo as titulo,
+        n.contenido as contenido, u.usuario as nombre_usuario, n.id as id
+        FROM Noticia n
+        JOIN Usuario u on n.usuario = u.id
+        WHERE  n.titulo = :titulo 
+        ORDER BY fecha DESC";
+      $stmt = $this->conn->prepare($sql);
+      $stmt->execute(["titulo" => $tituloN]);
+      $res = $stmt->fetchAll();
+    }
+    catch (PDOException $e){
+      echo "ERROR EN DAONoticia: " . $e->getMessage();
+    }
+    return $res;
+  }
+
   function saveNoticia($usuario, $titulo, $contenido, $fecha){
     try{
       $sql = "INSERT INTO Noticia (usuario, titulo, contenido, fecha) VALUES (:usuario,:titulo, :contenido, :fecha )";

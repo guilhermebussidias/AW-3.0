@@ -18,6 +18,10 @@ class Noticia {
 	function saveNoticia($usuario, $titulo, $contenido, $fecha) {
     	return $this->daoNoticia->persist($name, $password, $role);
 	}
+
+	function buscarNoticiasbuscador($tituloN, $contenidoN, $fechaInicioN, $fechaFinN){
+		return $this->daoNoticia->getListaNoticiaBuscador($tituloN, $contenidoN, $fechaInicioN, $fechaFinN);
+	}
 }
 
 ?>
