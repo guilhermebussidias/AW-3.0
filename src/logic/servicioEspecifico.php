@@ -21,7 +21,7 @@ class servicioEspecifico{
     }
     return $servicios;
   }
-    function nameCategory($categoria){
+  function nameCategory($categoria){
     $nombreCategoria;
     switch ($categoria) {
       case 'peluqueria':

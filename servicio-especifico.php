@@ -30,7 +30,7 @@
         require('includes/slider.php');
       ?>
         <div id="contenido">
-          <h3 class="tituloServicio"><?php echo $categoria?></h3>
+          <h3 class="tituloServicio"><?php echo $nombreCategoria?></h3>
             <table>
               <?php
                   foreach ($servicios as $servicio){
