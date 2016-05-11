@@ -34,7 +34,7 @@ $(document).ready(function () {
     showMonthAfterYear: false,
     yearSuffix: ''
  };
- $.datepicker.setDefaults($.datepicker.regional['es']);
+  $.datepicker.setDefaults($.datepicker.regional['es']);
 
 
   $("#input-fecha-ini-noticia").datepicker({
