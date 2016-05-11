@@ -401,6 +401,18 @@ float: left;
 background-image: url('../img/patapuntuacionVacia.png');
 }
 
+/*prueba*/
+
+.estrellasMedia{
+width: 140px;
+}
+.estrellasMedia a{
+  background-image: url('../img/patapuntuacionRellena.png');
+  background-size: 25px;
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+}
 
 
 .comentarios {

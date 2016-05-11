@@ -37,15 +37,19 @@
                   echo'<tr> 
                           <td rowspan="4"><img src="' . $servicio['nombre'] .'" class="imagenServicio" alt="imagen empresa"></td>
                           <td class="empresaServicio">' . $servicio['nombre'] . '</td>
-                          <td rowspan="3">  
-                            <div class="estrellas">
-                              <a href="#" data-value="1" title="Votar con 1 estrellas"></a>
-                              <a href="#" data-value="2" title="Votar con 2 estrellas"></a>
-                              <a href="#" data-value="3" title="Votar con 3 estrellas"></a>
-                              <a href="#" data-value="4" title="Votar con 4 estrellas"></a>
-                              <a href="#" data-value="5" title="Votar con 5 estrellas"></a>
-                            </div>
-                          </td>
+                          <td rowspan="3">
+                              <div class="estrellasMedia">
+                                <a  data-value="1" title="Votar con 1 estrellas"></a>
+                                <a  data-value="2" title="Votar con 2 estrellas"></a>
+                                <a  data-value="3" title="Votar con 3 estrellas"></a>
+                                <a  data-value="4" title="Votar con 4 estrellas"></a>
+                                <a  data-value="5" title="Votar con 5 estrellas"></a>
+                              </div>';?>
+                           <?php if(!is_null(getRole())) {
+                              echo "boton para votar, porque es un usuario";
+                            }
+                           
+                      echo'</td> 
                         </tr>
                         <tr>
                           <td class="direccionServicio">' . $servicio['ubicacion'] . '</td>
