@@ -2,6 +2,7 @@
 	require_once __DIR__ . "/src/App.php";
 	$rol = getRole();
 	$name = getName();
+	$logicUsuario = new \aw\logic\Usuario();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -19,9 +20,7 @@
 			?>
 			<div id="contenido">
 				<?php
-				if (is_null($rol) || $rol != "admin" ) {
-						echo '<p> Necesitas permisos para poder acceder </p>';
-				}else {
+				if ( $rol == "admin" ) {
 					?>
 				 <div class="maxi-form-administrar" >
             		<div id="contenedor-fragmentos">
@@ -50,7 +49,7 @@
   								<option value="Uno" value="proveedor">Proveedor</option>
 							</select>
 							<br><br>
-              		  		<button type="button" class="boton-usuario-crear">Crear</button>
+              		  		<button type="button" class="boton-usuario-crear" >Crear</button>
               		  		<button type="button" class="boton-usuario-modificar">Modificar</button>
               		  		<button type="button" class="boton-usuario-eliminar">Eliminar</button>
               		  	</form>
