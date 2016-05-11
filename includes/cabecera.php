@@ -38,7 +38,7 @@
                   <li><a href="servicio-especifico.php?tipo=adiestrador">Adiestradores</a></li>
                   <li><a href="servicio-especifico.php?tipo=peluqueria">Peluquerias</a></li>
                   <li><a href="servicio-especifico.php?tipo=paseador">Paseadores</a></li>
-                  <li><a href="servicio.php?tipo=adopcion">Adopción</a></li>
+                  <li><a href="servicio-especifico.php?tipo=adopcion">Adopción</a></li>
                 </ul>
             </li>
             <li><a href="noticia.php">Noticias</a></li>

@@ -13,7 +13,7 @@
     $ultimaPag = 0;
 
   $servicios = $logic->mostrarServicios($categoria, $ultimaPag * $serviciosPorPagina, $serviciosPorPagina);
-
+  $nombreCategoria = $logic->nameCategory($categoria);
 ?>
 <!DOCTYPE html>
 <html lang="es">
