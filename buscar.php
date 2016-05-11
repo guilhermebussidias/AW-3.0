@@ -40,7 +40,6 @@
               
                 <div id="busca-noticias" class="fragmento-busqueda">
                   <form action="<?= getBasePath() ?>formBuscar.php" method="get" id="form-busqueda-noticia">
-                    <p>NO IMPLEMENTADO</p>
                     <label for="input-titulo-noticia">Título:</label>
                     <input type="text" name="titulo-noticia" id="input-titulo-noticia" class="input-busqueda-noticia">
                     <label for="input-contenido-noticia">Contenido:</label>

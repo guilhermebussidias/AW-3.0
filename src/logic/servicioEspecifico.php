@@ -21,6 +21,31 @@ class servicioEspecifico{
     }
     return $servicios;
   }
+  function nameCategory($categoria){
+    $nombreCategoria;
+    switch ($categoria) {
+      case 'peluqueria':
+        $nombreCategoria = "Peluquerías";
+        break;
+      case 'veterinario':
+        $nombreCategoria = "Veterinarios";
+        break;
+      case 'adiestrador':
+        $nombreCategoria = "Adiestradores";
+        break;
+      case 'adopcion':
+        $nombreCategoria = "Adopción";
+        break;
+      case 'residencia':
+        $nombreCategoria = "Residencias";
+        break;
+      case 'paseador':
+        $nombreCategoria = "Paseadores";
+        break;   
+    }
+    
+  return $nombreCategoria;
+  }
 }
 
 

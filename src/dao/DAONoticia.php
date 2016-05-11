@@ -73,11 +73,12 @@ class DAONoticia {
         JOIN Usuario u on n.usuario = u.id
      
         WHERE n.titulo LIKE :tit AND n.contenido LIKE :cont 
+        AND n.fecha <= :fechaF AND n.fecha >= :fechaI 
         
         ORDER BY fecha DESC";
        
       $stmt = $this->conn->prepare($sql);
-      $stmt->execute(["tit" => $tituloN, "cont" => $contenidoN]); 
+      $stmt->execute(["tit" => $tituloN, "cont" => $contenidoN, "fechaF" => $fechaFinN, "fechaI" => $fechaInicioN]); 
       $res = $stmt->fetchAll();
 
     }
