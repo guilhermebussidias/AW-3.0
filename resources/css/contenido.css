@@ -25,6 +25,7 @@
 
 .contenido-texto {
   margin: 10px 0;
+	text-align: justify;
 }
 
 .contenido-admin {
@@ -48,4 +49,8 @@ table{
 td{
   padding-left: 5px;
   max-height: 150px;
+}
+
+.contenido-boton-editar {
+  float: right;
 }

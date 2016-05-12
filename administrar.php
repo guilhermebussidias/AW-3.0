@@ -58,13 +58,13 @@
                     <div id="algo" class="contenido-bloque">
                     <h3 class="contenido-titulo">Título:<h3/>
                     <input type="text" name="titulo-noticia" id="input-titulo-noticia" class="estilotextarea">
-                    <h3 class="contenido-titulo">Contenido:<h3/>  
-                    <textarea name="input-contenido-noticia" class="estilotextarea" rows="10" cols="80"></textarea>  
+                    <h3 class="contenido-titulo">Contenido:<h3/>
+                    <textarea name="input-contenido-noticia" class="estilotextarea" rows="10" cols="80"></textarea>
 
                         <button type="button" >Guardar Noticia</button>
                         <button type="button" >Descartar Noticia</button>
           </div>
-      
+
               		  </div>
               		  <div id="admin-eventos">
               		  </div>

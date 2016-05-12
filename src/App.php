@@ -80,6 +80,10 @@ function isLogged() {
   return !isnull(getRole());
 }
 
+function isAdmin() {
+  return getRole() === "admin";
+}
+
 /******************************************************************************/
 
 function getCSSPath() {
