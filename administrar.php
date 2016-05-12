@@ -93,9 +93,8 @@
 												<label for="">Contenido: </label>
 												<textarea name="contenido-servicio" rows="10" cols="80"></textarea>
 												<br><br>
-              		  		<button type="submit" class="boton-usuario-crear" name="boton" value="crear-usuario">Crear</button>
-              		  		<button type="submit" class="boton-usuario-modificar"  name="boton" value="modificar-usuario">Modificar</button>
-              		  		<button type="submit" class="boton-usuario-eliminar"  name="boton" value="eliminar-usuario">Eliminar</button>
+              		  		<button type="submit" class="myButton" id="verde" name="boton" value="crear-servicio">Crear</button>
+              		  		<button type="submit" class="myButton" id="naranja" name="boton" value="descartar-servicio">Descartar Cambios</button>
 											</form>
               		  </div>
               		</div>

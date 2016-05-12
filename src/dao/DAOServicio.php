@@ -39,6 +39,21 @@ class DAOServicio {
     return $res;
   }
 
+  function saveServicio ($usuario,$titulo,$telefono,$url,$ubicacion,$contenido){
+    try {
+      $sql = "INSERT INTO Servicio (titulo, telefono, url, ubicacion,contenido, usuario)
+              VALUES (:titulo, :telefono, :url, :ubicacion, :contenido, :usuario)";
+      $stm = $this->conn->prepare($sql);
+      $stm->execute(["titulo" => $titulo, "telefono" => $telefono,
+                     "url" => $url, "ubicacion" => $ubicacion,
+                     "contenido" => $contenido, "usuario" => $usuario]);
+     $id = $this->conn->lastInsertId();
+    } catch (PDOException $e) {
+      echo "ERROR EN DAOServicio: " . $e->getMessage();
+    }
+    return $id;
+  }
+
 }
 
 ?>

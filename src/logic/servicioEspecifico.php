@@ -51,6 +51,11 @@ class servicioEspecifico{
     $servicios =  $this->daoServicio->getListaServiciosBuscador($contenido,$categoria,$ubicacion,$puntuacion);
     return $servicios;
   }
+
+  function guardarServicio($usuario,$titulo,$telefono,$url,$ubicacion,$contenido){
+    $id = $this->daoServicio-saveServicio($usuario,$titulo,$telefono,$url,$ubicacion,$contenido);
+    return $id;
+  }
 }
 
 
