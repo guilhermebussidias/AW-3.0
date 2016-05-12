@@ -35,9 +35,9 @@
 							echo '
 								<div class="contenido-bloque">
 								<h3 class="contenido-titulo">'. $evento['titulo'] .'</h3>
-								<div class="contenido-info">Escrito por '. $evento['usuario'] .'</div>';
+								<div class="contenido-info">Escrito por '. $evento['nombre_usuario'] .'</div>';
 
-								if($rol==='admin' or $id===$evento['id']){
+								if($rol==='admin' or $id===$evento['idUser']){
 									echo '
 									<div class="contenido_admin">
 									<a href="editar-evento.php?evento='. $evento['id'] .'">Editar</a>
