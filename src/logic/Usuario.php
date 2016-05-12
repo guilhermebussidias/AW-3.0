@@ -12,7 +12,7 @@ class Usuario {
 
   function checkLogin($username, $password) {
     $user = $this->daoUsuario->findByName($username);
-    if (is_null($user) || strcmp($password, $user["pass"]) !== 0) {
+    if (is_null($user) || !password_verify($password, $user["pass"])) {
       return null;
     }
     return $user;
@@ -25,7 +25,8 @@ class Usuario {
   */
 
   function newUser($name, $password, $role) {
-    return $this->daoUsuario->persist($name, $password, $role);
+    $hpassword = password_hash($password, PASSWORD_BCRYPT);
+    return $this->daoUsuario->persist($name, $hpassword, $role);
   }
 }
 
