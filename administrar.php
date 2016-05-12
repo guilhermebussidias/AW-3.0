@@ -11,6 +11,7 @@
 		<title>All Dogs</title>
 		<?php require(getIncludePath() . 'head.php'); ?>
 		<link rel="stylesheet"  href="<?= getCSSPath() ?>buscar.css" type="text/css" />
+      <link rel="stylesheet"  href="<?= getCSSPath() ?>botones.css" type="text/css"/>
     	<script src="<?= getJSPath() ?>buscar.js"></script>
 	</head>
 	<body>
@@ -60,9 +61,8 @@
                     <input type="text" name="titulo-noticia" id="input-titulo-noticia" class="estilotextarea">
                     <h3 class="contenido-titulo">Contenido:<h3/>
                     <textarea name="input-contenido-noticia" class="estilotextarea" rows="10" cols="80"></textarea>
-
-                        <button type="button" >Guardar Noticia</button>
-                        <button type="button" >Descartar Noticia</button>
+                    <a href="#" class="myButton" id="verde">Guardar</a>
+                    <a href="#" class="myButton" id="naranja">Descartar Cambios</a>
           </div>
 
               		  </div>

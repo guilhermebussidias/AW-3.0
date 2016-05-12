@@ -19,8 +19,17 @@ class Noticia {
     $noticia = $this->daoNoticia->getNoticia($id);
     return $noticia;
 	}
-	
+/*	
 	function saveNoticia($usuario, $titulo, $contenido, $fecha) {
+    	return $this->daoNoticia->persist($name, $password, $role);
+	}
+*/
+
+	function saveNoticia($usuario, $titulo, $contenido, $fecha) {
+    	return $this->daoNoticia->saveNoticia($usuario, $titulo, $contenido, $fecha);
+	}
+	
+	function updateNoticia($titulo, $contenido) {
     	return $this->daoNoticia->persist($name, $password, $role);
 	}
 

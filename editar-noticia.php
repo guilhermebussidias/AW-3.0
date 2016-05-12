@@ -17,6 +17,7 @@
 		<?php require(getIncludePath() . 'head.php'); ?>
 		<link rel="stylesheet"  href="<?=getCSSPath()?>contenido.css" type="text/css"/> 
 	    <link rel="stylesheet"  href="<?= getCSSPath() ?>buscar.css" type="text/css" />
+	    <link rel="stylesheet"  href="<?= getCSSPath() ?>botones.css" type="text/css" />
 	</head>
 	<body>
 		<div id="contenedor">
@@ -24,17 +25,28 @@
 				require('includes/cabecera.php');
 				require('includes/slider.php');
 			?>
+			<div id="contenedor-noticias">
 			<div id="algo" class="contenido-bloque">
 					<h3 class="contenido-titulo">Título:<h3/>
                     <input type="text" name="titulo-noticia" id="input-titulo-noticia" class="estilotextarea" value= "<?php echo $noticia['titulo'] ?>">
 					<h3 class="contenido-titulo">Contenido:<h3/>	
                     <textarea name="input-contenido-noticia" class="estilotextarea" rows="10" cols="80"><?php echo $noticia['contenido'] ?></textarea>	
-
-              		  		<button type="button" >Guardar Cambios</button>
-              		  		<button type="button" >Descartar Cambios</button>
-              		  		<button type="button" >Eliminar Noticia</button>		
+              		  		<a href="#" class="myButton" id="verde">Guardar</a>
+							<a href="#" class="myButton" id="naranja">Descartar Cambios</a>
+              		  		<a href="#" class="myButton" id="rojo">Eliminar Noticia</a>
 					</div>
-			<?php
+					</div>
+
+			<?php				
+				if( isset( $_REQUEST['modify'] ))
+				{
+				// insert code here...
+				}
+
+				if( isset( $_REQUEST['ok'] ))
+				{
+				// insert code here...
+				}
 				require('includes/sidebar.php');
 				require('includes/pie.php');
 			?>
