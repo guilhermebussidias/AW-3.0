@@ -90,14 +90,14 @@ class DAONoticia {
         n.contenido as contenido, u.usuario as nombre_usuario, n.id as id
         FROM Noticia n
         JOIN Usuario u on n.usuario = u.id
-     
-        WHERE n.titulo LIKE :tit AND n.contenido LIKE :cont 
-        AND n.fecha <= :fechaF AND n.fecha >= :fechaI 
-        
+
+        WHERE n.titulo LIKE :tit AND n.contenido LIKE :cont
+        AND n.fecha <= :fechaF AND n.fecha >= :fechaI
+
         ORDER BY fecha DESC";
-       
+
       $stmt = $this->conn->prepare($sql);
-      $stmt->execute(["tit" => $tituloN, "cont" => $contenidoN, "fechaF" => $fechaFinN, "fechaI" => $fechaInicioN]); 
+      $stmt->execute(["tit" => $tituloN, "cont" => $contenidoN, "fechaF" => $fechaFinN, "fechaI" => $fechaInicioN]);
       $res = $stmt->fetchAll();
 
     }
@@ -126,7 +126,6 @@ class DAONoticia {
         $sql = "INSERT INTO Noticia (id, titulo, contenido) VALUES (:id, :titulo, :contenido)";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(["id" => $id, "titulo" => $titulo, "contenido" => $contenido]);
-        $stmt->execute();
       } catch(PDOException $e) {
     		echo "ERROR EN DAONoticia: " . $e->getMessage();
         return null;
