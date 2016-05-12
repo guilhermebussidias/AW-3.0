@@ -94,14 +94,8 @@
 												<label for="">Contenido: </label>
 												<textarea name="contenido-servicio" rows="10" cols="80"></textarea>
 												<br><br>
-<<<<<<< HEAD
               		  		<button type="submit" class="myButton" id="verde" name="boton" value="crear-servicio">Crear</button>
               		  		<button type="submit" class="myButton" id="naranja" name="boton" value="descartar-servicio">Descartar Cambios</button>
-=======
-              		  		<button type="submit" class="myButton" id="verde" name="boton" value="crear-usuario">Crear</button>
-              		  		<button type="submit" class="myButton" id="naranja"  name="boton" value="modificar-usuario">Modificar</button>
-              		  		<button type="submit" class="myButton" id="rojo"  name="boton" value="eliminar-usuario">Eliminar</button>
->>>>>>> origin/master
 											</form>
               		  </div>
               		</div>
