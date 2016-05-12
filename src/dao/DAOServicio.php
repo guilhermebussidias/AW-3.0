@@ -41,15 +41,17 @@ class DAOServicio {
   }
 
   function getListaServiciosBuscador ($contenido,$categoria,$ubicacion,$puntuacion) {
-
-    $sql = "SELECT * FROM Servicio WHERE contenido LIKE :contenido
-            AND categoria = :categoria
-            AND ubicacion LIKE :ubicacion
-            AND media_puntuacion = :puntuacion";
-    $stm = $this->conn->prepare($sql);
-    $stm->execute(["contenido" => $contenido, "categoria" => $categoria, "ubicacion" => $ubicacion, "puntuacion" => $puntuacion]);
-    $res = $stm->fetchAll();
-
+    try {
+      $sql = "SELECT * FROM Servicio WHERE contenido LIKE :contenido
+              AND categoria = :categoria
+              AND ubicacion LIKE :ubicacion
+              AND media_puntuacion = :puntuacion";
+      $stm = $this->conn->prepare($sql);
+      $stm->execute(["contenido" => $contenido, "categoria" => $categoria, "ubicacion" => $ubicacion, "puntuacion" => $puntuacion]);
+      $res = $stm->fetchAll();
+    } catch (PDOException $e) {
+      echo "ERROR en DAOServicio: " . $e->getMessage();
+    }
     return $res;
   }
 

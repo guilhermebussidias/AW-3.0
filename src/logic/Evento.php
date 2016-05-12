@@ -26,6 +26,11 @@ class Evento {
     }
     return $eventos;
   }
+
+  function ListaEventosBuscador ($titulo,$contenido,$fechaIni,$fechaFin,$ubicacion){
+    $eventos = $this->daoEvento->getListaEventosBuscador($titulo,$contenido,$fechaIni,$fechaFin,$ubicacion);
+    return $eventos;
+  }
 }
 
  ?>

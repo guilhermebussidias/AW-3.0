@@ -23,13 +23,41 @@
 	#################################
 	#PARSEAR ELEMENTOS DE EVENTO
 	if (isset($_REQUEST["titulo-evento"])){
-		$evento = true;
+
 		##################### Rellenar con tus parametros
-		$tituloN = $_REQUEST["titulo-noticia"];
-		$contenidoN = $_REQUEST["contenido-noticia"];
-		$fechaInicioN = $_REQUEST["fecha-ini-noticia"];
-		$fechaFinN = $_REQUEST["fecha-fin-noticia"];
+		$titulo = $_REQUEST["titulo-evento"];
+		$contenido = $_REQUEST["contenido-evento"];
+		$fechaInicio = $_REQUEST["fecha-ini-evento"];
+		$fechaFin = $_REQUEST["fecha-fin-evento"];
+		$ubicacion = $_REQUEST["ubicacion-evento"];
 		#####################
+
+		//Adaptación para el LIKE de la consulta
+		if ($titulo == "") {
+			$titulo = '%';
+		}else {
+			$titulo = "%" . $titulo . "%";
+		}
+		if ($contenido == "") {
+			$contenido = '%';
+		}else {
+			$contenido = "%" . $contenido . "%";
+		}
+		if ($ubicacion == "") {
+			$ubicacion = '%';
+		}else {
+			$ubicacion = "%" . $ubicacion . "%";
+		}
+		if ($fechaInicio == "") {
+			$fechaInicio = '2001-01-01';
+		}
+		if ($fechaFin == "") {
+			$fechaFin = '2020-01-01';
+		}
+
+		$evento = true;
+		$logic = new \aw\logic\Evento();
+		$eventos = $logic->ListaEventosBuscador($titulo,$contenido,$fechaInicio,$fechaFin,$ubicacion);
 	}
 	#PARSEAR ELEMENTOS DE SERVICIO
 	if (isset($_REQUEST["contenido-servicio"])){
@@ -97,7 +125,17 @@
     			###############################
     				#########EVENTO
     				if ($evento){ #hacer un foreach para devolver los eventos
-
+							foreach($eventos as $evento){
+								echo '
+									<div class="contenido-bloque">
+									<h3 class="contenido-titulo">'. $evento['titulo'] .'</h3>
+									<div class="contenido-texto">
+									<p> ' . $evento['contenido'] . ' </p>
+									<div class="contenido-info">Escrito por '. $evento['usuario'] .'</div>
+									</div>
+									</div>
+								';
+							}
     				}
     				###################
     				#############SERVICIO
