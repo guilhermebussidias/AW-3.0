@@ -6,21 +6,30 @@
 	$logicServicio = new \aw\logic\servicioEspecifico();
 
 	if ($_REQUEST["boton"] === "crear-usuario"){
-		if ($_REQUEST["usuario-rol"] !== "" && $_REQUEST["usuario-nombre"] !== "" && $_REQUEST["usuario-pass"] !== ""){
-			$logicUsuario->newUser($_REQUEST["usuario-nombre"], $_REQUEST["usuario-pass"], $_REQUEST["usuario-rol"]);
+		$rol = $_REQUEST["usuario-rol"];
+		$nombre =$_REQUEST["usuario-nombre"];
+		$pass = $_REQUEST["usuario-pass"];
+
+		if ($rol !== "" && $nombre !== "" && $pass !== ""){
+			$logicUsuario->newUser($nombre, $pass, $rol);
 		}
 	}
 
 
 	else if($_REQUEST["boton"] === "eliminar-usuario"){
-		if ($_REQUEST["usuario-nombre"] !== ""){
-			$logicUsuario->deleteUser($_REQUEST["usuario-nombre"]);
+		$usuario = $_REQUEST["usuario-nombre"];
+		if ($usuario !== ""){
+			$logicUsuario->deleteUser($usuario);
 		}
 	}
 
 	else if($_REQUEST["boton"] === "modificar-usuario"){
-		if ($_REQUEST["usuario-rol"] !== "" && $_REQUEST["usuario-nombre"] !== "" && $_REQUEST["usuario-pass"] !== ""){
-			$logicUsuario->updateByName($_REQUEST["usuario-nombre"], $_REQUEST["usuario-pass"], $_REQUEST["usuario-rol"]);
+		$rol= $_REQUEST["usuario-rol"];
+		$usuario= $_REQUEST["usuario-nombre"];
+		$pass= $_REQUEST["usuario-pass"];
+
+		if ($rol !== "" && $usuario !== "" && $pass !== ""){
+			$logicUsuario->updateByName($usuario, $pass, $rol);
 		}
 	}
 
@@ -28,18 +37,24 @@
 		$titulo = $_REQUEST["titulo"];
 		$contenido = $_REQUEST["contenido"];
 		$id = $_REQUEST["id"];
+		if($titulo!== '' && $contenido !== ''){
 			$logicNoticia->updateNoticia($id, $titulo, $contenido);
+		}
 	}
+	
 
 	elseif ($_REQUEST["boton"] === "crear-servicio") {
-		if ($_REQUEST["input-titulo-servicio"] !== "" && $_REQUEST["input-telefono-servicio"] !== ""
-		&& $_REQUEST["input-url-servicio"] !== "" && $_REQUEST["input-ubicacion-servicio"] !== "" && $_REQUEST["contenido-servicio"]) {
+		$servicio = $_REQUEST["input-titulo-servicio"];
+		$telefono = $_REQUEST["input-telefono-servicio"];
+		$web = $_REQUEST["input-url-servicio"];
+		$ubicacion = $_REQUEST["input-ubicacion-servicio"];
+		$contenido= $_REQUEST["contenido-servicio"];
 
-			$logicServicio->guardarServicio( getID(), $_REQUEST["input-titulo-servicio"],
-																			$_REQUEST["input-telefono-servicio"],
-																			$_REQUEST["input-url-servicio"],
-																			$_REQUEST["input-ubicacion-servicio"],
-																			$_REQUEST["contenido-servicio"] );
+		if ($servicio !== "" && $telefono !== ""
+		&& $web !== "" && $ubicacion !== "" && $contenido) {
+
+			$logicServicio->guardarServicio( getID(), $servicio,
+				$telefono,$web, $ubicacion,$contenido);
 		}
 	}
 
@@ -58,6 +73,10 @@
 			$id = $_REQUEST["id"];
 			$logicNoticia->deleteNoticia($id);
 	}
-
-	redirect(getBasePath() . 'administrar.php');
+	if(getRole() == "admin"){
+		redirect(getBasePath() . 'administrar.php');
+	}
+	else if (getRole() == "normal"){
+		redirect(getBasePath() . 'noticia.php');	
+	}
 ?>
