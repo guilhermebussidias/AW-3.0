@@ -101,6 +101,7 @@
     				}
     				###################
     				#############SERVICIO
+<<<<<<< HEAD
    				if ($servicio){ #hacer un foreach para devolver los 
     					$nombreCategoria = $logic->nameCategory($categoria);
 						echo '<h3 class="tituloServicio">' . $nombreCategoria . '</h3>';
@@ -149,6 +150,37 @@
 			                 }           
 			          echo' </table>';
 			      	}
+=======
+    				if ($servicio){ #hacer un foreach para devolver los servicios
+							echo '<h3 class="tituloServicio"><?php echo' . $categoria . '?></h3>';
+							echo '<table>';
+							foreach ($servicios as $servicio_) {
+								echo'<tr>
+								<td rowspan="4"><img src="' . $servicio_['nombre'] .'" class="imagenServicio" alt="imagen empresa"></td>
+								<td class="empresaServicio">' . $servicio_['nombre'] . '</td>
+								<td rowspan="2">
+									<div class="estrellasMedia">';
+									$puntuacion = $servicio_['media_puntuacion'];
+										for($i = 0; $i < $puntuacion; $i++){
+											echo '<a  data-value="1" title="Votar con 1 estrellas"></a>';
+										};
+							 echo'</td>
+									</tr>
+									<tr>
+										<td class="direccionServicio">' . $servicio_['ubicacion'] . '</td>
+									</tr>
+									<tr>
+										<td class="telefonoServicio">' .  $servicio_['telefono'] . '</td>
+										<td>';
+							 echo '</td>
+								</tr>
+								<tr>
+									<td class="descripcionServicio">' . $servicio_['contenido'] . '</td>
+									<td> <a href="'. $servicio_['url'] . '" target= "_blank">'  . $servicio_['url'] . '</a></td>
+								</tr>';
+							}
+							echo '</table>';
+>>>>>>> origin/master
     				}
     				##################################
      			?>
