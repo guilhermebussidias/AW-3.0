@@ -18,6 +18,14 @@
 			echo "todo ok";
 	}
 	
+	else if ($_REQUEST["boton"] === "guardar-noticia"){
+		$titulo = $_REQUEST["titulo"];
+		$contenido = $_REQUEST["contenido"];
+		$usuario = $_REQUEST["usuario"];
+		echo $usuario;
+			$logicNoticia->saveNoticia($usuario, $titulo, $contenido);
+			echo "todo ok";
+	}
 
 
 ?>
