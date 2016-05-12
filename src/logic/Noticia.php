@@ -19,18 +19,18 @@ class Noticia {
     $noticia = $this->daoNoticia->getNoticia($id);
     return $noticia;
 	}
-/*	
-	function saveNoticia($usuario, $titulo, $contenido, $fecha) {
-    	return $this->daoNoticia->persist($name, $password, $role);
-	}
-*/
 
-	function saveNoticia($usuario, $titulo, $contenido, $fecha) {
+	function saveNoticia($usuario, $titulo, $contenido) {
+		$fecha = mktime(date("Y")  , date("m"), date("d"));
     	return $this->daoNoticia->saveNoticia($usuario, $titulo, $contenido, $fecha);
 	}
 	
-	function updateNoticia($titulo, $contenido) {
-    	return $this->daoNoticia->persist($name, $password, $role);
+	function updateNoticia($id, $titulo, $contenido) {
+    	return $this->daoNoticia->updateNoticia($id, $titulo, $contenido)
+	}
+
+	function deleteNoticia($id) {
+    	return $this->daoNoticia->deleteNoticia($id)
 	}
 
 	function buscarNoticiasbuscador($tituloN, $contenidoN, $fechaInicioN, $fechaFinN){

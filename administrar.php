@@ -3,6 +3,7 @@
 	$rol = getRole();
 	$name = getName();
 	$logicUsuario = new \aw\logic\Usuario();
+  $logicNoticia = new  \aw\logic\Noticia();
 ?>
 <!DOCTYPE html>
 <html lang="es">
