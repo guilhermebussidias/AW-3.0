@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 10-05-2016 a las 17:48:40
+-- Tiempo de generación: 12-05-2016 a las 16:59:56
 -- Versión del servidor: 5.5.49-0ubuntu0.14.04.1
 -- Versión de PHP: 5.5.9-1ubuntu4.16
 
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `Evento` (
   `contenido` text COLLATE utf8_spanish_ci NOT NULL,
   `fecha` date NOT NULL,
   `ubicacion` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
-  `foto` longblob NOT NULL,
+  `foto` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `usuario` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `Evento_ibfk_1` (`usuario`)
@@ -54,16 +54,6 @@ CREATE TABLE IF NOT EXISTS `Noticia` (
   KEY `usuario` (`usuario`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
 
---
--- Volcado de datos para la tabla `Noticia`
---
-
-INSERT INTO `Noticia` (`id`, `usuario`, `titulo`, `contenido`, `fecha`) VALUES
-(1, 1, 'Noticia1', 'jojo', '2016-04-03'),
-(2, 2, 'noticia2', '526j4o56jo', '2016-04-13'),
-(3, 1, 'noticia3', 'jojo', '2016-04-12'),
-(4, 2, 'noticia4', '526j4o56jo', '2016-04-07');
-
 -- --------------------------------------------------------
 
 --
@@ -74,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `Publicidad` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `usuario` int(11) NOT NULL,
   `anuncio` text COLLATE utf8_spanish_ci NOT NULL,
-  `banner` longblob NOT NULL,
+  `banner` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `usuario` (`usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
@@ -107,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `Servicio` (
   `ubicacion` text COLLATE utf8_spanish_ci NOT NULL,
   `categoria` enum('peluqueria','veterinario','residencia','adiestrador','paseador','adopcion') COLLATE utf8_spanish_ci NOT NULL,
   `media_puntuacion` int(11) NOT NULL,
-  `imagen` longblob NOT NULL,
+  `imagen` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `telefono` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `url` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id`),
@@ -125,17 +115,9 @@ CREATE TABLE IF NOT EXISTS `Usuario` (
   `usuario` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `pass` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `rol` enum('admin','gestor','normal','proveedor') COLLATE utf8_spanish_ci NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `n_usuario` (`usuario`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=4 ;
-
---
--- Volcado de datos para la tabla `Usuario`
---
-
-INSERT INTO `Usuario` (`id`, `usuario`, `pass`, `rol`) VALUES
-(1, 'perro1', 'perraco', 'normal'),
-(2, 'perro2', 'perraco', 'normal'),
-(3, 'perro2', 'perraco', 'normal');
 
 --
 -- Restricciones para tablas volcadas
