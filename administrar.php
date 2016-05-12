@@ -61,8 +61,6 @@
                     <input type="text" name="titulo-noticia" id="input-titulo-noticia" class="estilotextarea">
                     <h3 class="contenido-titulo">Contenido:<h3/>
                     <textarea name="input-contenido-noticia" class="estilotextarea" rows="10" cols="80"></textarea>
-                    <a href="#" class="myButton" id="verde">Guardar</a>
-                    <a href="#" class="myButton" id="naranja">Descartar Cambios</a>
                     </div>
                     <button type="submit" class="myButton" id="verde" name="boton" value="guardar-noticia">Guardar</button>
                     <button type="submit" class="myButton" id="naranja" name="boton" value="descartar-noticia">Descartar Cambios</button>
@@ -93,9 +91,9 @@
 												<label for="">Contenido: </label>
 												<textarea name="contenido-servicio" rows="10" cols="80"></textarea>
 												<br><br>
-              		  		<button type="submit" class="boton-usuario-crear" name="boton" value="crear-usuario">Crear</button>
-              		  		<button type="submit" class="boton-usuario-modificar"  name="boton" value="modificar-usuario">Modificar</button>
-              		  		<button type="submit" class="boton-usuario-eliminar"  name="boton" value="eliminar-usuario">Eliminar</button>
+              		  		<button type="submit" class="myButton" id="verde" name="boton" value="crear-usuario">Crear</button>
+              		  		<button type="submit" class="myButton" id="naranja"  name="boton" value="modificar-usuario">Modificar</button>
+              		  		<button type="submit" class="myButton" id="rojo"  name="boton" value="eliminar-usuario">Eliminar</button>
 											</form>
               		  </div>
               		</div>
