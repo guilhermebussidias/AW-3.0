@@ -24,22 +24,6 @@ class DAOServicio {
       return $res;
   }
 
-  function searchServicios($text){
-    try{
-      $sql = "SELECT * FROM Servicio  WHERE nombre LIKE '%:text%' OR contenido LIKE '%:text%' ORDER BY nombre";
-      $stmt = $this->conn->prepare($sql);
-      $res = $stmt->fetchAll();
-    } catch(PDOException $e){
-      echo "ERROR en DAOServicio: " . $e->getMessage();
-    }
-    if (!empty($res)) {
-      return $res;
-    } else {
-      return null;
-    }
-
-  }
-
   function getListaServiciosBuscador ($contenido,$categoria,$ubicacion,$puntuacion) {
     try {
       $sql = "SELECT * FROM Servicio WHERE contenido LIKE :contenido

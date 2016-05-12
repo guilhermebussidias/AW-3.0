@@ -33,7 +33,7 @@
                 		<li><a href="#admin-servicio">Servicio</a></li>
               		  </ul>
               		  <div id="admin-usuario">
-              		  	<form id="form-usuario">
+              		  	<form action="<?= getBasePath() ?>formAdministrar.php" method="post" id="form-usuario">
               		  		<label for="input-usuario-id">Id:</label>
                     		<input type="text" name="usuario-id" id="input-usuario-id" class="input-usuario">
                     		<br>
@@ -45,15 +45,15 @@
                     		<br>
                     		<label for="input-usuario-rol">Rol:</label>
                     		<select type="text" name="usuario-rol" id="input-usuario-rol" class="input-usuario">
-  								<option selected="selected" value="admin">Admin</option>
-  								<option value="Uno" value="gestor">Gestor</option>
-  								<option value="Uno" value="normal">Normal</option>
-  								<option value="Uno" value="proveedor">Proveedor</option>
-							</select>
-							<br><br>
-              		  		<button type="button" class="boton-usuario-crear" >Crear</button>
-              		  		<button type="button" class="boton-usuario-modificar">Modificar</button>
-              		  		<button type="button" class="boton-usuario-eliminar">Eliminar</button>
+  							         	<option selected="selected" value="admin">Admin</option>
+  						        		<option value="Uno" value="gestor">Gestor</option>
+  					         			<option value="Uno" value="normal">Normal</option>
+  					         			<option value="Uno" value="proveedor">Proveedor</option>
+				          			</select>
+					           		<br><br>
+              		  		<button type="submit" class="boton-usuario-crear" name="boton" value="crear-usuario">Crear</button>
+              		  		<button type="submit" class="boton-usuario-modificar"  name="boton" value="modificar-usuario">Modificar</button>
+              		  		<button type="submit" class="boton-usuario-eliminar"  name="boton" value="eliminar-usuario">Eliminar</button>
               		  	</form>
               		  </div>
               		  <div id="admin-noticia">
@@ -70,6 +70,14 @@
               		  <div id="admin-eventos">
               		  </div>
               		  <div id="admin-servicio">
+											<form action="<?= getBasePath() ?> formAdministrar.php" method="get" id="form-servicio">
+												<label for="">Nombre de empresa: </label>
+												<input type="text" name="input-titulo-servicio" value=""><br>
+												<label for="">Contenido: </label>
+												<textarea name="contenido-servicio" rows="10" cols="80"></textarea>
+												<label for="">Ubicación: </label>
+												<input type="text" name="input-ubicacion-servicio" value="">
+											</form>
               		  </div>
               		</div>
 				</div>

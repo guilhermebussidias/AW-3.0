@@ -9,11 +9,11 @@
 		$tituloN = $_REQUEST["titulo-noticia"]; #meto los parametros en variables
 		$contenidoN = $_REQUEST["contenido-noticia"];
 		$fechaInicioN = $_REQUEST["fecha-ini-noticia"];
-		if($fechaInicioN=="")
+		if($fechaInicioN ==="")
 			$fechaInicioN = '2001-01-01';
 
 		$fechaFinN = $_REQUEST["fecha-fin-noticia"];
-		if($fechaFinN=="")
+		if($fechaFinN ==="")
 			$fechaFinN = '2020-01-01';
 
 		$noticia = true; #identificador para saber que hay que mostrar noticia

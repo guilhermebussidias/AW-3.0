@@ -76,7 +76,6 @@ class DAOEvento {
           $stmt = $this->conn->prepare($sql);
           $stmt->execute(["titulo" => titulo, "contenido" => contenido, "fecha" => fecha,
           "ubicacion" => ubicacion, "foto" => foto, "usuario" => usuario]);
-          $stmt->execute();
         } catch(PDOException $e) {
           echo "ERROR EN DAOEvento: " . $e->getMessage();
           return false;
@@ -89,7 +88,6 @@ class DAOEvento {
           $sql = "DELETE FROM Evento WHERE id = :identificador";
           $stmt = $this->conn->prepare($sql);
           $stmt->execute(["identificador" => $id]);
-          $stmt->execute();
         } catch(PDOException $e) {
           echo "ERROR EN DAOEvento: " . $e->getMessage();
           return false;
