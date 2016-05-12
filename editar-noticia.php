@@ -31,22 +31,18 @@
                     <input type="text" name="titulo-noticia" id="input-titulo-noticia" class="estilotextarea" value= "<?php echo $noticia['titulo'] ?>">
 					<h3 class="contenido-titulo">Contenido:<h3/>	
                     <textarea name="input-contenido-noticia" class="estilotextarea" rows="10" cols="80"><?php echo $noticia['contenido'] ?></textarea>	
-              		  		<a href="#" class="myButton" id="verde">Guardar</a>
+              		  		<a name="save" class="myButton" id="verde">Guardar</a>
 							<a href="#" class="myButton" id="naranja">Descartar Cambios</a>
               		  		<a href="#" class="myButton" id="rojo">Eliminar Noticia</a>
 					</div>
 					</div>
 
 			<?php				
-				if( isset( $_REQUEST['modify'] ))
+				if( isset( $_REQUEST['save'] ))
 				{
-				// insert code here...
+              		 $logicNoticia->saveNoticia($usuario, $titulo, $contenido);
 				}
-
-				if( isset( $_REQUEST['ok'] ))
-				{
-				// insert code here...
-				}
+				
 				require('includes/sidebar.php');
 				require('includes/pie.php');
 			?>
