@@ -70,6 +70,14 @@
               		  <div id="admin-eventos">
               		  </div>
               		  <div id="admin-servicio">
+											<form action="<?= getBasePath() ?> formAdministrar.php" method="get" id="form-servicio">
+												<label for="">Nombre de empresa: </label>
+												<input type="text" name="input-titulo-servicio" value=""><br>
+												<label for="">Contenido: </label>
+												<textarea name="contenido-servicio" rows="10" cols="80"></textarea>
+												<label for="">Ubicación: </label>
+												<input type="text" name="input-ubicacion-servicio" value="">
+											</form>
               		  </div>
               		</div>
 				</div>
