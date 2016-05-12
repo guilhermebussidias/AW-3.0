@@ -106,6 +106,14 @@ function getIncludePath() {
   return INCLUDE_PATH;
 }
 
+function getUploadPath() {
+  return UPLOAD_PATH;
+}
+
+function getUploadedImagePath() {
+  return UPLOADED_URL;
+}
+
 /******************************************************************************/
 
 function redirect($url, $statusCode = 302) {
