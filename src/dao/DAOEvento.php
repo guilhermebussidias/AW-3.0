@@ -46,7 +46,7 @@ class DAOEvento {
     try {
       $sql = "SELECT * FROM Evento WHERE titulo LIKE '%:busqueda%' OR contenido LIKE '%:busqueda%'";
       $stmt = $this->conn->prepare($sql);
-      $stm->execute(["busqueda" => $texto]);
+      $stmt->execute(["busqueda" => $texto]);
       $res = $stmt->fetchAll();
     } catch(PDOException $e) {
       echo "ERROR EN DAOEvento: " . $e->getMessage();
