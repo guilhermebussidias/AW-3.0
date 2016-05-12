@@ -8,10 +8,18 @@
 			$logic->newUser($_REQUEST["usuario-nombre"], $_REQUEST["usuario-pass"], $_REQUEST["usuario-rol"]);
 		}
 	}
+
 	if($_REQUEST["boton"] === "eliminar-usuario"){
 		if ($_REQUEST["usuario-nombre"] !== ""){
 			$logic->deleteUser($_REQUEST["usuario-nombre"]);
 		}
 	}
 
+	if($_REQUEST["boton"] === "modificar-usuario"){
+		if ($_REQUEST["usuario-rol"] !== "" && $_REQUEST["usuario-nombre"] !== "" && $_REQUEST["usuario-pass"] !== ""){
+			$logic->updateByName($_REQUEST["usuario-nombre"], $_REQUEST["usuario-pass"], $_REQUEST["usuario-rol"]);
+		}
+	}
+
+	redirect(getBasePath() . 'administrar.php');
 ?>

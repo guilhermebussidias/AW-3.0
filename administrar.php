@@ -43,9 +43,9 @@
                     		<label for="input-usuario-rol">Rol:</label>
                     		<select type="text" name="usuario-rol" id="input-usuario-rol" class="input-usuario">
   							         	<option selected="selected" value="admin">Admin</option>
-  						        		<option value="Uno" value="gestor">Gestor</option>
-  					         			<option value="Uno" value="normal">Normal</option>
-  					         			<option value="Uno" value="proveedor">Proveedor</option>
+  						        		<option value="gestor">Gestor</option>
+  					         			<option value="normal">Normal</option>
+  					         			<option value="proveedor">Proveedor</option>
 				          			</select>
 					           		<br><br>
               		  		<button class="myButton" id="verde" name="boton" value="crear-usuario">Crear</button>

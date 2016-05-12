@@ -20,7 +20,12 @@ class Usuario {
 
   function deleteUser($name){
     return $this->daoUsuario->delete($name);
-  }  
+  } 
+
+  function updateByName($username, $password, $role){
+    $hpassword = password_hash($password, PASSWORD_BCRYPT);
+    return $this->daoUsuario->updateByName($username, $hpassword, $role);
+  }
 
   function newUser($name, $password, $role) {
     $hpassword = password_hash($password, PASSWORD_BCRYPT);

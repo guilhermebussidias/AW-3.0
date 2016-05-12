@@ -39,11 +39,11 @@ class DAOUsuario {
     return $id;
   }
 
-  function update($id, $username, $password, $role) {
+  function updateByName($username, $password, $role) {
       try {
-        $sql = "INSERT INTO Usuario (id, usuario, pass, rol) VALUES (:id, :usuario, :pass, :rol)";
+        $sql = "UPDATE Usuario SET pass=:pass, rol=:rol WHERE usuario=:usuario";
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute(["id" => $id, "usuario" => $username, "pass" => $password, "rol" => $role]);
+        $stmt->execute(["usuario" => $username, "pass" => $password, "rol" => $role]);
       } catch(PDOException $e) {
     		echo "ERROR EN DAOUsuario: " . $e->getMessage();
         return null;
@@ -53,8 +53,7 @@ class DAOUsuario {
 
   function delete($nombre) {
     try {
-      $sql = "DELETE FROM Usuario WHERE usuario = :nombre ";
-      echo $sql;
+      $sql = "DELETE FROM Usuario WHERE usuario = :usuario ";
       $stmt = $this->conn->prepare($sql);
       $stmt->execute(["usuario" => $nombre]);
     } catch (PDOException $e) {
