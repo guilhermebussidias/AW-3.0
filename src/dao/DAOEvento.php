@@ -78,7 +78,7 @@ class DAOEvento {
           "ubicacion" => ubicacion, "foto" => foto, "usuario" => usuario]);
           $stmt->execute();
         } catch(PDOException $e) {
-          echo "ERROR EN DAOPublicidad: " . $e->getMessage();
+          echo "ERROR EN DAOEvento: " . $e->getMessage();
           return false;
         }
       return true;
@@ -91,13 +91,27 @@ class DAOEvento {
           $stmt->execute(["identificador" => $id]);
           $stmt->execute();
         } catch(PDOException $e) {
-          echo "ERROR EN DAOPublicidad: " . $e->getMessage();
+          echo "ERROR EN DAOEvento: " . $e->getMessage();
           return false;
         }
       return true;
     }
 
-
+    function getListaEventosBuscador($titulo,$contenido,$fechaIni,$fechaFin,$ubicacion) {
+      try {
+        $sql = "SELECT titulo,contenido,usuario FROM Evento WHERE titulo LIKE :titulo
+                AND contenido LIKE :contenido
+                AND ubicacion LIKE :ubicacion
+                AND fecha <= :fechaFin AND fecha >= :fechaIni";
+        $stm = $this->conn->prepare($sql);
+        $stm->execute(["titulo" => $titulo, "contenido" => $contenido, "ubicacion" => $ubicacion,
+                       "fechaIni" => $fechaIni, "fechaFin" => $fechaFin]);
+        $res = $stm->fetchAll();
+      } catch (PDOException $e) {
+        echo "ERROR EN DAOEvento: " . $e->getMessage();
+      }
+      return $res;
+    }
 
 }
 

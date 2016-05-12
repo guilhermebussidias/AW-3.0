@@ -23,13 +23,41 @@
 	#################################
 	#PARSEAR ELEMENTOS DE EVENTO
 	if (isset($_REQUEST["titulo-evento"])){
-		$evento = true;
+
 		##################### Rellenar con tus parametros
-		$tituloN = $_REQUEST["titulo-noticia"];
-		$contenidoN = $_REQUEST["contenido-noticia"];
-		$fechaInicioN = $_REQUEST["fecha-ini-noticia"];
-		$fechaFinN = $_REQUEST["fecha-fin-noticia"];
+		$titulo = $_REQUEST["titulo-evento"];
+		$contenido = $_REQUEST["contenido-evento"];
+		$fechaInicio = $_REQUEST["fecha-ini-evento"];
+		$fechaFin = $_REQUEST["fecha-fin-evento"];
+		$ubicacion = $_REQUEST["ubicacion-evento"];
 		#####################
+
+		//Adaptación para el LIKE de la consulta
+		if ($titulo == "") {
+			$titulo = '%';
+		}else {
+			$titulo = "%" . $titulo . "%";
+		}
+		if ($contenido == "") {
+			$contenido = '%';
+		}else {
+			$contenido = "%" . $contenido . "%";
+		}
+		if ($ubicacion == "") {
+			$ubicacion = '%';
+		}else {
+			$ubicacion = "%" . $ubicacion . "%";
+		}
+		if ($fechaInicio == "") {
+			$fechaInicio = '2001-01-01';
+		}
+		if ($fechaFin == "") {
+			$fechaFin = '2020-01-01';
+		}
+
+		$evento = true;
+		$logic = new \aw\logic\Evento();
+		$eventos = $logic->ListaEventosBuscador($titulo,$contenido,$fechaInicio,$fechaFin,$ubicacion);
 	}
 	#PARSEAR ELEMENTOS DE SERVICIO
 	if (isset($_REQUEST["contenido-servicio"])){
@@ -97,14 +125,68 @@
     			###############################
     				#########EVENTO
     				if ($evento){ #hacer un foreach para devolver los eventos
-
+							foreach($eventos as $evento){
+								echo '
+									<div class="contenido-bloque">
+									<h3 class="contenido-titulo">'. $evento['titulo'] .'</h3>
+									<div class="contenido-texto">
+									<p> ' . $evento['contenido'] . ' </p>
+									<div class="contenido-info">Escrito por '. $evento['usuario'] .'</div>
+									</div>
+									</div>
+								';
+							}
     				}
     				###################
     				#############SERVICIO
-    				if ($servicio){ #hacer un foreach para devolver los servicios
-							foreach ($servicios as $servicio_) {
-								echo $servicio_['id'] ;
-							}
+   				if ($servicio){ #hacer un foreach para devolver los 
+    					$nombreCategoria = $logic->nameCategory($categoria);
+						echo '<h3 class="tituloServicio">' . $nombreCategoria . '</h3>';
+
+						if(!(count($servicios) == 0)){
+			            echo '<table>';
+			                foreach ($servicios as $servicio_){
+			                  	echo '<tr> 
+		                          <td rowspan="4"><img src="' . $servicio_['nombre'] .'" class="imagenServicio" alt="imagen empresa"></td>
+		                          <td class="empresaServicio">' . $servicio_['nombre'] . '</td>
+		                          <td rowspan="2">
+		                              <div class="estrellasMedia">';
+		                              $puntuacion = $servicio_['media_puntuacion'];
+		                              for($i = 0; $i < $puntuacion; $i++){
+		                                echo '<a  data-value="1" title="Votar con 1 estrellas"></a>';
+		                              }                       
+			                    echo '</td> 
+			                        </tr>
+			                        <tr>
+			                          <td class="direccionServicio">' . $servicio_['ubicacion'] . '</td>
+			                        </tr>
+			                        <tr>
+			                          <td class="telefonoServicio">' .  $servicio_['telefono'] . '</td>
+			                          <td>'; 
+			                            if(!is_null(getRole())) {
+			                              echo '<label for="input-categoria-servicio">Puntuación:</label>
+			                                      <select name="categoria-servicio" id="input-categoria-servicio">
+			                                        <option value="1" selected="selected">1</option>
+			                                        <option value="2">2</option>
+			                                        <option value="3">3</option>
+			                                        <option value="4">4</option>
+			                                        <option value="5">5</option>
+			                                        <option value="6">6</option>
+			                                        <option value="7">7</option>
+			                                        <option value="8">8</option>
+			                                        <option value="9">9</option>
+			                                        <option value="10">10</option>
+			                                      </select>';
+			                            } 
+			                     echo '</td>
+			                        </tr>
+			                        <tr>
+			                          <td class="descripcionServicio">' . $servicio_['contenido'] . '</td>
+			                          <td> <a href="'. $servicio_['url'] . '" target= "_blank">'  . $servicio_['url'] . '</a></td>
+			                        </tr>';
+			                 }           
+			          echo' </table>';
+			      	}
     				}
     				##################################
      			?>
