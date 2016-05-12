@@ -44,8 +44,7 @@ $noticias = $logic->buscarNoticias($ultimaPag * $noticiasPorPagina, $noticiasPor
 
 					if($rol=='admin' or $id==$noticias_['idUser']){
 						echo '<div class="contenido-admin">
-					<a href="editar-noticia.php?noticia='. $noticias_['id'] .'">Editar</a>
-						</div>';
+					<a class="contenido-boton" href="editar-noticia.php?noticia=' . $noticias_['id'] . '">Editar</a>	</div>';
 				 	}
 						echo '</div>
 						<div class="contenido-texto">			
@@ -53,8 +52,6 @@ $noticias = $logic->buscarNoticias($ultimaPag * $noticiasPorPagina, $noticiasPor
 						</div>
 						</div>
 						';
-					
-					
     				}
      			?>
 				<br>

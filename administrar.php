@@ -2,6 +2,7 @@
 	require_once __DIR__ . "/src/App.php";
 	$rol = getRole();
 	$name = getName();
+	$id = getID();
 	$logicUsuario = new \aw\logic\Usuario();
   $logicNoticia = new  \aw\logic\Noticia();
 ?>
@@ -34,9 +35,6 @@
               		  </ul>
               		  <div id="admin-usuario">
               		  	<form action="<?= getBasePath() ?>formAdministrar.php" method="post" id="form-usuario">
-              		  		<label for="input-usuario-id">Id:</label>
-                    		<input type="text" name="usuario-id" id="input-usuario-id" class="input-usuario">
-                    		<br>
                     		<label for="input-usuario-nombre">Nombre:</label>
                     		<input type="text" name="usuario-nombre" id="input-usuario-nombre" class="input-usuario">
                     		<br>
@@ -46,27 +44,30 @@
                     		<label for="input-usuario-rol">Rol:</label>
                     		<select type="text" name="usuario-rol" id="input-usuario-rol" class="input-usuario">
   							         	<option selected="selected" value="admin">Admin</option>
-  						        		<option value="Uno" value="gestor">Gestor</option>
-  					         			<option value="Uno" value="normal">Normal</option>
-  					         			<option value="Uno" value="proveedor">Proveedor</option>
-				          			</select>
-					           		<br><br>
-              		  		<button type="submit" class="boton-usuario-crear" name="boton" value="crear-usuario">Crear</button>
-              		  		<button type="submit" class="boton-usuario-modificar"  name="boton" value="modificar-usuario">Modificar</button>
-              		  		<button type="submit" class="boton-usuario-eliminar"  name="boton" value="eliminar-usuario">Eliminar</button>
+  						        		<option value="gestor">Gestor</option>
+  					         			<option value="normal">Normal</option>
+  					         			<option value="proveedor">Proveedor</option>
+				          	</select>
+					         <br><br>
+              		  		<button class="myButton" id="verde" name="boton" value="crear-usuario">Crear</button>
+              		  		<button class="myButton" id="naranja"  name="boton" value="modificar-usuario">Modificar</button>
+              		  		<button class="myButton" id="rojo" name="boton" value="eliminar-usuario">Eliminar</button>
               		  	</form>
               		  </div>
+
               		  <div id="admin-noticia">
-                    <div id="algo" class="contenido-bloque">
-                    <h3 class="contenido-titulo">Título:<h3/>
+                    <form action="<?= getBasePath() ?>formAdministrar.php" method="get" id="form-usuario">
+                    <input type="hidden" name="usuario" id="input-titulo-noticia" class="estilotextarea" value=<?= $id ?>>
+                    <h3 class="contenido-titulo">Título:</h3>
                     <input type="text" name="titulo-noticia" id="input-titulo-noticia" class="estilotextarea">
-                    <h3 class="contenido-titulo">Contenido:<h3/>
+                    <br>
+                    <h3 class="contenido-titulo">Contenido:</h3>
                     <textarea name="input-contenido-noticia" class="estilotextarea" rows="10" cols="80"></textarea>
+                    <br><br>
                     <button type="submit" class="myButton" id="verde" name="boton" value="guardar-noticia">Guardar</button>
                     <button type="submit" class="myButton" id="naranja" name="boton" value="descartar-noticia">Descartar Cambios</button>
-          </div>
-
-              		  </div>
+                    </form>
+                    </div>
               		  <div id="admin-eventos">
               		  </div>
               		  <div id="admin-servicio">
@@ -93,8 +94,14 @@
 												<label for="">Contenido: </label>
 												<textarea name="contenido-servicio" rows="10" cols="80"></textarea>
 												<br><br>
+<<<<<<< HEAD
               		  		<button type="submit" class="myButton" id="verde" name="boton" value="crear-servicio">Crear</button>
               		  		<button type="submit" class="myButton" id="naranja" name="boton" value="descartar-servicio">Descartar Cambios</button>
+=======
+              		  		<button type="submit" class="myButton" id="verde" name="boton" value="crear-usuario">Crear</button>
+              		  		<button type="submit" class="myButton" id="naranja"  name="boton" value="modificar-usuario">Modificar</button>
+              		  		<button type="submit" class="myButton" id="rojo"  name="boton" value="eliminar-usuario">Eliminar</button>
+>>>>>>> origin/master
 											</form>
               		  </div>
               		</div>

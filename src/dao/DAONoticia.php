@@ -107,12 +107,11 @@ class DAONoticia {
     return $res;
   }
 
-  function saveNoticia($usuario, $titulo, $contenido, $fecha){
+  function saveNoticia($usuario, $titulo, $contenido){
     try{
-      $sql = "INSERT INTO Noticia (usuario, titulo, contenido, fecha) VALUES (:usuario,:titulo, :contenido, :fecha )";
+      $sql = "INSERT INTO Noticia (usuario, titulo, contenido, fecha) VALUES (:usuario,:titulo, :contenido, CURDATE() )";
       $stmt = $this->conn->prepare($sql);
-      $stmt->execute(["usuario" => $usuario, "titulo" => $titulo, "contenido" => $contenido, "fecha" => $fecha]);
-      //$stmt->execute();
+      $stmt->execute(["usuario" => $usuario, "titulo" => $titulo, "contenido" => $contenido]);
       $id = $this->conn->lastInsertId();
     } catch(PDOException $e) {
   		echo "ERROR EN DAONoticia: " . $e->getMessage();

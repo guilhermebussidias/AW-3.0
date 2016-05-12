@@ -27,17 +27,17 @@
 			<div id="contenedor-noticias">
 			<div id="algo" class="contenido-bloque">
 			<form action="<?= getBasePath() ?>formAdministrar.php" method="post" id="edit-noticia" >
-					<input type="hidden" name="id" id="input-titulo-noticia" class="estilotextarea" value= "<?php echo $noticia['id'] ?>">
+					<input type="hidden" name="id" id="input-titulo-noticia" class="estilotextarea" value= "<?= $noticia['id'] ?>">
 					<h3 class="contenido-titulo">Título:<h3/>
-                    <input type="text" name="titulo" id="input-titulo-noticia" class="estilotextarea" value= "<?php echo $noticia['titulo'] ?>">
+                    <input type="text" name="titulo" id="input-titulo-noticia" class="estilotextarea" value= "<?= $noticia['titulo'] ?>">
 					<h3 class="contenido-titulo">Contenido:<h3/>	
-                    <textarea name="contenido" class="estilotextarea" rows="10" cols="80"><?php echo $noticia['contenido'] ?></textarea>	
+                    <textarea name="contenido" class="estilotextarea" rows="10" cols="80"><?= $noticia['contenido'] ?></textarea>	
 
 					<br>
 
                     <button type="submit" class="myButton" id="verde" name="boton" value="modificar-noticia">Guardar</button>
                     <button type="submit" class="myButton" id="naranja" name="boton" value="descartar-noticia">Descartar Cambios</button>
-              		 <button type="submit" class="myButton" id="rojo">Eliminar Noticia</button>
+              		 <button type="submit" class="myButton" id="rojo" name="boton" value="eliminar-noticia">Eliminar Noticia</button>
               		<form/>
               		</div>
 					</div>
