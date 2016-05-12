@@ -38,3 +38,7 @@
   margin: 10px 30px;
   display: inline;contenedor-fragmentos
 }
+
+.estilotextarea {
+  border: 2px solid orange;
+}

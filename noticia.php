@@ -2,7 +2,7 @@
 	require_once __DIR__ . "/src/App.php";
 	$rol = getRole();
 	//$name = getName();
-	$id ='1'; //= getId();
+	$id = getId();
 	require_once __DIR__ . "/src/App.php";
 
 	$logic = new \aw\logic\Noticia();
