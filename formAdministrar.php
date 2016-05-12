@@ -10,21 +10,19 @@
 		}
 	}
 
-<<<<<<< HEAD
-	if($_REQUEST["boton"] === "eliminar-usuario"){
+
+	else if($_REQUEST["boton"] === "eliminar-usuario"){
 		if ($_REQUEST["usuario-nombre"] !== ""){
 			$logic->deleteUser($_REQUEST["usuario-nombre"]);
 		}
 	}
 
-	if($_REQUEST["boton"] === "modificar-usuario"){
+	else if($_REQUEST["boton"] === "modificar-usuario"){
 		if ($_REQUEST["usuario-rol"] !== "" && $_REQUEST["usuario-nombre"] !== "" && $_REQUEST["usuario-pass"] !== ""){
 			$logic->updateByName($_REQUEST["usuario-nombre"], $_REQUEST["usuario-pass"], $_REQUEST["usuario-rol"]);
 		}
 	}
 
-	redirect(getBasePath() . 'administrar.php');
-=======
 	else if ($_REQUEST["boton"] === "modificar-noticia"){
 		$titulo = $_REQUEST["titulo"];
 		$contenido = $_REQUEST["contenido"];
@@ -48,5 +46,5 @@
 			echo "todo ok";
 	}
 
->>>>>>> origin/master
+	redirect(getBasePath() . 'administrar.php');
 ?>
