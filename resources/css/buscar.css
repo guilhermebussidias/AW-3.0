@@ -3,7 +3,7 @@
 }*/
 #maxi-form-administrar{
   height: 100%;
-  width: 95%
+  width: 95%;
 }
 #form-busqueda input {
   display: inline;
@@ -36,9 +36,30 @@
 
 #selector-tipo-busqueda > label {
   margin: 10px 30px;
-  display: inline;contenedor-fragmentos
+  display: inline;
 }
 
 .estilotextarea {
   border: 2px solid orange;
+}
+
+.input-busqueda {
+  width: 100%;
+  border: 1px solid darkorange;
+}
+
+.label-busqueda {
+  margin-top: 20px;
+}
+
+.busqueda-box {
+  float: left;
+  width: 65%;
+  /*border: 2px dotted orange;*/
+  margin: 15px;
+}
+
+.boton-enviar-busqueda {
+  float: right;
+  margin: 20px 0;
 }
