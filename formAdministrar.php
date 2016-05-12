@@ -15,7 +15,6 @@ $extension = " ";
 		}
 	}
 
-
 	else if($_REQUEST["boton"] === "eliminar-usuario"){
 		$usuario = $_REQUEST["usuario-nombre"];
 		if ($usuario !== ""){
@@ -42,7 +41,6 @@ $extension = " ";
 		}
 		$extension="#admin-noticia";
 	}
-	
 
 	elseif ($_REQUEST["boton"] === "crear-servicio") {
 		$servicio = $_REQUEST["input-titulo-servicio"];
@@ -60,8 +58,6 @@ $extension = " ";
 		$extension="#admin-servicio";
 	}
 
-
-
 	else if ($_REQUEST["boton"] === "guardar-noticia"){
 		$titulo = $_REQUEST["titulo-noticia"];
 		$contenido = $_REQUEST["input-contenido-noticia"];
@@ -71,7 +67,6 @@ $extension = " ";
 		}
 		$extension="#admin-noticia";
 	}
-
 
 	else if ($_REQUEST["boton"] === "eliminar-noticia"){
 			$id = $_REQUEST["id"];

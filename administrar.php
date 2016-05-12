@@ -65,7 +65,7 @@
                     <textarea name="input-contenido-noticia" class="estilotextarea" rows="10" cols="80"></textarea>
                     <br><br>
                     <button type="submit" class="myButton" id="verde" name="boton" value="guardar-noticia">Guardar</button>
-                    <button type="submit" class="myButton" id="naranja" name="boton" value="descartar-noticia">Descartar Cambios</button>
+                    <button type="reset" class="myButton" id="naranja" name="boton" value="descartar-noticia">Descartar Cambios</button>
                     </form>
                     </div>
               		  <div id="admin-eventos">
