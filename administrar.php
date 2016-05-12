@@ -89,7 +89,7 @@
 		                      <option value="peluqueria">Peluquerías</option>
 		                      <option value="paseador">Paseadores</option>
 		                      <option value="adopcion">Adopciones</option>
-		                    </select>
+		                    </select><br>
 												<label for="">Contenido: </label>
 												<textarea name="contenido-servicio" rows="10" cols="80"></textarea>
 												<br><br>
