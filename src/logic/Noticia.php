@@ -21,8 +21,7 @@ class Noticia {
 	}
 
 	function saveNoticia($usuario, $titulo, $contenido) {
-		$fecha = mktime(date("Y")  , date("m"), date("d"));
-    	return $this->daoNoticia->saveNoticia($usuario, $titulo, $contenido, $fecha);
+    	return $this->daoNoticia->saveNoticia($usuario, $titulo, $contenido);
 	}
 
 	function updateNoticia($id, $titulo, $contenido) {
