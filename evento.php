@@ -40,9 +40,13 @@
 								</div>
 						';
 						}
-     			?>
-				</div>
-				<a href="evento.php?ultimaPag=<?=$ultimaPag - 1?>">Anterior página</a>
+
+				echo '</div>';
+				if($ultimaPag>0){
+					$pag = $ultimaPag - 1;
+					echo '<a href="evento.php?ultimaPag=<?=$pag?>">Anterior página</a>';
+				}
+				?>
 				<a href="evento.php?ultimaPag=<?=$ultimaPag + 1?>">Siguiente página</a>
 			<?php
 				require('includes/sidebar.php');
