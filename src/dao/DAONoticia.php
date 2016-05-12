@@ -123,7 +123,7 @@ class DAONoticia {
 
   function updateNoticia($id, $titulo, $contenido) {
       try {
-        $sql = "INSERT INTO Noticia (id, titulo, contenido) VALUES (:id, :titulo, :contenido)";
+        $sql = "UPDATE Noticia SET titulo=:titulo, contenido=:contenido WHERE id=:id";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(["id" => $id, "titulo" => $titulo, "contenido" => $contenido]);
       } catch(PDOException $e) {

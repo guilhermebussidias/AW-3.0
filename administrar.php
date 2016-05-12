@@ -53,15 +53,24 @@
               		  		<button class="myButton" id="rojo" name="boton" value="eliminar-usuario">Eliminar</button>
               		  	</form>
               		  </div>
+
               		  <div id="admin-noticia">
                     <div id="algo" class="contenido-bloque">
+                    <input type="hidden" name="usuario" id="input-titulo-noticia" class="estilotextarea" value=<?= $name ?>>
                     <h3 class="contenido-titulo">Título:<h3/>
                     <input type="text" name="titulo-noticia" id="input-titulo-noticia" class="estilotextarea">
                     <h3 class="contenido-titulo">Contenido:<h3/>
                     <textarea name="input-contenido-noticia" class="estilotextarea" rows="10" cols="80"></textarea>
+<<<<<<< HEAD
                     <a href="#" class="myButton" id="verde">Guardar</a>
                     <a href="#" class="myButton" id="naranja">Descartar Cambios</a>
                     </div>
+=======
+
+                    <button type="submit" class="myButton" id="verde" name="boton" value="guardar-noticia">Guardar</button>
+                    <button type="submit" class="myButton" id="naranja" name="boton" value="descartar-noticia">Descartar Cambios</button>
+          </div>
+>>>>>>> origin/master
 
               		  </div>
               		  <div id="admin-eventos">
@@ -86,7 +95,7 @@
 		                      <option value="peluqueria">Peluquerías</option>
 		                      <option value="paseador">Paseadores</option>
 		                      <option value="adopcion">Adopciones</option>
-		                    </select><br>
+		                    </select><br><br>
 												<label for="">Contenido: </label>
 												<textarea name="contenido-servicio" rows="10" cols="80"></textarea>
 												<br><br>
