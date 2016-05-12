@@ -72,11 +72,26 @@
               		  <div id="admin-servicio">
 											<form action="<?= getBasePath() ?> formAdministrar.php" method="get" id="form-servicio">
 												<label for="">Nombre de empresa: </label>
-												<input type="text" name="input-titulo-servicio" value=""><br>
+												<input type="text" name="input-titulo-servicio"><br>
+												<label for="">Teléfono: </label>
+												<input type="text" name="input-telefono-servicio"><br>
+												<label for="">Web: </label>
+												<input type="text" name="input-url-servicio"><br>
+												<label for="">Ubicación: </label>
+												<input type="text" name="input-ubicacion-servicio"><br>
+												<label for="">Foto: </label>
+												<input type="file" name="input-foto-servicio">
+												<label for="">Categoría: </label>
+												<select name="categoria-servicio" >
+		                      <option value="veterinario" selected="selected">Veterinarios</option>
+		                      <option value="residencia">Residencias</option>
+		                      <option value="adiestrador">Adiestradores</option>
+		                      <option value="peluqueria">Peluquerías</option>
+		                      <option value="paseador">Paseadores</option>
+		                      <option value="adopcion">Adopciones</option>
+		                    </select>
 												<label for="">Contenido: </label>
 												<textarea name="contenido-servicio" rows="10" cols="80"></textarea>
-												<label for="">Ubicación: </label>
-												<input type="text" name="input-ubicacion-servicio" value="">
 											</form>
               		  </div>
               		</div>
