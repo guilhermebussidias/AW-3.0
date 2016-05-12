@@ -31,7 +31,6 @@ class DAOUsuario {
       $sql = "INSERT INTO Usuario (usuario, pass, rol) VALUES (:usuario, :pass, :rol)";
       $stmt = $this->conn->prepare($sql);
       $stmt->execute(["usuario" => $username, "pass" => $password, "rol" => $role]);
-      $stmt->execute();
       $id = $this->conn->lastInsertId();
     } catch(PDOException $e) {
   		echo "ERROR EN DAOUsuario: " . $e->getMessage();
@@ -45,7 +44,6 @@ class DAOUsuario {
         $sql = "INSERT INTO Usuario (id, usuario, pass, rol) VALUES (:id, :usuario, :pass, :rol)";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(["id" => $id, "usuario" => $username, "pass" => $password, "rol" => $role]);
-        $stmt->execute();
       } catch(PDOException $e) {
     		echo "ERROR EN DAOUsuario: " . $e->getMessage();
         return null;
@@ -58,7 +56,6 @@ class DAOUsuario {
       $sql = "DELETE FROM Usuario WHERE id = :id ";
       $stmt = $this->conn->prepare($sql);
       $stmt->execute(["id" => $id]);
-      $stmt->execute();
     } catch (PDOException $e) {
       echo "ERROR EN DAOUsuario: " . $e->getMessage();
       return null;
