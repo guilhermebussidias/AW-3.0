@@ -33,7 +33,7 @@
                 		<li><a href="#admin-servicio">Servicio</a></li>
               		  </ul>
               		  <div id="admin-usuario">
-              		  	<form id="form-usuario">
+              		  	<form action="<?= getBasePath() ?>formAdministrar.php" method="get" id="form-usuario">
               		  		<label for="input-usuario-id">Id:</label>
                     		<input type="text" name="usuario-id" id="input-usuario-id" class="input-usuario">
                     		<br>
@@ -51,9 +51,9 @@
   								<option value="Uno" value="proveedor">Proveedor</option>
 							</select>
 							<br><br>
-              		  		<button type="button" class="boton-usuario-crear" >Crear</button>
-              		  		<button type="button" class="boton-usuario-modificar">Modificar</button>
-              		  		<button type="button" class="boton-usuario-eliminar">Eliminar</button>
+              		  		<button type="submit" class="boton-usuario-crear" name="boton" value="crear-usuario">Crear</button>
+              		  		<button type="submit" class="boton-usuario-modificar"  name="boton" value="modificar-usuario">Modificar</button>
+              		  		<button type="submit" class="boton-usuario-eliminar"  name="boton" value="eliminar-usuario">Eliminar</button>
               		  	</form>
               		  </div>
               		  <div id="admin-noticia">
