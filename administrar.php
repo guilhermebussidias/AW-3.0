@@ -80,7 +80,7 @@
 												<label for="">Ubicación: </label>
 												<input type="text" name="input-ubicacion-servicio"><br>
 												<label for="">Foto: </label>
-												<input type="file" name="input-foto-servicio">
+												<input type="file" name="input-foto-servicio"><br>
 												<label for="">Categoría: </label>
 												<select name="categoria-servicio" >
 		                      <option value="veterinario" selected="selected">Veterinarios</option>
@@ -92,6 +92,10 @@
 		                    </select>
 												<label for="">Contenido: </label>
 												<textarea name="contenido-servicio" rows="10" cols="80"></textarea>
+												<br><br>
+              		  		<button type="submit" class="boton-usuario-crear" name="boton" value="crear-usuario">Crear</button>
+              		  		<button type="submit" class="boton-usuario-modificar"  name="boton" value="modificar-usuario">Modificar</button>
+              		  		<button type="submit" class="boton-usuario-eliminar"  name="boton" value="eliminar-usuario">Eliminar</button>
 											</form>
               		  </div>
               		</div>
