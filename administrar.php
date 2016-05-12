@@ -47,8 +47,8 @@
   						        		<option value="gestor">Gestor</option>
   					         			<option value="normal">Normal</option>
   					         			<option value="proveedor">Proveedor</option>
-				          			</select>
-					           		<br><br>
+				          	</select>
+					         <br><br>
               		  		<button class="myButton" id="verde" name="boton" value="crear-usuario">Crear</button>
               		  		<button class="myButton" id="naranja"  name="boton" value="modificar-usuario">Modificar</button>
               		  		<button class="myButton" id="rojo" name="boton" value="eliminar-usuario">Eliminar</button>
