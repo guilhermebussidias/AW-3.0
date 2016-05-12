@@ -33,7 +33,7 @@
                 		<li><a href="#admin-servicio">Servicio</a></li>
               		  </ul>
               		  <div id="admin-usuario">
-              		  	<form action="<?= getBasePath() ?>formAdministrar.php" method="get" id="form-usuario">
+              		  	<form action="<?= getBasePath() ?>formAdministrar.php" method="post" id="form-usuario">
               		  		<label for="input-usuario-id">Id:</label>
                     		<input type="text" name="usuario-id" id="input-usuario-id" class="input-usuario">
                     		<br>
