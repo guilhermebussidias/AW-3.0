@@ -56,12 +56,15 @@
               		  		<button type="submit" class="boton-usuario-eliminar"  name="boton" value="eliminar-usuario">Eliminar</button>
               		  	</form>
               		  </div>
+
               		  <div id="admin-noticia">
                     <div id="algo" class="contenido-bloque">
+                    <input type="hidden" name="usuario" id="input-titulo-noticia" class="estilotextarea" value=<?= $name ?>>
                     <h3 class="contenido-titulo">Título:<h3/>
                     <input type="text" name="titulo-noticia" id="input-titulo-noticia" class="estilotextarea">
                     <h3 class="contenido-titulo">Contenido:<h3/>
                     <textarea name="input-contenido-noticia" class="estilotextarea" rows="10" cols="80"></textarea>
+
                     <button type="submit" class="myButton" id="verde" name="boton" value="guardar-noticia">Guardar</button>
                     <button type="submit" class="myButton" id="naranja" name="boton" value="descartar-noticia">Descartar Cambios</button>
           </div>
