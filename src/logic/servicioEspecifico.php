@@ -53,7 +53,7 @@ class servicioEspecifico{
   }
 
   function guardarServicio($usuario,$titulo,$telefono,$url,$ubicacion,$contenido){
-    $id = $this->daoServicio-saveServicio($usuario,$titulo,$telefono,$url,$ubicacion,$contenido);
+    $id = $this->daoServicio->saveServicio($usuario,$titulo,$telefono,$url,$ubicacion,$contenido);
     return $id;
   }
 }

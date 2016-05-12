@@ -41,7 +41,7 @@ class DAOServicio {
 
   function saveServicio ($usuario,$titulo,$telefono,$url,$ubicacion,$contenido){
     try {
-      $sql = "INSERT INTO Servicio (titulo, telefono, url, ubicacion,contenido, usuario)
+      $sql = "INSERT INTO Servicio (nombre, telefono, url, ubicacion,contenido, usuario)
               VALUES (:titulo, :telefono, :url, :ubicacion, :contenido, :usuario)";
       $stm = $this->conn->prepare($sql);
       $stm->execute(["titulo" => $titulo, "telefono" => $telefono,

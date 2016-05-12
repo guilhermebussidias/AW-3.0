@@ -71,7 +71,7 @@
               		  <div id="admin-eventos">
               		  </div>
               		  <div id="admin-servicio">
-											<form action="<?= getBasePath() ?> formAdministrar.php" method="get" id="form-servicio">
+											<form action="<?= getBasePath() ?>formAdministrar.php" method="get" id="form-servicio">
 												<label for="">Nombre de empresa: </label>
 												<input type="text" name="input-titulo-servicio"><br>
 												<label for="">Teléfono: </label>
@@ -95,7 +95,7 @@
 												<textarea name="contenido-servicio" rows="10" cols="80"></textarea>
 												<br><br>
               		  		<button type="submit" class="myButton" id="verde" name="boton" value="crear-servicio">Crear</button>
-              		  		<button type="submit" class="myButton" id="naranja" name="boton" value="descartar-servicio">Descartar Cambios</button>
+              		  		<button type="reset" class="myButton" id="naranja" name="boton" value="descartar-servicio">Descartar Cambios</button>
 											</form>
               		  </div>
               		</div>
