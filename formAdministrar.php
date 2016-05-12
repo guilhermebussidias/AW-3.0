@@ -27,5 +27,10 @@
 			echo "todo ok";
 	}
 
+	else if ($_REQUEST["boton"] === "eliminar-noticia"){
+			$id = $_REQUEST["id"];
+			$logicNoticia->deleteNoticia($id);
+			echo "todo ok";
+	}
 
 ?>

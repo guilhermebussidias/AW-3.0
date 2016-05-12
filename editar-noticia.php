@@ -37,7 +37,7 @@
 
                     <button type="submit" class="myButton" id="verde" name="boton" value="modificar-noticia">Guardar</button>
                     <button type="submit" class="myButton" id="naranja" name="boton" value="descartar-noticia">Descartar Cambios</button>
-              		 <button type="submit" class="myButton" id="rojo">Eliminar Noticia</button>
+              		 <button type="submit" class="myButton" id="rojo" name="boton" value="eliminar-noticia">Eliminar Noticia</button>
               		<form/>
               		</div>
 					</div>
