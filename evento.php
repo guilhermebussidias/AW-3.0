@@ -37,16 +37,16 @@
 								<h3 class="contenido-titulo">'. $evento['titulo'] .'</h3>
 								<div class="contenido-info">Escrito por '. $evento['usuario'] .'</div>';
 
-								if($rol==='admin' or $id===$evento['idUser']){
+								if($rol==='admin' or $id===$evento['id']){
 									echo '
 									<div class="contenido_admin">
 									<a href="editar-evento.php?evento='. $evento['id'] .'">Editar</a>
 									</div>';
 								}
-								echo '</div>
+								echo '
 								<div class="contenido-texto">
 								<p> ' . $evento['contenido']. ' </p>
-
+								</div>
 								</div>
 								</div>';
 						}
