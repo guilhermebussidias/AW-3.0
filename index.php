@@ -18,6 +18,7 @@
 				require(getIncludePath() . 'slider.php');
 			?>
 			<div id="contenido">
+				<div class="titulo-contenedor"><h1>Noticias</h1></div>
 				<div id="contenedor-noticias">
 					<?php
 						$noticiasLogic = new \aw\logic\Noticia();
