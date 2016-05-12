@@ -30,7 +30,7 @@
 		$id = $_REQUEST["id"];
 			$logicNoticia->updateNoticia($id, $titulo, $contenido);
 	}
-<<<<<<< HEAD
+
 	elseif ($_REQUEST["boton"] === "crear-servicio") {
 		if ($_REQUEST["input-titulo-servicio"] !== "" && $_REQUEST["input-telefono-servicio"] !== ""
 		&& $_REQUEST["input-url-servicio"] !== "" && $_REQUEST["input-ubicacion-servicio"] !== "" && $_REQUEST["contenido-servicio"]) {
@@ -43,8 +43,8 @@
 		}
 	}
 
-=======
-	
+
+
 	else if ($_REQUEST["boton"] === "guardar-noticia"){
 		$titulo = $_REQUEST["titulo-noticia"];
 		$contenido = $_REQUEST["input-contenido-noticia"];
@@ -52,16 +52,12 @@
 		if ($titulo !== "" && $contenido !== "")
 			$logicNoticia->saveNoticia($usuario, $titulo, $contenido);
 	}
->>>>>>> origin/master
+
 
 	else if ($_REQUEST["boton"] === "eliminar-noticia"){
 			$id = $_REQUEST["id"];
 			$logicNoticia->deleteNoticia($id);
 	}
 
-<<<<<<< HEAD
-?>
-=======
 	redirect(getBasePath() . 'administrar.php');
 ?>
->>>>>>> origin/master
