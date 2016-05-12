@@ -24,13 +24,13 @@ class Noticia {
 		$fecha = mktime(date("Y")  , date("m"), date("d"));
     	return $this->daoNoticia->saveNoticia($usuario, $titulo, $contenido, $fecha);
 	}
-	
+
 	function updateNoticia($id, $titulo, $contenido) {
-    	return $this->daoNoticia->updateNoticia($id, $titulo, $contenido)
+    	return $this->daoNoticia->updateNoticia($id, $titulo, $contenido);
 	}
 
 	function deleteNoticia($id) {
-    	return $this->daoNoticia->deleteNoticia($id)
+    	return $this->daoNoticia->deleteNoticia($id);
 	}
 
 	function buscarNoticiasbuscador($tituloN, $contenidoN, $fechaInicioN, $fechaFinN){
