@@ -61,18 +61,12 @@
                     <input type="text" name="titulo-noticia" id="input-titulo-noticia" class="estilotextarea">
                     <h3 class="contenido-titulo">Contenido:<h3/>
                     <textarea name="input-contenido-noticia" class="estilotextarea" rows="10" cols="80"></textarea>
-<<<<<<< HEAD
                     <a href="#" class="myButton" id="verde">Guardar</a>
                     <a href="#" class="myButton" id="naranja">Descartar Cambios</a>
                     </div>
-=======
-
                     <button type="submit" class="myButton" id="verde" name="boton" value="guardar-noticia">Guardar</button>
                     <button type="submit" class="myButton" id="naranja" name="boton" value="descartar-noticia">Descartar Cambios</button>
           </div>
->>>>>>> origin/master
-
-              		  </div>
               		  <div id="admin-eventos">
               		  </div>
               		  <div id="admin-servicio">
