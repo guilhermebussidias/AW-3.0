@@ -8,5 +8,10 @@
 			$logic->newUser($_REQUEST["usuario-nombre"], $_REQUEST["usuario-pass"], $_REQUEST["usuario-rol"]);
 		}
 	}
+	if($_REQUEST["boton"] === "eliminar-usuario"){
+		if ($_REQUEST["usuario-nombre"] !== ""){
+			$logic->deleteUser($_REQUEST["usuario-nombre"]);
+		}
+	}
 
 ?>

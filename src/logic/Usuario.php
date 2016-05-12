@@ -18,11 +18,9 @@ class Usuario {
     return $user;
   }
 
-  /*
-  function findByName($name) {
-    return $this->daoUsuario->findByName($name);
-  }
-  */
+  function deleteUser($name){
+    return $this->daoUsuario->delete($name);
+  }  
 
   function newUser($name, $password, $role) {
     $hpassword = password_hash($password, PASSWORD_BCRYPT);

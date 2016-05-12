@@ -51,11 +51,12 @@ class DAOUsuario {
       return true;
   }
 
-  function delete($id) {
+  function delete($nombre) {
     try {
-      $sql = "DELETE FROM Usuario WHERE id = :id ";
+      $sql = "DELETE FROM Usuario WHERE usuario = :nombre ";
+      echo $sql;
       $stmt = $this->conn->prepare($sql);
-      $stmt->execute(["id" => $id]);
+      $stmt->execute(["usuario" => $nombre]);
     } catch (PDOException $e) {
       echo "ERROR EN DAOUsuario: " . $e->getMessage();
       return null;

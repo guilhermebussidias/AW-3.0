@@ -34,9 +34,6 @@
               		  </ul>
               		  <div id="admin-usuario">
               		  	<form action="<?= getBasePath() ?>formAdministrar.php" method="post" id="form-usuario">
-              		  		<label for="input-usuario-id">Id:</label>
-                    		<input type="text" name="usuario-id" id="input-usuario-id" class="input-usuario">
-                    		<br>
                     		<label for="input-usuario-nombre">Nombre:</label>
                     		<input type="text" name="usuario-nombre" id="input-usuario-nombre" class="input-usuario">
                     		<br>
@@ -51,9 +48,9 @@
   					         			<option value="Uno" value="proveedor">Proveedor</option>
 				          			</select>
 					           		<br><br>
-              		  		<button type="submit" class="boton-usuario-crear" name="boton" value="crear-usuario">Crear</button>
-              		  		<button type="submit" class="boton-usuario-modificar"  name="boton" value="modificar-usuario">Modificar</button>
-              		  		<button type="submit" class="boton-usuario-eliminar"  name="boton" value="eliminar-usuario">Eliminar</button>
+              		  		<button class="myButton" id="verde" name="boton" value="crear-usuario">Crear</button>
+              		  		<button class="myButton" id="naranja"  name="boton" value="modificar-usuario">Modificar</button>
+              		  		<button class="myButton" id="rojo" name="boton" value="eliminar-usuario">Eliminar</button>
               		  	</form>
               		  </div>
               		  <div id="admin-noticia">
@@ -64,7 +61,7 @@
                     <textarea name="input-contenido-noticia" class="estilotextarea" rows="10" cols="80"></textarea>
                     <a href="#" class="myButton" id="verde">Guardar</a>
                     <a href="#" class="myButton" id="naranja">Descartar Cambios</a>
-          </div>
+                    </div>
 
               		  </div>
               		  <div id="admin-eventos">
