@@ -53,10 +53,13 @@
 
 				$pag = $ultimaPag - 1;
 				if($ultimaPag>0){
-					echo '<a href="evento.php?ultimaPag=<?='. $pag .'">Anterior página</a>';
+					echo "<a href='evento.php?ultimaPag=". $pag ."'>Anterior página</a>";
+				}
+				$sig = $ultimaPag + 1;
+				if (!$eventos==null) {
+					echo "<a href='evento.php?ultimaPag=" . $sig ."'>Página siguiente</a>";
 				}
 				?>
-				<a href="evento.php?ultimaPag=<?=$ultimaPag + 1?>">Siguiente página</a>
 			</div>
 		</div>
 			<?php
