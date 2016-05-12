@@ -45,12 +45,12 @@
                     		<br>
                     		<label for="input-usuario-rol">Rol:</label>
                     		<select type="text" name="usuario-rol" id="input-usuario-rol" class="input-usuario">
-  								<option selected="selected" value="admin">Admin</option>
-  								<option value="Uno" value="gestor">Gestor</option>
-  								<option value="Uno" value="normal">Normal</option>
-  								<option value="Uno" value="proveedor">Proveedor</option>
-							</select>
-							<br><br>
+  							         	<option selected="selected" value="admin">Admin</option>
+  						        		<option value="Uno" value="gestor">Gestor</option>
+  					         			<option value="Uno" value="normal">Normal</option>
+  					         			<option value="Uno" value="proveedor">Proveedor</option>
+				          			</select>
+					           		<br><br>
               		  		<button type="submit" class="boton-usuario-crear" name="boton" value="crear-usuario">Crear</button>
               		  		<button type="submit" class="boton-usuario-modificar"  name="boton" value="modificar-usuario">Modificar</button>
               		  		<button type="submit" class="boton-usuario-eliminar"  name="boton" value="eliminar-usuario">Eliminar</button>
