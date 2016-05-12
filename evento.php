@@ -30,6 +30,7 @@
 				require('includes/slider.php');
 			?>
 				<div id="contenido">
+					<div id="contenedor-noticias">
           <?php
 					foreach($eventos as $evento){
 							echo '
@@ -47,21 +48,22 @@
 								<div class="contenido-texto">
 								<p> ' . $evento['contenido']. ' </p>
 								</div>
-								</div>
 								</div>';
 						}
 
-				echo '</div>';
+				$pag = $ultimaPag - 1;
 				if($ultimaPag>0){
-					$pag = $ultimaPag - 1;
-					echo '<a href="evento.php?ultimaPag=<?=$pag?>">Anterior página</a>';
+					echo '<a href="evento.php?ultimaPag=<?='. $pag .'">Anterior página</a>';
 				}
 				?>
 				<a href="evento.php?ultimaPag=<?=$ultimaPag + 1?>">Siguiente página</a>
+			</div>
+		</div>
 			<?php
 				require('includes/sidebar.php');
 				require('includes/pie.php');
 			?>
-		</div>
+
+	</div>
 	</body>
 </html>
