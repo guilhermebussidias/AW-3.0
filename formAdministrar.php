@@ -1,5 +1,5 @@
 <?php
-
+$extension = " ";
 	require_once __DIR__ . "/src/App.php";
 	$logicUsuario = new \aw\logic\Usuario();
 	$logicNoticia = new \aw\logic\Noticia();
@@ -40,6 +40,7 @@
 		if($titulo!== '' && $contenido !== ''){
 			$logicNoticia->updateNoticia($id, $titulo, $contenido);
 		}
+		$extension="#admin-noticia";
 	}
 	
 
@@ -56,6 +57,7 @@
 			$logicServicio->guardarServicio( getID(), $servicio,
 				$telefono,$web, $ubicacion,$contenido);
 		}
+		$extension="#admin-servicio";
 	}
 
 
@@ -64,8 +66,10 @@
 		$titulo = $_REQUEST["titulo-noticia"];
 		$contenido = $_REQUEST["input-contenido-noticia"];
 		$usuario = $_REQUEST["usuario"];
-		if ($titulo !== "" && $contenido !== "")
+		if ($titulo !== "" && $contenido !== ""){
 			$logicNoticia->saveNoticia($usuario, $titulo, $contenido);
+		}
+		$extension="#admin-noticia";
 	}
 
 
@@ -73,8 +77,9 @@
 			$id = $_REQUEST["id"];
 			$logicNoticia->deleteNoticia($id);
 	}
+
 	if(getRole() == "admin"){
-		redirect(getBasePath() . 'administrar.php');
+		redirect(getBasePath() . 'administrar.php'. $extension);
 	}
 	else if (getRole() == "normal"){
 		redirect(getBasePath() . 'noticia.php');	
