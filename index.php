@@ -1,5 +1,7 @@
 <?php
 	require_once __DIR__ . "/src/App.php";
+
+	$numNoticias = 2;
  ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -18,13 +20,13 @@
 				require(getIncludePath() . 'slider.php');
 			?>
 			<div id="contenido">
-				<div class="titulo-contenedor"><h1>Noticias</h1></div>
 				<div id="contenedor-noticias">
+					<div class="titulo-contenedor"><h1>Noticias</h1></div>
 					<?php
 						$noticiasLogic = new \aw\logic\Noticia();
 						//$eventosLogic = new \aw\logic\Evento();
 						//$servicios = new \aw\logic\Servicio();
-						$noticias = $noticiasLogic->buscarNoticias(1, 1);
+						$noticias = $noticiasLogic->buscarNoticias(0, $numNoticias);
 
 						foreach($noticias as $noticia) { // fecha, titulo, contenido, id, nombre_usuario, idUser
 
@@ -37,7 +39,7 @@
 							$noticiaID = $noticia["id"];
 
 							echo '
-								<div id="algo" class="contenido-bloque">
+								<div id="noticia' . $noticiaID . '" class="contenido-bloque">
 									<h3 class="contenido-titulo">' . $titulo . '</h3>
 									<div class="contenido-info">Escrito por ' . $autor  . ' el ' . $fecha . '</div>
 									<div class="contenido-texto">
