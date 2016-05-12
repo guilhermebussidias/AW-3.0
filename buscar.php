@@ -68,7 +68,7 @@
                     <label for="input-titulo-servicio" class="label-busqueda">Ubicación:</label>
                     <input type="text" name="ubicacion-servicio" id="input-titulo-servicio" class="input-busqueda input-busqueda-evento">
                     <label for="input-puntuacion-servicio" class="label-busqueda">Puntuación mínima:</label>
-                    <input readonly type="text" name="puntuacion-servicio" id="input-puntuacion-servicio" class="input-busqueda input-busqueda-evento" value="5">
+                    <input readonly type="text" name="puntuacion-servicio" id="input-puntuacion-servicio" class="input-busqueda input-busqueda-evento" value="1">
                     <div id="slider-puntuacion-servicio"></div>
                <button type="submit" class="boton-enviar-busqueda">Buscar</button>
               </form>

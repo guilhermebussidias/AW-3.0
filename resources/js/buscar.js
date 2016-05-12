@@ -60,8 +60,8 @@ $(document).ready(function () {
   $("#slider-puntuacion-servicio").slider({
     range: "max",
     min: 1,
-    max: 10,
-    value: 5,
+    max: 5,
+    value: 1,
     slide: function(event, ui) {
       $("#input-puntuacion-servicio").val(ui.value);
     }
