@@ -62,7 +62,6 @@ class DAOPublicidad {
       $sql = "INSERT INTO Publicidad (usuario, anuncio, banner) VALUES (:usuario, :anuncio, :banner)";
       $stmt = $this->conn->prepare($sql);
       $stmt->execute(["usuario" => $username, "anuncio" => $anuncio, "banner" => "banner"]);
-      $stmt->execute();
       $id = $this->conn->lastInsertId();
     } catch(PDOException $e) {
       echo "ERROR EN DAOPublicidad: " . $e->getMessage();
@@ -76,7 +75,6 @@ class DAOPublicidad {
         $sql = "UPDATE Publicidad SET anuncio = :anuncio , banner = :banner WHERE id = :id";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(["id" => $id, "usuario" => $usuario, "anuncio" => $anuncio, "banner" => $banner]);
-        $stmt->execute();
       } catch(PDOException $e) {
         echo "ERROR EN DAOPublicidad: " . $e->getMessage();
         return false;
@@ -89,7 +87,6 @@ class DAOPublicidad {
         $sql = "DELETE FROM Publicidad WHERE id = :identificador";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(["identificador" => $id]);
-        $stmt->execute();
       } catch(PDOException $e) {
         echo "ERROR EN DAOPublicidad: " . $e->getMessage();
         return false;
