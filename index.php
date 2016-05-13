@@ -43,6 +43,7 @@
 									<div class="contenido-texto">
 										<p class="contenido-parrafo">' . $contenido . '</p>
 									</div>
+									<a class="contenido-boton" href="verNoticia.php?noticia=' . $noticiaID . '">Ver noticia completa</a>
 							';
 							if (isAdmin() || getID() === $userID) {
 									echo '

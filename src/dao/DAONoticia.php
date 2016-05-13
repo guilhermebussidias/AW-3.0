@@ -2,6 +2,8 @@
 
 namespace aw\dao;
 
+use PDOException;
+
 class DAONoticia {
 
   private $conn;
@@ -9,12 +11,14 @@ class DAONoticia {
   function __construct() {
     $this->conn = \aw\dao\Connection::getInstance()->getconnection();
   }
-  
+
   function getNoticia($id){
    try {
       $sql = "SELECT n.fecha as fecha, n.titulo as titulo,
         n.contenido as contenido, n.id as id
+        , u.usuario as nombre_usuario, u.id as id_usuario
         FROM Noticia n
+        JOIN Usuario u ON n.usuario = u.id
         WHERE n.id=:idNot";
       $stmt = $this->conn->prepare($sql);
       $stmt->execute(["idNot" => $id]);
