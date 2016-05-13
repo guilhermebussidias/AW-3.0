@@ -92,7 +92,7 @@
             </div>
 			</div>
 			<?php
-				require('sidebar.php');
+				require(getIncludePath() . 'sidebar.php');
 				require(getIncludePath() . 'pie.php');
 			?>
 		</div>

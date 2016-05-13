@@ -14,7 +14,7 @@
 				require('includes/cabecera.php');
 				require('includes/slider.php');
 				require('includes/servicios.php');
-				require('sidebar.php');
+				require(getIncludePath() . 'sidebar.php');
 				require('includes/pie.php');
 			?>
 		</div>

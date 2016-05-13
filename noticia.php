@@ -35,7 +35,7 @@ $noticias = $logic->buscarNoticias($ultimaPag * $noticiasPorPagina, $noticiasPor
 				<?php
 
 				foreach($noticias as $noticias_){
-         			echo ' 
+         			echo '
          				<div id="algo" class="contenido-bloque">
 						<h3 class="contenido-titulo">
 						' . $noticias_['titulo'] . '</a></h3>
@@ -45,7 +45,7 @@ $noticias = $logic->buscarNoticias($ultimaPag * $noticiasPorPagina, $noticiasPor
 						echo '<a class="contenido-boton" href="editar-noticia.php?noticia=' . $noticias_['id'] . '">Editar</a>';
 				 	}
 						echo '</div>
-						<div class="contenido-texto">			
+						<div class="contenido-texto">
 						<p> ' . $noticias_['contenido'] . ' </p>
 						</div>
 						</div>
@@ -74,9 +74,9 @@ $noticias = $logic->buscarNoticias($ultimaPag * $noticiasPorPagina, $noticiasPor
 			?>
 			</div>
 			</div>
-			
+
 			<?php
-				require('sidebar.php');
+				require(getIncludePath() . 'sidebar.php');
 				require('includes/pie.php');
 			?>
 		</div>
