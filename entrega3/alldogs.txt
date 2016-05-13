@@ -1,0 +1,57 @@
+Grupo Alldogs.
+Listado de vistas de la aplicación:
+	LISTA DE SCRIPT PARA LAS VISTAS.
+		EN LA CARPETA RAIZ.
+			administrar.php-> El administrador o el resto de usuarios con privilegios tienen acceso a crear nuevos contenidos.
+			formAdminitrar.php-> Recogemos los datos y los procesamos del formulario de adminitrar y editar.
+			buscar.php-> Buscador de la pagina web para cada buscar por campos.
+			formBuscar.php-> Recogemos los datos del buscador para mostrar.
+			conocenos.php-> Página estática donde puedes conocer cosas sobre nosotros.
+			deinteres.php-> Página estática donde tenemos cosas de interés relacionadas con nuestra página.
+			evento.php-> Una de las páginas principales donde mostramos eventos próximos.
+			editar-evento.php-> Administrador o el creador del evento puede modificar cosas de cada evento.
+			editar-noticias.php-> Administrador o el creador de la noticia puede modificar cosas de cada noticia.
+			editar-publicidad-> Administrador o el creador de la publicidad puede modificar cosas de cada anuncio.
+			formLogin.php-> Recogemos los datos del formulario de login para acceder como usuario.
+			formNuevoUsuario.php-> Recogemos los datos del formulario para insertar un nuevo usuario.
+			index.php-> Página pricipal donde mostramos algunos eventos y noticias.
+			noticia.php-> Página donde mostramos las noticias más recientes.
+			nuevoUsuario.php-> Página donde creamos el formulario para crear un nuevo usuario.
+			servicio-especifico.php-> Página donde mostramos un servicio especifico y cada una de las empresas registradas.
+			servicio.php-> Mostramos la opción de elegir el servicio que desean ver.
+		EN LA CARPETA INCLUDES. Cada una de las partes de las páginas que se van a repetir en varias.
+			cabecera.php-> cabecera de nuestra aplicación donde mostramos el login, el logo y menú con cada una de las partes de la aplicación.
+			contenidoConocenos.php-> Contenido de la página estática conocenos.
+			contenidoInteres.php-> Contenido de la página estática interes.
+			head.php-> declaraciones de CSS y JavaScript.
+			pie.php-> pie de la página.
+			sidebar.php-> sidebar donde mostramos anuncios.
+			slider.php-> Slider con fotos.
+	LISTA DE SCRIPT ADICIONALES.
+		config.php-> Dentro de la carpeta config, donde esta toda la configuración de la página web y base de datos.
+		CARPETA SRC.
+			CARPETA DAO. Todos los DAOS necesarios para la conexión con la base de datos.
+				Connection.php-> Parámetros de la conexión, la establecemos mediante PDO.
+				DAOEvento.php-> Acceso a la table eventos.
+				DAONoticia.php-> Acceso a la table noticias.
+				DAOPulbicidad.php-> Acceso a la table publicidad.
+				DAOServicio.php-> Acceso a la table servicio.
+				DAOUsuario.php-> Acceso a la table usuarios.
+			CARPETA LOGIC. Todo lo relacionado con la lógica de negocio.
+				Eventos.php-> Lógica para los eventos.
+				Noticia.php-> Lógica para las noticias.
+				Publicidad.php-> Lógica para la publicidad.
+				servicioEspecifico-> Lógica para los servicios.
+				Usuario.php-> Lógica para los usuarios.
+				Utils.php-> Todo lo repetido en toda la lógica.
+		CARPETA UPLOAD-> Metemos todas las imagenes que nos van a subir los usuarios.
+		CARPETA RESOURCES:
+			CARPETA CSS. Estará todo el CSS de la web.
+			CARPETA IMG. Todas nuestras imágenes.
+			CARPETA JS. Estará todo el JavaScript.
+	ESTRUCTURA DE LA BD.
+		Hay 6 tablas (usuario, servicio, evento, noticia, publicidad, puntua).
+			Todas estas tablas pueden ser consultadas, y también modificadas (insert, update y delete).
+			Cada tabla tiene su propio DAO y son los únicos que acceden, excepto la tabla usuario que mediante join el resto de DAOS 
+			también acceden a ella para saber que usuario es el responsable(relaciones entre tablas).
+			Adjuntamos para mayor compresión el modelo entidad relación.
