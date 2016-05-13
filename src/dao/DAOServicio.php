@@ -2,6 +2,8 @@
 
 namespace aw\dao;
 
+use DAOException;
+
 class DAOServicio {
 
   private $conn;
@@ -39,7 +41,7 @@ class DAOServicio {
     return $res;
   }
 
-  function saveServicio ($usuario,$titulo,$telefono,$url,$ubicacion,$contenido){
+  function saveServicio ($usuario,$titulo,$telefono,$url,$ubicacion,$contenido){//codigo muerto?
     try {
       $sql = "INSERT INTO Servicio (nombre, telefono, url, ubicacion,contenido, usuario)
               VALUES (:titulo, :telefono, :url, :ubicacion, :contenido, :usuario)";
@@ -48,6 +50,29 @@ class DAOServicio {
                      "url" => $url, "ubicacion" => $ubicacion,
                      "contenido" => $contenido, "usuario" => $usuario]);
      $id = $this->conn->lastInsertId();
+    } catch (PDOException $e) {
+      echo "ERROR EN DAOServicio: " . $e->getMessage();
+    }
+    return $id;
+  }
+
+  function saveServicioCompleto($usuario, $nombre, $contenido, $ubicacion,
+  $categoria, $media_puntuacion, $imagen, $telefono, $url) {
+    try {
+      $sql = "INSERT INTO Servicio (usuario, nombre, contenido, ubicacion,
+        categoria, media_puntuacion, imagen, telefono, url)
+        VALUES (:usuario, :nombre, :contenido, :ubicacion, :categoria,
+        :media_puntuacion, :imagen, :telefono, :url)";
+
+      $stm = $this->conn->prepare($sql);
+
+      $params = ['usuario' => $usuario, 'nombre' => $nombre,
+        'contenido' => $contenido, 'ubicacion' => $ubicacion,
+        'categoria' => $categoria, 'media_puntuacion' => $media_puntuacion,
+        'imagen' => $imagen, 'telefono' => $telefono, 'url' => $url];
+
+      $stm->execute($params);
+      $id = $this->conn->lastInsertId();
     } catch (PDOException $e) {
       echo "ERROR EN DAOServicio: " . $e->getMessage();
     }

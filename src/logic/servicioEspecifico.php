@@ -52,8 +52,16 @@ class servicioEspecifico{
     return $servicios;
   }
 
-  function guardarServicio($usuario,$titulo,$telefono,$url,$ubicacion,$contenido){
+  function guardarServicio($usuario,$titulo,$telefono,$url,$ubicacion,$contenido){//codigo muerto?
     $id = $this->daoServicio->saveServicio($usuario,$titulo,$telefono,$url,$ubicacion,$contenido);
+    return $id;
+  }
+
+  function guardarServicioCompleto($usuario, $nombre, $contenido, $ubicacion,
+                  $categoria, $imagen, $telefono, $url) {
+    $media_puntuacion = 0;
+    $id = $this->daoServicio->saveServicioCompleto($usuario, $nombre, $contenido, $ubicacion,
+      $categoria, $media_puntuacion, $imagen, $telefono, $url);
     return $id;
   }
 }

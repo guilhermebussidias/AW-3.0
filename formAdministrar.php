@@ -51,10 +51,18 @@ $extension = " ";
 		$contenido= $_REQUEST["contenido-servicio"];
 
 		if ($servicio !== "" && $telefono !== ""
-		&& $web !== "" && $ubicacion !== "" && $contenido) {
+		&& $web !== "" && $ubicacion !== "" && $contenido !== "") {
 
-			$logicServicio->guardarServicio( getID(), $servicio,
-				$telefono,$web, $ubicacion,$contenido);
+			/*$logicServicio->guardarServicio( getID(), $servicio,
+				$telefono,$web, $ubicacion,$contenido);*/
+
+			$usuario = getID();
+			$nombre = $servicio;
+			$categoria = $_REQUEST["categoria-servicio"];
+			$imagen = \aw\logic\Utils::uploadPic("input-foto-servicio");
+			$url = $web;
+			$logicServicio->guardarServicioCompleto($usuario, $nombre, $contenido, $ubicacion,
+		                  $categoria, $imagen, $telefono, $url);
 		}
 		$extension="#admin-servicio";
 	}
@@ -97,10 +105,10 @@ $extension = " ";
 		}
 	}
 
-	if(getRole() == "admin"){
+	if(getRole() === "admin"){
 		redirect(getBasePath() . 'administrar.php'. $extension);
 	}
-	else if (getRole() == "normal"){
-		redirect(getBasePath() . 'noticia.php');	
+	else if (getRole() === "normal"){
+		redirect(getBasePath() . 'noticia.php');
 	}
 ?>

@@ -72,7 +72,7 @@
               		  <div id="admin-eventos">
               		  </div>
               		  <div id="admin-servicio">
-											<form action="<?= getBasePath() ?>formAdministrar.php" method="get" id="form-servicio">
+											<form action="<?= getBasePath() ?>formAdministrar.php" method="post" id="form-servicio" enctype="multipart/form-data">
 												<label for="">Nombre de empresa: </label>
 												<input type="text" name="input-titulo-servicio"><br>
 												<label for="">Teléfono: </label>
@@ -81,6 +81,7 @@
 												<input type="text" name="input-url-servicio"><br>
 												<label for="">Ubicación: </label>
 												<input type="text" name="input-ubicacion-servicio"><br>
+												<input type="hidden" name="MAX_FILE_SIZE" value="3000000" />
 												<label for="">Foto: </label>
 												<input type="file" name="input-foto-servicio"><br>
 												<label for="">Categoría: </label>
@@ -101,7 +102,8 @@
               		  </div>
               		   <div id="admin-publicidad">
               		   <form action="<?= getBasePath() ?>formAdministrar.php" method="get" id="form-publicidad">
-              		  		<input type="hidden" name="id" id="input-publicidad" class="estilotextarea" value= <?= $id ?>>
+              		  		<input type="hidden" name="id" id="input-publicidad" class="estilotextarea" value="<?= $id ?>">
+												<input type="hidden" name="MAX_FILE_SIZE" value="3000000" />
 						<h3 class="contenido-titulo">Foto:<h3/>
 						<input type="file" name="input-foto-publicidad"><br>
 						<h3 class="contenido-titulo">Anuncio:<h3/>
