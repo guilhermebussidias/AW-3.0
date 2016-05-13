@@ -43,7 +43,7 @@ $extension = " ";
 		$extension="#admin-noticia";
 	}
 
-	elseif ($_REQUEST["boton"] === "crear-servicio") {
+	else if ($_REQUEST["boton"] === "crear-servicio") {
 		$servicio = $_REQUEST["input-titulo-servicio"];
 		$telefono = $_REQUEST["input-telefono-servicio"];
 		$web = $_REQUEST["input-url-servicio"];
@@ -66,7 +66,25 @@ $extension = " ";
 		}
 		$extension="#admin-servicio";
 	}
+	else if($_REQUEST["boton"] === "modificar-servicio"){
+		$nombre = $_REQUEST["nombre"];
+		$id = $_REQUEST["id"];
+		$contenido = $_REQUEST["contenido"];
+		$url = $_REQUEST["url"];
+		$ubicacion = $_REQUEST["ubicacion"];
 
+		if($nombre!== '' && $contenido !== '' && $url!== '' && $ubicacion!== ''){
+			$categoria = $_REQUEST["categoria"];
+			$imagen = \aw\logic\Utils::uploadPic("input-foto-servicio");
+			$logicServicio->updateServicio($id, $nombre, $categoria, $url, $ubicacion, $imagen, $contenido);
+		}		
+		$extension="#admin-servicio";
+	}
+	else if ($_REQUEST["boton"] === "eliminar-servicio"){
+		$id = $_REQUEST["id"];
+		$logicServicio->deleteServicio($id);
+	}
+	###############################################################################################
 	else if ($_REQUEST["boton"] === "guardar-noticia"){
 		$titulo = $_REQUEST["titulo-noticia"];
 		$contenido = $_REQUEST["input-contenido-noticia"];

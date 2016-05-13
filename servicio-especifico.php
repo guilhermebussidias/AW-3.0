@@ -1,8 +1,8 @@
 <?php
   require_once __DIR__ . "/src/App.php";
-  $id = getId();
-  $categoria = $_GET["tipo"];
 
+  $categoria = $_GET["tipo"];
+  $id = getId();
   $logic = new \aw\logic\servicioEspecifico();
 
   $serviciosPorPagina = 5;
@@ -48,6 +48,7 @@
                               echo '<a  data-value="1" title="Votar con 1 estrellas"></a>';
                             }
                     echo'</td>';
+                          if($rol=='admin' or $id==$servicio['usuario']){
                             echo'<td rowspan="2"><a class="contenido-boton" href="editar-servicio.php?servicio=' . $servicio['id'] .'">Editar</a></td>';
                           }
                         echo'</tr>
