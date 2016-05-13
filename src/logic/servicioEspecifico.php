@@ -15,7 +15,7 @@ class servicioEspecifico{
   }
 
   function buscarServicio($texto){
-    $servicios = $this->daoServicios->searchServicio($texto);
+    $servicios = $this->daoServicio->searchServicio($texto);
     if (is_null($servicios)){
       return null;
     }
@@ -63,6 +63,15 @@ class servicioEspecifico{
     $id = $this->daoServicio->saveServicioCompleto($usuario, $nombre, $contenido, $ubicacion,
       $categoria, $media_puntuacion, $imagen, $telefono, $url);
     return $id;
+  }
+
+  function updateServicio($id, $nombre, $categoria, $url, $ubicacion, $imagen, $contenido){
+    return $this->daoServicio->updateServicio($id, $nombre, $categoria, $url, $ubicacion, $imagen, $contenido);
+
+  }
+
+  function deleteServicio($id){
+    return $this->daoServicio->deleteServicio($id);
   }
 }
 

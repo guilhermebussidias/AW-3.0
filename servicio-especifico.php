@@ -1,6 +1,6 @@
 <?php
   require_once __DIR__ . "/src/App.php";
-
+  $id = getId();
   $categoria = $_GET["tipo"];
 
   $logic = new \aw\logic\servicioEspecifico();
@@ -22,6 +22,7 @@
     <title>All Dogs</title>
     <?php require(getIncludePath() . 'head.php'); ?>
     <link rel="stylesheet"  href="<?=getCSSPath()?>contenido.css" type="text/css" />
+    <script src="<?= getJSPath() ?>contenido.js"></script>
   </head>
   <body>
     <div id="contenedor">
@@ -36,8 +37,9 @@
               if(!count($servicios) == 0){
                 echo '<table>';
                   foreach ($servicios as $servicio){
+                    $foto = UPLOADED_URL . $servicio['imagen'];
                     echo'<tr>
-                          <td rowspan="4"><img src="' . $servicio['nombre'] .'" class="imagenServicio" alt="imagen empresa"></td>
+                          <td rowspan="4"><img src="' . $foto .'" class="imagenServicio" alt="imagen empresa"></td>
                           <td class="empresaServicio">' . $servicio['nombre'] . '</td>
                           <td rowspan="2">
                           <div class="estrellasMedia">';
@@ -45,8 +47,10 @@
                             for($i = 0; $i < $puntuacion; $i++){
                               echo '<a  data-value="1" title="Votar con 1 estrellas"></a>';
                             }
-                    echo'</td>
-                        </tr>
+                    echo'</td>';
+                            echo'<td rowspan="2"><a class="contenido-boton" href="editar-servicio.php?servicio=' . $servicio['id'] .'">Editar</a></td>';
+                          }
+                        echo'</tr>
                         <tr>
                           <td class="direccionServicio">' . $servicio['ubicacion'] . '</td>
                         </tr>
@@ -67,7 +71,7 @@
                         </tr>
                         <tr>
                           <td class="descripcionServicio">' . $servicio['contenido'] . '</td>
-                          <td> <a href="'. $servicio['url'] . '" target= "_blank">'  . $servicio['url'] . '</a></td>
+                          <td> <a class="urlServicio" href="'. $servicio['url'] . '" target= "_blank">'  . $servicio['url'] . '</a></td>
                         </tr>';
                    }
                 echo'</table>';
