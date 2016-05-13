@@ -105,7 +105,7 @@
 						<h3 class="contenido-titulo">Foto:<h3/>
 						<input type="file" name="input-foto-publicidad"><br>
 						<h3 class="contenido-titulo">Anuncio:<h3/>
-                   		 <textarea name="input-contenido-evento" class="estilotextarea" rows="10" cols="80"></textarea><br><br>
+                   		 <textarea name="input-contenido-anuncio" class="estilotextarea" rows="10" cols="80"></textarea><br><br>
               		   <button type="submit" class="myButton" id="verde" name="boton" value="crear-publicidad">Crear</button>
               		  		<button type="reset" class="myButton" id="naranja" name="boton" value="descartar-publicidad">Descartar Cambios</button>
               		   </form>

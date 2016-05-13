@@ -4,6 +4,7 @@ $extension = " ";
 	$logicUsuario = new \aw\logic\Usuario();
 	$logicNoticia = new \aw\logic\Noticia();
 	$logicServicio = new \aw\logic\servicioEspecifico();
+	$logicPublicidad = new \aw\logic\Publicidad();
 
 	if ($_REQUEST["boton"] === "crear-usuario"){
 		$rol = $_REQUEST["usuario-rol"];
@@ -71,6 +72,29 @@ $extension = " ";
 	else if ($_REQUEST["boton"] === "eliminar-noticia"){
 			$id = $_REQUEST["id"];
 			$logicNoticia->deleteNoticia($id);
+	}
+	###############################################################################################
+ 	else if ($_REQUEST["boton"] === "eliminar-publicidad"){
+     	$id = $_REQUEST["id"];
+     	$logicPublicidad->deletePublicidad($id);
+ 	}
+
+	else if ($_REQUEST["boton"] === "modificar-publicidad"){
+     	$banner = $_REQUEST["input-foto-publicidad"];
+     	$anuncio = $_REQUEST["input-contenido-anuncio"];
+     	$id = $_REQUEST["id"];
+    	if($banner!== '' && $anuncio !== ''){
+     		$logicPublicidad->updatePublicidad($id, $anuncio, $banner);
+    	}
+  }
+
+	else if ($_REQUEST["boton"] === "crear-publicidad"){
+		$anuncio = $_REQUEST["input-contenido-anuncio"];
+		$banner = $_REQUEST["input-foto-publicidad"];
+		$usuario = $_REQUEST["id"];
+		if ($anuncio !== "" && $banner !== ""){
+			$logicPublicidad->savePublicidad($usuario, $anuncio, $banner);
+		}
 	}
 
 	if(getRole() == "admin"){

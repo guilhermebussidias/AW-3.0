@@ -25,11 +25,12 @@
 			<div id="contenedor-publicidad">
 			<div id="algo" class="contenido-bloque">
 			<form action="<?= getBasePath() ?>formAdministrar.php" method="post" id="edit-publicidad" >
-					<input type="hidden" name="id" id="input-publicidad" class="estilotextarea" value= "<?= $publicidad['id'] ?>">
+					<input type="hidden" name="id" id="input-publicidad" class="estilotextarea" value= "<?= $idPublicidad ?>">
+					
 					<h3 class="contenido-titulo">Foto:<h3/>
 					<input type="file" name="input-foto-publicidad"><br>
 					<h3 class="contenido-titulo">Anuncio:<h3/>
-                    <textarea name="input-contenido-evento" class="estilotextarea" rows="10" cols="80"> <?php echo $publicidad['anuncio'] ?> </textarea><br><br>
+                    <textarea name="input-contenido-anuncio" class="estilotextarea" rows="10" cols="80"> <?php echo $publicidad['anuncio'] ?> </textarea><br><br>
                     <button type="submit" class="myButton" id="verde" name="boton" value="modificar-publicidad">Guardar</button>
                     <button type="submit" class="myButton" id="naranja" name="boton" value="descartar-publicidad">Descartar Cambios</button>
               		 <button type="submit" class="myButton" id="rojo" name="boton" value="eliminar-publicidad">Eliminar Publicidad</button>

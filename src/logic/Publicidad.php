@@ -11,15 +11,28 @@ class Publicidad {
   }
 
   function buscarPublicidad() {
-    $publicidad = $this->daoPublicidad->getListaPublicidad();
-    return $publicidad;
+    return $this->daoPublicidad->getListaPublicidad();
   }
 
-  function buscarpublicidadById($idNoticia) {
-    $publicidad = $this->daoPublicidad->getPublicidad($idNoticia);
-    return $publicidad;
+  function buscarpublicidadById($idPublicidad) {
+    return $this->daoPublicidad->getPublicidad($idPublicidad);
   }
 
+  function deletePublicidad($idPublicidad) {
+    return $this->daoPublicidad->deletePublicidad($idPublicidad);
+  }
+
+  function updatePublicidad($id, $anuncio, $banner) {
+    return $this->daoPublicidad->updatePublicidad($id, $anuncio, $banner);
+  }
+
+  function savePublicidad($usuario, $anuncio, $banner){
+    return $this->daoPublicidad->savePublicidad($usuario, $anuncio, $banner);
+  }
 }
 
 ?>
+
+
+
+ 
