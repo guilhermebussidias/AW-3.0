@@ -13,7 +13,7 @@
 		<meta charset="UTF-8">
 		<title>All Dogs</title>
 		<?php require(getIncludePath() . 'head.php'); ?>
-		<link rel="stylesheet"  href="<?=getCSSPath()?>contenido.css" type="text/css"/> 
+		<link rel="stylesheet"  href="<?=getCSSPath()?>contenido.css" type="text/css"/>
 	    <link rel="stylesheet"  href="<?= getCSSPath() ?>buscar.css" type="text/css" />
 	    <link rel="stylesheet"  href="<?= getCSSPath() ?>botones.css" type="text/css" />
 	</head>
@@ -24,9 +24,9 @@
 			?>
 			<div id="contenedor-publicidad">
 			<div id="algo" class="contenido-bloque">
-			<form action="<?= getBasePath() ?>formAdministrar.php" method="post" id="edit-publicidad" >
+			<form action="<?= getBasePath() ?>formAdministrar.php" method="post" id="edit-publicidad" enctype="multipart/form-data">
 					<input type="hidden" name="id" id="input-publicidad" class="estilotextarea" value= "<?= $idPublicidad ?>">
-					
+					<input type="hidden" name="MAX_FILE_SIZE" value="3000000">
 					<h3 class="contenido-titulo">Foto:<h3/>
 					<input type="file" name="input-foto-publicidad"><br>
 					<h3 class="contenido-titulo">Anuncio:<h3/>
@@ -38,7 +38,7 @@
               		</div>
 					</div>
 
-			<?php				
+			<?php
 				require('includes/pie.php');
 			?>
 		</div>

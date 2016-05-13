@@ -88,7 +88,8 @@ $extension = " ";
  	}
 
 	else if ($_REQUEST["boton"] === "modificar-publicidad"){
-     	$banner = $_REQUEST["input-foto-publicidad"];
+     	//$banner = $_REQUEST["input-foto-publicidad"];
+			$banner = \aw\logic\Utils::uploadPic("input-foto-publicidad");
      	$anuncio = $_REQUEST["input-contenido-anuncio"];
      	$id = $_REQUEST["id"];
     	if($banner!== '' && $anuncio !== ''){
@@ -98,7 +99,8 @@ $extension = " ";
 
 	else if ($_REQUEST["boton"] === "crear-publicidad"){
 		$anuncio = $_REQUEST["input-contenido-anuncio"];
-		$banner = $_REQUEST["input-foto-publicidad"];
+		//$banner = $_REQUEST["input-foto-publicidad"];
+		$banner = \aw\logic\Utils::uploadPic("input-foto-publicidad");
 		$usuario = $_REQUEST["id"];
 		if ($anuncio !== "" && $banner !== ""){
 			$logicPublicidad->savePublicidad($usuario, $anuncio, $banner);
