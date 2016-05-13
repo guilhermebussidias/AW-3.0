@@ -25,11 +25,15 @@ class DAOPublicidad {
       return null;
     }
   }
-
+  
   function getListaPublicidad(){
     try {
-      $sql = "SELECT anuncio, banner FROM Publicidad ORDER BY RAND() LIMIT 0, 2";
+      $sql = "SELECT p.anuncio, p.banner, u.id as idUser, p.id as id 
+      FROM Publicidad p 
+      JOIN Usuario u on p.usuario = u.id
+      ORDER BY RAND() LIMIT 0, 2";
       $stmt = $this->conn->prepare($sql);
+      $stmt->execute();
       $res = $stmt->fetchAll();
     } catch(PDOException $e) {
       echo "ERROR EN DAOPublicidad: " . $e->getMessage();

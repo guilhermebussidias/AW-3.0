@@ -4,7 +4,7 @@
 	$name = getName();
 	$id = getID();
 	$logicUsuario = new \aw\logic\Usuario();
-  $logicNoticia = new  \aw\logic\Noticia();
+ 	$logicNoticia = new  \aw\logic\Noticia();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -32,6 +32,7 @@
                 		<li><a href="#admin-noticia">Noticias</a></li>
                 		<li><a href="#admin-eventos">Eventos</a></li>
                 		<li><a href="#admin-servicio">Servicio</a></li>
+                		<li><a href="#admin-publicidad">Publicidad</a></li>
               		  </ul>
               		  <div id="admin-usuario">
               		  	<form action="<?= getBasePath() ?>formAdministrar.php" method="post" id="form-usuario">
@@ -96,8 +97,19 @@
 												<br><br>
               		  		<button type="submit" class="myButton" id="verde" name="boton" value="crear-servicio">Crear</button>
               		  		<button type="reset" class="myButton" id="naranja" name="boton" value="descartar-servicio">Descartar Cambios</button>
-											</form>
+							</form>
               		  </div>
+              		   <div id="admin-publicidad">
+              		   <form action="<?= getBasePath() ?>formAdministrar.php" method="get" id="form-publicidad">
+              		  		<input type="hidden" name="id" id="input-publicidad" class="estilotextarea" value= <?= $id ?>>
+						<h3 class="contenido-titulo">Foto:<h3/>
+						<input type="file" name="input-foto-publicidad"><br>
+						<h3 class="contenido-titulo">Anuncio:<h3/>
+                   		 <textarea name="input-contenido-evento" class="estilotextarea" rows="10" cols="80"></textarea><br><br>
+              		   <button type="submit" class="myButton" id="verde" name="boton" value="crear-publicidad">Crear</button>
+              		  		<button type="reset" class="myButton" id="naranja" name="boton" value="descartar-publicidad">Descartar Cambios</button>
+              		   </form>
+              		   </div>
               		</div>
 				</div>
 			</div>

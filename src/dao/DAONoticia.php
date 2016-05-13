@@ -9,23 +9,7 @@ class DAONoticia {
   function __construct() {
     $this->conn = \aw\dao\Connection::getInstance()->getconnection();
   }
-/*
-  function getNoticia($titulo) {
-    try {
-      $sql = "SELECT * FROM Noticia WHERE titulo = :tituloNoticia";
-      $stmt = $this->conn->prepare($sql);
-      $stmt->execute(["tituloNoticia" => $titulo]);
-      $res = $stmt->fetchAll();
-    } catch(PDOException $e) {
-  		echo "ERROR EN DAONoticia: " . $e->getMessage();
-  	}
-    if (!empty($res)) {
-      return $res[0];
-    } else {
-      return null;
-    }
-  }
-*/
+  
   function getNoticia($id){
    try {
       $sql = "SELECT n.fecha as fecha, n.titulo as titulo,

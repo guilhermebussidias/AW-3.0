@@ -79,7 +79,7 @@
 			</div>
 
 			<?php
-				require('includes/sidebar.php');
+				require('sidebar.php');
 				require('includes/pie.php');
 			?>
 		</div>

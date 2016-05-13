@@ -3,7 +3,6 @@
 	$rol = getRole();
 	//$name = getName();
 	$id = getId();
-	require_once __DIR__ . "/src/App.php";
 
 	$logic = new \aw\logic\Noticia();
 
@@ -77,7 +76,7 @@ $noticias = $logic->buscarNoticias($ultimaPag * $noticiasPorPagina, $noticiasPor
 			</div>
 			
 			<?php
-				require('includes/sidebar.php');
+				require('sidebar.php');
 				require('includes/pie.php');
 			?>
 		</div>

@@ -13,7 +13,7 @@
 			<?php
 				require('includes/cabecera.php');
 				require('includes/contenidoConocenos.php');
-				require('includes/sidebar.php');
+				require('sidebar.php');
 				require('includes/pie.php');
 			?>
 		</div>

@@ -1,6 +1,5 @@
 <?php
 	require_once __DIR__ . "/src/App.php";
-	require_once __DIR__ . "/src/App.php";
 
 	$logic = new \aw\logic\Evento();
 
@@ -43,7 +42,7 @@
               		 $logicEvento->saveEvento($usuario, $titulo, $contenido);
 				}
 
-				require('includes/sidebar.php');
+				require('sidebar.php');
 				require('includes/pie.php');
 			?>
 		</div>
