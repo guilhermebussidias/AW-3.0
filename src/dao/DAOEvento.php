@@ -29,7 +29,8 @@ class DAOEvento {
   function getListaEventos($sigElem, $elementos) {
     try {
       $sql = "SELECT e.fecha as fecha, e.titulo as titulo,
-      e.contenido as contenido, u.usuario as nombre_usuario, u.id as idUser, e.id as id
+      e.contenido as contenido, u.usuario as nombre_usuario, u.id as idUser, e.id as id,
+      e.ubicacion as ubicacion, e.foto as foto, e.usuario as usuario
       FROM Evento e
       JOIN Usuario u on e.usuario = u.id
       ORDER BY fecha ASC LIMIT " . $sigElem . "," . $elementos;
