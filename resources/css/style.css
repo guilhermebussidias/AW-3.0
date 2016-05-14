@@ -337,7 +337,19 @@ float: left;
 }
 
 /*SERVICIOS*/
+.tituloServicio{
+  padding-top: 20px;
+  color: #A68337;
+  font-size: 25px;
+  font-style: verdana;
+  padding-left: 15px;
+}
+.titulos {
+  height: 140px;
+  width: 210px;
+}
 
+/*
 .titulos {
   height: 140px;
   width: 210px;
@@ -379,8 +391,9 @@ float: left;
   padding-bottom: 35px;
 
 }
-
+*/
 /*puntuacion*/
+/*
 .estrellas{
   width: 140px;
 }
@@ -400,21 +413,7 @@ float: left;
 .estrellas > a:hover ~ a {
 background-image: url('../img/patapuntuacionVacia.png');
 }
-
-/*prueba*/
-
-.estrellasMedia{
-width: 140px;
-}
-.estrellasMedia a{
-  background-image: url('../img/patapuntuacionRellena.png');
-  background-size: 25px;
-  display: inline-block;
-  height: 24px;
-  width: 24px;
-}
-
-
+*/
 .comentarios {
    padding: 10px 30px;
  }

@@ -31,10 +31,112 @@
   font-size: 0.8em;
 }
 
-/*Tabla servicios*/
+/*Servicios*/
+.tituloServicio{
+  padding-top: 20px;
+  color: #A68337;
+  font-size: 25px;
+  font-style: verdana;
+  padding-left: 22px;
+}
+.contenido-servicios{
+  width: 650px;
+  height: 250px;
+  float: left;
+  border: 1px solid darkgray;
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  box-shadow: 0 5px 10px #666;
+  border-radius: 5px;
+  background: #fcfcfc;
+}
+.servicio-titulo{
+  padding-top: 10px;
+  padding-left: 35px;
+  float: left;
+  width: 300px;
+  color: darkorange;
+  font-size: 25px;
+  margin: 5px 0;
+  text-shadow: rgba(255,255,255,0.1) -1px -1px 1px,rgba(0,0,0,0.5) 1px 1px 1px;
+}
+.imagen-puntuacion{
+  width: 170px;
+  height: 250px;
+  float: left;
+}
+.servicio-imagen{
+  padding-top: 20px;
+  padding-left: 15px;
+  width: 150px;
+  height: 150px;
+}
+.servicio-ubicacion{
+  font-family: Helvetica;
+  padding-left: 35px;
+  padding-bottom: 3px;
+  height: 20px;
+  width: 300px;
+  font-size: 17px;
+  font-style: bold;
+  color: #A49E90;
+  float: left;
+}
+.servicio-telefono{
+  float: left;
+  padding-left: 35px;
+  width: 300px;
+  max-height: 20px;
+  font-size: 15px;
+  font-family: Helvetica;
+  font-size: 14px;
+  font-weight: bold;
+  color: #F2AF1E;
+  padding-bottom: 5px;
+}
+.servicio-contenido{
+  font-style: italic;
+  color: #A49E80;
+  font-size: 14px;
+  width: 300px;
+  height: 130px;
+  padding-left: 35px;
+  float: left;
+}
+.servicio-url{
+  font-size: 15px;
+  width: 300px;
+  padding-left: 35px;
+  padding-bottom: 10px;
+  float: left;
+}
+.servicio-puntuacion{
+  width: 100px;
+  max-height: 20px;
+  font-size: 15px;
+  font-family: Helvetica;
+  font-size: 14px;
+  font-weight: bold;
+  color: #F2AF1E;
+  padding-bottom: 5px;
+}
+.estrellasMedia{
+  width: 140px;
+  padding-left: 28px;
+}
+.estrellasMedia a{
+  background-image: url('../img/patapuntuacionRellena.png');
+  background-size: 25px;
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+}
+.puntuacion-usuario{
+  padding-left: 30px;
+}
 
-/*Tabla servicios*/
-
+/*
 
 table{
   width: 650px;
@@ -54,7 +156,7 @@ td{
   padding-left: 5px;
   max-height: 150px;
 }
-
+*/
 .contenido-boton {
   float: right;
 }
@@ -79,7 +181,9 @@ td{
 
 #contenedor-servicios{
   float:left;
-  width: 70%;
+  padding-bottom: 40px;
+  max-height: 1500px;
+  max-width: 700px;
 }
 
 .input-textarea {

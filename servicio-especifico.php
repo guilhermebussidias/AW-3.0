@@ -35,6 +35,51 @@
            <?php
             echo'<h3 class="tituloServicio">'. $nombreCategoria . '</h3>';
               if(!count($servicios) == 0){
+                foreach ($servicios as $servicio) {
+                $foto = UPLOADED_URL . $servicio['imagen'];  
+                echo'<div class="contenido-servicios">
+                        <div class="imagen-puntuacion">
+                          <img class="servicio-imagen" src="' . $foto .'" alt="imagen empresa">
+                           <div class="estrellasMedia">';
+                            $puntuacion = $servicio['media_puntuacion'];
+                            for($i = 0; $i < $puntuacion; $i++){
+                              echo '<a  data-value="1" title="Votar con 1 estrellas"></a>';
+                            }
+                            echo'</div>';
+                            if(!is_null(getRole())) {
+                            echo '<label  class="puntuacion-usuario" for="input-categoria-servicio">Puntuación:</label>
+                                  <select class="puntuacion-usuario" name="categoria-servicio" id="input-categoria-servicio">
+                                    <option value="1" selected="selected">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                  </select>';
+                            }
+                       echo'</div>
+                        <h3 class="servicio-titulo">' .  $servicio['nombre'] . '</h3>
+                       <div class="servicio-ubicacion">
+                        <p>'. $servicio['ubicacion'] . '</p>
+                       </div>
+                       <div class="servicio-telefono">
+                        <p>'. $servicio['telefono'].'</p>
+                       </div>
+                       <div class="servicio-url">
+                        <a href="'. $servicio['url'] . '" target= "_blank">'.$servicio['url'].'
+                        </a>
+                        </div>
+                       <div class="servicio-contenido">
+                        <p>'.$servicio['contenido'].'
+                        </p>
+                        </div>';
+                      if($rol=='admin' or $id==$servicio['usuario']){
+                        echo'<a class="contenido-boton" href="editar-servicio.php?servicio=' . $servicio['id'] .'">Editar</a>';
+                      }
+               echo '</div>';
+                }
+
+
+                /*
                 echo '<table>';
                   foreach ($servicios as $servicio){
                     $foto = UPLOADED_URL . $servicio['imagen'];
@@ -75,18 +120,18 @@
                           <td> <a class="urlServicio" href="'. $servicio['url'] . '" target= "_blank">'  . $servicio['url'] . '</a></td>
                         </tr>';
                    }
-                echo'</table>';
+                echo'</table>';*/
               }
               $prev=$ultimaPag - 1;
               if ($ultimaPag!=0) {
-                echo '<a href="servicio-especifico.php?tipo=' . $categoria . '&ultimaPag='.$prev.'">Página anterior</a>';
+                echo '<a class="contenido-boton" href="servicio-especifico.php?tipo=' . $categoria . '&ultimaPag='.$prev.'">Página anterior</a>';
               }
               $next=$ultimaPag + 1;
 
               $serviciosPag = $logic->mostrarServicios($categoria, $next * $serviciosPorPagina, $serviciosPorPagina);
 
               if (!$serviciosPag==null) {
-                echo '<a href="servicio-especifico.php?tipo=' . $categoria .'&ultimaPag=' . $next .'">Página siguiente</a>';
+                echo '<a class="contenido-boton" href="servicio-especifico.php?tipo=' . $categoria .'&ultimaPag=' . $next .'">Página siguiente</a>';
                      //   echo'<form method="get" action="servicio-especifico.php?tipo=' . $categoria .'&ultimaPag=' . $next .'"><button type="submit">Página siguiente</button></form>';
 
               }
