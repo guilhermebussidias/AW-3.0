@@ -24,4 +24,8 @@ define("BASE_NAMESPACE", "aw\\");
 
 define("UPLOADED_IMG_WIDTH", 300);
 
+/******************************************************************************/
+
+define("CSRF_TOKEN_KEY", "CSRFToken");
+
 ?>

@@ -121,4 +121,51 @@ function redirect($url, $statusCode = 302) {
    die();
 }
 
+/******************************************************************************/
+
+function randHex($bytes = 32) {
+  return bin2hex(openssl_random_pseudo_bytes($bytes));
+}
+
+/******************************************************************************/
+
+function compare_constant($a, $b) { // Comparación en tiempo constante
+  $lena = strlen($a);
+  $lenb = strlen($b);
+  $eq = true;
+  for ($i = 0; $i < min($lena, $lenb); $i++) {
+    $eq &= ($a[$i] === $b[$i]);
+  }
+  return ($lena === $lenb) && $eq;
+}
+
+function echoCSRFField($key = CSRF_TOKEN_KEY) {
+  if (!isset($_SESSION[$key])) {
+    $_SESSION[$key] = randHex();
+  }
+  echo "
+    <input type=\"hidden\" name=\"{$key}\" value=\"{$_SESSION[$key]}\">
+  ";
+}
+
+function checkCSRFField($key = CSRF_TOKEN_KEY) {
+  return compare_constant($_SESSION[$key], $_REQUEST[$key]);
+}
+
+/******************************************************************************/
+
+function esc($s) {
+  return strip_tags(trim($s));
+}
+
+function escURL($s) {
+  $url = trim($s);
+  $ok = ((strpos($url, "http://") === 0 || strpos($url, "https://") === 0) &&
+    filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED | FILTER_FLAG_HOST_REQUIRED) !== false);
+  if ($ok)
+    return $url;
+  else
+    return "";
+}
+
 ?>
