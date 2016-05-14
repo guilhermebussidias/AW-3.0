@@ -26,14 +26,15 @@ class DAOServicio {
       return $res;
   }
 
-  function getListaServiciosBuscador ($contenido,$categoria,$ubicacion,$puntuacion) {
+  function getListaServiciosBuscador ($nombre, $contenido,$categoria,$ubicacion,$puntuacion) {
     try {
       $sql = "SELECT * FROM Servicio WHERE contenido LIKE :contenido
               AND categoria = :categoria
+              AND nombre LIKE :nombre 
               AND ubicacion LIKE :ubicacion
-              AND media_puntuacion = :puntuacion";
+              AND media_puntuacion >= :puntuacion";
       $stm = $this->conn->prepare($sql);
-      $stm->execute(["contenido" => $contenido, "categoria" => $categoria, "ubicacion" => $ubicacion, "puntuacion" => $puntuacion]);
+      $stm->execute(["contenido" => $contenido, "nombre" => $nombre, "categoria" => $categoria, "ubicacion" => $ubicacion, "puntuacion" => $puntuacion]);
       $res = $stm->fetchAll();
     } catch (PDOException $e) {
       echo "ERROR en DAOServicio: " . $e->getMessage();
@@ -111,17 +112,19 @@ class DAOServicio {
     return true;
   }
 
-  function updateServicio($id, $nombre, $categoria, $url, $ubicacion, $imagen, $contenido){
+  function updateServicio($id, $nombre, $categoria, $url, $ubicacion, $imagen, $contenido, $telefono){
       try {
-        $sql = "UPDATE Servicio SET nombre =:nombre,
+        $sql = "UPDATE Servicio SET nombre =:nombre, telefono =:telefono,
                 categoria =:categoria, url =:url, ubicacion =:ubicacion, 
-                imagen=:imagen
+                contenido =:contenido, imagen=:imagen
                 WHERE id =:id";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(["id" => $id, "nombre" => $nombre, 
                         "categoria" => $categoria,          
                         "url" => $url,
+                        "telefono" => $telefono,
                         "imagen" => $imagen,
+                        "contenido" => $contenido,
                         "ubicacion" => $ubicacion]);
       } catch(PDOException $e) {
         echo "ERROR EN DAOServicio: " . $e->getMessage();

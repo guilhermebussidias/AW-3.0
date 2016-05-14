@@ -47,8 +47,8 @@ class servicioEspecifico{
   return $nombreCategoria;
   }
 
-  function ListaServiciosBuscador($contenido,$categoria,$ubicacion,$puntuacion) {
-    $servicios =  $this->daoServicio->getListaServiciosBuscador($contenido,$categoria,$ubicacion,$puntuacion);
+  function ListaServiciosBuscador($nombre, $contenido,$categoria,$ubicacion,$puntuacion) {
+    $servicios =  $this->daoServicio->getListaServiciosBuscador($nombre, $contenido,$categoria,$ubicacion,$puntuacion);
     return $servicios;
   }
 
@@ -65,8 +65,8 @@ class servicioEspecifico{
     return $id;
   }
 
-  function updateServicio($id, $nombre, $categoria, $url, $ubicacion, $imagen, $contenido){
-    return $this->daoServicio->updateServicio($id, $nombre, $categoria, $url, $ubicacion, $imagen, $contenido);
+  function updateServicio($id, $nombre, $categoria, $url, $ubicacion, $imagen, $contenido, $telefono){
+    return $this->daoServicio->updateServicio($id, $nombre, $categoria, $url, $ubicacion, $imagen, $contenido, $telefono);
 
   }
 
