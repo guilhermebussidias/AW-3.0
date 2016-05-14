@@ -53,7 +53,9 @@
                 </div>
 
              <div id="busca-servicios" class="fragmento-busqueda">
-              <form action="<?= getBasePath() ?>formBuscar.php" method="get"  id="form-busqueda-evento">
+              <form action="<?= getBasePath() ?>formBuscar.php" method="get"  id="form-busqueda-servicio">
+                    <label for="input-nombre-servicio" class="label-busqueda">Nombre empresa:</label>
+                    <input type="text" name="nombre-servicio" id="input-nombre-servicio" class="input-busqueda input-busqueda-evento">
                     <label for="input-contenido-servicio" class="label-busqueda">Contenido:</label>
                     <input type="text" name="contenido-servicio" id="input-contenido-servicio" class="input-busqueda input-busqueda-evento">
                     <label for="input-categoria-servicio" class="label-busqueda">Categoría:</label>

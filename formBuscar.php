@@ -63,6 +63,7 @@
 	if (isset($_REQUEST["contenido-servicio"])){
 
 		##################### Rellenar con tus parametros
+		$nombre = $_REQUEST["nombre-servicio"];
 		$contenido = $_REQUEST["contenido-servicio"];
 		$categoria = $_REQUEST["categoria-servicio"];
 		$ubicacion = $_REQUEST["ubicacion-servicio"];
@@ -70,6 +71,11 @@
 		#####################
 
 		//Adaptación para el LIKE de la consulta
+		if($nombre == ""){
+			$nombre = '%';
+		}else{
+			$nombre = "%" . $nombre . "%";
+		}
 		if ($contenido == "") {
 			$contenido = '%';
 		}else {
@@ -83,7 +89,7 @@
 
 		$servicio = true;
 		$logic = new \aw\logic\servicioEspecifico();
-		$servicios = $logic->ListaServiciosBuscador($contenido,$categoria,$ubicacion,$puntuacion);
+		$servicios = $logic->ListaServiciosBuscador($nombre, $contenido,$categoria,$ubicacion,$puntuacion);
 	}
 
  ?>
@@ -139,49 +145,53 @@
     				}
     				###################
     				#############SERVICIO
-   				if ($servicio){ #hacer un foreach para devolver los 
-    					$nombreCategoria = $logic->nameCategory($categoria);
-						echo '<h3 class="tituloServicio">' . $nombreCategoria . '</h3>';
+   				if ($servicio){ #hacer un foreach para devolver los
+   					$nombreCategoria = $logic->nameCategory($categoria);
+   					$id = getId();
+			      echo'<h3 class="tituloServicio">'. $nombreCategoria . '</h3>';
+	                foreach ($servicios as $servicio_) {
+	                $foto = UPLOADED_URL . $servicio_['imagen'];  
+	                echo'<div class="contenido-servicios">
+	                        <div class="imagen-puntuacion">
+	                          <img class="servicio-imagen" src="' . $foto .'" alt="imagen empresa">
+	                           <div class="estrellasMedia">';
+	                            $puntuacion = $servicio_['media_puntuacion'];
+	                            for($i = 0; $i < $puntuacion; $i++){
+	                              echo '<a  data-value="1" title="Votar con 1 estrellas"></a>';
+	                            }
+	                            echo'</div>';
+	                            if(!is_null(getRole())) {
+	                            echo '<label  class="puntuacion-usuario" for="input-categoria-servicio">Puntuación:</label>
+	                                  <select class="puntuacion-usuario" name="categoria-servicio">
+	                                    <option value="1" selected="selected">1</option>
+	                                    <option value="2">2</option>
+	                                    <option value="3">3</option>
+	                                    <option value="4">4</option>
+	                                    <option value="5">5</option>
+	                                  </select>';
+	                            }
+	                       echo'</div>
+	                        <h3 class="servicio-titulo">' .  $servicio_['nombre'] . '</h3>
+	                       <div class="servicio-ubicacion">
+	                        <p>'. $servicio_['ubicacion'] . '</p>
+	                       </div>
+	                       <div class="servicio-telefono">
+	                        <p>'. $servicio_['telefono'].'</p>
+	                       </div>
+	                       <div class="servicio-url">
+	                        <a href="'. $servicio_['url'] . '" target= "_blank">'.$servicio_['url'].'
+	                        </a>
+	                        </div>
+	                       <div class="servicio-contenido">
+	                        <p>'.$servicio_['contenido'].'
+	                        </p>
+	                        </div>';
+	                      if($rol=='admin' or $id==$servicio_['usuario']){
+	                        echo'<a class="contenido-boton" href="editar-servicio.php?servicio=' . $servicio_['id'] .'">Editar</a>';
+	                      }
+	               echo '</div>';
+	                }
 
-						if(!(count($servicios) == 0)){
-			            echo '<table>';
-			                foreach ($servicios as $servicio_){
-			                  	echo '<tr> 
-		                          <td rowspan="4"><img src="' . $servicio_['nombre'] .'" class="imagenServicio" alt="imagen empresa"></td>
-		                          <td class="empresaServicio">' . $servicio_['nombre'] . '</td>
-		                          <td rowspan="2">
-		                              <div class="estrellasMedia">';
-		                              $puntuacion = $servicio_['media_puntuacion'];
-		                              for($i = 0; $i < $puntuacion; $i++){
-		                                echo '<a  data-value="1" title="Votar con 1 estrellas"></a>';
-		                              }                       
-			                    echo '</td> 
-			                        </tr>
-			                        <tr>
-			                          <td class="direccionServicio">' . $servicio_['ubicacion'] . '</td>
-			                        </tr>
-			                        <tr>
-			                          <td class="telefonoServicio">' .  $servicio_['telefono'] . '</td>
-			                          <td>'; 
-			                            if(!is_null(getRole())) {
-			                              echo '<label for="input-categoria-servicio">Puntuación:</label>
-			                                      <select name="categoria-servicio" id="input-categoria-servicio">
-			                                        <option value="1" selected="selected">1</option>
-			                                        <option value="2">2</option>
-			                                        <option value="3">3</option>
-			                                        <option value="4">4</option>
-			                                        <option value="5">5</option>
-			                                      </select>';
-			                            } 
-			                     echo '</td>
-			                        </tr>
-			                        <tr>
-			                          <td class="descripcionServicio">' . $servicio_['contenido'] . '</td>
-			                          <td> <a href="'. $servicio_['url'] . '" target= "_blank">'  . $servicio_['url'] . '</a></td>
-			                        </tr>';
-			                 }           
-			          echo' </table>';
-			      	}
     				}
     				##################################
      			?>
