@@ -27,8 +27,10 @@ Listado de vistas de la aplicación:
 			pie.php-> pie de la página.
 			sidebar.php-> sidebar donde mostramos anuncios.
 			slider.php-> Slider con fotos.
+			servicios.php -> Imagenes que enlazan a los servicios específicos.
 	LISTA DE SCRIPT ADICIONALES.
-		config.php-> Dentro de la carpeta config, donde esta toda la configuración de la página web y base de datos.
+		CARPETA CONFIG.
+			config.php-> Se encuentra toda la configuración de la página web y base de datos.
 		CARPETA SRC.
 			CARPETA DAO. Todos los DAOS necesarios para la conexión con la base de datos.
 				Connection.php-> Parámetros de la conexión, la establecemos mediante PDO.
