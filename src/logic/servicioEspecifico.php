@@ -73,7 +73,11 @@ class servicioEspecifico{
   function deleteServicio($id){
     return $this->daoServicio->deleteServicio($id);
   }
-}
 
+  function updateMediaPuntuacion($servicio, $mediaPuntuacion){
+    return $this->daoServicio->updateMediaPuntuacion($servicio, $mediaPuntuacion);
+
+  }
+}
 
 ?>

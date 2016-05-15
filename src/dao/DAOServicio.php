@@ -133,6 +133,19 @@ class DAOServicio {
       return true;
   }
 
+  function updateMediaPuntuacion($servicio, $puntuacionMedia){
+      try {
+        $sql = "UPDATE Servicio SET media_puntuacion =:puntuacionMedia
+                WHERE id =:servicio";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(["servicio" => $servicio, "puntuacionMedia" => $puntuacionMedia]);
+      } catch(PDOException $e) {
+        echo "ERROR EN DAOServicio: " . $e->getMessage();
+        return false;
+      }
+      return true;
+  }
+
 }
 
 ?>

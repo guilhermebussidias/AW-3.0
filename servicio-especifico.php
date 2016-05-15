@@ -47,15 +47,21 @@
                             }
                             echo'</div>';
                             if(!is_null(getRole())) {
-                            echo '<label  class="puntuacion-usuario" for="input-categoria-servicio">Puntuación:</label>
-                                  <select class="puntuacion-usuario" name="categoria-servicio" id="input-categoria-servicio">
+                              echo'<form action="formPuntuacion.php" method="post">
+                                <input type="hidden" name="idServicio" value=' .  $servicio['id'] . '>
+                                <input type="hidden" name="idUsuario" value=' .  $id . '>
+                                <input type="hidden" name="categoria" value=' .  $servicio['categoria'] . '>                                
+                                  <select class="puntuacion-usuario" name="puntuacion-servicio">
                                     <option value="1" selected="selected">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                     <option value="4">4</option>
                                     <option value="5">5</option>
-                                  </select>';
+                                  </select>
+                                <button type="submit" class="myButton" name="boton" value="puntuar-servicio">Puntuar</button>
+                              </form>';
                             }
+                            
                        echo'</div>
                         <h3 class="servicio-titulo">' .  $servicio['nombre'] . '</h3>
                        <div class="servicio-ubicacion">
@@ -77,8 +83,6 @@
                       }
                echo '</div>';
                 }
-
-
                 /*
                 echo '<table>';
                   foreach ($servicios as $servicio){
