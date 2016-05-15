@@ -116,9 +116,13 @@ function getUploadedImagePath() {
 
 /******************************************************************************/
 
-function redirect($url, $statusCode = 302) {
+/*function redirect($url, $statusCode = 302) {
    header('Location: ' . $url, true, $statusCode);
    die();
+}*/
+
+function redirect($url, $secs = 0) {
+  header("Refresh: {$secs}; URL={$url}");
 }
 
 /******************************************************************************/
