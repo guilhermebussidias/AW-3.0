@@ -11,6 +11,14 @@ class Evento {
     $this->daoEvento = new \aw\dao\DAOEvento();
   }
 
+  function getEvento($id){
+    $eventos = $this->daoEvento->getEvento($id);
+		if (is_null($eventos)) {
+    		return null;
+    	}
+    return $eventos;
+  }
+
   function buscarEventos($sigElem, $elementos){
     $eventos = $this->daoEvento->getListaEventos($sigElem, $elementos);
 		if (is_null($eventos)) {
