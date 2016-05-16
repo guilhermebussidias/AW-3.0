@@ -23,6 +23,7 @@ $noticias = $logic->buscarNoticias($ultimaPag * $noticiasPorPagina, $noticiasPor
 		<title>All Dogs</title>
 		<?php require(getIncludePath() . 'head.php'); ?>
 		<link rel="stylesheet"  href="<?=getCSSPath()?>contenido.css" type="text/css" />
+		<script src="<?= getJSPath() ?>contenido.js"></script>
 	</head>
 	<body>
 		<div id="contenedor">
@@ -34,23 +35,36 @@ $noticias = $logic->buscarNoticias($ultimaPag * $noticiasPorPagina, $noticiasPor
 				<div id="contenedor-noticias">
 				<?php
 
-				foreach($noticias as $noticias_){
-         			echo '
-         				<div id="algo" class="contenido-bloque">
-						<h3 class="contenido-titulo">
-						' . $noticias_['titulo'] . '</a></h3>
-						<div class="contenido-info">Escrito por '. $noticias_['nombre_usuario'] . ' el ' . $noticias_['fecha'] .'';
+				foreach($noticias as $noticia) { // fecha, titulo, contenido, id, nombre_usuario, idUser
 
-					if($rol=='admin' or $id==$noticias_['idUser']){
-						echo '<a class="contenido-boton" href="editar-noticia.php?noticia=' . $noticias_['id'] . '">Editar</a>';
-				 	}
-						echo '</div>
-						<div class="contenido-texto">
-						<p> ' . $noticias_['contenido'] . ' </p>
+					$titulo = $noticia["titulo"];
+					$autor = $noticia["nombre_usuario"];
+					$fechaBD = $noticia["fecha"];
+					$fecha = date("d/m/Y", strtotime($fechaBD));
+					$contenido = $noticia["contenido"];
+					$userID = $noticia["idUser"];
+					$noticiaID = $noticia["id"];
+
+					echo '
+						<div id="noticia' . $noticiaID . '" class="contenido-bloque">
+							<h3 class="contenido-titulo">' . $titulo . '</h3>
+							<div class="contenido-info">Escrito por ' . $autor  . ' el ' . $fecha . '</div>
+							<div class="contenido-texto">
+								<p class="contenido-parrafo">' . $contenido . '</p>
+							</div>
+							<a class="contenido-boton" href="verNoticia.php?noticia=' . $noticiaID . '">Ver y comentar</a>
+					';
+					if (isAdmin() || getID() === $userID) {
+							echo '
+								<a class="contenido-boton" href="editar-noticia.php?noticia=' . $noticiaID . '">Editar</a>
+							';
+					}
+					echo '
+							<div class="clear"></div>
 						</div>
-						</div>
-						';
-    				}
+					';
+				}
+
      			?>
 				<br>
 			<?php
