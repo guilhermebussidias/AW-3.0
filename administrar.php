@@ -70,6 +70,26 @@
                     </form>
                     </div>
               		  <div id="admin-eventos">
+											<form action="<?= getBasePath() ?>formAdministrar.php" method="get" id="form-usuario">
+												<input type="hidden" name="usuario" id="input-titulo-evento" class="estilotextarea" value=<?= $id ?>>
+												<h3 class="contenido-titulo">Titulo del evento: </h3>
+												<input type="text" name="titulo-evento" id="input-titulo-evento" class="estilotextarea">
+												<br>
+												<h3 class="contenido-titulo">Fecha del evento: </h3>
+												<input type="date" name="fecha-evento" id="input-fecha-evento" class="estilotextarea">
+												<br>
+												<h3 class="contenido-titulo">Ubicación del evento: </h3>
+												<input type="text" name="ubicacion-evento" id="input-ubicacion-evento" class="estilotextarea">
+												<br>
+												<label for="">Imagen: </label>
+												<input type="file" name="input-foto-evento" id="input-imagen-evento"><br>
+												<br>
+												<h3 class="contenido-titulo">Contenido:</h3>
+		                    <textarea name="input-contenido-evento" class="estilotextarea" rows="10" cols="80" id="input-contenido-evento"></textarea>
+		                    <br><br>
+		                    <button type="submit" class="myButton" id="verde" name="boton" value="guardar-evento">Guardar Evento</button>
+		                    <button type="reset" class="myButton" id="naranja" name="boton" value="descartar-evento">Descartar Cambios</button>
+	                    </form>
               		  </div>
               		  <div id="admin-servicio">
 											<form action="<?= getBasePath() ?>formAdministrar.php" method="post" id="form-servicio" enctype="multipart/form-data">
