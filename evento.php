@@ -22,6 +22,7 @@
 		<title>All Dogs</title>
 		<?php require(getIncludePath() . 'head.php'); ?>
 		<link rel="stylesheet"  href="<?=getCSSPath()?>contenido.css" type="text/css" />
+		<script src="<?= getJSPath() ?>contenido.js"></script>
 	</head>
 	<body>
 		<div id="contenedor">
@@ -34,23 +35,24 @@
 				<?php
 
 				foreach($eventos as $evento){
-         			echo '
-         				<div id="algo" class="contenido-bloque">
-						<h3 class="contenido-titulo">
-						' . $evento['titulo'] . '</a></h3>
-						<div class="contenido-info">Escrito por '. $evento['nombre_usuario'] . ' el ' . $evento['fecha'] .'';
-
-					if($rol=='admin' or $id==$evento['idUser']){
-						echo '<div class="contenido-admin">
-					<a href="editar-evento.php?evento='. $evento['id'] .'">Editar</a>
-						</div>';
-				 	}
-						echo '</div>
-						<div class="contenido-texto">
-						<p> ' . $evento['contenido'] . ' </p>
+					echo '<div id="evento' . $evento['id'] . '" class="contenido-bloque">
+							<h3 class="contenido-titulo">' . $evento['titulo'] . '</h3>
+							<div class="contenido-info">Tendrá lugar el ' . $evento['fecha'] . '</div>
+							<div class="contenido-texto">
+								<p class="contenido-parrafo">' . $evento['contenido'] . '</p>
+							</div>
+							<div class="contenido-info">Escrito por '. $evento['nombre_usuario'].'</div>
+							<a class="contenido-boton" href="verEvento.php?evento=' . $evento['id'] . '">Ver evento</a>
+					';
+					if (isAdmin() || $id==$evento['idUser']) {
+							echo '
+								<a class="contenido-boton" href="editarEvento.php?evento=' . $evento['id'] . '">Editar</a>
+							';
+					}
+					echo '
+							<div class="clear"></div>
 						</div>
-						</div>
-						';
+					';
 
 
     				}
