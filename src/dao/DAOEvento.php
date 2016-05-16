@@ -12,7 +12,7 @@ class DAOEvento {
 
   function getEvento($event) {
     try {
-      $sql = "SELECT * FROM Evento WHERE titulo = :nombre";
+      $sql = "SELECT * FROM Evento WHERE id = :nombre";
       $stmt = $this->conn->prepare($sql);
       $stmt->execute(["nombre" => $event]);
       $res = $stmt->fetchAll();
