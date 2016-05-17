@@ -106,13 +106,18 @@ class DAOEvento {
 
     function getListaEventosBuscador($titulo,$contenido,$fechaIni,$fechaFin,$ubicacion) {
       try {
-        $sql = "SELECT titulo,contenido,usuario FROM Evento WHERE titulo LIKE :titulo
-                AND contenido LIKE :contenido
-                AND ubicacion LIKE :ubicacion
-                AND fecha <= :fechaFin AND fecha >= :fechaIni";
+        $sql = "SELECT e.fecha as fecha, e.titulo as titulo,
+          e.contenido as contenido, u.usuario as nombre_usuario, e.id as id, e.ubicacion as ubicacion
+          FROM Evento e
+          JOIN Usuario u on e.usuario = u.id
+
+          WHERE e.titulo LIKE :tit AND e.contenido LIKE :cont
+          AND e.fecha <= :fechaF AND e.fecha >= :fechaI
+          AND e.ubicacion LIKE :ubic
+  
+          ORDER BY fecha DESC";
         $stm = $this->conn->prepare($sql);
-        $stm->execute(["titulo" => $titulo, "contenido" => $contenido, "ubicacion" => $ubicacion,
-                       "fechaIni" => $fechaIni, "fechaFin" => $fechaFin]);
+        $stm->execute(["tit" => $titulo, "cont" => $contenido, "fechaF" => $fechaFin, "fechaI" => $fechaIni, "ubic" => $ubicacion]);
         $res = $stm->fetchAll();
       } catch (PDOException $e) {
         echo "ERROR EN DAOEvento: " . $e->getMessage();

@@ -137,7 +137,7 @@
 									<h3 class="contenido-titulo">'. $evento['titulo'] .'</h3>
 									<div class="contenido-texto">
 									<p> ' . $evento['contenido'] . ' </p>
-									<div class="contenido-info">Escrito por '. $evento['usuario'] .'</div>
+									<div class="contenido-info">Escrito por '. $evento['nombre_usuario'] .'</div>
 									</div>
 									</div>
 								';
@@ -150,7 +150,7 @@
    					$id = getId();
 			      echo'<h3 class="tituloServicio">'. $nombreCategoria . '</h3>';
 	                foreach ($servicios as $servicio_) {
-	                $foto = UPLOADED_URL . $servicio_['imagen'];  
+	                $foto = UPLOADED_URL . $servicio_['imagen'];
 	                echo'<div class="contenido-servicios">
 	                        <div class="imagen-puntuacion">
 	                          <img class="servicio-imagen" src="' . $foto .'" alt="imagen empresa">
@@ -164,7 +164,7 @@
 	                            echo'<form action="formPuntuacion.php" method="get">
 		                                <input type="hidden" name="idServicio" value=' .  $servicio_['id'] . '>
 		                                <input type="hidden" name="idUsuario" value=' .  $id . '>
-		                                <input type="hidden" name="categoria" value=' .  $servicio_['categoria'] . '>                                
+		                                <input type="hidden" name="categoria" value=' .  $servicio_['categoria'] . '>
 		                                  <select class="puntuacion-usuario" name="puntuacion-servicio" >
 		                                    <option value="1" selected="selected">1</option>
 		                                    <option value="2">2</option>
