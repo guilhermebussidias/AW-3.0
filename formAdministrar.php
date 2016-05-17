@@ -143,7 +143,7 @@ $extension = " ";
 		$extension="#admin-evento";
 	}
 
-	else if ($_REQUEST["boton"] === "guardar-evento"){
+	else if ($_REQUEST["boton"] === "crear-evento"){
 		$titulo = $_REQUEST["titulo-evento"];
 		$contenido = $_REQUEST["input-contenido-evento"];
 		$fecha = $_REQUEST["fecha-evento"];

@@ -16,9 +16,10 @@ class DAOEvento {
       e.contenido as contenido, u.usuario as nombre_usuario, u.id as idUser, e.id as id,
       e.ubicacion as ubicacion, e.foto as foto, e.usuario as usuario
       FROM Evento e
-      JOIN Usuario u on e.usuario = u.id";
+      JOIN Usuario u on e.usuario = u.id
+      WHERE e.id=:idEvento";
       $stmt = $this->conn->prepare($sql);
-      $stmt->execute();
+      $stmt->execute(["idEvento" => $event]);
       $res = $stmt->fetchAll();
     } catch(PDOException $e) {
   		echo "ERROR EN DAOEvento: " . $e->getMessage();

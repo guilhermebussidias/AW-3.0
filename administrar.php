@@ -91,7 +91,7 @@
 												<h3 class="contenido-titulo">Contenido:</h3>
 		                    <textarea name="input-contenido-evento" class="estilotextarea" rows="10" cols="80" id="input-contenido-evento"></textarea>
 		                    <br><br>
-		                    <button type="submit" class="myButton" id="verde" name="boton" value="guardar-evento">Guardar Evento</button>
+		                    <button type="submit" class="myButton" id="verde" name="boton" value="crear-evento">Crear Evento</button>
 		                    <button type="reset" class="myButton" id="naranja" name="boton" value="descartar-evento">Descartar Cambios</button>
 	                    </form>
               		  </div>
