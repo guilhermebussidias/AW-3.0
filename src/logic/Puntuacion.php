@@ -18,5 +18,8 @@ class Puntuacion{
     return $media;
   }
 
+    function haVotado($idServicio, $idUsuario){
+      return $this->daoPuntuacion->haVotado($idServicio, $idUsuario);
+    } 
 }
 ?>

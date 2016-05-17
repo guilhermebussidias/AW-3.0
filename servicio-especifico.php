@@ -4,7 +4,7 @@
   $categoria = $_GET["tipo"];
   $id = getId();
   $logic = new \aw\logic\servicioEspecifico();
-
+  $logicPuntacion = new \aw\logic\Puntuacion();
   $serviciosPorPagina = 5;
 
   if (isset($_REQUEST["ultimaPag"]))
@@ -14,6 +14,7 @@
 
   $servicios = $logic->mostrarServicios($categoria, $ultimaPag * $serviciosPorPagina, $serviciosPorPagina);
   $nombreCategoria = $logic->nameCategory($categoria);
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -37,6 +38,7 @@
               if(!count($servicios) == 0){
                 foreach ($servicios as $servicio) {
                 $foto = UPLOADED_URL . $servicio['imagen'];  
+                $votar=$logicPuntacion->haVotado($servicio['id'], $id);
                 echo'<div class="contenido-servicios">
                         <div class="imagen-puntuacion">
                           <img class="servicio-imagen" src="' . $foto .'" alt="imagen empresa">
@@ -50,7 +52,9 @@
                               echo'<form action="formPuntuacion.php" method="post">
                                 <input type="hidden" name="idServicio" value=' .  $servicio['id'] . '>
                                 <input type="hidden" name="idUsuario" value=' .  $id . '>
-                                <input type="hidden" name="categoria" value=' .  $servicio['categoria'] . '>                                
+                                <input type="hidden" name="categoria" value=' .  $servicio['categoria'] . '>  ';   
+                                if(is_null($votar)){
+                                echo '                           
                                   <select class="puntuacion-usuario" name="puntuacion-servicio">
                                     <option value="1" selected="selected">1</option>
                                     <option value="2">2</option>
@@ -58,8 +62,9 @@
                                     <option value="4">4</option>
                                     <option value="5">5</option>
                                   </select>
-                                <button type="submit" class="myButton" name="boton" value="puntuar-servicio">Puntuar</button>
-                              </form>';
+                                  <button type="submit" class="myButton" name="boton" value="puntuar-servicio">Puntuar</button>';
+                                 }
+                             echo '</form>';
                             }
                             
                        echo'</div>

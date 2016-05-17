@@ -26,6 +26,23 @@ class DAOPuntuacion {
     return $id;
   }
 
+  function haVotado($idServicio, $idUsuario){
+    try {
+      $sql = "SELECT * FROM Puntua WHERE servicio =:idServicio AND usuario=:idUsuario";
+      $stmt = $this->conn->prepare($sql);
+      $stmt->execute(["idUsuario" => $idUsuario, "idServicio" => $idServicio]);
+      $res = $stmt->fetch();
+    } catch (PDOException $e) {
+      echo "ERROR EN DAOPuntuacion: " . $e->getMessage();
+    }
+    if (!empty($res)) {
+      return 1;
+    } else {
+      return null;
+    }
+  }
+
+
   function calculaMedia($idServicio){
     try {
       $sql = "SELECT AVG(puntuacion) as media FROM Puntua WHERE servicio =:idServicio";
