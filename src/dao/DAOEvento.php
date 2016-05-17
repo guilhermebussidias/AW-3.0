@@ -65,7 +65,6 @@ class DAOEvento {
       VALUES (:tit, :con, :fec, :ubi, :fot, :usu)";
       $stmt = $this->conn->prepare($sql);
       $stmt->execute(["tit" => $titulo, "con" => $contenido, "fec" => $fecha, "ubi" => $ubicacion, "fot" => $foto, "usu" => $usuario]);
-      $res = $stmt->fetchAll();
       $id = $this->conn->lastInsertId();
     } catch(PDOException $e) {
       echo "ERROR EN DAOEvento: " . $e->getMessage();
@@ -79,8 +78,8 @@ class DAOEvento {
           $sql = "UPDATE Evento SET titulo = :titulo, contenido = :contenido, fecha = :fecha,
           ubicacion = :ubicacion, foto = :foto, usuario = :usuario WHERE id = :id";
           $stmt = $this->conn->prepare($sql);
-          $stmt->execute(["titulo" => titulo, "contenido" => contenido, "fecha" => fecha,
-          "ubicacion" => ubicacion, "foto" => foto, "usuario" => usuario]);
+          $stmt->execute(["titulo" => $titulo, "contenido" => $contenido, "fecha" => $fecha,
+          "ubicacion" => $ubicacion, "foto" => $foto, "usuario" => $usuario]);
         } catch(PDOException $e) {
           echo "ERROR EN DAOEvento: " . $e->getMessage();
           return false;

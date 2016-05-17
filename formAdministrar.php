@@ -135,7 +135,7 @@ $extension = " ";
 		$contenido = $_REQUEST["input-contenido-evento"];
 		$fecha = $_REQUEST["fecha-evento"];
 		$ubicacion = $_REQUEST["ubicacion-evento"];
-		$foto = \aw\logic\Utils::uploadPic("input-foto-evento");
+		$foto = \aw\logic\Utils::uploadPic("foto-evento");
 		$usuario = $_REQUEST["usuario"];
 		if($titulo!== '' && $contenido !== ''){
 			$logicEvento->updateEvento($id, $titulo, $contenido, $fecha, $ubicacion, $foto, $usuario);
@@ -148,7 +148,8 @@ $extension = " ";
 		$contenido = $_REQUEST["input-contenido-evento"];
 		$fecha = $_REQUEST["fecha-evento"];
 		$ubicacion = $_REQUEST["ubicacion-evento"];
-		$foto = \aw\logic\Utils::uploadPic("input-foto-evento");
+		$foto = $_REQUEST["input-foto-evento"];
+		//$foto = \aw\logic\Utils::uploadPic("input-foto-evento");
 		$usuario = $_REQUEST["usuario"];
 		if ($titulo !== "" && $contenido !== ""){
 			$logicEvento->saveEvento($titulo, $contenido, $fecha, $ubicacion, $foto, $usuario);
