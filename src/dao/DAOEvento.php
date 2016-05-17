@@ -73,13 +73,13 @@ class DAOEvento {
     return $id;
   }
 
-  function updateEvento($id, $titulo, $contenido, $fecha, $ubicacion, $foto, $usuario){
+  function updateEvento($id, $titulo, $contenido, $fecha, $ubicacion, $foto){
       try {
           $sql = "UPDATE Evento SET titulo = :titulo, contenido = :contenido, fecha = :fecha,
-          ubicacion = :ubicacion, foto = :foto, usuario = :usuario WHERE id = :id";
+          ubicacion = :ubicacion, foto = :foto WHERE id = :id";
           $stmt = $this->conn->prepare($sql);
           $stmt->execute(["titulo" => $titulo, "contenido" => $contenido, "fecha" => $fecha,
-          "ubicacion" => $ubicacion, "foto" => $foto, "usuario" => $usuario]);
+          "ubicacion" => $ubicacion, "foto" => $foto]);
         } catch(PDOException $e) {
           echo "ERROR EN DAOEvento: " . $e->getMessage();
           return false;

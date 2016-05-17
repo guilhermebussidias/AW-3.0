@@ -40,8 +40,8 @@ class Evento {
     return $eventos;
   }
 
-  function updateEvento($id, $titulo, $contenido, $fecha, $ubicacion, $foto, $usuario) {
-    	return $this->daoEvento->updateEvento($id, $titulo, $contenido, $fecha, $ubicacion, $foto, $usuario);
+  function updateEvento($id, $titulo, $contenido, $fecha, $ubicacion, $foto) {
+    	return $this->daoEvento->updateEvento($id, $titulo, $contenido, $fecha, $ubicacion, $foto);
 	}
 
   function saveEvento($titulo, $contenido, $fecha, $ubicacion, $foto, $usuario) {
