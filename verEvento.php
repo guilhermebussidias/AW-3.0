@@ -37,9 +37,9 @@
             $eventoID = $evento["id"];
 
             echo '
-              <div id="noticia' . $eventoID . '" class="contenido-bloque">
+              <div id="evento' . $eventoID . '" class="contenido-bloque">
                 <h3 class="contenido-titulo">' . $titulo . '</h3>
-                <div class="contenido-info">Tendrá lugar el ' . $fecha  .'</div>
+                <div class="contenido-info">Tendrá lugar el ' . $fecha . ' en ' . $evento['ubicacion']  .'</div>
                 <div class="contenido-texto">
                   <p class="contenido-parrafo">' . $contenido . '</p>
                 </div>
@@ -47,7 +47,7 @@
             ';
             if (isAdmin() || getID() === $userID) {
                 echo '
-                  <a class="contenido-boton" href="editar-noticia.php?noticia=' . $eventoID . '">Editar</a>
+                  <a class="contenido-boton" href="editar-evento.php?evento=' . $eventoID . '">Editar</a>
                 ';
             }
             echo '
