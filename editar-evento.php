@@ -25,7 +25,7 @@
 			?>
 			<div id="contenedor-eventos" class"contenido">
 			<div id="algo" class="contenido-bloque">
-				<form action="<?= getBasePath() ?>formAdministrar.php" method="post" id="edit-evento" >
+				<form action="<?= getBasePath() ?>formAdministrar.php" method="post" id="edit-evento" enctype="multipart/form-data">
 						<input type="hidden" name="MAX_FILE_SIZE" value="3000000">
 						<input type="hidden" name="id" id="input-evento class="estilotextarea" value= "<?= $idEvento ?>">
 					<h3 class="contenido-titulo">Título:<h3/>
