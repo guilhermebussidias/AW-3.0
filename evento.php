@@ -42,7 +42,7 @@
 								<p class="contenido-parrafo">' . $evento['contenido'] . '</p>
 							</div>
 							<div class="contenido-info">Escrito por '. $evento['nombre_usuario'].'</div>
-							<a class="contenido-boton" href="ver-evento.php?evento=' . $evento['id'] . '">Ver evento</a>
+							<a class="contenido-boton" href="verEvento.php?evento=' . $evento['id'] . '">Ver evento</a>
 					';
 					if (isAdmin() || $id==$evento['idUser']) {
 							echo '
