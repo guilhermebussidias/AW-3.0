@@ -22,10 +22,10 @@
 		<div id="contenedor">
 			<?php
 				require('includes/cabecera.php');
-				require('includes/slider.php');
 			?>
 			<div id="contenedor-eventos" class"contenido">
 			<div id="algo" class="contenido-bloque">
+				<form action="<?= getBasePath() ?>formAdministrar.php" method="post" id="edit-evento" >
 					<h3 class="contenido-titulo">Título:<h3/>
             <input type="text" name="titulo-evento" id="input-titulo-evento" class="estilotextarea" value= "<?php echo $evento['titulo'] ?>">
 					<h3 class="contenido-titulo">Fecha:<h3/>
@@ -35,11 +35,14 @@
 					<h3 class="contenido-titulo">Imagen:<h3/>
 						<input type="file" name="imagen-evento" id="input-imagen-evento" class="estilotextarea">
 					<h3 class="contenido-titulo">Contenido:<h3/>
-                    <textarea name="input-contenido-evento" class="estilotextarea" rows="10" cols="80"><?php echo $evento['contenido'] ?></textarea>
-              		  		<a name="save" class="myButton" id="verde">Guardar Evento</a>
-							<a href="#" class="myButton" id="naranja">Descartar Cambios</a>
-              		  		<a href="#" class="myButton" id="rojo">Eliminar Evento</a>
-					</div>
+            <textarea name="input-contenido-evento" class="estilotextarea" rows="10" cols="80"><?php echo $evento['contenido'] ?></textarea>
+
+						<button type="submit" class="myButton" id="verde" name="boton" value="modificar-evento">Guardar</button>
+						<button type="submit" class="myButton" id="naranja" name="boton" value="descartar-evento">Descartar Cambios</button>
+						<button type="submit" class="myButton" id="rojo" name="boton" value="eliminar-evento">Eliminar Evento</button>
+
+							</form>
+						</div>
 					</div>
 
 			<?php

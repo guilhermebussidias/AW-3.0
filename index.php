@@ -85,7 +85,7 @@
 							';
 							if (isAdmin() || getID() === $userID) {
 									echo '
-										<a class="contenido-boton" href="editarEvento.php?evento=' . $eventoID . '">Editar</a>
+										<a class="contenido-boton" href="editar-evento.php?evento=' . $eventoID . '">Editar</a>
 									';
 							}
 							echo '
