@@ -31,7 +31,7 @@
                			<li><a href="#admin-usuario">Usuarios</a></li>
                 		<li><a href="#admin-noticia">Noticias</a></li>
                 		<li><a href="#admin-eventos">Eventos</a></li>
-                		<li><a href="#admin-servicio">Servicio</a></li>
+                		<li><a href="#admin-servicio">Servicios</a></li>
                 		<li><a href="#admin-publicidad">Publicidad</a></li>
               		  </ul>
               		  <div id="admin-usuario">
