@@ -6,10 +6,13 @@ Listado de vistas de la aplicación:
 			formAdminitrar.php-> Recogemos los datos y los procesamos del formulario de adminitrar y editar.
 			buscar.php-> Buscador de la pagina web para cada buscar por campos.
 			formBuscar.php-> Recogemos los datos del buscador para mostrar.
+			formComentarioNoticia.php-> Recogemos los datos y los procesamos del formulario de comentar y editar.
+			formPuntuacion.php-> Recogemos los datos y los procesamos del formulario de puntuación y editar.
 			conocenos.php-> Página estática donde puedes conocer cosas sobre nosotros.
 			deinteres.php-> Página estática donde tenemos cosas de interés relacionadas con nuestra página.
 			evento.php-> Una de las páginas principales donde mostramos eventos próximos.
 			editar-evento.php-> Administrador o el creador del evento puede modificar cosas de cada evento.
+			editar-servicio.php-> Administrador o el creador del evento puede modificar cosas de cada servicio.
 			editar-noticias.php-> Administrador o el creador de la noticia puede modificar cosas de cada noticia.
 			editar-publicidad-> Administrador o el creador de la publicidad puede modificar cosas de cada anuncio.
 			formLogin.php-> Recogemos los datos del formulario de login para acceder como usuario.
@@ -19,6 +22,8 @@ Listado de vistas de la aplicación:
 			nuevoUsuario.php-> Página donde creamos el formulario para crear un nuevo usuario.
 			servicio-especifico.php-> Página donde mostramos un servicio especifico y cada una de las empresas registradas.
 			servicio.php-> Mostramos la opción de elegir el servicio que desean ver.
+			verEvento.php-> Mostramos una versión del evento.
+			verNoticia.php-> Mostramos una versión de la noticia.
 		EN LA CARPETA INCLUDES. Cada una de las partes de las páginas que se van a repetir en varias.
 			cabecera.php-> cabecera de nuestra aplicación donde mostramos el login, el logo y menú con cada una de las partes de la aplicación.
 			contenidoConocenos.php-> Contenido de la página estática conocenos.
@@ -33,12 +38,14 @@ Listado de vistas de la aplicación:
 			config.php-> Se encuentra toda la configuración de la página web y base de datos.
 		CARPETA SRC.
 			CARPETA DAO. Todos los DAOS necesarios para la conexión con la base de datos.
-				Connection.php-> Parámetros de la conexión, la establecemos mediante PDO.
-				DAOEvento.php-> Acceso a la table eventos.
-				DAONoticia.php-> Acceso a la table noticias.
-				DAOPulbicidad.php-> Acceso a la table publicidad.
-				DAOServicio.php-> Acceso a la table servicio.
-				DAOUsuario.php-> Acceso a la table usuarios.
+				Connection.php-> Parámetros de la conexión, la establacemos mediante PDO.
+				DAOComentarioNoticia.php-> Acceso a la tabla comentarionoticia.
+				DAOEvento.php-> Acceso a la tabla eventos.
+				DAONoticia.php-> Acceso a la tabla noticias.
+				DAOPulbicidad.php-> Acceso a la tabla publicidad.
+				DAOServicio.php-> Acceso a la tabla servicio.
+				DAOUsuario.php-> Acceso a la tabla usuarios.
+				DAOPuntuacion.php-> Acceso a la tabla puntua.
 			CARPETA LOGIC. Todo lo relacionado con la lógica de negocio.
 				Eventos.php-> Lógica para los eventos.
 				Noticia.php-> Lógica para las noticias.
@@ -46,6 +53,8 @@ Listado de vistas de la aplicación:
 				servicioEspecifico-> Lógica para los servicios.
 				Usuario.php-> Lógica para los usuarios.
 				Utils.php-> Todo lo repetido en toda la lógica.
+				ComentarioNoticia.php-> Lógica para los comentarios.
+				Puntuacion.php-> Lógica para la puntuación.
 		CARPETA UPLOAD-> Metemos todas las imagenes que nos van a subir los usuarios.
 		CARPETA RESOURCES:
 			CARPETA CSS. Estará todo el CSS de la web.
@@ -54,6 +63,6 @@ Listado de vistas de la aplicación:
 	ESTRUCTURA DE LA BD.
 		Hay 6 tablas (usuario, servicio, evento, noticia, publicidad, puntua).
 			Todas estas tablas pueden ser consultadas, y también modificadas (insert, update y delete).
-			Cada tabla tiene su propio DAO y son los únicos que acceden, excepto la tabla usuario que mediante join el resto de DAOS 
+			Cada tabla tiene su propio DAO y son los únicos que acceden, excepto la tabla usuario que mediante join el resto de DAOS
 			también acceden a ella para saber que usuario es el responsable(relaciones entre tablas).
 			Adjuntamos para mayor compresión el modelo entidad relación.
