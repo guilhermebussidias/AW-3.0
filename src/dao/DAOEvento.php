@@ -12,9 +12,13 @@ class DAOEvento {
 
   function getEvento($event) {
     try {
-      $sql = "SELECT * FROM Evento WHERE id = :nombre";
+      $sql = "SELECT e.fecha as fecha, e.titulo as titulo,
+      e.contenido as contenido, u.usuario as nombre_usuario, u.id as idUser, e.id as id,
+      e.ubicacion as ubicacion, e.foto as foto, e.usuario as usuario
+      FROM Evento e
+      JOIN Usuario u on e.usuario = u.id";
       $stmt = $this->conn->prepare($sql);
-      $stmt->execute(["nombre" => $event]);
+      $stmt->execute();
       $res = $stmt->fetchAll();
     } catch(PDOException $e) {
   		echo "ERROR EN DAOEvento: " . $e->getMessage();

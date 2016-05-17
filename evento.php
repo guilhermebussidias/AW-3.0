@@ -35,9 +35,11 @@
 				<?php
 
 				foreach($eventos as $evento){
+					$fechaBD = $evento["fecha"];
+					$fecha = date("d/m/Y", strtotime($fechaBD));
 					echo '<div id="evento' . $evento['id'] . '" class="contenido-bloque">
 							<h3 class="contenido-titulo">' . $evento['titulo'] . '</h3>
-							<div class="contenido-info">Tendrá lugar el ' . $evento['fecha'] . '</div>
+							<div class="contenido-info">Tendrá lugar el ' . $fecha . '</div>
 							<div class="contenido-texto">
 								<p class="contenido-parrafo">' . $evento['contenido'] . '</p>
 							</div>
