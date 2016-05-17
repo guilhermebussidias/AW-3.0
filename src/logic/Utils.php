@@ -57,8 +57,9 @@ class Utils {
         die;
       }
 
-      $scaled = imagescale($image, UPLOADED_IMG_WIDTH);
-      imagepng($scaled, $outputname);
+      //$scaled = imagescale($image, UPLOADED_IMG_WIDTH); //PHP bug #65171
+      //imagepng($scaled, $outputname);
+      imagepng($image, $outputname);
 
       return $imagename;
 
