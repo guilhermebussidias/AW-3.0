@@ -35,11 +35,13 @@
             $contenido = $evento["contenido"];
             $userID = $evento["idUser"];
             $eventoID = $evento["id"];
+						$foto = $evento["foto"];
 
             echo '
               <div id="evento' . $eventoID . '" class="contenido-bloque">
                 <h3 class="contenido-titulo">' . $titulo . '</h3>
                 <div class="contenido-info">Tendrá lugar el ' . $fecha . ' en ' . $evento['ubicacion']  .'</div>
+								<div class="anuncio-banner-img"><img src="' . $foto . '" class="anuncio-banner-img"></div>
                 <div class="contenido-texto">
                   <p class="contenido-parrafo">' . $contenido . '</p>
                 </div>

@@ -5,6 +5,7 @@
 	$id = getID();
 	$logicUsuario = new \aw\logic\Usuario();
  	$logicNoticia = new  \aw\logic\Noticia();
+	$logicEvento = new \aw\logic\Evento();
 ?>
 <!DOCTYPE html>
 <html lang="es">
