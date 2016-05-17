@@ -82,9 +82,11 @@
 												<h3 class="contenido-titulo">Ubicación del evento: </h3>
 												<input type="text" name="ubicacion-evento" id="input-ubicacion-evento" class="estilotextarea">
 												<br>
+
 												<label for="">Imagen: </label>
-												<input type="file" name="input-foto-evento" id="input-foto-evento"><br>
+												<input type="file" name="input-foto-evento"><br>
 												<br>
+
 												<h3 class="contenido-titulo">Contenido:</h3>
 		                    <textarea name="input-contenido-evento" class="estilotextarea" rows="10" cols="80" id="input-contenido-evento"></textarea>
 		                    <br><br>
