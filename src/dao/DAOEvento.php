@@ -2,6 +2,8 @@
 
 namespace aw\dao;
 
+use PDOException;
+
 class DAOEvento {
 
   private $conn;
