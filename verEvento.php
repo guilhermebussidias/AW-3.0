@@ -35,13 +35,13 @@
             $contenido = $evento["contenido"];
             $userID = $evento["idUser"];
             $eventoID = $evento["id"];
-						$foto = $evento["foto"];
+						$foto = UPLOADED_URL . $evento['foto'];
 
             echo '
               <div id="evento' . $eventoID . '" class="contenido-bloque">
                 <h3 class="contenido-titulo">' . $titulo . '</h3>
                 <div class="contenido-info">Tendrá lugar el ' . $fecha . ' en ' . $evento['ubicacion']  .'</div>
-								<div class="anuncio-banner-img"><img src="' . $foto . '" class="anuncio-banner-img"></div>
+								<img class="servicio-imagen" src="' . $foto .'" alt="imagen evento">
                 <div class="contenido-texto">
                   <p class="contenido-parrafo">' . $contenido . '</p>
                 </div>
