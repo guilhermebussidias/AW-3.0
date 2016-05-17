@@ -24,16 +24,22 @@
 			?>
 			<div id="contenido">
 				<?php
-				if ( $rol == "admin" ) {
+				if ( $rol === "admin" || $rol === "gestor" || $rol === "proveedor") {
 					?>
 				 <div class="maxi-form-administrar" >
             		<div id="contenedor-fragmentos">
 		              <ul>
-               			<li><a href="#admin-usuario">Usuarios</a></li>
-                		<li><a href="#admin-noticia">Noticias</a></li>
-                		<li><a href="#admin-eventos">Eventos</a></li>
-                		<li><a href="#admin-servicio">Servicios</a></li>
-                		<li><a href="#admin-publicidad">Publicidad</a></li>
+										<?php if ($rol === "admin") {
+												echo '<li><a href="#admin-usuario">Usuarios</a></li>';
+											}
+							 				if ($rol === "admin" || $rol === "gestor" ) {
+												echo '<li><a href="#admin-noticia">Noticias</a></li>
+												<li><a href="#admin-eventos">Eventos</a></li>
+	                			<li><a href="#admin-servicio">Servicios</a></li>';
+											}
+										 if ($rol === "admin" || $rol === "proveedor" ) {
+												echo '<li><a href="#admin-publicidad">Publicidad</a></li>';
+											}?>
               		  </ul>
               		  <div id="admin-usuario">
               		  	<form action="<?= getBasePath() ?>formAdministrar.php" method="post" id="form-usuario">
