@@ -71,7 +71,7 @@
                     </form>
                     </div>
               		  <div id="admin-eventos">
-											<form action="<?= getBasePath() ?>formAdministrar.php" method="get" id="form-usuario">
+											<form action="<?= getBasePath() ?>formAdministrar.php" method="post" id="form-usuario" enctype="multipart/form-data">
 												<input type="hidden" name="MAX_FILE_SIZE" value="3000000">
 												<input type="hidden" name="usuario" id="input-usuario-evento" class="estilotextarea" value=<?= $id ?>>
 												<h3 class="contenido-titulo">Titulo del evento: </h3>
