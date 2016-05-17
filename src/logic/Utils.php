@@ -33,7 +33,7 @@ class Utils {
         die;
       }
       if ($inputname === '') {
-        echo "Archivo demasiado grande";
+        echo "No se adjuntó archivo o éste es demasiado grande";
         die;
       }
 
