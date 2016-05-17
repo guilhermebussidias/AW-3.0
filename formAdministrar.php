@@ -5,6 +5,7 @@ $extension = " ";
 	$logicNoticia = new \aw\logic\Noticia();
 	$logicServicio = new \aw\logic\servicioEspecifico();
 	$logicPublicidad = new \aw\logic\Publicidad();
+	$logicEvento = new \aw\logic\Evento();
 
 	if ($_REQUEST["boton"] === "crear-usuario"){
 		$rol = $_REQUEST["usuario-rol"];
@@ -78,7 +79,7 @@ $extension = " ";
 			$categoria = $_REQUEST["categoria"];
 			$imagen = \aw\logic\Utils::uploadPic("input-foto-servicio");
 			$logicServicio->updateServicio($id, $nombre, $categoria, $url, $ubicacion, $imagen, $contenido, $telefono);
-		}		
+		}
 		$extension="#admin-servicio";
 	}
 	else if ($_REQUEST["boton"] === "eliminar-servicio"){
@@ -125,6 +126,42 @@ $extension = " ";
 			$logicPublicidad->savePublicidad($usuario, $anuncio, $banner);
 		}
 	}
+
+	######################################### EVENTOS ######################################################
+
+	else if ($_REQUEST["boton"] === "modificar-evento"){
+		$id = $_REQUEST["id"];
+		$titulo = $_REQUEST["titulo-evento"];
+		$contenido = $_REQUEST["input-contenido-evento"];
+		$fecha = $_REQUEST["fecha-evento"];
+		$ubicacion = $_REQUEST["ubicacion-evento"];
+		$foto = \aw\logic\Utils::uploadPic("input-foto-evento");
+		$usuario = $_REQUEST["usuario"];
+		if($titulo!== '' && $contenido !== ''){
+			$logicEvento->updateEvento($id, $titulo, $contenido, $fecha, $ubicacion, $foto, $usuario);
+		}
+		$extension="#admin-evento";
+	}
+
+	else if ($_REQUEST["boton"] === "guardar-evento"){
+		$titulo = $_REQUEST["titulo-evento"];
+		$contenido = $_REQUEST["input-contenido-evento"];
+		$fecha = $_REQUEST["fecha-evento"];
+		$ubicacion = $_REQUEST["ubicacion-evento"];
+		$foto = \aw\logic\Utils::uploadPic("input-foto-evento");
+		$usuario = $_REQUEST["usuario"];
+		if ($titulo !== "" && $contenido !== ""){
+			$logicEvento->saveEvento($titulo, $contenido, $fecha, $ubicacion, $foto, $usuario);
+		}
+		$extension="#admin-evento";
+	}
+
+	else if ($_REQUEST["boton"] === "eliminar-evento"){
+			$id = $_REQUEST["id"];
+			$logicEvento->deleteEvento($id);
+	}
+
+	########################################################################################################
 
 	if(getRole() === "admin"){
 		redirect(getBasePath() . 'administrar.php'. $extension);

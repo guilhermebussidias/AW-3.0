@@ -26,6 +26,7 @@
 			<div id="contenedor-eventos" class"contenido">
 			<div id="algo" class="contenido-bloque">
 				<form action="<?= getBasePath() ?>formAdministrar.php" method="post" id="edit-evento" >
+						<input type="hidden" name="MAX_FILE_SIZE" value="3000000">
 					<h3 class="contenido-titulo">Título:<h3/>
             <input type="text" name="titulo-evento" id="input-titulo-evento" class="estilotextarea" value= "<?php echo $evento['titulo'] ?>">
 					<h3 class="contenido-titulo">Fecha:<h3/>
@@ -33,7 +34,7 @@
 					<h3 class="contenido-titulo">Ubicacion:<h3/>
 						<input type="text" name="ubicacion-evento" id="input-ubicacion-evento" class="estilotextarea" value= "<?php echo $evento['ubicacion'] ?>">
 					<h3 class="contenido-titulo">Imagen:<h3/>
-						<input type="file" name="imagen-evento" id="input-imagen-evento" class="estilotextarea">
+						<input type="file" name="input-foto-evento" id="input-foto-evento" class="estilotextarea">
 					<h3 class="contenido-titulo">Contenido:<h3/>
             <textarea name="input-contenido-evento" class="estilotextarea" rows="10" cols="80"><?php echo $evento['contenido'] ?></textarea>
 

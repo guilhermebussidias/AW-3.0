@@ -64,7 +64,7 @@ class DAOEvento {
       $sql = "INSERT INTO Evento (titulo, contenido, fecha, ubicacion, foto, usuario)
       VALUES (:tit, :con, :fec, :ubi, :fot, :usu)";
       $stmt = $this->conn->prepare($sql);
-      $stm->execute(["tit" => $titulo, "con" => $fec, "fec" => $fecha, "ubi" => $ubicacion, "fot" => $foto, "usu" => $usuario]);
+      $stmt->execute(["tit" => $titulo, "con" => $contenido, "fec" => $fecha, "ubi" => $ubicacion, "fot" => $foto, "usu" => $usuario]);
       $res = $stmt->fetchAll();
       $id = $this->conn->lastInsertId();
     } catch(PDOException $e) {

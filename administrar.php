@@ -71,7 +71,8 @@
                     </div>
               		  <div id="admin-eventos">
 											<form action="<?= getBasePath() ?>formAdministrar.php" method="get" id="form-usuario">
-												<input type="hidden" name="usuario" id="input-titulo-evento" class="estilotextarea" value=<?= $id ?>>
+												<input type="hidden" name="MAX_FILE_SIZE" value="3000000">
+												<input type="hidden" name="usuario" id="input-usuario-evento" class="estilotextarea" value=<?= $id ?>>
 												<h3 class="contenido-titulo">Titulo del evento: </h3>
 												<input type="text" name="titulo-evento" id="input-titulo-evento" class="estilotextarea">
 												<br>
@@ -82,7 +83,7 @@
 												<input type="text" name="ubicacion-evento" id="input-ubicacion-evento" class="estilotextarea">
 												<br>
 												<label for="">Imagen: </label>
-												<input type="file" name="input-foto-evento" id="input-imagen-evento"><br>
+												<input type="file" name="input-foto-evento" id="input-foto-evento"><br>
 												<br>
 												<h3 class="contenido-titulo">Contenido:</h3>
 		                    <textarea name="input-contenido-evento" class="estilotextarea" rows="10" cols="80" id="input-contenido-evento"></textarea>

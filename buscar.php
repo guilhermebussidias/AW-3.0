@@ -78,13 +78,13 @@
                <div id="busca-eventos" class="fragmento-busqueda">
 	              <form action="<?= getBasePath() ?>formBuscar.php" method="get" id="form-busqueda-servicio">
 	                    <label for="input-titulo-evento" class="label-busqueda">Título:</label>
-	                    <input type="text" name="titulo-evento" id="input-titulo-evento" class="input-busqueda input-busqueda-servicio">
+	                    <input type="text" name="titulo-evento" id="input-titulo-evento" class="input-busqueda input-busqueda-evento">
 	                    <label for="input-contenido-evento" class="label-busqueda">Contenido:</label>
-	                    <input type="text" name="contenido-evento" id="input-contenido-evento" class="input-busqueda input-busqueda-servicio">
+	                    <input type="text" name="contenido-evento" id="input-contenido-evento" class="input-busqueda input-busqueda-evento">
 	                    <label for="input-fecha-ini-evento" class="label-busqueda">Fecha inicial:</label>
-	                    <input type="text" name="fecha-ini-evento" id="input-fecha-ini-evento" class="input-busqueda input-busqueda-servicio">
+	                    <input type="text" name="fecha-ini-evento" id="input-fecha-ini-evento" class="input-busqueda input-busqueda-evento">
 	                    <label for="input-fecha-fin-evento" class="label-busqueda">Fecha final:</label>
-	                    <input type="text" name="fecha-fin-evento" id="input-fecha-fin-evento" class="input-busqueda input-busqueda-servicio">
+	                    <input type="text" name="fecha-fin-evento" id="input-fecha-fin-evento" class="input-busqueda input-busqueda-evento">
 	                    <label for="input-titulo-evento" class="label-busqueda">Ubicación:</label>
 	                    <input type="text" name="ubicacion-evento" id="input-titulo-evento" class="input-busqueda input-busqueda">
 	                <button type="submit" class="boton-enviar-busqueda">Buscar</button>

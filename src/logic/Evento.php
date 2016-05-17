@@ -39,6 +39,18 @@ class Evento {
     $eventos = $this->daoEvento->getListaEventosBuscador($titulo,$contenido,$fechaIni,$fechaFin,$ubicacion);
     return $eventos;
   }
+
+  function updateEvento($id, $titulo, $contenido, $fecha, $ubicacion, $foto, $usuario) {
+    	return $this->daoEvento->updateEvento($id, $titulo, $contenido, $fecha, $ubicacion, $foto, $usuario);
+	}
+
+  function saveEvento($titulo, $contenido, $fecha, $ubicacion, $foto, $usuario) {
+    	return $this->daoEvento->saveEvento($titulo, $contenido, $fecha, $ubicacion, $foto, $usuario);
+	}
+
+  function deleteEvento($id) {
+    	return $this->daoEvento->deleteEvento($id);
+	}
 }
 
  ?>
