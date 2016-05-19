@@ -31,7 +31,6 @@
   font-size: 0.8em;
 }
 
-/*Servicios*/
 .tituloServicio{
   padding-top: 20px;
   color: #A68337;
@@ -147,27 +146,6 @@
   padding-left: 30px;
 }
 
-/*
-
-table{
-  width: 650px;
-  margin-top: 20px;
-  margin-left: 20px;
-  margin-right: 15px;
-  margin-bottom: 40px;
-  border: 1px solid darkgray;
-  padding-top: 20px;
-  padding-left: 5px;
-  padding-right: 10px;
-  max-width: 600px;
-  box-shadow: 0 5px 10px #666;
-  border-radius: 5px;
-}
-td{
-  padding-left: 5px;
-  max-height: 150px;
-}
-*/
 .contenido-boton {
   float: right;
 }

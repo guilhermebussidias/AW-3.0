@@ -4,9 +4,8 @@
 	$noticia = false;
 	$evento = false;
 	$servicio = false;
-	############################EJEMPLO
-	if (isset($_REQUEST["titulo-noticia"])){ # compruebo si lo que me han pasado es una noticia
-		$tituloN = $_REQUEST["titulo-noticia"]; #meto los parametros en variables
+	if (isset($_REQUEST["titulo-noticia"])){ 
+		$tituloN = $_REQUEST["titulo-noticia"]; 
 		$contenidoN = $_REQUEST["contenido-noticia"];
 		$fechaInicioN = $_REQUEST["fecha-ini-noticia"];
 		if($fechaInicioN ==="")
@@ -16,23 +15,18 @@
 		if($fechaFinN ==="")
 			$fechaFinN = '2020-01-01';
 
-		$noticia = true; #identificador para saber que hay que mostrar noticia
+		$noticia = true; 
 		$logic = new \aw\logic\Noticia();
 		$noticias = $logic->buscarNoticiasbuscador($tituloN, $contenidoN, $fechaInicioN, $fechaFinN);
 	}
-	#################################
-	#PARSEAR ELEMENTOS DE EVENTO
 	if (isset($_REQUEST["titulo-evento"])){
 
-		##################### Rellenar con tus parametros
 		$titulo = $_REQUEST["titulo-evento"];
 		$contenido = $_REQUEST["contenido-evento"];
 		$fechaInicio = $_REQUEST["fecha-ini-evento"];
 		$fechaFin = $_REQUEST["fecha-fin-evento"];
 		$ubicacion = $_REQUEST["ubicacion-evento"];
-		#####################
 
-		//Adaptación para el LIKE de la consulta
 		if ($titulo == "") {
 			$titulo = '%';
 		}else {
@@ -59,18 +53,15 @@
 		$logic = new \aw\logic\Evento();
 		$eventos = $logic->ListaEventosBuscador($titulo,$contenido,$fechaInicio,$fechaFin,$ubicacion);
 	}
-	#PARSEAR ELEMENTOS DE SERVICIO
+
 	if (isset($_REQUEST["contenido-servicio"])){
 		$id = getId();
-		##################### Rellenar con tus parametros
 		$nombre = $_REQUEST["nombre-servicio"];
 		$contenido = $_REQUEST["contenido-servicio"];
 		$categoria = $_REQUEST["categoria-servicio"];
 		$ubicacion = $_REQUEST["ubicacion-servicio"];
 		$puntuacion = $_REQUEST["puntuacion-servicio"];
-		#####################
 
-		//Adaptación para el LIKE de la consulta
 		if($nombre == ""){
 			$nombre = '%';
 		}else{
@@ -112,7 +103,6 @@
 			?>
 			<div id="contenido">
 				<?php
-				######################## EJEMPLO PARA LAS NOTICIAS SE RELLENA CON FOREACH
 					if ($noticia){
 						echo'<div id="contenedor-noticias">';
 						foreach($noticias as $noticias_){
@@ -128,9 +118,7 @@
     					}
     					echo '</div>';
     				}
-    			###############################
-    				#########EVENTO
-    				if ($evento){ #hacer un foreach para devolver los eventos
+    				if ($evento){ 
 							foreach($eventos as $evento){
 								echo '
 									<div class="contenido-bloque">
@@ -143,9 +131,7 @@
 								';
 							}
     				}
-    				###################
-    				#############SERVICIO
-   				if ($servicio){ #hacer un foreach para devolver los
+   				if ($servicio){ 
    					$nombreCategoria = $logic->nameCategory($categoria);
    					$id = getId();
 			      echo'<h3 class="tituloServicio">'. $nombreCategoria . '</h3>';
@@ -198,7 +184,6 @@
 	                }
 
     				}
-    				##################################
      			?>
 			</div>
 			<?php

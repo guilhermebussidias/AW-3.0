@@ -35,7 +35,7 @@ $noticias = $logic->buscarNoticias($ultimaPag * $noticiasPorPagina, $noticiasPor
 				<div id="contenedor-noticias">
 				<?php
 
-				foreach($noticias as $noticia) { // fecha, titulo, contenido, id, nombre_usuario, idUser
+				foreach($noticias as $noticia) {
 
 					$titulo = $noticia["titulo"];
 					$autor = $noticia["nombre_usuario"];

@@ -70,7 +70,6 @@ class DAONoticia {
 
   function getListaNoticiaBuscador($tituloN, $contenidoN, $fechaInicioN, $fechaFinN) {
     try{
-      //MODIFICACIONES PARA EL LIKE
       $tituloN= "%" . $tituloN ."%";
       $contenidoN= "%" . $contenidoN . "%";
 

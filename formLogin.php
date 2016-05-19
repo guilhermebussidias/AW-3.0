@@ -3,7 +3,6 @@
 require_once __DIR__ . "/src/App.php";
 
 if (is_null(getRole())) {
-  // -> Login
   $name = $_REQUEST["name"];
   $pass = $_REQUEST["password"];
 
@@ -17,7 +16,6 @@ if (is_null(getRole())) {
     redirect(getBasePath() . "nuevoUsuario.php");
   }
 } else {
-  // -> Logout
   sessionLogout();
   redirect(getBasePath());
 }

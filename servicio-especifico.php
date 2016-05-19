@@ -107,7 +107,6 @@
 
               if (!$serviciosPag==null) {
                 echo '<a class="contenido-boton" href="servicio-especifico.php?tipo=' . $categoria .'&ultimaPag=' . $next .'">Página siguiente</a>';
-                     //   echo'<form method="get" action="servicio-especifico.php?tipo=' . $categoria .'&ultimaPag=' . $next .'"><button type="submit">Página siguiente</button></form>';
 
               }
               ?>

@@ -57,7 +57,6 @@
 </div>
 
 <div id="dialog-form" title="Login en AllDogs">
-  <!--<p class="validateTips">Hay que rellenar todos los campos</p>-->
 
   <form id="jquery-login-form" action="<?= getBasePath() ?>formLogin.php" method="post">
     <fieldset>

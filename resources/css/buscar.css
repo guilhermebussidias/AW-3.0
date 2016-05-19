@@ -1,6 +1,3 @@
-/*#contenedor-fragmentos {
-  height: 500px;
-}*/
 #maxi-form-administrar{
   height: 100%;
   width: 95%;
@@ -55,7 +52,6 @@
 .busqueda-box {
   float: left;
   width: 65%;
-  /*border: 2px dotted orange;*/
   margin: 15px;
 }
 

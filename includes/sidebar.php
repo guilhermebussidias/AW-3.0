@@ -9,9 +9,6 @@
 		if (isset($publicidad))
 	    foreach($publicidad as $publicidad_){
 				$banner = UPLOADED_URL . $publicidad_['banner'];
-				/*echo '<div class="pienso">
-							<a href="<?= getBasePath() ?>"> '. $publicidad_['banner'] . '<img src="<?=getImgPath()?>pienso1.jpg" alt="pienso">
-							</div>';*/
 				echo '<div class="anuncio-banner"><img src="' . $banner . '" class="anuncio-banner-img"></div>';
 
 				if( $rol==='admin' or $id===$publicidad_['idUser']){

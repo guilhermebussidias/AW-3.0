@@ -26,7 +26,7 @@
 					<?php
 						$noticiasLogic = new \aw\logic\Noticia();
 						$noticias = $noticiasLogic->buscarNoticias(0, $numNoticias);
-						foreach($noticias as $noticia) { // fecha, titulo, contenido, id, nombre_usuario, idUser
+						foreach($noticias as $noticia) { 
 
 							$titulo = $noticia["titulo"];
 							$autor = $noticia["nombre_usuario"];
@@ -63,7 +63,7 @@
 					<?php
 						$eventosLogic = new \aw\logic\Evento();
 						$eventos = $eventosLogic->buscarEventos(0, $numEventos);
-						foreach($eventos as $evento) { // id, titulo, contenido, fecha, ubicacion, foto, usuario
+						foreach($eventos as $evento) { 
 
 							$eventoID = $evento["id"];
 							$titulo = $evento["titulo"];
