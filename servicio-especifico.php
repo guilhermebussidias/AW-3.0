@@ -4,7 +4,7 @@
   $categoria = $_GET["tipo"];
   $id = getId();
   $logic = new \aw\logic\servicioEspecifico();
-
+  $logicPuntacion = new \aw\logic\Puntuacion();
   $serviciosPorPagina = 5;
 
   if (isset($_REQUEST["ultimaPag"]))
@@ -14,6 +14,7 @@
 
   $servicios = $logic->mostrarServicios($categoria, $ultimaPag * $serviciosPorPagina, $serviciosPorPagina);
   $nombreCategoria = $logic->nameCategory($categoria);
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -37,6 +38,7 @@
               if(!count($servicios) == 0){
                 foreach ($servicios as $servicio) {
                 $foto = UPLOADED_URL . $servicio['imagen'];  
+                $votar=$logicPuntacion->haVotado($servicio['id'], $id);
                 echo'<div class="contenido-servicios">
                         <div class="imagen-puntuacion">
                           <img class="servicio-imagen" src="' . $foto .'" alt="imagen empresa">
@@ -50,7 +52,9 @@
                               echo'<form action="formPuntuacion.php" method="post">
                                 <input type="hidden" name="idServicio" value=' .  $servicio['id'] . '>
                                 <input type="hidden" name="idUsuario" value=' .  $id . '>
-                                <input type="hidden" name="categoria" value=' .  $servicio['categoria'] . '>                                
+                                <input type="hidden" name="categoria" value=' .  $servicio['categoria'] . '>  ';   
+                                if(is_null($votar)){
+                                echo '                           
                                   <select class="puntuacion-usuario" name="puntuacion-servicio">
                                     <option value="1" selected="selected">1</option>
                                     <option value="2">2</option>
@@ -58,8 +62,9 @@
                                     <option value="4">4</option>
                                     <option value="5">5</option>
                                   </select>
-                                <button type="submit" class="myButton" name="boton" value="puntuar-servicio">Puntuar</button>
-                              </form>';
+                                  <button type="submit" class="myButton" name="boton" value="puntuar-servicio">Puntuar</button>';
+                                 }
+                             echo '</form>';
                             }
                             
                        echo'</div>
@@ -83,48 +88,6 @@
                       }
                echo '</div>';
                 }
-                /*
-                echo '<table>';
-                  foreach ($servicios as $servicio){
-                    $foto = UPLOADED_URL . $servicio['imagen'];
-                    echo'<tr>
-                          <td rowspan="4"><img src="' . $foto .'" class="imagenServicio" alt="imagen empresa"></td>
-                          <td class="empresaServicio">' . $servicio['nombre'] . '</td>
-                          <td rowspan="2">
-                          <div class="estrellasMedia">';
-                            $puntuacion = $servicio['media_puntuacion'];
-                            for($i = 0; $i < $puntuacion; $i++){
-                              echo '<a  data-value="1" title="Votar con 1 estrellas"></a>';
-                            }
-                    echo'</td>';
-                          if($rol=='admin' or $id==$servicio['usuario']){
-                            echo'<td rowspan="2"><a class="contenido-boton" href="editar-servicio.php?servicio=' . $servicio['id'] .'">Editar</a></td>';
-                          }
-                        echo'</tr>
-                        <tr>
-                          <td class="direccionServicio">' . $servicio['ubicacion'] . '</td>
-                        </tr>
-                        <tr>
-                          <td class="telefonoServicio">' .  $servicio['telefono'] . '</td>
-                          <td>';
-                            if(!is_null(getRole())) {
-                              echo '<label for="input-categoria-servicio">Puntuación:</label>
-                                      <select name="categoria-servicio" id="input-categoria-servicio">
-                                        <option value="1" selected="selected">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                      </select>';
-                            }
-                    echo '</td>
-                        </tr>
-                        <tr>
-                          <td class="descripcionServicio">' . $servicio['contenido'] . '</td>
-                          <td> <a class="urlServicio" href="'. $servicio['url'] . '" target= "_blank">'  . $servicio['url'] . '</a></td>
-                        </tr>';
-                   }
-                echo'</table>';*/
               }
               $prev=$ultimaPag - 1;
               if ($ultimaPag!=0) {

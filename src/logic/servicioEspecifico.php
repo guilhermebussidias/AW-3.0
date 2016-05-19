@@ -52,21 +52,21 @@ class servicioEspecifico{
     return $servicios;
   }
 
-  function guardarServicio($usuario,$titulo,$telefono,$url,$ubicacion,$contenido){//codigo muerto?
+  /*function guardarServicio($usuario,$titulo,$telefono,$url,$ubicacion,$contenido){//codigo muerto?
     $id = $this->daoServicio->saveServicio($usuario,$titulo,$telefono,$url,$ubicacion,$contenido);
     return $id;
-  }
+  }*/
 
   function guardarServicioCompleto($usuario, $nombre, $contenido, $ubicacion,
-                  $categoria, $imagen, $telefono, $url) {
+                  $categoria, $imagen, $telefono, $url, $patrocinado) {
     $media_puntuacion = 0;
     $id = $this->daoServicio->saveServicioCompleto($usuario, $nombre, $contenido, $ubicacion,
-      $categoria, $media_puntuacion, $imagen, $telefono, $url);
+      $categoria, $media_puntuacion, $imagen, $telefono, $url, $patrocinado);
     return $id;
   }
 
-  function updateServicio($id, $nombre, $categoria, $url, $ubicacion, $imagen, $contenido, $telefono){
-    return $this->daoServicio->updateServicio($id, $nombre, $categoria, $url, $ubicacion, $imagen, $contenido, $telefono);
+  function updateServicio($id, $nombre, $categoria, $url, $ubicacion, $imagen, $contenido, $telefono, $patrocinado){
+    return $this->daoServicio->updateServicio($id, $nombre, $categoria, $url, $ubicacion, $imagen, $contenido, $telefono, $patrocinado);
 
   }
 

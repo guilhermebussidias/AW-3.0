@@ -1,6 +1,10 @@
 FUNCIONALIDADES IMPLEMENTADAS:
 	- Login y logout. Creación de nuevo usuario tanto por parte de usuarios anónimos y del administrador para asignar los distintos roles.
-	- Noticias. Se pueden mostrar, crear, modificar y eliminar. 
+	- Noticias. Se pueden mostrar, crear, modificar y eliminar.
 	- Eventos. Se pueden mostrar, crear, modificar y eliminar.
-	- Servicios. Se pueden mostrar, crear, modificar y eliminar. 
+	- Servicios. Se pueden mostrar, crear, modificar y eliminar.
 	- Administrar. Un administrador tiene acceso a todo el contenido, pudiendo crear, modificar y eliminar.
+	- Puntuar Servicios y mostramos la media de cada servicio
+	- Comentar Noticias para cada usuario registrado
+	- Seguridad: Hasheamos las contraseñas, las subida de fotos se genera un nombre nuevo y formato, gestion de contenido con respecto a cada rol
+	

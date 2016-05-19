@@ -2,6 +2,8 @@
 
 namespace aw\dao;
 
+use PDOException;
+
 class DAOEvento {
 
   private $conn;
@@ -83,8 +85,7 @@ class DAOEvento {
           $sql = "UPDATE Evento SET titulo = :titulo, contenido = :contenido, fecha = :fecha,
           ubicacion = :ubicacion, foto = :foto WHERE id = :id";
           $stmt = $this->conn->prepare($sql);
-          $stmt->execute(["titulo" => $titulo, "contenido" => $contenido, "fecha" => $fecha,
-          "ubicacion" => $ubicacion, "foto" => $foto]);
+          $stmt->execute(["titulo" => $titulo, "contenido" => $contenido, "fecha" => $fecha, "ubicacion" => $ubicacion, "foto" => $foto, "id" => $id]);
         } catch(PDOException $e) {
           echo "ERROR EN DAOEvento: " . $e->getMessage();
           return false;
@@ -114,7 +115,7 @@ class DAOEvento {
           WHERE e.titulo LIKE :tit AND e.contenido LIKE :cont
           AND e.fecha <= :fechaF AND e.fecha >= :fechaI
           AND e.ubicacion LIKE :ubic
-  
+
           ORDER BY fecha DESC";
         $stm = $this->conn->prepare($sql);
         $stm->execute(["tit" => $titulo, "cont" => $contenido, "fechaF" => $fechaFin, "fechaI" => $fechaIni, "ubic" => $ubicacion]);

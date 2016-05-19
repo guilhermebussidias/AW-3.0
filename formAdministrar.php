@@ -62,20 +62,21 @@
 		$web = $_REQUEST["input-url-servicio"];
 		$ubicacion = $_REQUEST["input-ubicacion-servicio"];
 		$contenido= $_REQUEST["contenido-servicio"];
+		if (isset($_REQUEST["patrocinado"])) {
+			$patrocinado = $_REQUEST["patrocinado"];
+		} else {
+			$patrocinado = 0;
+		}
 
 		if ($servicio !== "" && $telefono !== ""
 		&& $web !== "" && $ubicacion !== "" && $contenido !== "") {
-
-			/*$logicServicio->guardarServicio( getID(), $servicio,
-				$telefono,$web, $ubicacion,$contenido);*/
-
 			$usuario = getID();
 			$nombre = $servicio;
 			$categoria = $_REQUEST["categoria-servicio"];
 			$imagen = \aw\logic\Utils::uploadPic("input-foto-servicio");
 			$url = $web;
 			$logicServicio->guardarServicioCompleto($usuario, $nombre, $contenido, $ubicacion,
-		                  $categoria, $imagen, $telefono, $url);
+		                  $categoria, $imagen, $telefono, $url, $patrocinado);
 		}
 	}
 	else if($_REQUEST["boton"] === "modificar-servicio"){
@@ -85,11 +86,12 @@
 		$url = $_REQUEST["url"];
 		$ubicacion = $_REQUEST["ubicacion"];
 		$telefono = $_REQUEST["telefono"];
+		$patrocinado = $_REQUEST['patrocinado'];
 
 		if($nombre!== '' && $contenido !== '' && $url!== '' && $ubicacion!== '' && $telefono !== ''){
 			$categoria = $_REQUEST["categoria"];
 			$imagen = \aw\logic\Utils::uploadPic("input-foto-servicio");
-			$logicServicio->updateServicio($id, $nombre, $categoria, $url, $ubicacion, $imagen, $contenido, $telefono);
+			$logicServicio->updateServicio($id, $nombre, $categoria, $url, $ubicacion, $imagen, $contenido, $telefono, $patrocinado);
 		}
 	}
 	else if ($_REQUEST["boton"] === "eliminar-servicio"){

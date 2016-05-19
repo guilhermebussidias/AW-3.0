@@ -2,10 +2,10 @@
 -- version 4.5.2
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 13-05-2016 a las 19:21:33
--- Versión del servidor: 10.1.9-MariaDB
--- Versión de PHP: 5.6.15
+-- Host: localhost
+-- Generation Time: May 19, 2016 at 05:36 PM
+-- Server version: 10.1.13-MariaDB
+-- PHP Version: 5.6.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `alldogs`
+-- Database: `alldogs`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `ComentarioNoticia`
+-- Table structure for table `ComentarioNoticia`
 --
 
 CREATE TABLE `ComentarioNoticia` (
@@ -38,7 +38,7 @@ CREATE TABLE `ComentarioNoticia` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Evento`
+-- Table structure for table `Evento`
 --
 
 CREATE TABLE `Evento` (
@@ -54,7 +54,7 @@ CREATE TABLE `Evento` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Noticia`
+-- Table structure for table `Noticia`
 --
 
 CREATE TABLE `Noticia` (
@@ -68,7 +68,7 @@ CREATE TABLE `Noticia` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Publicidad`
+-- Table structure for table `Publicidad`
 --
 
 CREATE TABLE `Publicidad` (
@@ -81,7 +81,7 @@ CREATE TABLE `Publicidad` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Puntua`
+-- Table structure for table `Puntua`
 --
 
 CREATE TABLE `Puntua` (
@@ -93,7 +93,7 @@ CREATE TABLE `Puntua` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Servicio`
+-- Table structure for table `Servicio`
 --
 
 CREATE TABLE `Servicio` (
@@ -106,13 +106,14 @@ CREATE TABLE `Servicio` (
   `media_puntuacion` int(11) NOT NULL,
   `imagen` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `telefono` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
-  `url` varchar(255) COLLATE utf8_spanish_ci NOT NULL
+  `url` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `patrocinado` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Usuario`
+-- Table structure for table `Usuario`
 --
 
 CREATE TABLE `Usuario` (
@@ -123,11 +124,11 @@ CREATE TABLE `Usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `ComentarioNoticia`
+-- Indexes for table `ComentarioNoticia`
 --
 ALTER TABLE `ComentarioNoticia`
   ADD PRIMARY KEY (`id`),
@@ -135,119 +136,119 @@ ALTER TABLE `ComentarioNoticia`
   ADD KEY `noticia_idx` (`noticia`);
 
 --
--- Indices de la tabla `Evento`
+-- Indexes for table `Evento`
 --
 ALTER TABLE `Evento`
   ADD PRIMARY KEY (`id`),
   ADD KEY `Evento_ibfk_1` (`usuario`);
 
 --
--- Indices de la tabla `Noticia`
+-- Indexes for table `Noticia`
 --
 ALTER TABLE `Noticia`
   ADD PRIMARY KEY (`id`),
   ADD KEY `usuario` (`usuario`);
 
 --
--- Indices de la tabla `Publicidad`
+-- Indexes for table `Publicidad`
 --
 ALTER TABLE `Publicidad`
   ADD PRIMARY KEY (`id`),
   ADD KEY `usuario` (`usuario`);
 
 --
--- Indices de la tabla `Puntua`
+-- Indexes for table `Puntua`
 --
 ALTER TABLE `Puntua`
   ADD PRIMARY KEY (`usuario`,`servicio`),
   ADD KEY `servicio` (`servicio`);
 
 --
--- Indices de la tabla `Servicio`
+-- Indexes for table `Servicio`
 --
 ALTER TABLE `Servicio`
   ADD PRIMARY KEY (`id`),
   ADD KEY `usuario` (`usuario`);
 
 --
--- Indices de la tabla `Usuario`
+-- Indexes for table `Usuario`
 --
 ALTER TABLE `Usuario`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `n_usuario` (`usuario`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `ComentarioNoticia`
+-- AUTO_INCREMENT for table `ComentarioNoticia`
 --
 ALTER TABLE `ComentarioNoticia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT de la tabla `Evento`
---
-ALTER TABLE `Evento`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `Noticia`
+-- AUTO_INCREMENT for table `Evento`
 --
-ALTER TABLE `Noticia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT de la tabla `Publicidad`
---
-ALTER TABLE `Publicidad`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT de la tabla `Servicio`
---
-ALTER TABLE `Servicio`
+ALTER TABLE `Evento`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT de la tabla `Usuario`
+-- AUTO_INCREMENT for table `Noticia`
+--
+ALTER TABLE `Noticia`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `Publicidad`
+--
+ALTER TABLE `Publicidad`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `Servicio`
+--
+ALTER TABLE `Servicio`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `Usuario`
 --
 ALTER TABLE `Usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `ComentarioNoticia`
+-- Constraints for table `ComentarioNoticia`
 --
 ALTER TABLE `ComentarioNoticia`
   ADD CONSTRAINT `comentarionoticia_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `Usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `comentarionoticia_ibfk_2` FOREIGN KEY (`noticia`) REFERENCES `Noticia` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `Evento`
+-- Constraints for table `Evento`
 --
 ALTER TABLE `Evento`
   ADD CONSTRAINT `Evento_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `Usuario` (`id`);
 
 --
--- Filtros para la tabla `Noticia`
+-- Constraints for table `Noticia`
 --
 ALTER TABLE `Noticia`
   ADD CONSTRAINT `Noticia_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `Usuario` (`id`);
 
 --
--- Filtros para la tabla `Publicidad`
+-- Constraints for table `Publicidad`
 --
 ALTER TABLE `Publicidad`
   ADD CONSTRAINT `Publicidad_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `Usuario` (`id`);
 
 --
--- Filtros para la tabla `Puntua`
+-- Constraints for table `Puntua`
 --
 ALTER TABLE `Puntua`
   ADD CONSTRAINT `Puntua_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `Usuario` (`id`),
   ADD CONSTRAINT `Puntua_ibfk_2` FOREIGN KEY (`servicio`) REFERENCES `Servicio` (`id`);
 
 --
--- Filtros para la tabla `Servicio`
+-- Constraints for table `Servicio`
 --
 ALTER TABLE `Servicio`
   ADD CONSTRAINT `Servicio_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `Usuario` (`id`);

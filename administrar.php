@@ -18,23 +18,33 @@
     	<script src="<?= getJSPath() ?>buscar.js"></script>
 	</head>
 	<body>
+		
 		<div id="contenedor">
-			<?php
-				require('includes/cabecera.php');
-			?>
+<?php
+			require('includes/cabecera.php');
+		?>
 			<div id="contenido">
 				<?php
-				if ( $rol == "admin" ) {
+				if ( $rol === "admin" || $rol === "gestor" || $rol === "proveedor") {
 					?>
 				 <div class="maxi-form-administrar" >
             		<div id="contenedor-fragmentos">
 		              <ul>
-               			<li><a href="#admin-usuario">Usuarios</a></li>
-                		<li><a href="#admin-noticia">Noticias</a></li>
-                		<li><a href="#admin-eventos">Eventos</a></li>
-                		<li><a href="#admin-servicio">Servicios</a></li>
-                		<li><a href="#admin-publicidad">Publicidad</a></li>
+										<?php if ($rol === "admin") {
+												echo '<li><a href="#admin-usuario">Usuarios</a></li>';
+											}
+							 				if ($rol === "admin" || $rol === "gestor" ) {
+												echo '<li><a href="#admin-noticia">Noticias</a></li>
+												<li><a href="#admin-eventos">Eventos</a></li>
+	                			<li><a href="#admin-servicio">Servicios</a></li>';
+											}
+										 if ($rol === "admin" || $rol === "proveedor" ) {
+												echo '<li><a href="#admin-publicidad">Publicidad</a></li>';
+											}?>
               		  </ul>
+              		  <?php
+				if ( $rol === "admin") {
+					?>
               		  <div id="admin-usuario">
               		  	<form action="<?= getBasePath() ?>formAdministrar.php" method="post" id="form-usuario">
                     		<label for="input-usuario-nombre">Nombre:</label>
@@ -56,7 +66,10 @@
               		  		<button class="myButton" id="rojo" name="boton" value="eliminar-usuario">Eliminar</button>
               		  	</form>
               		  </div>
-
+				<?php
+				}
+				if ( $rol === "admin" || $rol === "gestor") {
+					?>
               		  <div id="admin-noticia">
                     <form action="<?= getBasePath() ?>formAdministrar.php" method="get" id="form-usuario">
                     <input type="hidden" name="usuario" id="input-titulo-noticia" class="estilotextarea" value=<?= $id ?>>
@@ -117,6 +130,8 @@
 		                      <option value="paseador">Paseadores</option>
 		                      <option value="adopcion">Adopciones</option>
 		                    </select><br><br>
+                        <label>Patrocinado: </label>
+                        <input type="checkbox" name="patrocinado" value="1"><br><br>
 												<label for="">Contenido: </label>
 												<textarea name="contenido-servicio" rows="10" cols="80"></textarea>
 												<br><br>
@@ -124,6 +139,10 @@
               		  		<button type="reset" class="myButton" id="naranja" name="boton" value="descartar-servicio">Descartar Cambios</button>
 							</form>
               		  </div>
+              		 <?php
+              		}
+				if ( $rol === "admin" || $rol === "proveedor") {
+					?>
               		   <div id="admin-publicidad">
               		   <form action="<?= getBasePath() ?>formAdministrar.php" method="post" id="form-publicidad" enctype="multipart/form-data">
               		  		<input type="hidden" name="id" id="input-publicidad" class="estilotextarea" value="<?= $id ?>">
@@ -136,6 +155,9 @@
               		  		<button type="reset" class="myButton" id="naranja" name="boton" value="descartar-publicidad">Descartar Cambios</button>
               		   </form>
               		   </div>
+              		   <?php
+              		}
+					?>
               		</div>
 				</div>
 			</div>

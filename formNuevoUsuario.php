@@ -7,8 +7,15 @@ $password = $_REQUEST["password"];
 $role = "normal";
 
 $logic = new \aw\logic\Usuario();
-
-$ok = $logic->newUser($name, $password, $role);
+$name = trim($name);
+if($name !== '' && $password !== '') {
+	$camposVacios = false;
+	$ok = $logic->newUser($name, $password, $role);
+}
+else {
+	$ok = false;
+	$camposVacios = true;
+}
 
 ?>
 
@@ -35,11 +42,16 @@ $ok = $logic->newUser($name, $password, $role);
               <p>Ya puedes hacer login con tu nuevo usuario.</p>
             ';
           } else {
-            echo '
-              <h1>Error al crear usuario</h1>
-              <p>Hubo un error al crear su usuario.
-              Es posible que ya exista otro usuario con ese nombre.</p>
-            ';
+							if (!$camposVacios) {
+								echo '
+		              <h1>Error al crear usuario</h1>
+		              <p>Hubo un error al crear su usuario.
+		              Es posible que ya exista otro usuario con ese nombre.</p>
+		            ';
+							}
+							else {
+								echo '<h1> Los campos no pueden estar vacíos</h1>';
+							}
           }
 
         ?>

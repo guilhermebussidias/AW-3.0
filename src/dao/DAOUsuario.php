@@ -2,6 +2,8 @@
 
 namespace aw\dao;
 
+use PDOException;
+
 class DAOUsuario {
 
   private $conn;
