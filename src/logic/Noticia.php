@@ -21,11 +21,11 @@ class Noticia {
 	}
 
 	function saveNoticia($usuario, $titulo, $contenido) {
-    	return $this->daoNoticia->saveNoticia($usuario, $titulo, $contenido);
+    	return $this->daoNoticia->saveNoticia($usuario, $titulo, esc($contenido));
 	}
 
 	function updateNoticia($id, $titulo, $contenido) {
-    	return $this->daoNoticia->updateNoticia($id, $titulo, $contenido);
+    	return $this->daoNoticia->updateNoticia($id, $titulo, esc($contenido));
 	}
 
 	function deleteNoticia($id) {
