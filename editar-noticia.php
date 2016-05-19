@@ -1,6 +1,8 @@
 <?php
 	require_once __DIR__ . "/src/App.php";
-
+	$rol = getRole();
+	$name = getName();
+	$id = getID();
 	$logic = new \aw\logic\Noticia();
 
 	if (isset($_REQUEST["noticia"]))
@@ -24,10 +26,14 @@
 				require('includes/cabecera.php');
 			?>
 			<div id="contenedor-noticias">
+			<?php
+
+			if (isAdmin() || $rol==='gestor' || $id === $noticia['id_usuario']) {
+			?>
 			<div id="algo" class="contenido-bloque">
 			<form action="<?= getBasePath() ?>formAdministrar.php" method="post" id="edit-noticia" >
 					<input type="hidden" name="id" id="input-titulo-noticia" class="estilotextarea" value= "<?= $noticia['id'] ?>">
-					<h3 class="contenido-titulo">Título:<h3/>
+					
                     <input type="text" name="titulo" id="input-titulo-noticia" class="estilotextarea" value= "<?= $noticia['titulo'] ?>">
 					<h3 class="contenido-titulo">Contenido:<h3/>	
                     <textarea name="contenido" class="estilotextarea" rows="10" cols="80"><?= $noticia['contenido'] ?></textarea>	
@@ -39,9 +45,16 @@
               		 <button type="submit" class="myButton" id="rojo" name="boton" value="eliminar-noticia">Eliminar Noticia</button>
               		<form/>
               		</div>
+              		<?php
+              	}
+			else {
+
+			?>
+				<h3 class="contenido-titulo">Contenido Oculto<h3/>
 					</div>
 
-			<?php				
+			<?php	
+			}			
 				require('includes/pie.php');
 			?>
 		</div>
