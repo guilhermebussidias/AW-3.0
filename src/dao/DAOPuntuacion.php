@@ -2,7 +2,7 @@
 
 namespace aw\dao;
 
-use DAOException;
+use PDOException;
 
 class DAOPuntuacion {
 
