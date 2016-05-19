@@ -3,7 +3,7 @@
 
 	$logic = new \aw\logic\servicioEspecifico();
 
-		$idServicio = $_REQUEST["servicio"];	
+		$idServicio = $_REQUEST["servicio"];
 		$servicio = $logic->buscarServicio($idServicio);
  ?>
 
@@ -13,7 +13,7 @@
 		<meta charset="UTF-8">
 		<title>All Dogs</title>
 		<?php require(getIncludePath() . 'head.php'); ?>
-		<link rel="stylesheet"  href="<?=getCSSPath()?>contenido.css" type="text/css"/> 
+		<link rel="stylesheet"  href="<?=getCSSPath()?>contenido.css" type="text/css"/>
 	    <link rel="stylesheet"  href="<?= getCSSPath() ?>buscar.css" type="text/css" />
 	    <link rel="stylesheet"  href="<?= getCSSPath() ?>botones.css" type="text/css" />
 	</head>
@@ -30,14 +30,14 @@
 					<h3 class="contenido-titulo">Nombre de la empresa:<h3/>
                     <input type="text" name="nombre" id="input-titulo-servicio" class="estilotextarea" value= "<?= $servicio['nombre'] ?>">
 
-                    <h3 class="contenido-titulo">Ubicacion:<h3/>	
+                    <h3 class="contenido-titulo">Ubicacion:<h3/>
                     <textarea name="ubicacion" class="estilotextarea" rows="2" cols="60"><?= $servicio['ubicacion'] ?></textarea>
 
-                   	<h3 class="contenido-titulo">Telefono:<h3/>	
+                   	<h3 class="contenido-titulo">Telefono:<h3/>
                     <textarea name="telefono" class="estilotextarea" rows="1" cols="15"><?= $servicio['telefono'] ?></textarea>
 
-                    <h3 class="contenido-titulo">Url:<h3/>	
-                    <textarea name="url" class="estilotextarea" rows="1" cols="60"><?= $servicio['url'] ?></textarea>   
+                    <h3 class="contenido-titulo">Url:<h3/>
+                    <textarea name="url" class="estilotextarea" rows="1" cols="60"><?= $servicio['url'] ?></textarea>
 
                     <h3 class="contenido-titulo">Foto:</h3>
 					<input type="file" name="input-foto-servicio"><br>
@@ -51,7 +51,16 @@
                       <option value="paseador">Paseadores</option>
                       <option value="adopcion">Adopciones</option>
                   </select>
-					<h3 class="contenido-titulo">Contenido:<h3/>	
+					<h3 class="contenido-titulo">Patrocinado:</h3>
+					<?php
+						if ($servicio['patrocinado']) {
+							echo '<input type="checkbox" name="patrocinado" value="1" checked>';
+						}
+						else{
+							echo '<input type="checkbox" name="patrocinado" value="1">';
+						}
+					 ?>
+					<h3 class="contenido-titulo">Contenido:<h3/>
                     <textarea name="contenido" class="estilotextarea" rows="10" cols="80"><?= $servicio['contenido'] ?></textarea><br><br>
 
                     <button type="submit" class="myButton" id="verde" name="boton" value="modificar-servicio">Guardar</button>
@@ -60,7 +69,7 @@
       		<form/>
       		</div>
 			</div>
-			<?php				
+			<?php
 				require('includes/pie.php');
 			?>
 		</div>
