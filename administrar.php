@@ -41,6 +41,9 @@
 												echo '<li><a href="#admin-publicidad">Publicidad</a></li>';
 											}?>
               		  </ul>
+              		  <?php
+				if ( $rol === "admin") {
+					?>
               		  <div id="admin-usuario">
               		  	<form action="<?= getBasePath() ?>formAdministrar.php" method="post" id="form-usuario">
                     		<label for="input-usuario-nombre">Nombre:</label>
@@ -62,7 +65,10 @@
               		  		<button class="myButton" id="rojo" name="boton" value="eliminar-usuario">Eliminar</button>
               		  	</form>
               		  </div>
-
+				<?php
+				}
+				if ( $rol === "admin" || $rol === "gestor") {
+					?>
               		  <div id="admin-noticia">
                     <form action="<?= getBasePath() ?>formAdministrar.php" method="get" id="form-usuario">
                     <input type="hidden" name="usuario" id="input-titulo-noticia" class="estilotextarea" value=<?= $id ?>>
@@ -130,6 +136,10 @@
               		  		<button type="reset" class="myButton" id="naranja" name="boton" value="descartar-servicio">Descartar Cambios</button>
 							</form>
               		  </div>
+              		 <?php
+              		}
+				if ( $rol === "admin" || $rol === "proveedor") {
+					?>
               		   <div id="admin-publicidad">
               		   <form action="<?= getBasePath() ?>formAdministrar.php" method="post" id="form-publicidad" enctype="multipart/form-data">
               		  		<input type="hidden" name="id" id="input-publicidad" class="estilotextarea" value="<?= $id ?>">
@@ -142,6 +152,9 @@
               		  		<button type="reset" class="myButton" id="naranja" name="boton" value="descartar-publicidad">Descartar Cambios</button>
               		   </form>
               		   </div>
+              		   <?php
+              		}
+					?>
               		</div>
 				</div>
 			</div>
