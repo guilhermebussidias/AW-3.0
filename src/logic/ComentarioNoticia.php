@@ -11,7 +11,7 @@ class ComentarioNoticia {
   }
 
   function nuevoComentario($id_usuario, $id_noticia, $titulo, $comentario) {
-    return $this->daoComentarioNoticia->persist($id_usuario, $id_noticia, $titulo, $comentario);
+    return $this->daoComentarioNoticia->persist($id_usuario, $id_noticia, esc($titulo), esc($comentario));
   }
 
   function borrarComentario($id_comentario) {

@@ -10,7 +10,7 @@ class Puntuacion{
   }
 
   function guardarPuntuacion($usuario,$servicio,$puntuacion){
-    $id = $this->daoPuntuacion->savePuntuacion($usuario,$servicio,$puntuacion);
+    $id = $this->daoPuntuacion->savePuntuacion($usuario,esc($servicio),esc($puntuacion));
     return $id;
   }
   function calculaMediaPuntuacion($servicio){

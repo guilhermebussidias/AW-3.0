@@ -15,7 +15,7 @@ class servicioEspecifico{
   }
 
   function buscarServicio($texto){
-    $servicios = $this->daoServicio->searchServicio($texto);
+    $servicios = $this->daoServicio->searchServicio(esc($texto));
     if (is_null($servicios)){
       return null;
     }
@@ -48,25 +48,20 @@ class servicioEspecifico{
   }
 
   function ListaServiciosBuscador($nombre, $contenido,$categoria,$ubicacion,$puntuacion) {
-    $servicios =  $this->daoServicio->getListaServiciosBuscador($nombre, $contenido,$categoria,$ubicacion,$puntuacion);
+    $servicios =  $this->daoServicio->getListaServiciosBuscador(esc($nombre), esc($contenido),esc($categoria),esc($ubicacion),esc($puntuacion));
     return $servicios;
   }
-
-  /*function guardarServicio($usuario,$titulo,$telefono,$url,$ubicacion,$contenido){//codigo muerto?
-    $id = $this->daoServicio->saveServicio($usuario,$titulo,$telefono,$url,$ubicacion,$contenido);
-    return $id;
-  }*/
 
   function guardarServicioCompleto($usuario, $nombre, $contenido, $ubicacion,
                   $categoria, $imagen, $telefono, $url, $patrocinado) {
     $media_puntuacion = 0;
-    $id = $this->daoServicio->saveServicioCompleto($usuario, $nombre, $contenido, $ubicacion,
-      $categoria, $media_puntuacion, $imagen, $telefono, $url, $patrocinado);
+    $id = $this->daoServicio->saveServicioCompleto(esc($usuario), esc($nombre), esc($contenido), esc($ubicacion),
+      esc($categoria), esc($media_puntuacion), $imagen, esc($telefono), escURL($url), esc($patrocinado));
     return $id;
   }
 
   function updateServicio($id, $nombre, $categoria, $url, $ubicacion, $imagen, $contenido, $telefono, $patrocinado){
-    return $this->daoServicio->updateServicio($id, $nombre, $categoria, $url, $ubicacion, $imagen, $contenido, $telefono, $patrocinado);
+    return $this->daoServicio->updateServicio(esc($id), esc($nombre), esc($categoria), escURL($url), esc($ubicacion), $imagen, esc($contenido), esc($telefono), esc($patrocinado));
 
   }
 

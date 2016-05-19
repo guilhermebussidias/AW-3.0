@@ -28,7 +28,7 @@ class Evento {
   }
 
   function buscarEvento($texto){
-    $eventos = $this->daoEvento->searchEvento($texto);
+    $eventos = $this->daoEvento->searchEvento(esc($texto));
     if (is_null($eventos)){
       return null;
     }
@@ -36,16 +36,16 @@ class Evento {
   }
 
   function ListaEventosBuscador ($titulo,$contenido,$fechaIni,$fechaFin,$ubicacion){
-    $eventos = $this->daoEvento->getListaEventosBuscador($titulo,$contenido,$fechaIni,$fechaFin,$ubicacion);
+    $eventos = $this->daoEvento->getListaEventosBuscador(esc($titulo),esc($contenido),esc($fechaIni),esc($fechaFin),esc($ubicacion));
     return $eventos;
   }
 
   function updateEvento($id, $titulo, $contenido, $fecha, $ubicacion, $foto) {
-    	return $this->daoEvento->updateEvento($id, $titulo, $contenido, $fecha, $ubicacion, $foto);
+    	return $this->daoEvento->updateEvento($id, esc($titulo), esc($contenido), esc($fecha), esc($ubicacion), $foto);
 	}
 
   function saveEvento($titulo, $contenido, $fecha, $ubicacion, $foto, $usuario) {
-    	return $this->daoEvento->saveEvento($titulo, $contenido, $fecha, $ubicacion, $foto, $usuario);
+    	return $this->daoEvento->saveEvento(esc($titulo), esc($contenido), esc($fecha), esc($ubicacion), $foto, $usuario);
 	}
 
   function deleteEvento($id) {

@@ -24,12 +24,12 @@ class Usuario {
 
   function updateByName($username, $password, $role){
     $hpassword = password_hash($password, PASSWORD_BCRYPT);
-    return $this->daoUsuario->updateByName($username, $hpassword, $role);
+    return $this->daoUsuario->updateByName(esc($username), $hpassword, $role);
   }
 
   function newUser($name, $password, $role) {
     $hpassword = password_hash($password, PASSWORD_BCRYPT);
-    return $this->daoUsuario->persist($name, $hpassword, $role);
+    return $this->daoUsuario->persist(esc($name), $hpassword, $role);
   }
 }
 

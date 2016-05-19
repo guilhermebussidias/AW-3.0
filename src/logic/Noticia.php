@@ -21,11 +21,11 @@ class Noticia {
 	}
 
 	function saveNoticia($usuario, $titulo, $contenido) {
-    	return $this->daoNoticia->saveNoticia($usuario, $titulo, esc($contenido));
+    	return $this->daoNoticia->saveNoticia($usuario, esc($titulo), esc($contenido));
 	}
 
 	function updateNoticia($id, $titulo, $contenido) {
-    	return $this->daoNoticia->updateNoticia($id, $titulo, esc($contenido));
+    	return $this->daoNoticia->updateNoticia($id, esc($titulo), esc($contenido));
 	}
 
 	function deleteNoticia($id) {
@@ -33,7 +33,7 @@ class Noticia {
 	}
 
 	function buscarNoticiasbuscador($tituloN, $contenidoN, $fechaInicioN, $fechaFinN){
-		return $this->daoNoticia->getListaNoticiaBuscador($tituloN, $contenidoN, $fechaInicioN, $fechaFinN);
+		return $this->daoNoticia->getListaNoticiaBuscador(esc($tituloN), esc($contenidoN), esc($fechaInicioN), esc($fechaFinN));
 	}
 }
 
