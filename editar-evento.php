@@ -1,6 +1,7 @@
 <?php
 	require_once __DIR__ . "/src/App.php";
-
+	$rol = getRole();
+	$id = getID();
 	$logic = new \aw\logic\Evento();
 
 	if (isset($_REQUEST["evento"]))
@@ -24,20 +25,24 @@
 				require('includes/cabecera.php');
 			?>
 			<div id="contenedor-eventos" class"contenido">
+			<?php
+
+			if (isAdmin() || $rol==='gestor' || $id === $evento['idUser'] && $evento['id'] !== null) {
+			?>
 			<div id="algo" class="contenido-bloque">
 				<form action="<?= getBasePath() ?>formAdministrar.php" method="post" id="edit-evento" enctype="multipart/form-data">
 						<input type="hidden" name="MAX_FILE_SIZE" value="3000000">
 						<input type="hidden" name="id" id="input-evento class="estilotextarea" value= "<?= $idEvento ?>">
 					<h3 class="contenido-titulo">Título:<h3/>
-            <input type="text" name="titulo-evento" id="input-titulo-evento" class="estilotextarea" value= "<?php echo $evento['titulo'] ?>">
+            <input type="text" name="titulo-evento" id="input-titulo-evento" class="estilotextarea" value= "<?php $evento['titulo'] ?>">
 					<h3 class="contenido-titulo">Fecha:<h3/>
-						<input type="date" name="fecha-evento" id="input-fecha-evento" class="estilotextarea" value= "<?php echo $evento['fecha'] ?>">
+						<input type="date" name="fecha-evento" id="input-fecha-evento" class="estilotextarea" value= "<?php  $evento['fecha'] ?>">
 					<h3 class="contenido-titulo">Ubicacion:<h3/>
-						<input type="text" name="ubicacion-evento" id="input-ubicacion-evento" class="estilotextarea" value= "<?php echo $evento['ubicacion'] ?>">
+						<input type="text" name="ubicacion-evento" id="input-ubicacion-evento" class="estilotextarea" value= "<?php  $evento['ubicacion'] ?>">
 					<h3 class="contenido-titulo">Imagen:<h3/>
 						<input type="file" name="input-foto-evento" id="input-foto-evento" class="estilotextarea">
 					<h3 class="contenido-titulo">Contenido:<h3/>
-            <textarea name="input-contenido-evento" class="estilotextarea" rows="10" cols="80"><?php echo $evento['contenido'] ?></textarea>
+            <textarea name="input-contenido-evento" class="estilotextarea" rows="10" cols="80"><?php  $evento['contenido'] ?></textarea>
 
 						<button type="submit" class="myButton" id="verde" name="boton" value="modificar-evento">Guardar</button>
 						<button type="submit" class="myButton" id="naranja" name="boton" value="descartar-evento">Descartar Cambios</button>
@@ -45,9 +50,17 @@
 
 							</form>
 						</div>
+					
+			<?php
+              	}
+			else {
+
+			?>
+				<h3 class="contenido-titulo">Contenido Oculto<h3/>
 					</div>
 
-			<?php
+			<?php	
+			}	
 				require(getIncludePath() . 'sidebar.php');
 				require('includes/pie.php');
 			?>
