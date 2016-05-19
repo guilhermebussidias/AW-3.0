@@ -85,7 +85,7 @@ class DAOServicio {
   }
   function searchServicio($id){
     try {
-      $sql = "SELECT s.nombre as nombre, s.contenido as contenido,
+      $sql = "SELECT s.usuario as usuario, s.nombre as nombre, s.contenido as contenido,
         s.ubicacion as ubicacion, s.imagen as imagen, s.telefono as telefono,
         s.url as url, s.categoria as categoria, s.id as id, IFNULL(s.patrocinado, 0) as patrocinado
         FROM Servicio s

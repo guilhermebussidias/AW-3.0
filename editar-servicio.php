@@ -2,9 +2,10 @@
 	require_once __DIR__ . "/src/App.php";
 
 	$logic = new \aw\logic\servicioEspecifico();
-
-		$idServicio = $_REQUEST["servicio"];
-		$servicio = $logic->buscarServicio($idServicio);
+	$rol = getRole();
+	$id = getID();
+	$idServicio = $_REQUEST["servicio"];
+	$servicio = $logic->buscarServicio($idServicio);
  ?>
 
 <!DOCTYPE html>
@@ -23,6 +24,9 @@
 				require('includes/cabecera.php');
 			?>
 			<div id="contenedor-servicios">
+			<?php
+			if (isAdmin() ||  $id === $servicio['usuario']) {
+			?>
 			<div id="algo" class="contenido-bloque">
 			<form action="<?= getBasePath() ?>formAdministrar.php" method="post" id="edit-servicio" enctype="multipart/form-data" >
 					<input type="hidden" name="id" class="estilotextarea" value= "<?= $servicio['id'] ?>">
@@ -66,10 +70,18 @@
                     <button type="submit" class="myButton" id="verde" name="boton" value="modificar-servicio">Guardar</button>
                     <button type="submit" class="myButton" id="naranja" name="boton" value="descartar-servicio">Descartar Cambios</button>
               		<button type="submit" class="myButton" id="rojo" name="boton" value="eliminar-servicio">Eliminar Servicio</button>
-      		<form/>
+      		</form>
       		</div>
-			</div>
+      	</div>
 			<?php
+			}
+			else {
+			?>
+				<h3 class="contenido-titulo">Contenido Oculto<h3/>
+					</div>
+
+			<?php
+			}
 				require('includes/pie.php');
 			?>
 		</div>
