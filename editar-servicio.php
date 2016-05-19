@@ -54,10 +54,10 @@
 					<h3 class="contenido-titulo">Patrocinado:</h3>
 					<?php
 						if ($servicio['patrocinado']) {
-							<input type="checkbox" name="patrocinado" value="1" checked>
+							echo '<input type="checkbox" name="patrocinado" value="1" checked>';
 						}
 						else{
-							<input type="checkbox" name="patrocinado" value="1">
+							echo '<input type="checkbox" name="patrocinado" value="1">';
 						}
 					 ?>
 					<h3 class="contenido-titulo">Contenido:<h3/>

@@ -76,11 +76,12 @@ $extension = " ";
 		$url = $_REQUEST["url"];
 		$ubicacion = $_REQUEST["ubicacion"];
 		$telefono = $_REQUEST["telefono"];
+		$patrocinado = $_REQUEST['patrocinado'];
 
 		if($nombre!== '' && $contenido !== '' && $url!== '' && $ubicacion!== '' && $telefono !== ''){
 			$categoria = $_REQUEST["categoria"];
 			$imagen = \aw\logic\Utils::uploadPic("input-foto-servicio");
-			$logicServicio->updateServicio($id, $nombre, $categoria, $url, $ubicacion, $imagen, $contenido, $telefono);
+			$logicServicio->updateServicio($id, $nombre, $categoria, $url, $ubicacion, $imagen, $contenido, $telefono, $patrocinado);
 		}
 		$extension="#admin-servicio";
 	}
