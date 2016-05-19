@@ -10,6 +10,7 @@ $extension = " ";
 	if ($_REQUEST["boton"] === "crear-usuario"){
 		$rol = $_REQUEST["usuario-rol"];
 		$nombre =$_REQUEST["usuario-nombre"];
+		$nombre = trim($nombre);
 		$pass = $_REQUEST["usuario-pass"];
 
 		if ($rol !== "" && $nombre !== "" && $pass !== ""){
