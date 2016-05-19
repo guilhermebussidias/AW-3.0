@@ -39,7 +39,15 @@
                 foreach ($servicios as $servicio) {
                 $foto = UPLOADED_URL . $servicio['imagen'];  
                 $votar=$logicPuntacion->haVotado($servicio['id'], $id);
-                echo'<div class="contenido-servicios">
+                if ($servicio["patrocinado"] == 1) {
+                    echo '
+                      <div class="contenido-servicios contenido-servicios-patrocinado">
+                        <div class="servicio-patrocinado"><p>Servicio patrocinado</p></div> ';
+                } else {
+                    echo '
+                      <div class="contenido-servicios"> ';
+                }
+                echo '
                         <div class="imagen-puntuacion">
                           <img class="servicio-imagen" src="' . $foto .'" alt="imagen empresa">
                            <div class="estrellasMedia">';
