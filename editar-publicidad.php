@@ -1,6 +1,6 @@
 <?php
 	require_once __DIR__ . "/src/App.php";
-
+	$rol = getRole();
 	$logic = new \aw\logic\Publicidad();
 
 	if (isset($_REQUEST["publicidad"]))
@@ -21,8 +21,12 @@
 		<div id="contenedor">
 			<?php
 				require('includes/cabecera.php');
+
 			?>
 			<div id="contenedor-publicidad">
+				<?php
+			if (isAdmin() || $rol==='proveedor') {
+				?>
 			<div id="algo" class="contenido-bloque">
 			<form action="<?= getBasePath() ?>formAdministrar.php" method="post" id="edit-publicidad" enctype="multipart/form-data">
 					<input type="hidden" name="id" id="input-publicidad" class="estilotextarea" value= "<?= $idPublicidad ?>">
@@ -35,11 +39,18 @@
                     <button type="submit" class="myButton" id="naranja" name="boton" value="descartar-publicidad">Descartar Cambios</button>
               		 <button type="submit" class="myButton" id="rojo" name="boton" value="eliminar-publicidad">Eliminar Publicidad</button>
               		<form/>
-              		</div>
-					</div>
-
+      		</div>
 			<?php
-				require('includes/pie.php');
+        }
+		else {
+
+		?>
+			<h3 class="contenido-titulo">Contenido Oculto<h3/>
+				</div>
+
+		<?php	
+		}
+			require('includes/pie.php');
 			?>
 		</div>
 	</body>
