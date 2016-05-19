@@ -6,6 +6,7 @@
 	if (isset($_REQUEST["evento"]))
 		$idEvento = $_REQUEST["evento"];
 		$evento = $logic->getEvento($idEvento);
+		$foto = UPLOADED_URL . $evento['foto'];
  ?>
 
 <!DOCTYPE html>
@@ -35,6 +36,7 @@
 					<h3 class="contenido-titulo">Ubicacion:<h3/>
 						<input type="text" name="ubicacion-evento" id="input-ubicacion-evento" class="estilotextarea" value= "<?php echo $evento['ubicacion'] ?>">
 					<h3 class="contenido-titulo">Imagen:<h3/>
+						<?php echo '<img class="servicio-imagen" src="' . $foto .'" alt="imagen empresa">'; ?>
 						<input type="file" name="input-foto-evento" id="input-foto-evento" class="estilotextarea">
 					<h3 class="contenido-titulo">Contenido:<h3/>
             <textarea name="input-contenido-evento" class="estilotextarea" rows="10" cols="80"><?php echo $evento['contenido'] ?></textarea>
