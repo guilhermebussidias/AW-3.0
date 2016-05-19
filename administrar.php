@@ -130,8 +130,8 @@
 		                      <option value="paseador">Paseadores</option>
 		                      <option value="adopcion">Adopciones</option>
 		                    </select><br><br>
-                        <input type="checkbox" name="patrocinado" value="1">Patrocinado
-                        <br><br>
+                        <label>Patrocinado: </label>
+                        <input type="checkbox" name="patrocinado" value="1"><br><br>
 												<label for="">Contenido: </label>
 												<textarea name="contenido-servicio" rows="10" cols="80"></textarea>
 												<br><br>
