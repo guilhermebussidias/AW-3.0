@@ -51,7 +51,11 @@ $extension = " ";
 		$web = $_REQUEST["input-url-servicio"];
 		$ubicacion = $_REQUEST["input-ubicacion-servicio"];
 		$contenido= $_REQUEST["contenido-servicio"];
-		$patrocinado = $_REQUEST["patrocinado"];
+		if (isset($_REQUEST["patrocinado"])) {
+			$patrocinado = $_REQUEST["patrocinado"];
+		} else {
+			$patrocinado = 0;
+		}
 
 		if ($servicio !== "" && $telefono !== ""
 		&& $web !== "" && $ubicacion !== "" && $contenido !== "") {
