@@ -18,10 +18,11 @@
     	<script src="<?= getJSPath() ?>buscar.js"></script>
 	</head>
 	<body>
+		<?php
+			require('includes/cabecera.php');
+		?>
 		<div id="contenedor">
-			<?php
-				require('includes/cabecera.php');
-			?>
+
 			<div id="contenido">
 				<?php
 				if ( $rol === "admin" || $rol === "gestor" || $rol === "proveedor") {
