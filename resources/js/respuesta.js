@@ -2,8 +2,8 @@ $(document).ready(function() {
   var direccion = $("#redireccion").text();
   var dialogE = $("#mensaje").dialog({
     autoOpen: true,
-    height: 350,
-    width: 350,
+    maxHeight: 250,
+    maxWidth: 200,
     modal: true,
     buttons: {
       "Aceptar": function() {
