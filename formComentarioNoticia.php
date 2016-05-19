@@ -32,12 +32,12 @@
           if (isset($id)) {
             redirect($url_ver_noticia);
           }
+          else{
+			echo '<h3>Hubo un error el enviar t,u comentario</h3>
+        	<p><a href="=';$url_ver_noticia; echo' " class="contenido-boton">Volver</a></p>';
+          }
 
         ?>
-
-        <h3>Hubo un error el enviar tu comentario</h3>
-        <p><a href="<?=$url_ver_noticia?>" class="contenido-boton">Volver</a></p>
-
 			</div>
 			<?php
 				require(getIncludePath() . 'sidebar.php');
