@@ -1,19 +1,31 @@
 <?php
-$extension = " ";
+	
 	require_once __DIR__ . "/src/App.php";
 	$logicUsuario = new \aw\logic\Usuario();
 	$logicNoticia = new \aw\logic\Noticia();
 	$logicServicio = new \aw\logic\servicioEspecifico();
 	$logicPublicidad = new \aw\logic\Publicidad();
 	$logicEvento = new \aw\logic\Evento();
-
+	$respuesta = "No sabemos que ha pasado";
+	$direccion = "administrar";
+	$direcciones = ["administrar" => getBasePath() . "administrar.php", 
+		"editar-evento" => getBasePath() . "editar-evento.php"];
+	
 	if ($_REQUEST["boton"] === "crear-usuario"){
 		$rol = $_REQUEST["usuario-rol"];
 		$nombre =$_REQUEST["usuario-nombre"];
+		$nobre = trim($nombre);
 		$pass = $_REQUEST["usuario-pass"];
 
 		if ($rol !== "" && $nombre !== "" && $pass !== ""){
-			$logicUsuario->newUser($nombre, $pass, $rol);
+			$ok = $logicUsuario->newUser($nombre, $pass, $rol);
+			if (is_null($ok)){
+				$respuesta = "Ha habido un problema en el proceso.";
+			}else {
+				$respuesta = "Todo ha ido correcto.";
+			}
+		}else {
+			$respuesta = "Rellena todos los campos.";
 		}
 	}
 
@@ -65,7 +77,6 @@ $extension = " ";
 			$logicServicio->guardarServicioCompleto($usuario, $nombre, $contenido, $ubicacion,
 		                  $categoria, $imagen, $telefono, $url);
 		}
-		$extension="#admin-servicio";
 	}
 	else if($_REQUEST["boton"] === "modificar-servicio"){
 		$nombre = $_REQUEST["nombre"];
@@ -80,7 +91,6 @@ $extension = " ";
 			$imagen = \aw\logic\Utils::uploadPic("input-foto-servicio");
 			$logicServicio->updateServicio($id, $nombre, $categoria, $url, $ubicacion, $imagen, $contenido, $telefono);
 		}
-		$extension="#admin-servicio";
 	}
 	else if ($_REQUEST["boton"] === "eliminar-servicio"){
 		$id = $_REQUEST["id"];
@@ -94,7 +104,6 @@ $extension = " ";
 		if ($titulo !== "" && $contenido !== ""){
 			$logicNoticia->saveNoticia($usuario, $titulo, $contenido);
 		}
-		$extension="#admin-noticia";
 	}
 
 	else if ($_REQUEST["boton"] === "eliminar-noticia"){
@@ -140,7 +149,6 @@ $extension = " ";
 		if($titulo!== '' && $contenido !== ''){
 			$logicEvento->updateEvento($id, $titulo, $contenido, $fecha, $ubicacion, $foto);
 		}
-		$extension="#admin-evento";
 	}
 
 	else if ($_REQUEST["boton"] === "crear-evento"){
@@ -154,7 +162,6 @@ $extension = " ";
 		if ($titulo !== "" && $contenido !== ""){
 			$logicEvento->saveEvento($titulo, $contenido, $fecha, $ubicacion, $foto, $usuario);
 		}
-		$extension="#admin-evento";
 	}
 
 	else if ($_REQUEST["boton"] === "eliminar-evento"){
@@ -164,10 +171,26 @@ $extension = " ";
 
 	########################################################################################################
 
-	if(getRole() === "admin"){
-		redirect(getBasePath() . 'administrar.php'. $extension);
+	/*if(getRole() === "admin"){
+		redirect(getBasePath() . 'administrar.php');
 	}
 	else if (getRole() === "normal"){
 		redirect(getBasePath() . 'noticia.php');
-	}
+	}*/
+
 ?>
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<title>All Dogs</title>
+		<?php require(getIncludePath() . 'head.php'); ?>
+    	<script src="<?= getJSPath() ?>respuesta.js"></script>
+	</head>
+	<body>
+		<div id="mensaje">
+			<p><?= $respuesta ?></p>
+		</div>
+		<span id="redireccion" style="display:none"><?= $direcciones[$direccion]?></span>
+	</body>
+</html>
