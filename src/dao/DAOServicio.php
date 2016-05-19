@@ -2,7 +2,7 @@
 
 namespace aw\dao;
 
-use DAOException;
+use PDOException;
 
 class DAOServicio {
 
@@ -14,7 +14,8 @@ class DAOServicio {
 
   function getServicioByCategory($category, $saltar, $elementos) {
       try {
-        $sql = "SELECT *
+        $sql = "SELECT 
+        id, usuario, nombre, contenido, ubicacion, categoria, media_puntuacion, imagen, telefono, url, IFNULL(patrocinado, 0)
         FROM Servicio WHERE categoria = :categoria
         ORDER BY nombre LIMIT " . $saltar . ", " . $elementos;
         $stmt = $this->conn->prepare($sql);
@@ -28,7 +29,9 @@ class DAOServicio {
 
   function getListaServiciosBuscador ($nombre, $contenido,$categoria,$ubicacion,$puntuacion) {
     try {
-      $sql = "SELECT * FROM Servicio WHERE contenido LIKE :contenido
+      $sql = "SELECT      
+              id, usuario, nombre, contenido, ubicacion, categoria, media_puntuacion, imagen, telefono, url, IFNULL(patrocinado, 0)
+              FROM Servicio WHERE contenido LIKE :contenido
               AND categoria = :categoria
               AND nombre LIKE :nombre 
               AND ubicacion LIKE :ubicacion
@@ -58,19 +61,20 @@ class DAOServicio {
   }
 
   function saveServicioCompleto($usuario, $nombre, $contenido, $ubicacion,
-  $categoria, $media_puntuacion, $imagen, $telefono, $url) {
+  $categoria, $media_puntuacion, $imagen, $telefono, $url, $patrocinado) {
     try {
       $sql = "INSERT INTO Servicio (usuario, nombre, contenido, ubicacion,
-        categoria, media_puntuacion, imagen, telefono, url)
+        categoria, media_puntuacion, imagen, telefono, url, patrocinado)
         VALUES (:usuario, :nombre, :contenido, :ubicacion, :categoria,
-        :media_puntuacion, :imagen, :telefono, :url)";
+        :media_puntuacion, :imagen, :telefono, :url, :patrocinado)";
 
       $stm = $this->conn->prepare($sql);
 
       $params = ['usuario' => $usuario, 'nombre' => $nombre,
         'contenido' => $contenido, 'ubicacion' => $ubicacion,
         'categoria' => $categoria, 'media_puntuacion' => $media_puntuacion,
-        'imagen' => $imagen, 'telefono' => $telefono, 'url' => $url];
+        'imagen' => $imagen, 'telefono' => $telefono, 'url' => $url,
+        'patrocinado' => $patrocinado];
 
       $stm->execute($params);
       $id = $this->conn->lastInsertId();
@@ -83,7 +87,7 @@ class DAOServicio {
     try {
       $sql = "SELECT s.nombre as nombre, s.contenido as contenido,
         s.ubicacion as ubicacion, s.imagen as imagen, s.telefono as telefono,
-        s.url as url, s.categoria as categoria, s.id as id
+        s.url as url, s.categoria as categoria, s.id as id, IFNULL(s.patrocinado, 0) as patrocinado
         FROM Servicio s
         WHERE s.id=:idServicio";
       $stmt = $this->conn->prepare($sql);
@@ -112,11 +116,11 @@ class DAOServicio {
     return true;
   }
 
-  function updateServicio($id, $nombre, $categoria, $url, $ubicacion, $imagen, $contenido, $telefono){
+  function updateServicio($id, $nombre, $categoria, $url, $ubicacion, $imagen, $contenido, $telefono, $patrocinado){
       try {
         $sql = "UPDATE Servicio SET nombre =:nombre, telefono =:telefono,
                 categoria =:categoria, url =:url, ubicacion =:ubicacion, 
-                contenido =:contenido, imagen=:imagen
+                contenido =:contenido, imagen=:imagen, patrocinado=:patrocinado
                 WHERE id =:id";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(["id" => $id, "nombre" => $nombre, 
@@ -125,7 +129,8 @@ class DAOServicio {
                         "telefono" => $telefono,
                         "imagen" => $imagen,
                         "contenido" => $contenido,
-                        "ubicacion" => $ubicacion]);
+                        "ubicacion" => $ubicacion,
+                        "patrocinado" => $patrocinado]);
       } catch(PDOException $e) {
         echo "ERROR EN DAOServicio: " . $e->getMessage();
         return false;
