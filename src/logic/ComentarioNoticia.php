@@ -15,7 +15,7 @@ class ComentarioNoticia {
   }
 
   function borrarComentario($id_comentario) {
-    $this->daoComentarioNoticia->delete($id_comentario);
+    return $this->daoComentarioNoticia->delete($id_comentario);
   }
 
   function listarComentarios($id_noticia) {
