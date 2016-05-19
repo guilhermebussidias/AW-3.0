@@ -7,7 +7,7 @@ $password = $_REQUEST["password"];
 $role = "normal";
 
 $logic = new \aw\logic\Usuario();
-
+$name = trim($name);
 if($name !== '' && $password !== '') {
 	$camposVacios = false;
 	$ok = $logic->newUser($name, $password, $role);
