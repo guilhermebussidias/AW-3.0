@@ -53,10 +53,6 @@ $extension = " ";
 
 		if ($servicio !== "" && $telefono !== ""
 		&& $web !== "" && $ubicacion !== "" && $contenido !== "") {
-
-			/*$logicServicio->guardarServicio( getID(), $servicio,
-				$telefono,$web, $ubicacion,$contenido);*/
-
 			$usuario = getID();
 			$nombre = $servicio;
 			$categoria = $_REQUEST["categoria-servicio"];
