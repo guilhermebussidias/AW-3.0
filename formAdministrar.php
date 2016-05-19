@@ -50,6 +50,7 @@ $extension = " ";
 		$web = $_REQUEST["input-url-servicio"];
 		$ubicacion = $_REQUEST["input-ubicacion-servicio"];
 		$contenido= $_REQUEST["contenido-servicio"];
+		$patrocinado = $_REQUEST["patrocinado"];
 
 		if ($servicio !== "" && $telefono !== ""
 		&& $web !== "" && $ubicacion !== "" && $contenido !== "") {
@@ -63,7 +64,7 @@ $extension = " ";
 			$imagen = \aw\logic\Utils::uploadPic("input-foto-servicio");
 			$url = $web;
 			$logicServicio->guardarServicioCompleto($usuario, $nombre, $contenido, $ubicacion,
-		                  $categoria, $imagen, $telefono, $url);
+		                  $categoria, $imagen, $telefono, $url, $patrocinado);
 		}
 		$extension="#admin-servicio";
 	}
