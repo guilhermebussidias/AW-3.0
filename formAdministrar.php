@@ -6,10 +6,14 @@
 	$logicServicio = new \aw\logic\servicioEspecifico();
 	$logicPublicidad = new \aw\logic\Publicidad();
 	$logicEvento = new \aw\logic\Evento();
-	$respuesta = "No sabemos que ha pasado";
+	$respuesta = " ";
 	$direccion = "administrar";
 	$direcciones = ["administrar" => getBasePath() . "administrar.php", 
-		"editar-evento" => getBasePath() . "editar-evento.php"];
+		"noticia" => getBasePath() . "noticia.php",
+		"evento" => getBasePath() . "evento.php",
+		"servicio" => getBasePath() . "servicio.php",
+		"index" => getBasePath()];
+
 	
 	if ($_REQUEST["boton"] === "crear-usuario"){
 		$rol = $_REQUEST["usuario-rol"];
@@ -20,7 +24,7 @@
 		if ($rol !== "" && $nombre !== "" && $pass !== ""){
 			$ok = $logicUsuario->newUser($nombre, $pass, $rol);
 			if (is_null($ok)){
-				$respuesta = "Ha habido un problema en el proceso.";
+				$respuesta = "El usuario ya existe.";
 			}else {
 				$respuesta = "Todo ha ido correcto.";
 			}
@@ -32,7 +36,14 @@
 	else if($_REQUEST["boton"] === "eliminar-usuario"){
 		$usuario = $_REQUEST["usuario-nombre"];
 		if ($usuario !== ""){
-			$logicUsuario->deleteUser($usuario);
+			$ok =  $logicUsuario->deleteUser($usuario);
+			if (is_null($ok)){
+				$respuesta = "Ha habido un problema en el proceso.";
+			}else {
+				$respuesta = "Todo ha ido correcto.";
+			}
+		}else {
+			$respuesta = "Rellena todos los campos.";
 		}
 	}
 
@@ -42,7 +53,14 @@
 		$pass= $_REQUEST["usuario-pass"];
 
 		if ($rol !== "" && $usuario !== "" && $pass !== ""){
-			$logicUsuario->updateByName($usuario, $pass, $rol);
+			$ok = $logicUsuario->updateByName($usuario, $pass, $rol);
+			if (is_null($ok)){
+				$respuesta = "Ha habido un problema en el proceso.";
+			}else {
+				$respuesta = "Todo ha ido correcto.";
+			}
+		}else {
+			$respuesta = "Rellena todos los campos.";
 		}
 	}
 
@@ -51,9 +69,16 @@
 		$contenido = $_REQUEST["contenido"];
 		$id = $_REQUEST["id"];
 		if($titulo!== '' && $contenido !== ''){
-			$logicNoticia->updateNoticia($id, $titulo, $contenido);
+			$ok = $logicNoticia->updateNoticia($id, $titulo, $contenido);
+			if (is_null($ok)){
+				$respuesta = "Ha habido un problema en el proceso.";
+			}else {
+				$respuesta = "Todo ha ido correcto.";
+			}
+		}else {
+			$respuesta = "Rellena todos los campos.";
 		}
-		$extension="#admin-noticia";
+		$direccion = "noticia";
 	}
 
 	else if ($_REQUEST["boton"] === "crear-servicio") {
@@ -75,8 +100,15 @@
 			$categoria = $_REQUEST["categoria-servicio"];
 			$imagen = \aw\logic\Utils::uploadPic("input-foto-servicio");
 			$url = $web;
-			$logicServicio->guardarServicioCompleto($usuario, $nombre, $contenido, $ubicacion,
+			$ok = $logicServicio->guardarServicioCompleto($usuario, $nombre, $contenido, $ubicacion,
 		                  $categoria, $imagen, $telefono, $url, $patrocinado);
+			if (is_null($ok)){
+				$respuesta = "Ha habido un problema en el proceso.";
+			}else {
+				$respuesta = "Todo ha ido correcto.";
+			}
+		}else {
+			$respuesta = "Rellena todos los campos.";
 		}
 	}
 	else if($_REQUEST["boton"] === "modificar-servicio"){
@@ -91,54 +123,98 @@
 		if($nombre!== '' && $contenido !== '' && $url!== '' && $ubicacion!== '' && $telefono !== ''){
 			$categoria = $_REQUEST["categoria"];
 			$imagen = \aw\logic\Utils::uploadPic("input-foto-servicio");
-			$logicServicio->updateServicio($id, $nombre, $categoria, $url, $ubicacion, $imagen, $contenido, $telefono, $patrocinado);
+			$ok = $logicServicio->updateServicio($id, $nombre, $categoria, $url, $ubicacion, $imagen, $contenido, $telefono, $patrocinado);
+			if (is_null($ok)){
+				$respuesta = "Ha habido un problema en el proceso.";
+			}else {
+				$respuesta = "Todo ha ido correcto.";
+			}
+		}else {
+			$respuesta = "Rellena todos los campos.";
 		}
+		$direccion = "servicio";
 	}
 	else if ($_REQUEST["boton"] === "eliminar-servicio"){
 		$id = $_REQUEST["id"];
-		$logicServicio->deleteServicio($id);
+		$ok = $logicServicio->deleteServicio($id);
+		if (is_null($ok)){
+				$respuesta = "Ha habido un problema en el proceso.";
+			}else {
+				$respuesta = "Todo ha ido correcto.";
+			}
+		$direccion = "servicio";
 	}
-	###############################################################################################
+
 	else if ($_REQUEST["boton"] === "guardar-noticia"){
 		$titulo = $_REQUEST["titulo-noticia"];
 		$contenido = $_REQUEST["input-contenido-noticia"];
 		$usuario = $_REQUEST["usuario"];
 		if ($titulo !== "" && $contenido !== ""){
-			$logicNoticia->saveNoticia($usuario, $titulo, $contenido);
+			$ok = $logicNoticia->saveNoticia($usuario, $titulo, $contenido);
+			if (is_null($ok)){
+				$respuesta = "Ha habido un problema en el proceso.";
+			}else {
+				$respuesta = "Todo ha ido correcto.";
+			}
+		}else {
+			$respuesta = "Rellena todos los campos.";
 		}
 	}
 
 	else if ($_REQUEST["boton"] === "eliminar-noticia"){
 			$id = $_REQUEST["id"];
-			$logicNoticia->deleteNoticia($id);
+			$ok = $logicNoticia->deleteNoticia($id);
+			if (is_null($ok)){
+				$respuesta = "Ha habido un problema en el proceso.";
+			}else {
+				$respuesta = "Todo ha ido correcto.";
+			}
+			$direccion = "noticia";
 	}
-	###############################################################################################
+
  	else if ($_REQUEST["boton"] === "eliminar-publicidad"){
      	$id = $_REQUEST["id"];
-     	$logicPublicidad->deletePublicidad($id);
+     	$ok = $logicPublicidad->deletePublicidad($id);
+     	if (is_null($ok)){
+				$respuesta = "Ha habido un problema en el proceso.";
+			}else {
+				$respuesta = "Todo ha ido correcto.";
+			}
+     	$direccion = "index";
  	}
 
 	else if ($_REQUEST["boton"] === "modificar-publicidad"){
-     	//$banner = $_REQUEST["input-foto-publicidad"];
-			$banner = \aw\logic\Utils::uploadPic("input-foto-publicidad");
+		$banner = \aw\logic\Utils::uploadPic("input-foto-publicidad");
      	$anuncio = $_REQUEST["input-contenido-anuncio"];
      	$id = $_REQUEST["id"];
     	if($banner!== '' && $anuncio !== ''){
-     		$logicPublicidad->updatePublicidad($id, $anuncio, $banner);
-    	}
+     		$ok = $logicPublicidad->updatePublicidad($id, $anuncio, $banner);
+     		if (is_null($ok)){
+				$respuesta = "Ha habido un problema en el proceso.";
+			}else {
+				$respuesta = "Todo ha ido correcto.";
+			}
+    	}else {
+			$respuesta = "Rellena todos los campos.";
+		}
+    	$direccion = "index";
   }
 
 	else if ($_REQUEST["boton"] === "crear-publicidad"){
 		$anuncio = $_REQUEST["input-contenido-anuncio"];
-		//$banner = $_REQUEST["input-foto-publicidad"];
 		$banner = \aw\logic\Utils::uploadPic("input-foto-publicidad");
 		$usuario = $_REQUEST["id"];
 		if ($anuncio !== "" && $banner !== ""){
-			$logicPublicidad->savePublicidad($usuario, $anuncio, $banner);
+			$ok = $logicPublicidad->savePublicidad($usuario, $anuncio, $banner);
+			if (is_null($ok)){
+				$respuesta = "Ha habido un problema en el proceso.";
+			}else {
+				$respuesta = "Todo ha ido correcto.";
+			}
+		}else {
+			$respuesta = "Rellena todos los campos.";
 		}
 	}
-
-	######################################### EVENTOS ######################################################
 
 	else if ($_REQUEST["boton"] === "modificar-evento"){
 		$id = $_REQUEST["id"];
@@ -146,11 +222,18 @@
 		$contenido = $_REQUEST["input-contenido-evento"];
 		$fecha = $_REQUEST["fecha-evento"];
 		$ubicacion = $_REQUEST["ubicacion-evento"];
-		//$foto = $_REQUEST["input-foto-evento"];
 		$foto = \aw\logic\Utils::uploadPic("input-foto-evento");
 		if($titulo!== '' && $contenido !== ''){
-			$logicEvento->updateEvento($id, $titulo, $contenido, $fecha, $ubicacion, $foto);
+			$ok = $logicEvento->updateEvento($id, $titulo, $contenido, $fecha, $ubicacion, $foto);
+			if (is_null($ok)){
+				$respuesta = "Ha habido un problema en el proceso.";
+			}else {
+				$respuesta = "Todo ha ido correcto.";
+			}
+		}else {
+			$respuesta = "Rellena todos los campos.";
 		}
+		$direccion = "evento";
 	}
 
 	else if ($_REQUEST["boton"] === "crear-evento"){
@@ -158,27 +241,30 @@
 		$contenido = $_REQUEST["input-contenido-evento"];
 		$fecha = $_REQUEST["fecha-evento"];
 		$ubicacion = $_REQUEST["ubicacion-evento"];
-		//$foto = $_REQUEST["input-foto-evento"];
 		$foto = \aw\logic\Utils::uploadPic("input-foto-evento");
 		$usuario = $_REQUEST["usuario"];
 		if ($titulo !== "" && $contenido !== ""){
-			$logicEvento->saveEvento($titulo, $contenido, $fecha, $ubicacion, $foto, $usuario);
+			$ok = $logicEvento->saveEvento($titulo, $contenido, $fecha, $ubicacion, $foto, $usuario);
+			if (is_null($ok)){
+				$respuesta = "Ha habido un problema en el proceso.";
+			}else {
+				$respuesta = "Todo ha ido correcto.";
+			}
+		}else {
+			$respuesta = "Rellena todos los campos.";
 		}
 	}
 
 	else if ($_REQUEST["boton"] === "eliminar-evento"){
 			$id = $_REQUEST["id"];
-			$logicEvento->deleteEvento($id);
+			$ok = $logicEvento->deleteEvento($id);
+			if (is_null($ok)){
+				$respuesta = "Ha habido un problema en el proceso.";
+			}else {
+				$respuesta = "Todo ha ido correcto.";
+			}
+			$direccion = "evento";
 	}
-
-	########################################################################################################
-
-	/*if(getRole() === "admin"){
-		redirect(getBasePath() . 'administrar.php');
-	}
-	else if (getRole() === "normal"){
-		redirect(getBasePath() . 'noticia.php');
-	}*/
 
 ?>
 <!DOCTYPE html>

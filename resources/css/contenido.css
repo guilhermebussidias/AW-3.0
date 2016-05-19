@@ -51,6 +51,8 @@
   border-radius: 5px;
   background: #fcfcfc;
 }
+.contenido-servicios-patrocinado{
+}
 .servicio-titulo{
   padding-top: 10px;
   padding-left: 35px;
@@ -120,6 +122,15 @@
   font-weight: bold;
   color: #F2AF1E;
   padding-bottom: 5px;
+}
+.servicio-patrocinado{
+  font-style: italic;
+  font-weight: bold;
+  color: white;
+  font-size: 12px;
+  padding: 5px 0;
+  text-align: center;
+  background-color: darkorange;
 }
 .estrellasMedia{
   width: 140px;

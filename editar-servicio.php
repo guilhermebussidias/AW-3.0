@@ -6,6 +6,12 @@
 	$id = getID();
 	$idServicio = $_REQUEST["servicio"];
 	$servicio = $logic->buscarServicio($idServicio);
+
+
+		$idServicio = $_REQUEST["servicio"];
+		$servicio = $logic->buscarServicio($idServicio);
+		$foto = UPLOADED_URL . $servicio['imagen'];
+
  ?>
 
 <!DOCTYPE html>
@@ -44,6 +50,7 @@
                     <textarea name="url" class="estilotextarea" rows="1" cols="60"><?= $servicio['url'] ?></textarea>
 
                     <h3 class="contenido-titulo">Foto:</h3>
+										<?php echo '<img class="servicio-imagen" src="' . $foto .'" alt="imagen empresa">'; ?>
 					<input type="file" name="input-foto-servicio"><br>
 
 					<h3 class="contenido-titulo">Categoría</h3>

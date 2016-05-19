@@ -15,9 +15,9 @@ class DAOServicio {
   function getServicioByCategory($category, $saltar, $elementos) {
       try {
         $sql = "SELECT 
-        id, usuario, nombre, contenido, ubicacion, categoria, media_puntuacion, imagen, telefono, url, IFNULL(patrocinado, 0)
+        id, usuario, nombre, contenido, ubicacion, categoria, media_puntuacion, imagen, telefono, url, IFNULL(patrocinado, 0) as patrocinado
         FROM Servicio WHERE categoria = :categoria
-        ORDER BY nombre LIMIT " . $saltar . ", " . $elementos;
+        ORDER BY IFNULL(patrocinado, 0) DESC, nombre LIMIT " . $saltar . ", " . $elementos;
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(["categoria" => $category]);
         $res = $stmt->fetchAll();
@@ -30,12 +30,13 @@ class DAOServicio {
   function getListaServiciosBuscador ($nombre, $contenido,$categoria,$ubicacion,$puntuacion) {
     try {
       $sql = "SELECT      
-              id, usuario, nombre, contenido, ubicacion, categoria, media_puntuacion, imagen, telefono, url, IFNULL(patrocinado, 0)
+              id, usuario, nombre, contenido, ubicacion, categoria, media_puntuacion, imagen, telefono, url, IFNULL(patrocinado, 0) as patrocinado
               FROM Servicio WHERE contenido LIKE :contenido
               AND categoria = :categoria
               AND nombre LIKE :nombre 
               AND ubicacion LIKE :ubicacion
-              AND media_puntuacion >= :puntuacion";
+              AND media_puntuacion >= :puntuacion
+              ORDER BY IFNULL(patrocinado, 0) DESC";
       $stm = $this->conn->prepare($sql);
       $stm->execute(["contenido" => $contenido, "nombre" => $nombre, "categoria" => $categoria, "ubicacion" => $ubicacion, "puntuacion" => $puntuacion]);
       $res = $stm->fetchAll();
@@ -89,7 +90,8 @@ class DAOServicio {
         s.ubicacion as ubicacion, s.imagen as imagen, s.telefono as telefono,
         s.url as url, s.categoria as categoria, s.id as id, IFNULL(s.patrocinado, 0) as patrocinado
         FROM Servicio s
-        WHERE s.id=:idServicio";
+        WHERE s.id=:idServicio
+        ORDER BY IFNULL(s.patrocinado, 0) DESC";
       $stmt = $this->conn->prepare($sql);
       $stmt->execute(["idServicio" => $id]);
       $res = $stmt->fetchAll();
