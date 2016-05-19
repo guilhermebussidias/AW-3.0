@@ -28,7 +28,7 @@
 			<div id="contenedor-noticias">
 			<?php
 
-			if (isAdmin() || $rol==='gestor' || $id === $noticia['id_usuario']) {
+			if (isAdmin() || $rol==='gestor' || $id === $noticia['id_usuario'] && $noticia['id_usuario'] !== null) {
 			?>
 			<div id="algo" class="contenido-bloque">
 			<form action="<?= getBasePath() ?>formAdministrar.php" method="post" id="edit-noticia" >
