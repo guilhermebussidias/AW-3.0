@@ -64,7 +64,7 @@
 
 			$prev=$ultimaPag - 1;
 			if ($ultimaPag!=0) {
-				echo '<a href="evento.php?ultimaPag='.$prev.'">Página anterior</a>';
+				echo '<a class="contenido-boton" href="evento.php?ultimaPag='.$prev.'">Página anterior</a>';
 			}
 
 			?>
@@ -75,7 +75,7 @@
 			$eventos = $logic->buscarEventos($next * $eventosPorPagina, $eventosPorPagina);
 
 			if (!$eventos==null) {
-				echo "<a href='evento.php?ultimaPag=" . $next ."'>Página siguiente</a>";
+				echo "<a class='contenido-boton' href='evento.php?ultimaPag=" . $next ."'>Página siguiente</a>";
 			}
 
 			?>

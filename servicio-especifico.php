@@ -37,7 +37,7 @@
             echo'<h3 class="tituloServicio">'. $nombreCategoria . '</h3>';
               if(!count($servicios) == 0){
                 foreach ($servicios as $servicio) {
-                $foto = UPLOADED_URL . $servicio['imagen'];  
+                $foto = UPLOADED_URL . $servicio['imagen'];
                 $votar=$logicPuntacion->haVotado($servicio['id'], $id);
                 if ($servicio["patrocinado"] == 1) {
                     echo '
@@ -60,9 +60,9 @@
                               echo'<form action="formPuntuacion.php" method="post">
                                 <input type="hidden" name="idServicio" value=' .  $servicio['id'] . '>
                                 <input type="hidden" name="idUsuario" value=' .  $id . '>
-                                <input type="hidden" name="categoria" value=' .  $servicio['categoria'] . '>  ';   
+                                <input type="hidden" name="categoria" value=' .  $servicio['categoria'] . '>  ';
                                 if(is_null($votar)){
-                                echo '                           
+                                echo '
                                   <select class="puntuacion-usuario" name="puntuacion-servicio">
                                     <option value="1" selected="selected">1</option>
                                     <option value="2">2</option>
@@ -74,7 +74,7 @@
                                  }
                              echo '</form>';
                             }
-                            
+
                        echo'</div>
                         <h3 class="servicio-titulo">' .  $servicio['nombre'] . '</h3>
                        <div class="servicio-ubicacion">
@@ -94,7 +94,7 @@
                       if($rol=='admin' or $id==$servicio['usuario']){
                         echo'<a class="contenido-boton" href="editar-servicio.php?servicio=' . $servicio['id'] .'">Editar</a>';
                       }
-               echo '</div>';
+               echo '<div class="clear"></div></div>';
                 }
               }
               $prev=$ultimaPag - 1;
