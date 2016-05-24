@@ -91,7 +91,7 @@
 												<input type="text" name="titulo-evento" id="input-titulo-evento" class="estilotextarea">
 												<br>
 												<h3 class="contenido-titulo">Fecha del evento: </h3>
-												<input type="text" name="fecha-ini-evento" id="input-fecha-ini-evento" class="estilotextarea">
+												<input type="text" name="fecha-evento" id="input-fecha-ini-evento" class="estilotextarea">
 												<br>
 												<h3 class="contenido-titulo">Ubicación del evento: </h3>
 												<input type="text" name="ubicacion-evento" id="input-ubicacion-evento" class="estilotextarea">

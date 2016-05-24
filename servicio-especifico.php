@@ -84,7 +84,7 @@
                         <p>'. $servicio['telefono'].'</p>
                        </div>
                        <div class="servicio-url">
-                        <a href="'. $servicio['url'] . '" target= "_blank">'.$servicio['url'].'
+                        <a href="'. $servicio['url'] . '" target= "_blank">Página Web
                         </a>
                         </div>
                        <div class="servicio-contenido">
