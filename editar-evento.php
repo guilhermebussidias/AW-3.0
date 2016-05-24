@@ -37,7 +37,7 @@
 					<h3 class="contenido-titulo">Título:<h3/>
             <input type="text" name="titulo-evento" id="input-titulo-evento" class="estilotextarea" value= "<?php $evento['titulo'] ?>">
 					<h3 class="contenido-titulo">Fecha:<h3/>
-						<input type="date" name="fecha-evento" id="input-fecha-evento" class="estilotextarea" value= "<?php  $evento['fecha'] ?>">
+						<input type="text" name="fecha-evento" id="input-fecha-evento" class="estilotextarea">
 					<h3 class="contenido-titulo">Ubicacion:<h3/>
 						<input type="text" name="ubicacion-evento" id="input-ubicacion-evento" class="estilotextarea" value= "<?php  $evento['ubicacion'] ?>">
 					<h3 class="contenido-titulo">Imagen:<h3/>
