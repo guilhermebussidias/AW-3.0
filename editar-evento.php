@@ -25,7 +25,7 @@
 			<?php
 				require('includes/cabecera.php');
 			?>
-			<div id="contenedor-eventos" class"contenido">
+			<div id="contenedor-eventos">
 			<?php
 
 			if (isAdmin() || $rol==='gestor' || $id === $evento['idUser'] && $evento['id'] !== null) {
@@ -33,7 +33,7 @@
 			<div id="algo" class="contenido-bloque">
 				<form action="<?= getBasePath() ?>formAdministrar.php" method="post" id="edit-evento" enctype="multipart/form-data">
 						<input type="hidden" name="MAX_FILE_SIZE" value="3000000">
-						<input type="hidden" name="id" id="input-evento class="estilotextarea" value= "<?= $idEvento ?>">
+						<input type="hidden" name="id" id="input-evento" class="estilotextarea" value= "<?= $idEvento ?>">
 					<h3 class="contenido-titulo">Título:<h3/>
             <input type="text" name="titulo-evento" id="input-titulo-evento" class="estilotextarea" value= "<?php $evento['titulo'] ?>">
 					<h3 class="contenido-titulo">Fecha:<h3/>
@@ -51,8 +51,8 @@
 						<button type="submit" class="myButton" id="rojo" name="boton" value="eliminar-evento">Eliminar Evento</button>
 
 							</form>
-						</div>
-					
+				</div>
+			</div>
 			<?php
               	}
 			else {
@@ -61,9 +61,8 @@
 				<h3 class="contenido-titulo">Contenido Oculto<h3/>
 					</div>
 
-			<?php	
-			}	
-				require(getIncludePath() . 'sidebar.php');
+			<?php
+			}
 				require('includes/pie.php');
 			?>
 		</div>
