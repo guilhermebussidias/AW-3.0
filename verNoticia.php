@@ -99,9 +99,10 @@
 					<div class="clear"></div>
 				</div>
 
-			</div>
+			
 			<?php
 		}
+		echo '</div>';
 				require(getIncludePath() . 'sidebar.php');
 				require(getIncludePath() . 'pie.php');
 			?>

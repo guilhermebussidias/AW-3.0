@@ -164,8 +164,9 @@ function esc($s) {
 
 function escURL($s) {
   $url = trim($s);
-  $ok = ((strpos($url, "http://") === 0 || strpos($url, "https://") === 0) &&
-    filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED | FILTER_FLAG_HOST_REQUIRED) !== false);
+  /*$ok = ((strpos($url, "http://") === 0 || strpos($url, "https://") === 0) &&
+    filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED | FILTER_FLAG_HOST_REQUIRED) !== false);*/
+  $ok = filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_HOST_REQUIRED);
   if ($ok)
     return $url;
   else
