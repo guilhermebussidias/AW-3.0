@@ -6,6 +6,7 @@
 	if (isset($_REQUEST["publicidad"]))
 		$idPublicidad = $_REQUEST["publicidad"];
 		$publicidad = $logic->buscarpublicidadById($idPublicidad);
+		$foto = UPLOADED_URL . $publicidad['banner'];
  ?>
  <!DOCTYPE html>
 <html lang="es">
@@ -32,6 +33,7 @@
 					<input type="hidden" name="id" id="input-publicidad" class="estilotextarea" value= "<?= $idPublicidad ?>">
 					<input type="hidden" name="MAX_FILE_SIZE" value="3000000">
 					<h3 class="contenido-titulo">Foto:<h3/>
+						<?php echo '<img class="servicio-imagen" src="' . $foto .'" alt="imagen empresa">'; ?>
 					<input type="file" name="input-foto-publicidad"><br>
 					<h3 class="contenido-titulo">Anuncio:<h3/>
                     <textarea name="input-contenido-anuncio" class="estilotextarea" rows="10" cols="80"> <?php echo $publicidad['anuncio'] ?> </textarea><br><br>
@@ -48,7 +50,7 @@
 			<h3 class="contenido-titulo">Contenido Oculto<h3/>
 				</div>
 
-		<?php	
+		<?php
 		}
 			require('includes/pie.php');
 			?>
