@@ -19,7 +19,7 @@ class DAOUsuario {
       $stmt->execute(["nombre" => $username]);
       $res = $stmt->fetchAll();
     } catch(PDOException $e) {
-  		echo "ERROR EN DAOUsuario: " . $e->getMessage();
+      return null;
   	}
     if (!empty($res)) {
       return $res[0];
@@ -35,7 +35,6 @@ class DAOUsuario {
       $stmt->execute(["usuario" => $username, "pass" => $password, "rol" => $role]);
       $id = $this->conn->lastInsertId();
     } catch(PDOException $e) {
-  		echo "ERROR EN DAOUsuario: " . $e->getMessage();
       return null;
   	}
     return $id;
@@ -47,7 +46,6 @@ class DAOUsuario {
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(["usuario" => $username, "pass" => $password, "rol" => $role]);
       } catch(PDOException $e) {
-    		echo "ERROR EN DAOUsuario: " . $e->getMessage();
         return null;
     	}
       return true;
@@ -59,7 +57,6 @@ class DAOUsuario {
       $stmt = $this->conn->prepare($sql);
       $stmt->execute(["usuario" => $nombre]);
     } catch (PDOException $e) {
-      echo "ERROR EN DAOUsuario: " . $e->getMessage();
       return null;
     }
     return true;
