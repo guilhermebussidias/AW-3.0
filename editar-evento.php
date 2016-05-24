@@ -19,6 +19,7 @@
 		<link rel="stylesheet"  href="<?=getCSSPath()?>contenido.css" type="text/css"/>
 	    <link rel="stylesheet"  href="<?= getCSSPath() ?>buscar.css" type="text/css" />
 	    <link rel="stylesheet"  href="<?= getCSSPath() ?>botones.css" type="text/css" />
+			<script src="<?= getJSPath() ?>buscar.js"></script>
 	</head>
 	<body>
 		<div id="contenedor">
