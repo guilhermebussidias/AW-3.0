@@ -4,7 +4,10 @@ namespace aw\logic;
 
 class Utils {
 
-  static function uploadPic($fieldName) {
+  static function uploadPic($fieldName, $compulsory = true) {
+
+    if (!isset($_FILES[$fieldName]['tmp_name']) && !$compulsory)
+      return null;
 
     if (isset($_REQUEST["MAX_FILE_SIZE"])) {
       $inputname = $_FILES[$fieldName]['tmp_name'];
@@ -42,7 +45,7 @@ class Utils {
       return $imagename;
 
     } else {
-      echo 'Hay un error en el formulario de envío'; 
+      echo 'Hay un error en el formulario de envío';
       die;
     }
   }

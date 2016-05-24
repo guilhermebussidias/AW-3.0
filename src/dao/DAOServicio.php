@@ -14,7 +14,7 @@ class DAOServicio {
 
   function getServicioByCategory($category, $saltar, $elementos) {
       try {
-        $sql = "SELECT 
+        $sql = "SELECT
         id, usuario, nombre, contenido, ubicacion, categoria, media_puntuacion, imagen, telefono, url, IFNULL(patrocinado, 0) as patrocinado
         FROM Servicio WHERE categoria = :categoria
         ORDER BY IFNULL(patrocinado, 0) DESC, nombre LIMIT " . $saltar . ", " . $elementos;
@@ -29,11 +29,11 @@ class DAOServicio {
 
   function getListaServiciosBuscador ($nombre, $contenido,$categoria,$ubicacion,$puntuacion) {
     try {
-      $sql = "SELECT      
+      $sql = "SELECT
               id, usuario, nombre, contenido, ubicacion, categoria, media_puntuacion, imagen, telefono, url, IFNULL(patrocinado, 0) as patrocinado
               FROM Servicio WHERE contenido LIKE :contenido
               AND categoria = :categoria
-              AND nombre LIKE :nombre 
+              AND nombre LIKE :nombre
               AND ubicacion LIKE :ubicacion
               AND media_puntuacion >= :puntuacion
               ORDER BY IFNULL(patrocinado, 0) DESC";
@@ -64,18 +64,26 @@ class DAOServicio {
   function saveServicioCompleto($usuario, $nombre, $contenido, $ubicacion,
   $categoria, $media_puntuacion, $imagen, $telefono, $url, $patrocinado) {
     try {
-      $sql = "INSERT INTO Servicio (usuario, nombre, contenido, ubicacion,
-        categoria, media_puntuacion, imagen, telefono, url, patrocinado)
-        VALUES (:usuario, :nombre, :contenido, :ubicacion, :categoria,
-        :media_puntuacion, :imagen, :telefono, :url, :patrocinado)";
+      if (!is_null($imagen))
+        $sql = "INSERT INTO Servicio (usuario, nombre, contenido, ubicacion,
+          categoria, media_puntuacion, imagen, telefono, url, patrocinado)
+          VALUES (:usuario, :nombre, :contenido, :ubicacion, :categoria,
+          :media_puntuacion, :imagen, :telefono, :url, :patrocinado)";
+      else
+        $sql = "INSERT INTO Servicio (usuario, nombre, contenido, ubicacion,
+          categoria, media_puntuacion, telefono, url, patrocinado)
+          VALUES (:usuario, :nombre, :contenido, :ubicacion, :categoria,
+          :media_puntuacion, :telefono, :url, :patrocinado)";
 
       $stm = $this->conn->prepare($sql);
 
       $params = ['usuario' => $usuario, 'nombre' => $nombre,
         'contenido' => $contenido, 'ubicacion' => $ubicacion,
         'categoria' => $categoria, 'media_puntuacion' => $media_puntuacion,
-        'imagen' => $imagen, 'telefono' => $telefono, 'url' => $url,
-        'patrocinado' => $patrocinado];
+        'telefono' => $telefono, 'url' => $url, 'patrocinado' => $patrocinado];
+
+      if (!is_null($imagen))
+        $params['imagen'] = $imagen;
 
       $stm->execute($params);
       $id = $this->conn->lastInsertId();
@@ -121,12 +129,12 @@ class DAOServicio {
   function updateServicio($id, $nombre, $categoria, $url, $ubicacion, $imagen, $contenido, $telefono, $patrocinado){
       try {
         $sql = "UPDATE Servicio SET nombre =:nombre, telefono =:telefono,
-                categoria =:categoria, url =:url, ubicacion =:ubicacion, 
+                categoria =:categoria, url =:url, ubicacion =:ubicacion,
                 contenido =:contenido, imagen=:imagen, patrocinado=:patrocinado
                 WHERE id =:id";
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute(["id" => $id, "nombre" => $nombre, 
-                        "categoria" => $categoria,          
+        $stmt->execute(["id" => $id, "nombre" => $nombre,
+                        "categoria" => $categoria,
                         "url" => $url,
                         "telefono" => $telefono,
                         "imagen" => $imagen,
