@@ -1,5 +1,6 @@
 <?php
 	require_once __DIR__ . "/src/App.php";
+	$rol = getRole();
  ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -82,7 +83,9 @@
 						}
           ?>
 				</div>
-
+<?php
+			if(!is_null($rol)){
+?>
 				<div class="contenido-bloque">
 					<h3 class="contenido-titulo">Añade tu comentario</h3>
 					<form action="<?= getBasePath() ?>formComentarioNoticia.php" method="post" id="form-usuario">
@@ -98,6 +101,7 @@
 
 			</div>
 			<?php
+		}
 				require(getIncludePath() . 'sidebar.php');
 				require(getIncludePath() . 'pie.php');
 			?>
