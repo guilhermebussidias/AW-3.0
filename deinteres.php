@@ -8,6 +8,7 @@
 		<title>All Dogs</title>
 		<?php require(getIncludePath() . 'head.php'); ?>
     <link rel="stylesheet"  href="<?=getCSSPath()?>contenido.css" type="text/css" />
+		<script src="<?= getJSPath() ?>contenido.js"></script>
 	</head>
 	<body>
 		<div id="contenedor">
