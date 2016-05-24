@@ -40,7 +40,7 @@
 }
 .contenido-servicios{
   width: 650px;
-  height: 250px;
+  min-height: 250px;
   float: left;
   border: 1px solid darkgray;
   margin-top: 10px;
@@ -101,7 +101,7 @@
   color: #A49E80;
   font-size: 14px;
   width: 300px;
-  height: 130px;
+  /*height: 130px;*/
   padding-left: 35px;
   float: left;
 }
