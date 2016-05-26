@@ -10,6 +10,8 @@
 
     <link rel="stylesheet"  href="<?= getCSSPath() ?>buscar.css" type="text/css" />
     <script src="<?= getJSPath() ?>buscar.js"></script>
+    <link rel="stylesheet"  href="<?=getCSSPath()?>contenido.css" type="text/css" />
+		<script src="<?= getJSPath() ?>contenido.js"></script>
 
 	</head>
 	<body>
