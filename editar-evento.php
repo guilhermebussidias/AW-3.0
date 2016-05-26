@@ -8,6 +8,8 @@
 		$idEvento = $_REQUEST["evento"];
 		$evento = $logic->getEvento($idEvento);
 		$foto = UPLOADED_URL . $evento['foto'];
+		$fechaBD = $evento["fecha"];
+        $fecha = date("d/m/Y", strtotime($fechaBD));
  ?>
 
 <!DOCTYPE html>
@@ -39,7 +41,7 @@
 					<h3 class="contenido-titulo">Título:<h3/>
             <input type="text" name="titulo-evento" id="input-titulo-evento" class="estilotextarea" value= "<?= $evento['titulo'] ?>">
 					<h3 class="contenido-titulo">Fecha:<h3/>
-						<input type="text" name="fecha-evento" id="input-fecha-ini-evento" class="estilotextarea">
+						<input type="text" name="fecha-evento" id="input-fecha-ini-evento" class="estilotextarea" valuer ="<?= $fecha ?>">
 					<h3 class="contenido-titulo">Ubicacion:<h3/>
 						<input type="text" name="ubicacion-evento" id="input-ubicacion-evento" class="estilotextarea" value= "<?=  $evento['ubicacion'] ?>">
 					<h3 class="contenido-titulo">Imagen:<h3/>
