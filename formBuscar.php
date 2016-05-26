@@ -4,8 +4,8 @@
 	$noticia = false;
 	$evento = false;
 	$servicio = false;
-	if (isset($_REQUEST["titulo-noticia"])){ 
-		$tituloN = $_REQUEST["titulo-noticia"]; 
+	if (isset($_REQUEST["titulo-noticia"])){
+		$tituloN = $_REQUEST["titulo-noticia"];
 		$contenidoN = $_REQUEST["contenido-noticia"];
 		$fechaInicioN = $_REQUEST["fecha-ini-noticia"];
 		if($fechaInicioN ==="")
@@ -15,7 +15,7 @@
 		if($fechaFinN ==="")
 			$fechaFinN = '2020-01-01';
 
-		$noticia = true; 
+		$noticia = true;
 		$logic = new \aw\logic\Noticia();
 		$noticias = $logic->buscarNoticiasbuscador($tituloN, $contenidoN, $fechaInicioN, $fechaFinN);
 	}
@@ -93,6 +93,8 @@
 
     <link rel="stylesheet"  href="<?= getCSSPath() ?>contenido.css" type="text/css" />
     <script src="<?= getJSPath() ?>buscar.js"></script>
+    <link rel="stylesheet"  href="<?=getCSSPath()?>contenido.css" type="text/css" />
+		<script src="<?= getJSPath() ?>contenido.js"></script>
 
 	</head>
 	<body>
@@ -118,7 +120,7 @@
     					}
     					echo '</div>';
     				}
-    				if ($evento){ 
+    				if ($evento){
 							foreach($eventos as $evento){
 								echo '
 									<div class="contenido-bloque">
@@ -131,7 +133,7 @@
 								';
 							}
     				}
-   				if ($servicio){ 
+   				if ($servicio){
    					$nombreCategoria = $logic->nameCategory($categoria);
    					$id = getId();
 			      echo'<h3 class="tituloServicio">'. $nombreCategoria . '</h3>';

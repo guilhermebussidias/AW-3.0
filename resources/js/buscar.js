@@ -1,21 +1,5 @@
 $(document).ready(function () {
 
-  /*
-  $("input[name='search-type']").change(function () {
-    var duration = 500;
-    var effect = "slide";
-    var value = $(this).val(); // noticias | servicios | eventos
-    var box_id = "#busca-" + value;
-    var needs_delay = $(".fragmento-busqueda:visible").length > 0;
-    $(".fragmento-busqueda").hide(effect, {}, duration);
-    if (needs_delay) {
-      $(box_id).delay(duration).show(effect, {}, duration);
-    } else {
-      $(box_id).show(effect, {}, duration);
-    }
-  });
-  */
-
     $.datepicker.regional['es'] = {
       closeText: 'Cerrar',
       prevText: '<Ant',
@@ -58,7 +42,7 @@ $(document).ready(function () {
   });
 
   $("#slider-puntuacion-servicio").slider({
-    range: "max",
+    range: "min",
     min: 1,
     max: 5,
     value: 1,
