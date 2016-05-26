@@ -47,6 +47,7 @@
 					?>
               		  <div id="admin-usuario">
               		  	<form action="<?= getBasePath() ?>formAdministrar.php" method="post" id="form-usuario">
+												<?php require(getIncludePath() . 'csrf.php'); ?>
                     		<label for="input-usuario-nombre">Nombre:</label>
                     		<input type="text" name="usuario-nombre" id="input-usuario-nombre" class="input-usuario">
                     		<br>
@@ -72,6 +73,7 @@
 					?>
               		  <div id="admin-noticia">
                     <form action="<?= getBasePath() ?>formAdministrar.php" method="get" id="form-usuario">
+										<?php require(getIncludePath() . 'csrf.php'); ?>
                     <input type="hidden" name="usuario" id="input-titulo-noticia" class="estilotextarea" value=<?= $id ?>>
                     <h3 class="contenido-titulo">Título:</h3>
                     <input type="text" name="titulo-noticia" id="input-titulo-noticia" class="estilotextarea">
@@ -85,6 +87,7 @@
                     </div>
               		  <div id="admin-eventos">
 											<form action="<?= getBasePath() ?>formAdministrar.php" method="post" id="form-usuario" enctype="multipart/form-data">
+												<?php require(getIncludePath() . 'csrf.php'); ?>
 												<input type="hidden" name="MAX_FILE_SIZE" value="3000000">
 												<input type="hidden" name="usuario" id="input-usuario-evento" class="estilotextarea" value=<?= $id ?>>
 												<h3 class="contenido-titulo">Titulo del evento: </h3>
@@ -110,6 +113,7 @@
               		  </div>
               		  <div id="admin-servicio">
 											<form action="<?= getBasePath() ?>formAdministrar.php" method="post" id="form-servicio" enctype="multipart/form-data">
+												<?php require(getIncludePath() . 'csrf.php'); ?>
 												<label for="">Nombre de empresa: </label>
 												<input type="text" name="input-titulo-servicio"><br>
 												<label for="">Teléfono: </label>
@@ -145,6 +149,7 @@
 					?>
               		   <div id="admin-publicidad">
               		   <form action="<?= getBasePath() ?>formAdministrar.php" method="post" id="form-publicidad" enctype="multipart/form-data">
+											 	<?php require(getIncludePath() . 'csrf.php'); ?>
               		  		<input type="hidden" name="id" id="input-publicidad" class="estilotextarea" value="<?= $id ?>">
 												<input type="hidden" name="MAX_FILE_SIZE" value="3000000">
 						<h3 class="contenido-titulo">Foto:<h3/>

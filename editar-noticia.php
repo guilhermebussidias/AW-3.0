@@ -16,7 +16,7 @@
 		<meta charset="UTF-8">
 		<title>All Dogs</title>
 		<?php require(getIncludePath() . 'head.php'); ?>
-		<link rel="stylesheet"  href="<?=getCSSPath()?>contenido.css" type="text/css"/> 
+		<link rel="stylesheet"  href="<?=getCSSPath()?>contenido.css" type="text/css"/>
 	    <link rel="stylesheet"  href="<?= getCSSPath() ?>buscar.css" type="text/css" />
 	    <link rel="stylesheet"  href="<?= getCSSPath() ?>botones.css" type="text/css" />
 	</head>
@@ -32,11 +32,12 @@
 			?>
 			<div id="algo" class="contenido-bloque">
 			<form action="<?= getBasePath() ?>formAdministrar.php" method="post" id="edit-noticia" >
+					<?php require(getIncludePath() . 'csrf.php'); ?>
 					<input type="hidden" name="id" id="input-titulo-noticia" class="estilotextarea" value= "<?= $noticia['id'] ?>">
-					
+
                     <input type="text" name="titulo" id="input-titulo-noticia" class="estilotextarea" value= "<?= $noticia['titulo'] ?>">
-					<h3 class="contenido-titulo">Contenido:<h3/>	
-                    <textarea name="contenido" class="estilotextarea" rows="10" cols="80"><?= $noticia['contenido'] ?></textarea>	
+					<h3 class="contenido-titulo">Contenido:<h3/>
+                    <textarea name="contenido" class="estilotextarea" rows="10" cols="80"><?= $noticia['contenido'] ?></textarea>
 
 					<br>
 
@@ -53,8 +54,8 @@
 				<h3 class="contenido-titulo">Contenido Oculto<h3/>
 					</div>
 
-			<?php	
-			}			
+			<?php
+			}
 				require('includes/pie.php');
 			?>
 		</div>

@@ -1,6 +1,9 @@
 <?php
-	
+
 	require_once __DIR__ . "/src/App.php";
+
+	checkCSRF();
+	
 	$logicUsuario = new \aw\logic\Usuario();
 	$logicNoticia = new \aw\logic\Noticia();
 	$logicServicio = new \aw\logic\servicioEspecifico();
@@ -8,13 +11,13 @@
 	$logicEvento = new \aw\logic\Evento();
 	$respuesta = " ";
 	$direccion = "administrar";
-	$direcciones = ["administrar" => getBasePath() . "administrar.php", 
+	$direcciones = ["administrar" => getBasePath() . "administrar.php",
 		"noticia" => getBasePath() . "noticia.php",
 		"evento" => getBasePath() . "evento.php",
 		"servicio" => getBasePath() . "servicio.php",
 		"index" => getBasePath()];
 
-	
+
 	if ($_REQUEST["boton"] === "crear-usuario"){
 		$rol = $_REQUEST["usuario-rol"];
 		$nombre =$_REQUEST["usuario-nombre"];

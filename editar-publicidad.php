@@ -30,6 +30,7 @@
 				?>
 			<div id="algo" class="contenido-bloque">
 			<form action="<?= getBasePath() ?>formAdministrar.php" method="post" id="edit-publicidad" enctype="multipart/form-data">
+					<?php require(getIncludePath() . 'csrf.php'); ?>
 					<input type="hidden" name="id" id="input-publicidad" class="estilotextarea" value= "<?= $idPublicidad ?>">
 					<input type="hidden" name="MAX_FILE_SIZE" value="3000000">
 					<h3 class="contenido-titulo">Foto:<h3/>

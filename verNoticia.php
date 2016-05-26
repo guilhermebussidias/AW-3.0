@@ -89,6 +89,7 @@
 				<div class="contenido-bloque">
 					<h3 class="contenido-titulo">Añade tu comentario</h3>
 					<form action="<?= getBasePath() ?>formComentarioNoticia.php" method="post" id="form-usuario">
+						<?php require(getIncludePath() . 'csrf.php'); ?>
 						<input type="hidden" name="id-noticia" value="<?=$noticiaID?>">
 						<h6 class="contenido-titulo-input">Título</h6>
 						<input type="text" name="titulo-comentario-noticia" id="input-titulo-comentario-noticia" class="input-textarea">
@@ -99,7 +100,7 @@
 					<div class="clear"></div>
 				</div>
 
-			
+
 			<?php
 		}
 		echo '</div>';
