@@ -64,31 +64,24 @@ class DAOServicio {
   function saveServicioCompleto($usuario, $nombre, $contenido, $ubicacion,
   $categoria, $media_puntuacion, $imagen, $telefono, $url, $patrocinado) {
     try {
-      if (!is_null($imagen))
-        $sql = "INSERT INTO Servicio (usuario, nombre, contenido, ubicacion,
-          categoria, media_puntuacion, imagen, telefono, url, patrocinado)
-          VALUES (:usuario, :nombre, :contenido, :ubicacion, :categoria,
-          :media_puntuacion, :imagen, :telefono, :url, :patrocinado)";
-      else
-        $sql = "INSERT INTO Servicio (usuario, nombre, contenido, ubicacion,
-          categoria, media_puntuacion, telefono, url, patrocinado)
-          VALUES (:usuario, :nombre, :contenido, :ubicacion, :categoria,
-          :media_puntuacion, :telefono, :url, :patrocinado)";
+      $sql = "INSERT INTO Servicio (usuario, nombre, contenido, ubicacion,
+        categoria, media_puntuacion, imagen, telefono, url, patrocinado)
+        VALUES (:usuario, :nombre, :contenido, :ubicacion, :categoria,
+        :media_puntuacion, :imagen, :telefono, :url, :patrocinado)";
 
       $stm = $this->conn->prepare($sql);
 
       $params = ['usuario' => $usuario, 'nombre' => $nombre,
         'contenido' => $contenido, 'ubicacion' => $ubicacion,
         'categoria' => $categoria, 'media_puntuacion' => $media_puntuacion,
-        'telefono' => $telefono, 'url' => $url, 'patrocinado' => $patrocinado];
-
-      if (!is_null($imagen))
-        $params['imagen'] = $imagen;
+        'telefono' => $telefono, 'url' => $url, 'patrocinado' => $patrocinado,
+        'imagen' => $imagen];
 
       $stm->execute($params);
       $id = $this->conn->lastInsertId();
     } catch (PDOException $e) {
-      echo "ERROR EN DAOServicio: " . $e->getMessage();
+      //echo "ERROR EN DAOServicio: " . $e->getMessage();
+      return null;
     }
     return $id;
   }
@@ -128,21 +121,33 @@ class DAOServicio {
 
   function updateServicio($id, $nombre, $categoria, $url, $ubicacion, $imagen, $contenido, $telefono, $patrocinado){
       try {
-        $sql = "UPDATE Servicio SET nombre =:nombre, telefono =:telefono,
-                categoria =:categoria, url =:url, ubicacion =:ubicacion,
-                contenido =:contenido, imagen=:imagen, patrocinado=:patrocinado
-                WHERE id =:id";
+        if (is_null($imagen)) {
+          $sql = "UPDATE Servicio SET nombre =:nombre, telefono =:telefono,
+                  categoria =:categoria, url =:url, ubicacion =:ubicacion,
+                  contenido =:contenido, patrocinado=:patrocinado
+                  WHERE id =:id";
+        } else {
+          $sql = "UPDATE Servicio SET nombre =:nombre, telefono =:telefono,
+                  categoria =:categoria, url =:url, ubicacion =:ubicacion,
+                  contenido =:contenido, imagen=:imagen, patrocinado=:patrocinado
+                  WHERE id =:id";
+        }
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute(["id" => $id, "nombre" => $nombre,
+        $params = ["id" => $id, "nombre" => $nombre,
                         "categoria" => $categoria,
                         "url" => $url,
                         "telefono" => $telefono,
-                        "imagen" => $imagen,
                         "contenido" => $contenido,
                         "ubicacion" => $ubicacion,
-                        "patrocinado" => $patrocinado]);
+                        "patrocinado" => $patrocinado];
+
+        if (!is_null($imagen)) {
+          $params["imagen"] = $imagen;
+        }
+
+        $stmt->execute($params);
       } catch(PDOException $e) {
-        echo "ERROR EN DAOServicio: " . $e->getMessage();
+        #echo "ERROR EN DAOServicio: " . $e->getMessage();
         return false;
       }
       return true;

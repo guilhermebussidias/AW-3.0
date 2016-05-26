@@ -5,7 +5,6 @@ namespace aw\logic;
 class Utils {
 
   static function uploadPic($fieldName, $compulsory = true) {
-
     $inputname = $_FILES[$fieldName]['tmp_name'];
 
     if ($inputname === '' && !$compulsory) {
