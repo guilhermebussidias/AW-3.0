@@ -187,19 +187,19 @@
  	}
 
 	else if ($_REQUEST["boton"] === "modificar-publicidad"){
-		$banner = \aw\logic\Utils::uploadPic("input-foto-publicidad");
+			$banner = \aw\logic\Utils::uploadPic("input-foto-publicidad", false);
      	$anuncio = $_REQUEST["input-contenido-anuncio"];
      	$id = $_REQUEST["id"];
-    	if($banner!== '' && $anuncio !== ''){
+    	if($anuncio !== ''){
      		$ok = $logicPublicidad->updatePublicidad($id, $anuncio, $banner);
      		if (is_null($ok)){
-				$respuesta = "Ha habido un problema en el proceso.";
-			}else {
-				$respuesta = "Todo ha ido correcto.";
+					$respuesta = "Ha habido un problema en el proceso.";
+				} else {
+					$respuesta = "Todo ha ido correcto.";
+				}
+    	} else {
+				$respuesta = "Rellena todos los campos.";
 			}
-    	}else {
-			$respuesta = "Rellena todos los campos.";
-		}
     	$direccion = "index";
   }
 

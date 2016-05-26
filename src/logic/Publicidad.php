@@ -23,16 +23,12 @@ class Publicidad {
   }
 
   function updatePublicidad($id, $anuncio, $banner) {
-    return $this->daoPublicidad->updatePublicidad($id, esc($anuncio), esc($banner));
+    return $this->daoPublicidad->updatePublicidad($id, esc($anuncio), $banner);
   }
 
   function savePublicidad($usuario, $anuncio, $banner){
-    return $this->daoPublicidad->savePublicidad($usuario, esc($anuncio), esc($banner));
+    return $this->daoPublicidad->savePublicidad($usuario, esc($anuncio), $banner);
   }
 }
 
 ?>
-
-
-
- 

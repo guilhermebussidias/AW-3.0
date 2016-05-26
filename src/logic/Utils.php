@@ -4,10 +4,11 @@ namespace aw\logic;
 
 class Utils {
 
-  static function uploadPic($fieldName, $compulsory = true) {
+  static function uploadPic($fieldName, $strict = true) {
+
     $inputname = $_FILES[$fieldName]['tmp_name'];
 
-    if ($inputname === '' && !$compulsory) {
+    if ($inputname === '' && !$strict) {
       return null;
     }
 

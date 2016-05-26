@@ -27,11 +27,11 @@ class DAOPublicidad {
       return null;
     }
   }
-  
+
   function getListaPublicidad(){
     try {
-      $sql = "SELECT p.anuncio, p.banner, u.id as idUser, p.id as id 
-      FROM Publicidad p 
+      $sql = "SELECT p.anuncio, p.banner, u.id as idUser, p.id as id
+      FROM Publicidad p
       JOIN Usuario u on p.usuario = u.id
       ORDER BY RAND() LIMIT 0, 2";
       $stmt = $this->conn->prepare($sql);
@@ -78,16 +78,20 @@ class DAOPublicidad {
 
   function updatePublicidad($id, $anuncio, $banner){
     try {
-        $sql = "UPDATE Publicidad SET anuncio = :anuncio , banner = :banner WHERE id = :id";
-        echo $sql;
-        echo $id;
-        echo $anuncio;
-        echo $banner;
+        if (!is_null($banner)) {
+          $sql = "UPDATE Publicidad SET anuncio = :anuncio , banner = :banner WHERE id = :id";
+        } else {
+          $sql = "UPDATE Publicidad SET anuncio = :anuncio WHERE id = :id";
+        }
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute(["id" => $id, "anuncio" => $anuncio, "banner" => $banner]);
+        $params = ["id" => $id, "anuncio" => $anuncio];
+        if (!is_null($banner)) {
+          $params["banner"] = $banner;
+        }
+        $stmt->execute($params);
       } catch(PDOException $e) {
-        echo "ERROR EN DAOPublicidad: " . $e->getMessage();
-        return false;
+        #echo "ERROR EN DAOPublicidad: " . $e->getMessage();
+        return null;
       }
     return true;
   }
