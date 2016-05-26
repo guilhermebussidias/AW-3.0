@@ -37,7 +37,7 @@
 						<input type="hidden" name="MAX_FILE_SIZE" value="3000000">
 						<input type="hidden" name="id" id="input-evento" class="estilotextarea" value= "<?= $idEvento ?>">
 					<h3 class="contenido-titulo">Título:<h3/>
-            <input type="text" name="titulo-evento" id="input-titulo-evento" class="estilotextarea" value= "<?php $evento['titulo'] ?>">
+            <input type="text" name="titulo-evento" id="input-titulo-evento" class="estilotextarea" value= "<?= $evento['titulo'] ?>">
 					<h3 class="contenido-titulo">Fecha:<h3/>
 						<input type="text" name="fecha-evento" id="input-fecha-ini-evento" class="estilotextarea">
 					<h3 class="contenido-titulo">Ubicacion:<h3/>
