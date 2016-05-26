@@ -2,9 +2,9 @@
 
 require_once __DIR__ . "/src/App.php";
 
-checkCSRF();
-
 if (is_null(getRole())) {
+  checkCSRF();
+
   $name = $_REQUEST["name"];
   $pass = $_REQUEST["password"];
 
