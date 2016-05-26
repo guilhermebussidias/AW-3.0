@@ -6,11 +6,13 @@ class Utils {
 
   static function uploadPic($fieldName, $compulsory = true) {
 
-    if (!isset($_FILES[$fieldName]['tmp_name']) && !$compulsory)
+    $inputname = $_FILES[$fieldName]['tmp_name'];
+
+    if ($inputname === '' && !$compulsory) {
       return null;
+    }
 
     if (isset($_REQUEST["MAX_FILE_SIZE"])) {
-      $inputname = $_FILES[$fieldName]['tmp_name'];
       if (!isset($inputname)) {
         echo "Nombre de campo equivocado";
         die;
