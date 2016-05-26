@@ -3,7 +3,7 @@
 	require_once __DIR__ . "/src/App.php";
 
 	checkCSRF();
-	
+
 	$logicUsuario = new \aw\logic\Usuario();
 	$logicNoticia = new \aw\logic\Noticia();
 	$logicServicio = new \aw\logic\servicioEspecifico();
@@ -125,7 +125,7 @@
 
 		if($nombre!== '' && $contenido !== '' && $url!== '' && $ubicacion!== '' && $telefono !== ''){
 			$categoria = $_REQUEST["categoria"];
-			$imagen = \aw\logic\Utils::uploadPic("input-foto-servicio");
+			$imagen = \aw\logic\Utils::uploadPic("input-foto-servicio", false);
 			$ok = $logicServicio->updateServicio($id, $nombre, $categoria, $url, $ubicacion, $imagen, $contenido, $telefono, $patrocinado);
 			if (is_null($ok)){
 				$respuesta = "Ha habido un problema en el proceso.";
