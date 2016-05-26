@@ -110,6 +110,8 @@ ul{
   position: absolute; /* Para poder utilizar el z-index */
   padding-top: 20px;
   padding-left: 35px;
+  overflow: visible;
+  z-index: 1000;
 }
 .menu li>a{
   color: #7F7F7F;

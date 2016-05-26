@@ -60,7 +60,7 @@
 
   <form id="jquery-login-form" action="<?= getBasePath() ?>formLogin.php" method="post">
     <fieldset>
-			<?= echoCSRFField() ?>
+			<?php require(getIncludePath() . 'csrf.php'); ?>
       <label for="name">Nombre de usuario</label>
       <input type="text" name="name" id="name" value="" class="text ui-widget-content ui-corner-all">
       <label for="password">Contraseña</label>

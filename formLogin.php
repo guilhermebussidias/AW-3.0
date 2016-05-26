@@ -2,6 +2,8 @@
 
 require_once __DIR__ . "/src/App.php";
 
+checkCSRF();
+
 if (is_null(getRole())) {
   $name = $_REQUEST["name"];
   $pass = $_REQUEST["password"];

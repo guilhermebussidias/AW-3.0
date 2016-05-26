@@ -136,24 +136,21 @@ function randHex($bytes = 32) {
 function compare_constant($a, $b) { // Comparación en tiempo constante
   $lena = strlen($a);
   $lenb = strlen($b);
-  $eq = true;
-  for ($i = 0; $i < min($lena, $lenb); $i++) {
-    $eq &= ($a[$i] === $b[$i]);
+  $is_same = true;
+  $min_len = min($lena, $lenb);
+  for ($i = 0; $i < $min_len; $i++) {
+    $is_same =($a[$i] === $b[$i]) && $is_same;
   }
-  return ($lena === $lenb) && $eq;
+  return ($lena === $lenb) && $is_same;
 }
 
-function echoCSRFField($key = CSRF_TOKEN_KEY) {
-  if (!isset($_SESSION[$key])) {
-    $_SESSION[$key] = randHex();
+function checkCSRF() {
+  $key = CSRF_TOKEN_KEY;
+  if (!isset($_SESSION[$key]) || !isset($_REQUEST[$key]) ||
+        !compare_constant($_SESSION[$key], $_REQUEST[$key])) {
+    echo "Token CSRF no válido";
+    die;
   }
-  echo "
-    <input type=\"hidden\" name=\"{$key}\" value=\"{$_SESSION[$key]}\">
-  ";
-}
-
-function checkCSRFField($key = CSRF_TOKEN_KEY) {
-  return compare_constant($_SESSION[$key], $_REQUEST[$key]);
 }
 
 /******************************************************************************/
