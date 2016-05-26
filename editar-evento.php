@@ -41,7 +41,7 @@
 					<h3 class="contenido-titulo">Título:<h3/>
             <input type="text" name="titulo-evento" id="input-titulo-evento" class="estilotextarea" value= "<?= $evento['titulo'] ?>">
 					<h3 class="contenido-titulo">Fecha:<h3/>
-						<input type="text" name="fecha-evento" id="input-fecha-ini-evento" class="estilotextarea" valuer ="<?= $fecha ?>">
+						<input type="text" name="fecha-evento" id="input-fecha-ini-evento" class="estilotextarea" value ="<?= $fecha ?>">
 					<h3 class="contenido-titulo">Ubicacion:<h3/>
 						<input type="text" name="ubicacion-evento" id="input-ubicacion-evento" class="estilotextarea" value= "<?=  $evento['ubicacion'] ?>">
 					<h3 class="contenido-titulo">Imagen:<h3/>
