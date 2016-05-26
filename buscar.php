@@ -95,10 +95,11 @@
 						 <div class="clear"></div>
             </div>
 			</div>
-			<?php
-				require(getIncludePath() . 'sidebar.php');
-				require(getIncludePath() . 'pie.php');
-			?>
 		</div>
+
+		<?php
+			require(getIncludePath() . 'sidebar.php');
+			require(getIncludePath() . 'pie.php');
+		?>
 	</body>
 </html>
