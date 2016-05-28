@@ -96,7 +96,7 @@ class DAONoticia {
 
   function saveNoticia($usuario, $titulo, $contenido){
     try{
-      $sql = "INSERT INTO Noticia (usuario, titulo, contenido, fecha) VALUES (:usuario,:titulo, :contenido, CURDATE() )";
+      $sql = "INSERT INTO Noticia (usuario, titulo, contenido, fecha) VALUES (:usuario,:titulo, :contenido, NEW())";
       $stmt = $this->conn->prepare($sql);
       $stmt->execute(["usuario" => $usuario, "titulo" => $titulo, "contenido" => $contenido]);
       $id = $this->conn->lastInsertId();
