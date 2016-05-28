@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: May 19, 2016 at 05:36 PM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 5.6.21
+-- Servidor: localhost
+-- Tiempo de generación: 28-05-2016 a las 10:51:18
+-- Versión del servidor: 5.5.49-0ubuntu0.14.04.1
+-- Versión de PHP: 5.5.9-1ubuntu4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,90 +14,100 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
--- Database: `alldogs`
+-- Base de datos: `alldogs`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ComentarioNoticia`
+-- Estructura de tabla para la tabla `ComentarioNoticia`
 --
 
-CREATE TABLE `ComentarioNoticia` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `ComentarioNoticia` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `usuario` int(11) NOT NULL,
   `noticia` int(11) NOT NULL,
   `titulo` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `comentario` text COLLATE utf8_spanish_ci NOT NULL,
-  `fecha` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `fecha` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=6 ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Evento`
+-- Estructura de tabla para la tabla `Evento`
 --
 
-CREATE TABLE `Evento` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `Evento` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` text COLLATE utf8_spanish_ci NOT NULL,
   `contenido` text COLLATE utf8_spanish_ci NOT NULL,
   `fecha` date NOT NULL,
   `ubicacion` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `foto` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
-  `usuario` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `usuario` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `Evento_ibfk_1` (`usuario`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=14 ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Noticia`
+-- Estructura de tabla para la tabla `Noticia`
 --
 
-CREATE TABLE `Noticia` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `Noticia` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `usuario` int(11) NOT NULL,
   `titulo` text COLLATE utf8_spanish_ci NOT NULL,
   `contenido` text COLLATE utf8_spanish_ci NOT NULL,
-  `fecha` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `fecha` date NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `usuario` (`usuario`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=28 ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Publicidad`
+-- Estructura de tabla para la tabla `Publicidad`
 --
 
-CREATE TABLE `Publicidad` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `Publicidad` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `usuario` int(11) NOT NULL,
   `anuncio` text COLLATE utf8_spanish_ci NOT NULL,
-  `banner` varchar(255) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `banner` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `usuario` (`usuario`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=9 ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Puntua`
+-- Estructura de tabla para la tabla `Puntua`
 --
 
-CREATE TABLE `Puntua` (
+CREATE TABLE IF NOT EXISTS `Puntua` (
   `usuario` int(11) NOT NULL,
   `servicio` int(11) NOT NULL,
-  `puntuacion` int(11) NOT NULL
+  `puntuacion` int(11) NOT NULL,
+  PRIMARY KEY (`usuario`,`servicio`),
+  KEY `servicio` (`servicio`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Servicio`
+-- Estructura de tabla para la tabla `Servicio`
 --
 
-CREATE TABLE `Servicio` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `Servicio` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `patrocinado` tinyint(1) DEFAULT NULL,
   `usuario` int(11) NOT NULL,
   `nombre` text COLLATE utf8_spanish_ci NOT NULL,
   `contenido` text COLLATE utf8_spanish_ci NOT NULL,
@@ -107,148 +117,56 @@ CREATE TABLE `Servicio` (
   `imagen` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `telefono` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `url` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
-  `patrocinado` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  PRIMARY KEY (`id`),
+  KEY `usuario` (`usuario`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=32 ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Usuario`
+-- Estructura de tabla para la tabla `Usuario`
 --
 
-CREATE TABLE `Usuario` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `Usuario` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `usuario` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `pass` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
-  `rol` enum('admin','gestor','normal','proveedor') COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `rol` enum('admin','gestor','normal','proveedor') COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `n_usuario` (`usuario`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=27 ;
 
 --
--- Indexes for dumped tables
---
-
---
--- Indexes for table `ComentarioNoticia`
---
-ALTER TABLE `ComentarioNoticia`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `usuario_idx` (`usuario`),
-  ADD KEY `noticia_idx` (`noticia`);
-
---
--- Indexes for table `Evento`
---
-ALTER TABLE `Evento`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `Evento_ibfk_1` (`usuario`);
-
---
--- Indexes for table `Noticia`
---
-ALTER TABLE `Noticia`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `usuario` (`usuario`);
-
---
--- Indexes for table `Publicidad`
---
-ALTER TABLE `Publicidad`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `usuario` (`usuario`);
-
---
--- Indexes for table `Puntua`
---
-ALTER TABLE `Puntua`
-  ADD PRIMARY KEY (`usuario`,`servicio`),
-  ADD KEY `servicio` (`servicio`);
-
---
--- Indexes for table `Servicio`
---
-ALTER TABLE `Servicio`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `usuario` (`usuario`);
-
---
--- Indexes for table `Usuario`
---
-ALTER TABLE `Usuario`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `n_usuario` (`usuario`);
-
---
--- AUTO_INCREMENT for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `ComentarioNoticia`
---
-ALTER TABLE `ComentarioNoticia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `Evento`
---
-ALTER TABLE `Evento`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `Noticia`
---
-ALTER TABLE `Noticia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `Publicidad`
---
-ALTER TABLE `Publicidad`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `Servicio`
---
-ALTER TABLE `Servicio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `Usuario`
---
-ALTER TABLE `Usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `ComentarioNoticia`
---
-ALTER TABLE `ComentarioNoticia`
-  ADD CONSTRAINT `comentarionoticia_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `Usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `comentarionoticia_ibfk_2` FOREIGN KEY (`noticia`) REFERENCES `Noticia` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `Evento`
+-- Filtros para la tabla `Evento`
 --
 ALTER TABLE `Evento`
   ADD CONSTRAINT `Evento_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `Usuario` (`id`);
 
 --
--- Constraints for table `Noticia`
+-- Filtros para la tabla `Noticia`
 --
 ALTER TABLE `Noticia`
   ADD CONSTRAINT `Noticia_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `Usuario` (`id`);
 
 --
--- Constraints for table `Publicidad`
+-- Filtros para la tabla `Publicidad`
 --
 ALTER TABLE `Publicidad`
   ADD CONSTRAINT `Publicidad_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `Usuario` (`id`);
 
 --
--- Constraints for table `Puntua`
+-- Filtros para la tabla `Puntua`
 --
 ALTER TABLE `Puntua`
   ADD CONSTRAINT `Puntua_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `Usuario` (`id`),
   ADD CONSTRAINT `Puntua_ibfk_2` FOREIGN KEY (`servicio`) REFERENCES `Servicio` (`id`);
 
 --
--- Constraints for table `Servicio`
+-- Filtros para la tabla `Servicio`
 --
 ALTER TABLE `Servicio`
   ADD CONSTRAINT `Servicio_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `Usuario` (`id`);
